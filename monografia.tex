@@ -1,147 +1,166 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Classe do documento
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Classe do documento e opções institucionais
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \PassOptionsToPackage{table}{xcolor}
 
-% Opções:
+% Opções da classe:
 %  - Graduação: bacharelado|engenharia|licenciatura
 %  - Pós-graduação: [qualificacao], mestrado|doutorado, ppca|ppginf
-
+% Dica: mantenha somente as opções necessárias ao seu curso/etapa.
 % \documentclass[engenharia]{UnB-CIC}%
-\documentclass[qualificacao, mestrado, ppginf]{UnB-CIC-altered}%
-\selectlanguage{portuguese}\brtrue\enfalse % added
-% \selectlanguage{american}\entrue\brfalse % added
-%%%%%%%%%%%%%%%% BEGIN USER'S PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[qualificacao, mestrado, ppginf]{UnB-CIC}%
+
+% Idioma principal do documento (classe já provê macros br/en)
+\selectlanguage{portuguese}\brtrue\enfalse
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pacotes do usuário (organizados por função)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Tipografia e utilidades gerais
 \usepackage{anyfontsize}
-% creating separate reference section for the SLR
-%\usepackage[labeled]{multibib} 
-%\newcites{PS}{Estudos Primários} 
+\usepackage{xcolor}
+\usepackage{calc}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{paralist}
+\usepackage{csquotes}
+\usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{arydshln} % linhas tracejadas em tabelas
+\usepackage{diagbox}  % diagonal em tabelas
 
-% colors
-\definecolor{formalshade}{rgb}{0.95,0.95,1}
-
-% packages for charts
+% Figuras e gráficos
+\usepackage{graphicx}
+\graphicspath{{img/}} % caminho padrão para imagens
+\usepackage{tikz}
+\usetikzlibrary{patterns}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.9}
 \usepackage{pgf-pie}
-% package for charts
-\usepackage{tikz}
-\usetikzlibrary{patterns}
 
-% create checkmark symbols
-\usepackage{calc}
-
-% subfigure
+% Figuras com subfiguras
 \usepackage{caption}
 \usepackage{subcaption}
 
-% outros
-%\usepackage{url}
-\usepackage{multirow} 
-\usepackage{arydshln} % dash lines
-\usepackage{diagbox} % diagonal line in tables
-\usepackage{csquotes} % block citations
-\usepackage{rotating}
-\usepackage{adjustbox}
-\usepackage{tcolorbox}
-\usepackage{float}
-\usepackage{placeins}
-\usepackage{todonotes}
-\usepackage{xcolor}
-\usepackage{paralist}
+% Algoritmos e listagens
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{listings}
-\tcbuselibrary{minted,breakable,xparse,skins}
-\usepackage{caption}
 
+% Notas (marginais) e caixas coloridas
+\usepackage{todonotes}
+\usepackage{tcolorbox}
+
+% A classe normalmente já carrega hyperref; usamos apenas hypersetup aqui.
 \hypersetup{
- colorlinks=true,
- citecolor=blue,
- linkcolor=blue}
+  colorlinks=true,
+  citecolor=blue,
+  linkcolor=blue
+}
 
-%%%%%%%%%%%%%%%% END USER'S PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%
+% Inclusão de PDFs (ex.: apêndices)
+\usepackage{pdfpages}
 
-\usepackage{pdfpages}% incluir PDFs, usado no apêndice
+% Espaço lateral para notas TODO
+\setlength{\marginparwidth}{2cm}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Informações do Trabalho
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paleta de cores de exemplo (opcional)
+\definecolor{formalshade}{rgb}{0.95,0.95,1}
 
-\orientador[a]{\prof[a] \dr[a] Edna Dias Canedo}{University of Bras\'{i}lia (UnB)}%
-\coordenador{\prof \dr Rodrigo Bonifácio de Almeida}{University of Bras\'{i}lia (UnB)}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configuração de código-fonte (minted com fallback para listings)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Observação: para usar minted é necessário compilar com -shell-escape.
+% Caso minted não esteja disponível, caímos em um fallback com listings.
+
+% Ambiente auxiliar para legendas tipo "listing"
+\newenvironment{code}{\captionsetup{type=listing}}{}
+
+% Caixa de código com tcolorbox + minted (ou listings no fallback)
+\IfFileExists{minted.sty}{%
+  % minted disponível
+  \tcbuselibrary{minted,breakable,xparse,skins}
+  \definecolor{bg}{gray}{0.95}
+  \DeclareTCBListing{mintedbox}{O{}m!O{}}{% opções comuns
+    breakable=true,
+    listing engine=minted,
+    listing only,
+    minted language=#2,
+    minted style=default,
+    minted options={linenos,gobble=0,breaklines=true,breakafter=,,fontsize=\small,numbersep=8pt,#1},
+    boxsep=0pt,left=25pt,right=0pt,top=3pt,bottom=3pt,arc=5pt,
+    leftrule=0pt,rightrule=0pt,bottomrule=2pt,toprule=2pt,
+    colback=bg,colframe=orange!70,enhanced,
+    overlay={\begin{tcbclipinterior}\fill[orange!20!white](frame.south west) rectangle ([xshift=20pt]frame.north west);\end{tcbclipinterior}},
+    #3}
+}{%
+  % fallback via listings (sem necessidade de -shell-escape)
+  \tcbuselibrary{listings,breakable,xparse,skins}
+  \definecolor{bg}{gray}{0.95}
+  \DeclareTCBListing{mintedbox}{O{}m!O{}}{% opções comuns
+    breakable=true,
+    listing engine=listings,
+    listing only,
+    listing options={language=#2,numbers=left,numbersep=8pt,breaklines=true,basicstyle=\small\ttfamily,#1},
+    boxsep=0pt,left=25pt,right=0pt,top=3pt,bottom=3pt,arc=5pt,
+    leftrule=0pt,rightrule=0pt,bottomrule=2pt,toprule=2pt,
+    colback=bg,colframe=orange!70,enhanced,
+    overlay={\begin{tcbclipinterior}\fill[orange!20!white](frame.south west) rectangle ([xshift=20pt]frame.north west);\end{tcbclipinterior}},
+    #3}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Informações do Trabalho (preenchimento obrigatório)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Orientação e coordenação
+\orientador[a]{\prof[a] \dr[a] Edna Dias Canedo}{University of Bras\'{\i}lia (UnB)}%
+\coordenador{\prof \dr Rodrigo Bonif\'\{a}cio de Almeida}{University of Bras\'{\i}lia (UnB)}%
 \diamesano{09}{Outubro}{2024}%
 
-\membrobanca{\prof[a] \dr[a] Sheila Reinehr} {Pontifícia Universidade Católica do Paraná, \\ (PUC-PR)}%
-\membrobanca{\prof \dr Geraldo Pereira Rocha Filho} {Universidade do Sudoeste da Bahia}%
+% Banca examinadora (adicione/remova conforme a etapa e regras do programa)
+\membrobanca{\prof[a] \dr[a] Sheila Reinehr}{Pontif\'{\i}cia Universidade Cat\'olica do Paran\'a, \\ (PUC-PR)}%
+\membrobanca{\prof \dr Geraldo Pereira Rocha Filho}{Universidade do Sudoeste da Bahia}%
 
-\autor{João Gabriel Rossi de}{Borba}%
+% Autor e título
+\autor{Jo\~{a}o Gabriel Rossi de}{Borba}%
+\titulo{Princ\'{\i}pios \'{E}ticos e o Processo de Desenvolvimento de Software: Uma Revis\~{a}o Sistem\'atica da Literatura}%
 
-\titulo{Princípios Éticos e o Processo de Desenvolvimento de Software: Uma Revisão Sistemática da Literatura}%
-
-\palavraschave{Ética, Ética em Inteligência Artificial, Engenharia de Requisitos, Requisitos Éticos, Aprendizagem de Máquina, Desenvolvimento de Software.}%
+% Palavras-chave (portugu\^es e ingl\^es)
+\palavraschave{\'Etica, \'{E}tica em Intelig\^{e}ncia Artificial, Engenharia de Requisitos, Requisitos \'{E}ticos, Aprendizagem de M\'aquina, Desenvolvimento de Software.}%
 \keywords{Ethics, Ethics in Artificial Intelligence, Requirements Engineering, Ethical Requirements, Machine Learning, Software Development.}%
 
+% Atalho para nome da classe (opcional)
 \newcommand{\unbcic}{\texttt{UnB-CIC}}%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Texto
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength {\marginparwidth }{2cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Corpo do Documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}%
 
-    \newenvironment{code}{\captionsetup{type=listing}}{}
-    % \SetupFloatingEnvironment{listing}{name=Source Code}
+  % Cap\'itulos: cada um est\'a em corpo/<arquivo>.tex
+  % Formato: \capitulo{pasta}{arquivo}{t\'itulo}
+  \capitulo{corpo}{1_intro}{Introdu\c{c}\~{a}o}
+  \capitulo{corpo}{2_ref}{Referencial Te\'orico}
+  \capitulo{corpo}{3_rsl}{Revis\~{a}o Sistem\'atica de Literatura}
+  \capitulo{corpo}{4_ferramenta}{Proposta da Ferramenta}
+  \capitulo{corpo}{5_cronograma}{Cronograma Proposto}
+  \capitulo{corpo}{6_conclusao}{Conclus\~{a}o}
 
-    \definecolor{bg}{gray}{0.95}
-    \DeclareTCBListing{mintedbox}{O{}m!O{}}{%
-      breakable=true,
-      listing engine=minted,
-      listing only,
-      minted language=#2,
-      minted style=default,
-      minted options={%
-        linenos,
-        gobble=0,
-        breaklines=true,
-        breakafter=,,
-        fontsize=\small,
-        numbersep=8pt,
-        #1},
-      boxsep=0pt,
-      left skip=0pt,
-      right skip=0pt,
-      left=25pt,
-      right=0pt,
-      top=3pt,
-      bottom=3pt,
-      arc=5pt,
-      leftrule=0pt,
-      rightrule=0pt,
-      bottomrule=2pt,
-      toprule=2pt,
-      colback=bg,
-      colframe=orange!70,
-      enhanced,
-      overlay={%
-        \begin{tcbclipinterior}
-        \fill[orange!20!white] (frame.south west) rectangle ([xshift=20pt]frame.north west);
-        \end{tcbclipinterior}},
-      #3}
-      
-    \capitulo{corpo}{1_intro}{Introdução}             
-    \capitulo{corpo}{2_ref}{Referencial Teórico}
-    \capitulo{corpo}{3_rsl}{Revisão Sistemática de Literatura} 
-    \capitulo{corpo}{4_ferramenta}{Proposta da Ferramenta}
-    \capitulo{corpo}{5_cronograma}{Cronograma Proposto}
-    \capitulo{corpo}{6_conclusao}{Conclusão}                              
-    
-     % \renewcommand\bibname{References}
-    \bibliographystyle{babunsrt}
-    \bibliography{references}
-    %\bibliographystylePS{babunsrt}
-    %\bibliographyPS{slr.bib}
+  % Bibliografia
+  % Estilo: babunsrt (ordem de cita\c{c}\~{a}o)
+  \bibliographystyle{babunsrt}
+  \bibliography{references}
+  % Para bibliografia separada da RSL, considere multibib:
+  % \usepackage[labeled]{multibib}
+  % \newcites{PS}{Estudos Prim\'arios}
+  % \bibliographystylePS{babunsrt}
+  % \bibliographyPS{slr}
 
-    % \apendice{postexto}{apendice_tabelas}{Data extracted from primary studies}%
-    % \anexo{postexto}{exemplo}{Documentação Original \unbcic\ (parcial)}%
+  % Ap\^endices e anexos (exemplos)
+  % \apendice{postexto}{apendice_tabelas}{Dados extra\'idos dos estudos prim\'arios}%
+  % \anexo{postexto}{exemplo}{Documenta\c{c}\~{a}o Original \unbcic\ (parcial)}%
+
 \end{document}%
