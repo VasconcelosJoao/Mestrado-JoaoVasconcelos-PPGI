@@ -1,0 +1,122 @@
+p2.mp4
+
+Interviewer: [00:00:10]  Então, eu estou fazendo a gravação para eu registrar na minha dissertação depois, porque eu não vou lembrar todas as respostas, mas eu não vou divulgar a gravação publicamente e na transcrição eu não vou te identificar, tá bom? Na primeira pergunta vou pedir para você falar um pouco sobre sua experiência profissional, sua formação, suas habilidades, conhecimentos e especialmente, o seu trabalho com software. O que você faz? Você pode falar brevemente?
+
+Participant2: [00:00:53] Uhum. Meu nome é [anonymized], eu me formei em Biotecnologia no ano passado e atualmente eu estou trabalhando com a parte de levantamento de requisitos e User Experience também e prototipação de telas. Estou com quase um ano e meio de experiência nessa área e também estou fazendo alguns testes de sistema.
+
+Interviewer: [00:01:30] Legal. Você já participou direta ou indiretamente do desenvolvimento de algum chatbot?
+
+Participant2: [00:01:39] Não, ainda não.
+
+Interviewer: [00:01:43] E como usuária, você já interagiu com muitos chatbots, independente do tema do chatbot? Você já teve interações?
+
+Participant2: [00:01:53] Já já tive. Já tive bastante até.
+
+Interviewer: [00:01:58]  Você gosta de interagir com chatbots? Prefere seres humanos? Qual é a sua visão sobre chatbots?
+
+Participant2: [00:02:08] Quando é um contato mais rápido, uma coisa mais corriqueira, eu prefiro chatbots porque eles são mais rápidos ali, não tem uma dependência de tempo de, por exemplo, você está tomando o tempo de outra pessoa. Agora, se for uma situação muito específica, um problema muito específico, eu prefiro falar com o ser humano.
+
+Interviewer: [00:02:35] Beleza. Agora vou entrar nas questões sobre o experimento. Agora falando da etapa 1, que foi a etapa que você fez a conversa sem ter lido o guia. O que você achou de fácil, o que você achou de difícil, de desafio para fazer a conversa inicialmente, na etapa 1.
+
+Participant2: [00:02:54]  Eu achei difícil por ser um aplicativo de meditação, não é uma coisa que eu tenho muita experiência. Então foi um pouco difícil imaginar como seria essa simulação, porque a maioria dos chatbots que eu já tive contato era de serviço mais básico mesmo, de farmácia ou de clínica, geralmente na área da saúde.
+
+Interviewer: [00:03:25] Entendi. Então esse foi seu principal desafio né?
+
+Participant2: [00:03:31] E também os fluxos alternativos. Por exemplo, se você imaginar a interação principal com os chatbots, mas também não prolongar muito, porque tem vários caminhos que o usuário poderia escolher ali. Aí acho que um dos desafios foi enxugar para trazer só o que o experimento estava pedindo também.
+
+Interviewer: [00:04:00] Ah, sim, sim, isso é verdade. E o que você utilizou de conhecimento e experiência prévia para montar essa conversa. Você disse que nunca conversou com um chatbot de meditação. Teve outra coisa, na sua experiência de vida, ou profissional, que te ajudou a bolar essa conversa?
+
+Participant2: [00:04:25] Teve sim. Na verdade eu nunca coloquei, mas quando eu uso o Spotify, as vezes aparecem sugestões de podcast, de yoga, esse tipo de coisa. E quando eu li a proposta do experimento, para mim, na verdade era como se o chatbot ficasse passando o áudio para a pessoa fazer a meditação. Aí já fiz algumas aulas experimentais de yoga também e geralmente tem uma música mais calma e tem umas frases motivacionais ali. Então, na minha cabeça eu imaginei que era mais ou menos aquilo. Você tem alguns tipos de áudio já pré programados ali, como mensagens específicas para o chatbot poder direcionar qual que é o melhor para o seu momento. Aí eu vi lá, por exemplo, que você tinha, acho que era, alternativa B, que você tinha que sugerir uma meditação para o usuário. E na minha cabeça era isso. Você sugeria uma meditação, por exemplo, que fosse um pouco mais alegre se a pessoa estivesse triste ou um pouco mais calma, se a pessoa estivesse pensativa ou algo do tipo.
+
+Interviewer: [00:05:39]  Bom, na etapa 2, que foi após que você fez a leitura do guia e, no seu caso, você fez alterações. Quais foram os desafios e ou facilidades que você teve já na etapa 2?
+
+Participant2: [00:06:14] O primeiro desafio que eu tive foi a questão da personalização do nome, porque tem chatbot que isso é bastante relevante, se você vai ficar um tempo razoável no chatbot, é bom ele te chamar pelo nome. Mas no caso da meditação, eu fiquei em dúvida se eu pediria essa informação ou não, porque como era bem rapidinho, só para você escolher o tipo de meditação, alguma coisa assim, eu acabei colocando o nome, mas eu fiquei em dúvida se eu colocaria ou não, porque acho que se o chatbot for muito pequeno ou então se você tiver... Depende da situação que o usuário está ali. Acho que no caso de uma meditação ele está querendo meditar, então ele vai ter paciência. Mas se eu tivesse um chatbot, por exemplo, que ele está ligando para marcar uma consulta de emergência, eu talvez não sei se eu pediria o nome no primeiro momento, porque é uma emergência. Ele está com pressa. Aí essa foi a minha primeira dúvida. Acho que no geral ..., eu vou até abrir aqui [o guia], não sei se... 
+
+Interviewer: [00:07:24] À vontade.
+
+Participant2: [00:07:26] Pode abrir?
+
+Interviewer: [00:07:28] Pode.
+
+Participant2: [00:07:28] Tá. Deixa eu ver, que eu já esqueci o que eu escrevi. Assim, uma coisa que eu gostei do manual[guia] foi dar um nome para o chatbot. Isso eu também coloquei. Tem mais. Ah uma coisa também que eu fiz alteração porque eu gostei, que estava no manual, achei interessante, foi a parte de se identificar com o sentimento do usuário. Aí, por exemplo, nessa parte de escolher a meditação, você tem isso né. O usuário, ele vai te falar se ele está triste, se ele está feliz. E aí você primeiro se identifica com o sentimento dele, para depois fazer a sua sugestão. Aí isso também incorporei. E a mensagem de saída também que estava meio seca e eu dei uma enfeitada nela porque ficou mais bonito mesmo.
+
+Interviewer: [00:08:28] Então assim, não teve, pelo que eu entendi, não teve um desafio super grande. Pelo que eu entendi do que você falou, o desafio foi, no caso, utilizar ou não determinadas práticas? Você ficou na dúvida se você deveria utilizar ou não? Algumas, por elas não serem tão adequadas naquela situação. Foi isso?
+
+Participant2: [00:08:51] Isso.
+
+Interviewer: [00:08:52] Entendi. Mas você entendeu que elas seriam todas obrigatórias, ou não? Você só ficou na dúvida se utilizaria ou não, mas você não se sentiu obrigada a utilizar.
+
+Participant2: [00:09:03] Não, nem todas. Deixa eu abrir o manual[guia] aqui, mas nem todas. Eu acho que tinha seis lá né, e eu utilizei umas três.
+
+Interviewer: [00:09:14] Aí você leu, absorveu e utilizou os que você achava que melhor se adequavam na sua situação.
+
+Participant2: [00:09:22] Isso, uhum.
+
+Interviewer: [00:09:28]  E quais foram as práticas mais ou menos úteis para você considerando esse tema? Eu acho que as mais úteis você já acabou respondendo, mas e as menos úteis.
+
+Participant2: [00:10:04] O mapa conceitual achei muito útil, mas eu não usei porque ele estava simples né [o chatbot]. Então, na verdade, o chatbot, que eu fiz, ele estava escrito de uma forma muito simples, mas eu achei ele útil porque ele fala aqui que é como se eu tivesse encontrado o propósito do meu chatbot. Propósito dele é fazer recomendações e estimular o bem estar. Então, enfim, eu segui aqui o mapa, construindo mais uma relação de encorajamento e conversas com emocionalidade. A naturalidade eu usei bastante, usei muita naturalidade, ela foi muito útil. Emocionalidade eu não usei. Na verdade, eu usei pouco. Eu usei as mensagens empáticas, mas essa parte aqui de humor, mídia gráfica, respostas exclamatórias. Eu não sei, eu achei demais para o primeiro momento. Aí eu usei só a mensagem empática.
+
+Interviewer: [00:11:13] Entendi. Mas, por exemplo, você citou que o humor nesse caso seria excessivo, mas você acredita que elas são excessivas em qualquer caso ou não? Por exemplo, num outro tema, ou talvez na hora de você escrever um fluxo completo de um chatbot, você acha essas essas práticas úteis?
+
+Participant2: [00:11:35] Acho sim. Eu vejo muito humor quando é, por exemplo, um jornal ou quando é um conteúdo denso que você quer aliviar. Mas eu, particularmente, não gosto de humor em tudo. Eu sou uma pessoa bem humorada, mas às vezes eu acho que se você usa o humor demais, ele força muito. Fica parecendo que a pessoa quer criar uma intimidade que não existe. Aí talvez eu deixaria ele para conversas mais longas ou mais complexas com o chatbot lá no final, porque aí a pessoa já passou um tempo com você para você usar o humor.
+
+Interviewer: [00:12:15] Entendi. E tem alguma prática que você ache que não seria útil em nenhum caso. Nenhuma situação, aquela prática ali, para você, não te ajuda. Ou não, você acha que todas tem espaço em algum contexto.
+
+Participant2: [00:12:35] Uhm... Boa pergunta.
+
+Interviewer: [00:12:38] Pode responder com calma. Não se sinta pressionada. Se quiser olhar [o guia], fica à vontade.
+
+Participant2: [00:12:48] Pois é, tem algumas aqui no "O que evitar", né. E aí eu acho que a pior de todas aqui, não sei, vou ver as piores aqui. As mensagens repetitivas. Eu odeio. Odeio quando isso acontece comigo em chatbot. O exagero, que eu também não gosto.
+
+Interviewer: [00:13:21] Você concorda que isso deve ser evitado? Isso está de acordo com o guia. Mas a pergunta, é mais assim, por exemplo, mensagens repetitivas é uma prática que deve ser evitada. De cada prática, tanto do evitar como da naturalidade, tem alguma que você acha que essa prática, não te ajuda, essa recomendação do guia não é útil para você. Ou você acha que todas são úteis de alguma maneira?
+
+Participant2: [00:13:55] Deixa eu ver aqui, mas eu acho que todas são úteis sim. Talvez não em todos os momentos, mas eu acho que todas são úteis sim.
+
+Interviewer: [00:14:07] Entendi, vai depender do contexto, mas você acha que elas tem espaço, né?. 
+
+Participant2: [00:14:11] Isso. 
+
+Interviewer: [00:14:13] Perfeito. Comparando, as duas etapas, a sua conversa da etapa 1 e sua conversa da etapa 2. Para você, qual a principal diferença entre essas duas conversas? O que é que você acha que mais mudou da conversa 1 para a conversa 2? O que é que melhorou? O que piorou?
+
+Participant2: [00:14:36]  A principal diferença para mim é que a conversa 1 ela parece muito robótica, direto ao ponto e a conversa 2 ela parece mais uma conversa. A 1, eu não odeio a 1, tipo, eu gosto de coisas diretas também, mas eu acho que a 2, que é a conversa que parece mais uma conversa, ela não perde muito para 1. Por exemplo, uma coisa que me preocupa muito, assim, com UX, é eu ter que, em nome de deixar a conversa mais bonita, eu precisar fazer o usuário tomar mais um monte de ações que ele não precisava antes. Então, por exemplo, a parte de conversa fiada é uma coisa que me preocupa às vezes, o chatbot, por exemplo, ele querer ficar conversando muito com você e não fazer o que você quer que ele faça. Mas eu não senti que isso aconteceu de uma para outra. O usuário, ele não tem muito mais ações, ele não tem que digitar muito mais vezes do que na versão 1. Por exemplo, aqui no "Olá", eu peço o nome dele. É uma ação a mais só e aí o resto acho que não muda e isso para mim é importante. Então eu consegui ter um ganho na conversa sem eu precisar fazer o usuário ter muito mais ações.
+
+Interviewer: [00:16:02] Perfeito. Então, sintetizando, o que você percebeu é que você conseguiu tornar sua conversa mais agradável sem perder a objetividade. Confere?
+
+Participant2: [00:16:12] Isso. 
+
+Interviewer: [00:16:14]  Legal. Na sua opinião, quais seriam as percepções de potenciais usuários utilizando esse seu chatbot? Qual seria a percepção dele na etapa 1 e na etapa 2? O que você acha que o usuário iria sentir na conversa da etapa 2 em comparação com a primeira? O que você acha que iria mudar no potencial usuário?
+
+Participant2: [00:16:42]  Eu vou fazer uma projeção aqui agora, porque não conheço tanto usuários de meditação, mas eu imagino que a pessoa que está procurando meditação, por algum motivo, ela quer um cenário de calma, de paz. Ela quer pensar um pouco e relaxar. Então ela quer gerar sentimentos bons, para isso que ela está ali. E eu acho que a conversa 1 ela não não entra na vibe, digamos assim. É como se eu tivesse o app de meditação e ele fosse fazer eu ficar mais tranquila, mais calma. Mas eu não sinto isso quando eu estou conversando com o chatbot. Eu vou começar a ter essa sensação só quando a meditação começar. E, na conversa 2, eu estou sendo, como se fosse, bem tratado desde o início. Então, o chatbot acaba me passando o sentimento antes mesmo de eu começar a meditação,
+
+Interviewer: [00:17:47] Entendi. Perfeito. Agora, duas questões para fechar. A primeira: caso você viesse a desenvolver um chatbot no futuro, um chatbot de verdade, como e quando você utilizaria o guia no processo de desenvolvimento ou quais seriam os fatores determinantes para que você não o utilizasse. Ou seja, se você utilizar, como você utilizaria e quando, no processo? E se não fosse utilizar, quais fatores seriam determinantes para você não utilizar o guia nesse desenvolvimento?
+
+Participant2: [00:18:24] Humm. Como e quando? Eu acho que sabendo que o guia existe, provavelmente já o utilizaria desde o começo. Desde a primeira vez que a demanda foi apresentada. Porque antes de a gente começar a fazer protótipo, fazer as conversas, etc, tem uma parte de pesquisa. Então acho que o chatbot[guia] entraria justamente nessa parte de pesquisa, de selecionar as boas referências para começar a fazer os protótipos. E eu acho que seria utilizado durante também, porque é muito fácil esquecer uma prática boa e toda vez você precisa simular uma conversa nova, uma nova funcionalidade, teria que voltar no guia para poder relembrar as boas práticas e onde teria alguma atitude.
+
+Participant2: [00:19:23]  E aí uma situação que eu não utilizaria, só se a demanda do cliente, digamos assim, fosse realmente ter um chatbot secão, mas que às vezes a gente não tem muito o que fazer, a pessoa fala "faz", e a gente faz né?
+
+Interviewer: [00:19:46]  Entendi. E por fim, para você, quais foram os pontos fortes do guia? E os pontos fracos? E no caso dos pontos fracos, teria alguma sugestão? Você teria alguma sugestão de melhoria?
+
+Participant2: [00:20:06]  Deixa eu abrir o guia aqui de novo.
+
+Interviewer: [00:20:12] O que você mais gostou, o que você menos gostou? Você tem uma sugestão de como ele pode ser melhor? Caso você tenha.
+
+Participant2: [00:20:22] Olha, no geral gostei muito do guia. Eu acho que ele está bem organizado e curtinho, que é uma coisa importante. Talvez eu mudaria um pouco a introdução, porque, na verdade, não sei se essa era a intenção. Tipo assim, fazer uma introdução mais acadêmica, digamos assim. E aí a parte do mapa, da naturalidade, etc, ficar realmente próximo do chatbot, porque realmente a linguagem de chatbot é bem mais informal do que uma linguagem de um guia. Enfim, não sei se foi a intenção, mas talvez eu deixaria a linguagem do guia toda uniforme. Como o chatbot já tem uma linguagem mais informal, eu deixaria a linguagem do início também mais informal. Porque quando você abre a página, você já dá de cara com um texto. Aí talvez usaria a própria dica do chatbot
+
+Interviewer: [00:21:21]  Só para eu entender melhor, pra você, fora a introdução, o restante do guia está numa linguagem principalmente mais acessível para um público comum e a linguagem da introdução tá muito acadêmica, mais rígida. Então sua sugestão é deixar a introdução mais leve, mais informal, e uniformizar para ficar como o resto do guia. Foi isso?
+
+Participant2: [00:21:46] Isso, seria a introdução e o mapa conceitual, mas é só um sugestão.
+
+Interviewer: [00:22:01] Mais alguma coisa, mais algum ponto forte, ponto fraco?
+
+Participant2: [00:22:04] Ponto forte, eu gostei bastante da organização da página. Por exemplo, acho que o tamanho da letra está muito bom. A foto ao lado do card, digamos assim, está muito bem descrito também, está muito claro, pelo menos para mim, está muito claro. Acho que isso vale para todos, né? A parte emocionalidade também. Enfim, é gostoso de ler porque é pouca coisa e tem foto, basicamente.
+
+Interviewer: [00:22:39] Sim, entendi. Mais alguma coisa?
+
+Participant2: [00:22:43] Não, acho que não.
+
+Interviewer: [00:22:45] Até mesmo fora os pontos fortes, pontos fracos, qualquer outra coisa que você queira dar um feedback também. Agora é o momento.
+
+Participant2: [00:22:56] Gostei do caso de uso .Eu acho que, como UX, ele mostrou exatamente o que eu falei da objetividade, né? Que por exemplo, na primeira foto do caso de uso ele é super robótico e você tem muito mais interação do usuário. E aí no segundo, que é como se fosse o melhorado, você tem menos interação do usuário e ele é mais amigável. Então isso é uma coisa importante para mim e gostei que tem referência também que eu acho que passa certa credibilidade. Eu gosto de coisas acadêmicas, é isso.
+
+Interviewer: [00:23:41] Deixa eu parar aqui.
+

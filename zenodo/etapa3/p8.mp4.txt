@@ -1,0 +1,112 @@
+p8.mp4
+
+Interviewer: [00:00:09] Pronto. A primeira coisa é que eu vou gravar, mas eu não vou te identificar e na transcrição eu vou anonimizar qualquer informação que te identifique. E as primeiras perguntas são para você falar um pouco sobre seu perfil. Então eu queria que você falasse um pouco sobre sua experiência profissional, sua formação, o tempo de experiência e com o que você trabalha hoje em dia.
+
+Participant8: [00:00:43]  Eu programo em Java desde 2003. Já trabalhei em diversos tipos de projeto. E hoje em dia a gente estava num projeto do CNJ, mas terminou e agora só no doutorado mesmo.
+
+Interviewer: [00:01:11] Legal. E como usuário, você já teve muito contato como usuários com chatbots?
+
+Participant8: [00:01:22]  Em alguns momentos sim, mas a maioria das vezes a pessoa mesmo que está atendendo.
+
+Interviewer: [00:01:31] E os contatos que você teve foram mais positivos, mais negativos?
+
+Participant8: [00:01:38] Em geral. Positivo.
+
+Interviewer: [00:01:40] Positivo? Legal. Agora, sobre o experimento na etapa 1, que você fez a conversa sem o guia, quais foram os desafios e facilidades que você teve para elaborar a conversa? Na etapa 1.
+
+Participant8: [00:01:57] O desafio é conhecer o... Eu não tinha domínio do assunto, por exemplo, e isso fica mais complexo. Mas a parte de escrever o chat mesmo eu acho que foi bem tranquilo, porque eu pensei numa forma mais guiada para o usuário do que deixar livre para o usuário escrever o que quisesse.
+
+Interviewer: [00:02:29] Entendi. E  no que você se inspirou? O que é que você usou de base para construir essa conversa?
+
+Participant8: [00:02:37]  Aqueles atendimentos de telefone que digite o número tal para tal coisa, número tal para outra coisa. Eu me baseei nisso.
+
+Interviewer: [00:02:48] Entendi. Então, essa foi sua inspiração né. E na etapa 2, com o guia, ao ler e aplicar o guia, quais foram os desafios e facilidades que você teve?
+
+Participant8: [00:03:04] Na verdade eu achei que o da etapa 1 até que não ficou tão ruim como eu imaginava, não. Aí na etapa 2 eu só meio que incluí algumas frases a mais pra meio que encher linguiça para ficar bem mais informal mesmo. Mas eu acho que já estava informal.
+
+Interviewer: [00:03:24] Entendi. Então não teve um grande desafio nessa aplicação da etapa 2?
+
+Participant8: [00:03:32] Não, não muito não.
+
+Interviewer: [00:03:35] Beleza. E em relação às práticas que estavam lá no guia, quais foram as mais úteis ou menos úteis para você considerando esse tema de conversa? Se você quiser abrir pode abrir, tá.
+
+Participant8: [00:03:52] Sim, ele está aberto aqui. Eu acho que naturalidade é essencial e a principal de todas. Essa parte de transparência também é interessante para o usuário ter certeza que não está conversando com uma pessoa. E essa de emocionalidade eu acabei não usando muito no chat porque era uma coisa mais guiada e tudo não dava muita chance para o usuário se falar muita coisa para o chat, responder para o bot e responder com emocionalidade.
+
+Interviewer: [00:04:32] Entendi. E outros casos de uso ou temas. Você acha que essas práticas, por exemplo, a emocionalidade, você não usou tanto, acho que em outros temas você conseguiria utilizar mais?
+
+Participant8: [00:04:48] Eu acho que sim. Na verdade, até nesse tema também. Eu acho que eu não consegui ver lá na hora o lugar exato onde incluir isso.
+
+Interviewer: [00:05:00] Entendi. Então você vê como útil. Todos são úteis?
+
+Participant8: [00:05:05] Sim, com certeza. Mas a principal é a naturalidade.
+
+Interviewer: [00:05:10] Certo. Entendi. Tem alguma que você acha que não é útil em nenhuma situação, que é dispensável?
+
+Participant8: [00:05:18]  Falar em toda a situação é complicado né, mas como por exemplo, se fosse um, no caso, mais ou menos que eu segui, que era muito guiado. Quando é um bot muito guiado, talvez não precisa de emocionalidade tanto assim, mas com certeza de naturalidade.
+
+Interviewer: [00:05:49] Eu falo assim, tem alguma lá que ela não é útil em nenhuma situação, que aquela prática não serve para nada.
+
+Participant8: [00:06:00] Não, não. Em algum momento, cada uma delas pode ser usado.
+
+Interviewer: [00:06:07] Entendi. E quais são as principais diferenças no seu ponto de vista entre as conversas que você elaborou na etapa 1 e na etapa 2?
+
+Participant8: [00:06:20] Elas são essencialmente a mesma coisa. Só coloquei mais e mais frases para deixar mais informal ainda um pouco.
+
+Interviewer: [00:06:34] E para se parecer mais conversacional também.
+
+Participant8: [00:06:39] É, por isso que eu inclui mais frases para deixar mais... Para não ficar tão, tão rígida, a conversa fica mais solta um pouco.
+
+Interviewer: [00:06:49] E quais os fatores principais que colaboraram para que você fizesse essas alterações? Fatores ou características do guia que fizeram que você fizesse as alterações? 
+
+Participant8: [00:07:07] Deixa eu ver. Por exemplo, chamar o usuário pelo nome. Aquele de conversa fiada, ecoar respostas. A linguagem casual. Eu já estava usando um pouco mais informal. Essa parte de transparência eu também coloquei essa de apresentar capacidades e emocionalidade eu acabei não usando. Mas por exemplo, eu usaria um emoji ou uma coisa assim. Mas como eu estava no Google Docs eu acabei nem botando nada. Mas nesse caso, por exemplo, usaria.
+
+Interviewer: [00:07:50] Mas quais as características da apresentação dessas práticas que facilitou pra que você sentisse a vontade de utilizar?
+
+Participant8: [00:08:01] Os exemplos. 
+
+Interviewer: [00:08:03] Os exemplos? Entendi. E para você, quais seriam as percepções de potenciais usuários em relação à conversa da etapa 1 e da etapa 2? Como um usuário se sentiria conversando com a sua conversa 1 e com sua conversa 2.
+
+Participant8: [00:08:23] Então é porque eu acho que o meu chat, na verdade o meu bot fracassaria, teria que te rever totalmente. Ele não ficou tão bom assim não. E para botar em produção teria que revê lo totalmente.
+
+Interviewer: [00:08:40] Mas assim, mesmo que você acha que não esteja bom, focando mais na diferença entre a 1 e a 2, o que você acha que mudaria de um usuário que conversa com a 1 pro usuário que conversa com a 2?
+
+Participant8: [00:08:53] Eu acho que ele ficaria mais à vontade na 2.
+
+Interviewer: [00:08:57] Sim, pelo fato dele ser mais expressivo?
+
+Participant8: [00:09:02] Isso ter mais conversa, mais frases, mais bem informal e por aí vai.
+
+Interviewer: [00:09:10] Entendi. Agora últimas questões pra finalizar. Primeira: se você viesse a desenvolver um chatbot no futuro. Assim, na vida real, né. Como e quando você utilizaria o guia no processo de desenvolvimento? Ou porque você não utilizaria?
+
+Participant8: [00:09:28]  Eu com certeza utilizaria não só o guia, mas ainda ia envolver muita pesquisa antes dos tipos de chatbot e tudo mais.
+
+Interviewer: [00:09:45] Sim, em qual etapa do desenvolvimento você acha que utilizaria mais?
+
+Participant8: [00:09:51] No levantamento de requisitos.
+
+Interviewer: [00:09:54] Sim, entendi. E por fim, na sua opinião, quais são os pontos fortes e fracos do guia? E no caso dos fracos? Se você tem alguma sugestão de melhoria.
+
+Participant8: [00:10:07] Não, achei que ficou bem legal. Eu, por exemplo, no início aqui quando fala que é design de conversa para chatbots baseados em texto, eu acho que em algum momento aqui poderia falar sobre os tipos de chatbots, porque esse eu sei que é o chatbot do mais simples, mas tem os outros baseado em I.A. também. E tem os híbridos e por aí vai. É só meio que deixar mais ou menos claro isso para o pessoal saber o que é.
+
+Interviewer: [00:10:46] O propósito, né?
+
+Participant8: [00:10:48] Isso é a diferença dos tipos de chatbot para dizer que é só para esse tipo de chatbot que é o mais indicado. É basicamente isso. E e já que está fazendo com página web, tipo colocar uns links de hoje mesmo. Eu tava olhando ali no celular e quando chega no final de uma página dessa, por exemplo, poderia ter um link para o próximo. Por exemplo, está Naturalidade, que já tem um link para nacionalidade.
+
+Interviewer: [00:11:28] Uma setinha.
+
+Participant8: [00:11:30] E uma setinha para voltar, uma pra ir, dessas coisas assim, para deixar mais... Pra navegar mais fácil.
+
+Interviewer: [00:11:37] Entendi. Tipo uma passagem de um livro mesmo, passando as páginas ali.
+
+Participant8: [00:11:41] Sim, com certeza.
+
+Interviewer: [00:11:44] Entendi. Mais alguma coisa? Sobre qualquer outra pergunta, algo que eu não tenha abordado?
+
+Participant8: [00:11:50] Não, acho que ficou bem legal. E o exemplo mesmo do caso de uso lá. Ficou bem legal.
+
+Interviewer: [00:11:58] Ajudou então, né.
+
+Participant8: [00:12:01] É.
+
+Interviewer: [00:12:01] Na atividade. Beleza, Então vou encerrar aqui a gravação.
+

@@ -1,0 +1,128 @@
+p10.mp4
+
+Interviewer: [00:00:08] Pronto. Só pra registrar que eu estou gravando a entrevista, mas a gravação não vai ser divulgada, somente a transcrição e qualquer dado que possa te identificar eu vou anonimizar, tá bom?
+
+Participant10: [00:00:19] Tá bom.
+
+Interviewer: [00:00:21] Primeiro, eu queria que você falasse um pouco sobre a sua experiência profissional como desenvolvedora, o que você mais desenvolveu e também sua formação, o que você fez e todos os aspectos em relação à sua experiência profissional. Se você puder dar uma visão geral.
+
+Participant10: [00:00:38] Certo. Nos últimos anos, acho que o que eu mais desenvolvi foi alguma questão de aplicativo voltado para o mercado financeiro. Mas recentemente, no meu trabalho, a coisa que eu mais faço é apresentar dashboards que possam minimizar a pegada de carbono de grandes empresas. Então, mais trabalho agora com população de um banco de dados e apresentar isso aos clientes como forma de proporcionar alguma medida que diminua isso, o impacto das grandes indústrias no mundo. E acho que é isso.
+
+Interviewer: [00:01:19] Bacana.  Qual a experiência que você tem assim em relação ao trabalho de experiência de usuário?
+
+Participant10: [00:01:28] Ah, acho que de usuário eu tive voltado mais em projetos tanto da faculdade quanto alguns fora da faculdade. Antes do meu trabalho, no qual foi um foco de usuário final mesmo. E não foi em grandes empresas, nem bancos, nem nada. E acho que foi mais um serviço que teve que levar muita entrevista para entender qual era o foco. E também ouvi muito da parte deles para tentar melhorar nossa aplicação. Geralmente foram coisas voltadas mais para tradutores ou algo que pudesse relacionar usuários a se conhecerem, marcar alguma coisa de hobby. Foi mais o que a gente trabalhou na época da faculdade.
+
+Interviewer: [00:02:12] Entendi. Então você tem experiência em lidar diretamente com o usuário para entender as necessidades?
+
+Participant10: [00:02:23] Isso, já teve algum projeto disso.
+
+Interviewer: [00:02:25] Legal. E agora falando sobre chatbots, você já participou do desenvolvimento direto ou indiretamente de algum?
+
+Participant10: [00:02:35] Não necessariamente. Já cheguei a fazer um projeto pequeno, individual, mas para aprendizado. Mas não foi algo que chegou a um usuário. Nada que eu levei em consideração um documento global foi mais. Foi aprendizado mesmo, aprendizado.
+
+Interviewer: [00:02:52] Entendi. E como usuário, você já interagiu muito com chatbots? Quais são suas suas percepções sobre os chatbots?
+
+Participant10: [00:03:01] Já interage bastante e, na maioria dos casos, eu acho extremamente útil, pois retém um tempo de resposta muito rápido, então isso ajuda bastante condicionamento da peça. Mas eu também sinto a falta de algumas coisas que talvez uma pessoa real pudesse me ajudar, porque não carece só de respostas semi prontas, então eu já usei bastante e eu gosto bastante, mas algumas coisas talvez eu prefira uma pessoa.
+
+Interviewer: [00:03:32] Então só para casos específicos de tarefas específicas.
+
+Participant10: [00:03:37] Aham, é. 
+
+Interviewer: [00:03:37] Entendi. Agora falando sobre o experimento. Na etapa 1, que você fez a conversa sem ter lido o guia, quais foram os desafios e facilidades que você enfrentou para elaborar a conversa da etapa 1?
+
+Participant10: [00:03:51] Eu acho que eu tive que tentar me colocar no lugar do usuário, pensar o que eu ia gostar de ver ele respondendo o bot, porque muitas vezes do que eu já usei são respostas muito curtas. Alguns já usei com uma conversa mais legal que você realmente está interagindo com alguém. E eu tentei o máximo parecer uma personalidade de alto astral de um bot que tá entendendo que vai te ajudar alguma coisa. E eu tive que pensar bem como mudar as respostas, porque da experiência que eu tive, não necessariamente eu tive uma boa, mas eu tentei também simular algumas coisas que eu já usei, um chatbot que eu vi acontecer, que são botões ou coisa do tipo, e acho que foi a mais dificuldade foi tentar entender como colocar os assuntos que eu tinha em uma mesma conversa, como chegar nesse ponto de colocar duas funcionalidades em uma mesma conversa.
+
+Interviewer: [00:04:52] Entendi. Então você usou como referência as experiências que você teve como usuário de chatbot. E aí foi isso né, que você citou?
+
+Participant10: [00:05:02] Foi isso.
+
+Interviewer: [00:05:03] Entendi. E na etapa 2, quais foram os desafios e facilidades que você enfrentou ao ler e aplicar o guia na sua conversa?
+
+Participant10: [00:05:14] Depois que eu li todo o guia, eu entendi porque que os três pilares que estão escritos são importantes em uma conversa de chatbot. Então eu acho que a dificuldade foi chegar no meu texto e ver como aplicar a transparência, naturalidade e emocionalidade. Então fui tentando mudar de acordo com que mantivesse o mesmo sentido a conversa que eu tinha feito com o usuário em um chatbot. Mas ainda assim, depois da mudança, pareceu algo um pouco mais útil quem estivesse lendo e precisando de sugestões que foram escritas.
+
+Interviewer: [00:05:53] Entendi. Então digamos que a dificuldade foi manter a essência, mas trazer a prática foi isso.
+
+Participant10: [00:06:00] Isso, isso mesmo.
+
+Interviewer: [00:06:02] Entendi. E quais foram as práticas mais ou menos úteis para você considerando esse tema de conversa?
+
+Participant10: [00:06:11] Referentes ao guia?
+
+Interviewer: [00:06:13] Ao guia. Você pode consultar ele se você precisar.
+
+Participant10: [00:06:16] Entendi. Eu acho que foi a naturalidade que foi assim... Acho que era a mais difícil que eu queria... Como passar uma conversa como se fosse uma pessoa mesmo. Mas no final foi... Acho que é também uma das mais importantes que eu tive. Só que de todas elas, eu acho que eu não soube bem talvez utilizar a transparência, mostrar as capacidades, como você mostra também, e fazer as limitações. Talvez uma coisa que eu pudesse ter utilizado melhor, mas acho que fiz mais uso da emocionalidade mesmo para tentar passar uma conversa mais leve com o usuário.
+
+Interviewer: [00:06:58] Entendi, mas você queria ter utilizado mais a transparência e não conseguiu. Ou você acha que foi uma decisão consciente de não utilizá-la tanto?
+
+Participant10: [00:07:06] Eu acho que eu poderia ter usado mais e teria sido melhor. Apenas não fiz mesmo.
+
+Interviewer: [00:07:11] Entendi. Você acha que em outros temas de chatbot e outras situações, você acha que o conjunto de práticas mais úteis ou menos úteis mudaria quando comparado com esse tema? 
+
+Participant10: [00:07:27] Como assim? Acho que não entendi.
+
+Interviewer: [00:07:29] Por exemplo, você disse ter usado muito a naturalidade nesse tema, a emocionalidade, nem tanto a transparência, embora você quisesse utilizar, certo?
+
+Participant10: [00:07:39] Certo.
+
+Interviewer: [00:07:40] Se fosse em outro tema de chatbot, qualquer outro tema, um chatbot bancário, eu não sei.
+
+Participant10: [00:07:46] Entendi.
+
+Interviewer: [00:07:47]  Você acha que essa relação, a naturalidade, passaria a ser menos importante? A transparência passaria a ser mais ou menos. Entendeu?
+
+Participant10: [00:07:57]  Entendi. Acho que realmente a gente consegue ponderar de acordo com o tema. Talvez eu devesse necessariamente usar mais a transparência, diminuindo a emocionalidade. Dependendo do público que eu for atingir.
+
+Interviewer: [00:08:11] Ah, entendi. Então acha que realmente muda e depende do público.
+
+Participant10: [00:08:16] Muda.
+
+Interviewer: [00:08:18] Entendi. Você acha que tem alguma prática ali, até mesmo dentro da transparência, da naturalidade, e as que são listadas, tem alguma que você acha que não seria útil em nenhuma situação.
+
+Participant10: [00:08:29] Que não seria útil.
+
+Interviewer: [00:08:31] Isso, em nenhum caso, que você viu e achou nada a ver
+
+Participant10: [00:08:37] Assim de todas, eu achei extremamente úteis porque isso facilita a interação, facilita a resposta do usuário e também o objetivo, né? Principalmente na transparência. E não teve nenhum caso que eu olhei e falei ok, isso não vai ser tão útil, mas todos na transparência me pareceram extremamente úteis.
+
+Interviewer: [00:08:58] Então você acha que todas as recomendações ali do guia elas são pertinentes?
+
+Participant10: [00:09:03] Sim.
+
+Interviewer: [00:09:04] Entendi. E em relação às duas conversas que você entregou, quais são as principais diferenças entre uma e outra?
+
+Participant10: [00:09:16] Uma delas eu tentei usar mais. Na primeira tentei seguir o que eu já tinha de experiência e depois que eu li o guia eu tentei trazer um pouco mais de ganchos que pudesse também me repelir no usuário. Eu estava lendo a questão da emocionalidade e tentei trazer um pouco mais das respostas exclamatórias, poder impactar meio de forma positiva. Eu acho que eu também mudei na parte de auto apresentação e continuar chamando o usuário pelo nome para tentar trazer um pouco mais de familiaridade, se sentir mais à vontade. Acho que foi o que eu mais tentei focar nessa parte de diferença e acabou que no primeiro eu acabei mudando coisas que pudesse trazer um pouco mais de sutilidade na conversa.
+
+Interviewer: [00:10:08] Entendi. E do ponto de vista de potenciais usuários da sua conversa, o que você acha que eles iriam sentir na conversa 1 e na conversa 2? Teria algum sentimento diferente?
+
+Participant10: [00:10:19] Ah, eu acho que talvez ele pudesse... Eu mudei em relação a primeira também, com a segunda, que talvez encerrasse uma conversa que eu não estava encerrando na primeira e talvez ele pudesse entender que acabou aquele ciclo, e para não ficar meio perdido. E no primeiro caso, eu tratei na resposta que eu coloquei, que o usuário estivesse talvez ansioso. Eu coloquei apenas um "Ok, estamos procurando um exercício". Dai eu trouxe um pouco mais de emoção aqui para te sentir um pouco mais abraçado independente se for um robô, né? A gente sabe que não é necessariamente, mas para entender de que não é um sentimento bom e que estamos mandando condolências por isso.
+
+Interviewer: [00:11:05] Entendi. E o que que ali no guia mais te sensibilizou a fazer essas conversas? Quais fatores do guia colaboraram para você inserir as mudanças na sua conversa?
+
+Participant10: [00:11:19] Ah, eu acho que eu li um tópico da emocionalidade que é mensagens empáticas e eu acho que isso ficou um pouco... Talvez eu pudesse ter pensado "uhm, isso aqui pode ser bom para quem for ler e não estiver tendo um objetivo tão positivo". Então acho que isso me impactou. Eu tentei mudar. E no caso de uso, depois que eu li as duas diferenças das duas conversas, eu pude entender melhor por que era tão importante aplicar um dos três, porque se sente mais entendível, parece que você está sendo escutado por alguém mesmo.
+
+Interviewer: [00:11:53] Entendi. Então, no caso da emocionalidade, ela te comoveu ali, até mesmo como usuária, porque você pensou, como você se sentiria. E o caso de uso te ajudou a entender como aplicar e porque é que seria importante. Foi isso?
+
+Participant10: [00:12:09] Isso mesmo.
+
+Interviewer: [00:12:10] Entendi. Agora as últimas para fechar. A primeira delas é a pergunta: se caso você viesse a desenvolver um chatbot no futuro, como e quando você utilizaria o guia no processo de desenvolvimento e quais seriam os fatores para que você não utilizasse se você decidisse não utilizar.
+
+Participant10: [00:12:30] Sendo bem, bem sincera, eu acho que eu usaria aí do início já para eu poder entender. Principalmente esse mapa conceitual que mostra como você sai bem do início para chegar até no final dos pilares, qual você pode aplicar na conversa, porque realmente dá um ar mais de como se fosse alguém conversando com o usuário. Então acho que eu usaria o guia do início ao fim do meu desenvolvimento. De verdade, não tem nenhum caso o qual eu não usasse, porque eu não como não tenho muita experiência, foi algo que me fez entender muito bem por que isso é importante no chatbot. E se eu, como usuária, estivesse usando a aplicação de alguém que usou, talvez eu fosse gostar também do que eu ia receber.
+
+Interviewer: [00:13:17] Entendi. E por último, para você, quais são os pontos fortes e fracos do guia? E no caso dos fracos, se você teria alguma sugestão de melhoria.
+
+Participant10: [00:13:29] Ahn? Bem, os pontos fortes eu acho que explica tudo exatamente pelo menos uma direção bem clara de como seguir. E bem, são três passos até relativamente pequenos. A gente pensa num ambiente mais global, mas claro que tem mais coisa por dentro, então acho que a forma que passa a informação é muito intuitiva. Tanto os exemplos que dão na lateral do chat, das conversas. Na questão do mapa conceitual, talvez eu fiquei um pouco perdida na primeira coluna do "chatbots com propósito de". Talvez eu não sei se eu cheguei a entender bem como que chega na segunda etapa, mas é porque eu também não tenho muita experiência, eu acho. Fora isso, não tem nada.
+
+Interviewer: [00:14:27] Você teve dificuldade de entender de como você saiu do propósito para o tipo de relacionamento entre chatbot e usuário?
+
+Participant10: [00:14:35] Uhum.
+
+Interviewer: [00:14:36] Entendi. Então, talvez uma explicação melhor ali, detalhando como é que se dá o processo de um para o outro. Você acha que poderia melhorar essa situação?
+
+Participant10: [00:14:47] Poderia ficar um pouco mais entendível sim, embora no final, chegando nas três, os três principais pontos ficam bem claros de como utilizar, como é feito, porque. Mas antes disso talvez fique um pouco mais confuso.
+
+Interviewer: [00:15:02] Entendi. Tem mais alguma coisa que você quer abordar que não foi abordada em relação ao guia?
+
+Participant10: [00:15:10] Não. Eu achei realmente muito bom. E o caso de uso ele fecha tudo porque eu pude entender no exemplo as diferenças, aplicando e não aplicando, então achei ótimo.
+
+Interviewer: [00:15:24] Legal, então vou encerrar a gravação.
+

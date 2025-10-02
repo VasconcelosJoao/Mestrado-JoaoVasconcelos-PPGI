@@ -1,0 +1,110 @@
+p9.mp4
+
+Participant9: [00:00:08] Não precisa ligar a câmera?
+
+Interviewer: [00:00:09] Não, não precisa. Só a voz mesmo. Bom, vamos lá. Pra registrar na gravação, eu estou gravando a entrevista, mas a gravação não vai ser divulgada, somente a transcrição. E eu vou, anonimizar qualquer dado que posso te identificar. Tá bom?
+
+Participant9: [00:00:27] Tranquilo.
+
+Interviewer: [00:00:28] Pra começar, queria que você falasse um pouco sobre seu perfil. Me fala como foi sua experiência profissional trabalhando como desenvolvedor? O que você mais trabalhava? No que você formou?
+
+Participant9: [00:00:44] Então vamos lá. Primeiro, eu sou um cara formado em Ciências da Computação. Formei ano passado, foi em junho. Questão de profissional, né? Eu infelizmente não atuo proximamente ainda faz um tempinho, estou em busca de recolocação. Já atuei na área de front end e eu faço também alguns tipos de freelancer na mesma área e eu inclusive estou colocando um pouquinho dos meus pés no back end, ou seja, serviço de servidor, essas coisas todas.
+
+Interviewer: [00:01:18] Entendi. Mas maior experiência mesmo é no front, desenvolvendo  interfaces?
+
+Participant9: [00:01:24] Exato. O front end já tem uma experiência maior de três anos.
+
+Interviewer: [00:01:30] Entendi. E você, já teve muitos contatos com o chatbot sendo usuário?
+
+Participant9: [00:01:43] Sendo usuário, já tive e a gente tem os exemplos mais clássicos né, que são de empresas que utilizam o WhatsApp para comunicar, aquelas questões de entregas, etc. Isso é como o usuário, mas como... Na parte de desenvolvimento, eu já tive participação, como tinha te comentado anteriormente, eu e meu irmão, nós fizemos uma espécie de chatbot para WhatsApp com algumas funcionalidades, porém como que na época não podia usar bot no WhatsApp por conta de lei eleitoral, essas coisas todas, a gente parou.
+
+Interviewer: [00:02:18] Uhum.
+
+Participant9: [00:02:19] Em 2018. 5 anos atrás.
+
+Interviewer: [00:02:23] Então você teve uma experiência de desenvolvimento e experiência como usuário bastante ampla e, assim, sua percepção pessoal sobre chatbots. Qual é a sua percepção? O que você pensa sobre eles? Você gosta de usar e não gosta de usar? Você acha que eles são importantes?
+
+Participant9: [00:02:43] Chatbot eu vejo que tem quase a mesma funcionalidade daqui da conversa do google now né, quando a gente fala "ok google" ou então a Siri nos iOS da vida né? O que eu vejo no chat é que é quase como uma extensão disso, ou seja, as pessoas conseguem fazer marcação de lembretes ou você consegue fazer uma listagem, você consegue ver questão de horário, essas coisas todas dentro de uma chatbot. Eu pessoalmente acho bem intuitivo também são as pessoas que não tem muita instrução com informática e há pessoas que são humildes, vamos dizer assim, pessoas desprovidas de qualquer conhecimento na área digital.
+
+Interviewer: [00:03:22] Uhum, mas é pra você mesmo, acha ruim utilizar? Ou não, para você é tranquilo quando lhe é apresentado um chatbot?
+
+Participant9: [00:03:34] Não, pra mim foi tranquilo.
+
+Interviewer: [00:03:37]  Agora falando sobre o experimento, a etapa 1, que foi a etapa que você fez a conversa antes de ter lido o guia, quais foram os desafios e facilidades que você teve para elaborar essa conversa?
+
+Participant9: [00:04:06] Bom, vamos lá. Deixa eu abrir aqui só para me ambientar sobre a fase 1, que seria aquela questão de gerar lá o chatbot.
+
+Interviewer: [00:04:16] Isso, a conversa.
+
+Participant9: [00:04:17] Abriu aqui agora. Agora vamos lá. Na verdade é como eu tinha comentado anteriormente, já tive uma experiência anterior com  chatbot na parte de desenvolvimento, na parte do usuário também já utilizei e uma das vezes foi recentemente inclusive. Na verdade não tive tantas dificuldades assim. Eu só acho que eu me limitei muito a colocar apenas lembretes e horários no chatbot. Pelo que eu tive vendo seu guia era uma visão muito mais ampla, por exemplo, a marca, passagem aérea, dados essas coisas todas, eu. fiquei só na parte do lembrete mesmo, que foi o que eu realizei em 2018.
+
+Interviewer: [00:04:56] Entendi. Então na etapa 1 você não teve tantas dificuldades, foi mais tranquilo. E na etapa 2 que foi a leitura do guia, teve algum desafio ou facilidade em ler e aplicar o guia?
+
+Participant9: [00:05:16] Na verdade eu não tive. Eu posso dizer que talvez o maior empecilho que eu vi com relação ao seu guia é com relação ao que eu fiz no txt naquele chatbot. Foi que no meu que eu fiz, eu estava gerando por comando, ou seja, contra barra, adicionar lembrete o nome e a data, dava três variáveis, mas não no que você está utilizando. Você colocava um evento, sei lá, quero comer pizza às 09h30 da noite de hoje e ele quer comer pizza às 09h30 da noite do dia de hoje. Tipo, marcando o evento assim... Aprende com as palavras do usuário sem precisar digitar aquelas coisa de comando, estas coisarada toda. Então pra mim foi bem intuitivo. Outra coisa que eu tive vendo lá no chatbot, no guia. Foi a questão de você fazer uma maior interação com o usuário. Ou seja, você deixar o usuário expressar suas emoções, mas sem deixar de lado a parte da sua naturalidade do chat e também a transparência dele em satisfazer as experiências do usuário de acordo com suas limitações. Achei que foi bem legal.
+
+Interviewer: [00:06:33] E em relação às práticas lá dentro do guia. Por exemplo, auto apresentação. Enfim, todas, todas lá dentro. Quais que você achou mais ou menos úteis nesse tema de conversa, nesse experimento? Quais os que te ajudaram mais ou não? Quais que você acharam que são um pouco úteis?
+
+Participant9: [00:07:01] Bom, as coisas úteis que eu achei, eu posso ate citar um, por exemplo, foi na parte da emocionalidade. 
+
+Interviewer: [00:07:12] E se você quiser, você pode consultar pra lembrar.
+
+Participant9: [00:07:23]  Na parte de emocionalidade eu vi que você se utilizava muito o uso de gifs para fazer comunicação, para fazer uma interação, fazer o usuário ficar entretido dentro do chat. Mensagens empáticas e outras coisas mais. Eu achei bem interessante. Agora sobre ponto negativo, sinceramente eu não consigo ver. Eu acho que fica muito intuitivo assim como tinha comentado. Ele deixa você expressar suas emoções, expressa maturidade também, mas ele ao mesmo tempo é justo, ou seja, ele não faz mais do que ele foi capaz de fazer. Eu acho que isso é bem legal
+
+Interviewer: [00:08:03] Então não teve nenhuma prática ali que você achou que não serve pra nada, digamos assim. Você acha que todas são pertinentes?
+
+Participant9: [00:08:15] Acho que todos são pertinentes sim.
+
+Interviewer: [00:08:17] Entendi. E você acha que elas são pertinentes de forma generalizada para qualquer tipo de tema? Ou você acha que vai ter alguma situação ali que essas práticas não são úteis?
+
+Participant9: [00:08:33] Na verdade, eu vejo que essa questão de ser justo a gente pode usar num contexto bem amplo, né? Ou seja, se a gente quiser marcar uma passagem aérea, mas a gente não dá conta de fazer isso, a gente avisa "Talvez isso não seja possível fazer". E eu acredito que esse exemplo que eu tinha te dado pode ser aplicado para tantos outros. Eu acho que seria isso.
+
+Interviewer: [00:08:56] Entendi. Então você acha que elas são de uso bastante amplo, né?
+
+Participant9: [00:09:03] Isso, no meu ver né.
+
+Interviewer: [00:09:08] E para você, quais são as principais diferenças entre as conversas que você fez na etapa 1 e na etapa 2? Qual é a maior diferença ali entre as duas conversas que você entregou?
+
+Participant9: [00:09:22] Fazendo o comparativo, primeiro eu tirei aqueles comandos, ou seja, contra barra eu coloquei direto mesmo o texto do usuário só pra ele ter uma maior interação, como um chat. E a segunda alteração foi na resposta do chatbot, porque eu coloquei uma resposta muito genérica e aí eu coloquei uma resposta um pouco mais abstrata, ou seja, voltada para agradar a pessoa mesmo.
+
+Interviewer: [00:09:49] Então era um respostas mais rígidas e se tornaram respostas mais fluidas, conversacionais, né?
+
+Participant9: [00:09:58] Isso.
+
+Interviewer: [00:09:59] Beleza. E o que é que você acha que o guia te induziu mais pra que você fizesse essas alterações? O que é que te sensibilizou mais para fazer essas alterações?
+
+Participant9: [00:10:15] Acho que a maior interação com o usuário. Uma coisa que eu tinha feito no tempo que eu tinha feito o chatbot com WhatsApp foi que a gente tinha que digitar um comando, contra barra, e o nome dele, e pelo menos pra mim ficava intuitivo, mas para usuário não, né? E a proposta do chatbot que está lá dentro do guia eu achei bem tranquilo e que vai facilitar pro usuário, mas sei que vai dificultar pra gente que é desenvolvedor, mas acho esse que esse foi o maior motivo pra eu ter feito alteração no txt que eu te tinha dado.
+
+Interviewer: [00:10:54] Entendi. Então o que mais te sensibilizou foi que no guia você conseguiu perceber que dentro os exemplos ali que a interação com o usuário, seria melhor. Então isso te sensibilizou mais a alterar? Foi isso?
+
+Participant9: [00:11:09] Isso. Uhum.
+
+Interviewer: [00:11:11] Entendi. E do ponto de vista dos usuários, se os usuários fossem utilizar o seu chat do suposto chatbot, quais seriam as percepções deles em relação a conversa 1 e a conversa 2? O que você acha que seria né.
+
+Participant9: [00:11:31] Você fala da questão do que?
+
+Interviewer: [00:11:35] Da experiência mesmo. Como você acha que o usuário se sentiria conversando na conversa 1 e como ele se sentiria na conversa 2. Em termos de diferença.
+
+Participant9: [00:11:48] Bom, como eu disse anteriormente, naquela questão do contra barra, pra gente que é intuitivo, para pessoa que tem instrução, as pessoas que não tem, isso seria até um pouquinho interpretativo, porque pensar contra barra seria uma contra barra dentro do teclado. Então, na segunda versão que eu tinha feito no chatbot ficou assim, no meu ver, mais tranquila para o usuário, mais legível para ele, vamos dizer assim.
+
+Interviewer: [00:12:15] Entendi. Agora as questões finais. A primeira delas é se você viesse a desenvolver um chatbot no futuro. Na verdade, você já desenvolveu um. Vou até alterar a pergunta, tá. Se você tivesse sido apresentado a esse guia antes de desenvolver o chatbot que você fez no passado, você utilizaria esse guia no processo? E se você não utilizasse, por que você não utilizaria?
+
+Participant9: [00:12:43] Eu seguiria. Acho que guias são úteis né. A gente tem que sempre frisar isso, porque para a gente que desenvolve, muitas das vezes a gente fica dependente de coisas que está dentro da cabeça. Então a gente não tem um norte para seguir. Bem, isso é uma coisa que eu acho muito complicado, muito difícil, e eu vejo que seria útil, eu seguiria sem problema algum.
+
+Interviewer: [00:13:06] Entendi. E por fim, pra você, quais são os pontos fortes e fracos do guia? E no caso dos fracos, se você teria alguma sugestão de melhoria.
+
+Participant9: [00:13:23] Eu acho muito tranquila a proposta do guia. Eu gostei bastante. Honestamente não vejo o que criticar, porque também está bem claro sobre a questão das funcionalidades das três propostas de naturalidade e racionalidade na aparência. E você também criou uma coisa que é importante fazer, que são as referências. Ou seja, não foi uma coisa inventada, foi uma coisa que você realmente foi atrás, pesquisou e fez acontecer. Isso pra mim foi bem útil. Então, assim para mim, eu não vejo o que criticar, sinceramente.
+
+Interviewer: [00:13:58] Entendi. Tem mais alguma coisa que você queira abordar que não foi abordada nas perguntas ou está tranquilo?
+
+Participant9: [00:14:11] Eu acho que só devia ter abordado sobre a questão da linguagem. Eu sei que é um protótipo, mas uma coisa que a gente podia falar era sobre a questão de linguagem que sempre ser utilizada, ou seja, podia ser Python, C#, talvez alguma coisa nesse sentido, mas como é um protótipo, a gente não pode falar muito, né.
+
+Interviewer: [00:14:33] Ah, você fala assim da gente ter discutido mais na entrevista qual seria a tecnologia utilizada para fazer esse protótipo? Seria isso?
+
+Participant9: [00:14:44] Isso.
+
+Interviewer: [00:14:44] Entendi. Não, porque aqui a gente está tratando mais visão do usuário, entendeu?
+
+Participant9: [00:15:02] A noção do usuário. Ah, na visão do usuário tá tranquilo.
+
+Interviewer: [00:15:06] Entendi. Então é isso, deixa eu parar aqui.
+

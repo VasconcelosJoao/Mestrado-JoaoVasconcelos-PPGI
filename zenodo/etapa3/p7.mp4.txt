@@ -1,0 +1,104 @@
+p7.mp4
+
+Interviewer: [00:00:03]  Pronto. Então, eu vou gravar para fazer a transcrição, mas eu não vou te identificar e também nem vou divulgar a gravação, tá bom?
+
+Participant7: [00:00:20] Maravilha!
+
+Interviewer: [00:00:22] As primeiras questões são relacionadas ao seu perfil para eu entender qual é o seu perfil, seu background. Então eu queria que você falasse sobre sua formação e os cargos que você assumiu relacionado a desenvolvimento de software.
+
+Participant7: [00:00:36] Então, eu tenho graduação em Ciência da Computação pela Universidade de Brasília. Eu estou fazendo meu mestrado na mesma universidade, como desenvolvedor de software, pesquisador, designer, UX e etc. Posso colocar que eu tenho uns quatro anos de experiência. Comecei estagiando em front end e fazendo algumas coisas em UX e aí fui crescendo, fui fazendo outros projetos, fui fazendo outros aplicativos e meu foco eu tenho mais ênfase em aplicativos do que em sites. E hoje em dia eu sou desenvolvedor sênior numa startup e faço trabalhos por fora. Trabalho como autônomo também.
+
+Interviewer: [00:01:29] Legal. Você já participou em direto diretamente do desenvolvimento de chatbot?
+
+Participant7: [00:01:35] Não.
+
+Interviewer: [00:01:36] E quanto a interação com o chatbot? Já interagiu bastante?
+
+Participant7: [00:01:42] Bastante é uma palavra muito forte. Já interagi, mas não muito.
+
+Interviewer: [00:01:48] E quais são suas impressões e expectativas ao comunicar com um chatbot? Você tem? Não gosta muito? Gosta de conversar? O que você acha? Qual a perspectiva sobre a área de chatbot?
+
+Participant7: [00:02:02] Então, pessoalmente, eu tendo a procurar uma utilização mais direta das coisas. Então eu tendo a focar tanto os meus layouts quanto os meus protótipos, e etc, em fazer com que a interface seja intuitiva o suficiente para que o usuário não tem que perguntar para um chatbot. Faz sentido?
+
+Interviewer: [00:02:23] Faz.
+
+Participant7: [00:02:26] Mas eu entendo que os chatbot ele tem seus casos de uso. Ele traz uma proximidade muito maior com o usuário do aplicativo para o usuário. Então, assim, eu particularmente não gosto de desenvolver não. Não sou muito fã da ideia de desenvolver, mas eu entendo que tem seu valor e é só. Acho que não é um produto voltado para mim especificamente.
+
+Interviewer: [00:02:50] Beleza? Agora falando sobre a etapa um, que você fez a conversa sem consultar o guia, quais foram os desafios e facilidades que você teve para elaborar a conversa da etapa um?
+
+Participant7: [00:03:02] Olha. Pra ser bem sincero, a forma com que eu converso naturalmente ela já tende a ter uma proximidade com a pessoa com quem estou conversando. Isso, isso tem vários nomes. Você pode chamar de engenharia social, você pode chamar isso de simpatia, enfim. E eu tentei seguir mais ou menos esse molde dentro da conversa do chatbot, porque eu entendo que essa forma, esse algoritmo de conversação, ele funciona muito bem para direcionar usuários. Bom, foi bem intuitivo. A partir daí, depois que eu defini mais ou menos a forma com que eu ia falar, que é a forma com que eu naturalmente falo, foi bem fácil de fazer essa primeira parte.
+
+Interviewer: [00:03:51] Então, na primeira parte, sua a maior fonte de, digamos assim, de conhecimento, foi seu jeito de falar mesmo, você se baseou na sua experiência de vida.
+
+Participant7: [00:04:02] Exatamente. Eu me senti assim, meio estranho, porque, como se o chatbot fosse eu falando.
+
+Interviewer: [00:04:10] Entendi. Faz sentido. E na etapa dois, a mesma pergunta. Considerando a leitura e a aplicação do guia, quais foram os desafios e quais foram as facilidades?
+
+Participant7: [00:04:22] Depois de ler o guia eu tive um entendimento maior da parte teórica porque, querendo ou não, o que eu fiz foi puramente intuitivo. E eu senti que, apesar de eu trazer uma proximidade para com o usuário, talvez eu não tinha sido tão empático quando ele me deu respostas de tipo, como usuário, eu perguntei qual era a melhor forma de meditação, se o usuário tivesse cansado e eu só falei as formas . Aí depois eu eu troquei o diálogo para algo tipo "É uma pena, ás vezes a rotina exige muito da gente" esse tipo de coisa. E aí depois dei a resposta. Eu acho que eu acho que eu pequei na na fase um, em não trazer essa proximidade, porque eu tendia a direcionar um pouco mais o conteúdo ao invés de de florear um pouco mais.
+
+Interviewer: [00:05:27] E nessa leitura do guia, nessa aplicação, você teve alguma dificuldade, assim, ao entender e aplicar o guia? Algo que você consegue pontuar?
+
+Participant7: [00:05:39] Olha, não o guia. Eu acho que ele está bem intuitivo. Eu fiquei com um pouco de receio e aí não sei como resolver isso, mas foi algo que eu senti como o usuário, que seria um guia muito extenso. Quando na verdade não, ele é muito. enxuto, ele é muito bonitinho. Só que a landing page, a primeira noção que eu tive quando eu vi, tipo vários tópicos, várias coisas, falei cara, eu vou passar uma meia hora aqui tranquilo. Então, assim, talvez a página inicial ela não seja tão convidativa quanto o resto do guia.
+
+Interviewer: [00:06:14] Entendi. E das práticas, quais você achou mais, mais úteis e menos úteis nesse tema de conversa?
+
+Participant7: [00:06:31] Calma que aí eu vou ter que abrir aqui de novo.
+
+Interviewer: [00:06:33] Se quiser o link, eu te passo.
+
+Participant7: [00:06:36] Não, tá aqui. Eu acho que eu trabalhei muito na prática de emocionalidade tanto depois de ler quanto empiricamente. E a questão da naturalidade, eu também sentia como importante. Querendo ou não, eu trabalho muito com usuário, eu trabalho muito com interface de usuário, então eu já tinha isso em mente. Talvez não teoricamente. Mas eu tinha isso na prática e preciso fazer com que pareça uma pessoa pareça minimamente alguém que quer conversar com você e não só uma forma de perguntas e respostas reativa.
+
+Interviewer: [00:07:17] Ah, e em outros casos de uso ou temas, supondo né, você acredita que o conjunto de práticas mais ou menos úteis e o nível de dificuldade de aplicação mudaria quando comparado com esse tema que você tem?
+
+Participant7: [00:07:35] Eu não sei o quanto eu posso te falar com relação a isso, porque eu estou construindo um aplicativo de meditação. É parte do meu trabalho, então assim é a gente não tem, a gente não tem a perspectiva de utilizar um chatbot para isso. Mas, sem dúvida nenhuma, tipo, é uma área, principalmente quando você quer tratar com o usuário diretamente o que ele está sentindo, o que ele fez, o que ele gostaria de fazer. E isso traz uma proximidade maior para o usuário ter com o aplicativo. E querendo ou não, isso aumenta a aderência dos usuários e tal. Eles vão querer usar aquele aplicativo que é um aplicativo que conversa, um aplicativo, que entende. Mas além desse caso empático,  eu vejo como muito difícil a utilização. Não é muito difícil, mas muito pontual a utilização bem feita, porque muito do que a gente vê são casos, são chatbots, que poderiam ser uma lista de drop down.
+
+Interviewer: [00:08:44] Humm, entendi.
+
+Participant7: [00:08:45] É muito comum isso, então assim tem seus usos, quando bem aplicados, eles são muito bem aplicados, mas quando não, você olha para aquilo ali, e fala: cara, não sei se precisava.
+
+Interviewer: [00:09:00] E você acha que, considerando chatbots existentes que você já tenha visto, você acha que tem alguma prática ali no guia que ela não é útil em nenhuma situação?
+
+Participant7: [00:09:15]  Práticas do guia que não são úteis? Eu acho que não. Para ser bem sincero, acho que não. Eu acho que foram todas muito bem colocadas, principalmente nas práticas do que evitar, que são realmente coisas muito frustrantes. Quando a gente trata de chatbots.
+
+Interviewer: [00:09:33] Entendi. E na sua opinião, quais são as principais diferenças entre as conversas elaboradas por você na etapa 1 e na etapa 2?
+
+Participant7: [00:09:43] Bom, eu só mudei uma coisa, que foi o penúltimo diálogo do chatbot. Na primeira etapa eu abordei a resposta muito mais diretamente do que eu abordei na segunda etapa. Na segunda etapa eu tentei buscar e confortar o usuário e depois dar a resposta para ele.
+
+Interviewer: [00:10:07] Beleza. E quais seriam os fatores para você não ter feito múltiplas alterações? Você acha que sua conversa já está em conformidade com o guia ou você não viu utilidade?
+
+Participant7: [00:10:24] Eu achei que as minhas conversas elas já estavam em conformidade com o guia, então o guia ele foi muito mais uma forma de...
+
+Interviewer: [00:10:32] Validar?
+
+Participant7: [00:10:34] É, de eu validar. Eu me senti contemplado dentro das minhas respostas do que uma forma de correção, sabe? Então, eu acho que eu já fiz ali, meio no caminho. E aí depois eu só fui me sentindo contemplado pelo guia
+
+Interviewer: [00:10:53] E do ponto de vista de potenciais usuários desse seu suposto chatbot. Você acha que os usuários veriam muita diferença da versão 1 para a versão 2? O que eles sentiriam de diferente na versão dois? Mesmo que tenha sido uma alteração pequena.
+
+Participant7: [00:11:14] Eu acho que tem. Eu acho que eu acho que se não tivesse eu não teria mudado, entende? Então assim, faz sentido. Principalmente quando um usuário me pergunta na atividade B que você sugere um tipo de meditação para um tipo de humor específico. Eu acho que faz sentido da perspectiva do chatbot, você confortar o usuário em emoções negativas e você meio que meio que afagar o usuário em humores positivos, tipo encorajar ele, talvez.
+
+Interviewer: [00:11:56] Então você acha que vai trazer um maior conforto para quem for conversar com o seu chatbot. Seria isso?
+
+Participant7: [00:12:02] Eu acho que o maior benefício que um chatbot traz é a empatia. Então, quanto mais empatia a gente conseguir colocar, quanto mais proximidade a gente conseguir colocar entre aquele chatbot e um usuário, eu acho que é benéfico.
+
+Interviewer: [00:12:20] Legal. E para as últimas perguntas, para fechar na primeira. Caso você viesse a desenvolver um chatbot no futuro, como e quando você utilizaria o guia no processo do desenvolvimento desse chatbot? Ou quais seriam os fatores para que você não utilizasse?
+
+Participant7: [00:12:39] Olha. O guia ele trata muito mais da parte, digamos, teórica e muito menos da parte prática de como treinar e como fazer e como implementar. Então eu acho que esse guia, ele é muito mais focado na parte de treinamento e, claro, mais de guidelines mesmo. É mais como se fossem heurísticas. E aí isso é muito importante. Talvez não, talvez não diretamente para mim, como desenvolvedor que coordena outros desenvolvedores, mas como o material para eu passar para esses desenvolvedores, para que eles aprendam e para que esteja todos os desenvolvedores na mesma página, para que todo mundo consiga desenvolver a mesma coisa, com o mesmo objetivo. Aí eu acho legal, acho top.
+
+Interviewer: [00:13:33] Perfeito, perfeito. E por fim, e para você, quais são os pontos fortes e fracos do guia? E no caso dos fracos, se você teria alguma sugestão de melhoria, eu sei que você já citou da primeira página. Talvez trazer algumas melhorias ali. Mas teria algumas coisas além disso que você sugeriria além dos pontos fortes.
+
+Participant7: [00:13:57] Olha, eu acho que os pontos fortes eles estão muito bem colocados, né? Acho que a questão do layout. Pensei assim considerando que é um site do Google, ele tem suas limitações pela própria tecnologia, né? O objetivo ali eu acho que estava muito mais na em passar a informação do que no layout em si, então pra mim tá ótimo. Não vou não vou falar isso como um ponto fraco de forma nenhuma. Eu acho que é só essa questão do início que tem muito texto na primeira página e aí talvez diluir isso um pouco seja interessante, talvez manter a mesma a mesma ideia que você teve nos outros, nos conceitos de colocar subtítulos com imagens, linhas. Esse tipo de coisa tira um pouco desse peso que eu senti.
+
+Interviewer: [00:14:47] A primeira página. Parece que que ela é parte de um outro guia e não desse guia. Uma página com um linguajar diferente, uma forma de comunicar diferente. Você identificou isso, né?
+
+Participant7: [00:15:00] Na verdade não é nem que parece de outro, talvez sim, mas era uma coisa mais teórica. E eu entendo. Eu entendo da perspectiva de pesquisa que é interessante que você apresente o seu objeto, que você apresente o contexto em que esse objeto se insere, para depois falar sobre ele. Tipo, eu estou 100% de acordo com isso como pesquisador, agora como usuário isso me bate um pouco, sabe?
+
+Interviewer: [00:15:25] Pode ser desmotivante, né?
+
+Participant7: [00:15:26] Exatamente. Exatamente. Talvez você não tenha tanta aderência no resto se a pessoa não passar dessa primeira barreira. Se ela passa, Ok, tranquilo.
+
+Interviewer: [00:15:36] Beleza. Você tem mais alguma algo a acrescentar para o que foi perguntado?
+
+Participant7: [00:15:42] Não acho que era isso.
+
+Interviewer: [00:15:45] Então, excelente! Vou encerrar a gravação aqui.
+

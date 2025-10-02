@@ -1,0 +1,413 @@
+We have conducted a \acrfull{SLR} following the protocol of Kitchenham and Charters \cite{barbara2007guidelines} to unveil chatbot conversational design practices and their impacts on users. The \acrshort{SLR} is the process of identifying, evaluating, and interpreting relevant studies of an area or research question of interest \cite{kitchenham2004procedures}, and it is composed of the following phases \cite{barbara2007guidelines}: 
+
+\begin{enumerate}
+    \item \textit{Planning}: identifying the need for a review, establishing objectives, and defining the review protocol, which consists of the following artifacts: research questions, search string, study selection criteria, list of data to be extracted, and quality assessment checklist;
+    
+    \item \textit{Conducting}: it consists of putting the review protocol into practice by utilizing the artifacts produced in the previous phase to filter studies and extract information from them;
+    
+    \item \textit{Reporting}: documenting the results of the review, in this case, as a research paper.
+\end{enumerate}
+
+\section{Research Questions}
+ 
+The motivation for conducting the \acrshort{SLR} is to disclose state-of-art practices in text-based chatbot conversational design and how they impact users. It is important to notice that our focus is entirely on conversational design and practices directly seen by users. Therefore, we are not interested in the technical aspects of chatbot development. The research questions are shown in Table \ref{tab:research_questions}.
+
+\begin{table*}[htb!]
+  \centering
+  \caption{Research Questions}
+  \label{tab:research_questions}
+  \begin{tabular}{cp{13cm}}
+    \hline
+    ID & Research Question \\
+    \hline
+    RQ.1 & What are the textual or visual approaches used in text-based chatbot conversational design?  \\
+    RQ.2 & What are the positive or negative impacts on users of the identified textual or visual approaches in text-based chatbot conversational design?  \\
+    RQ.3 & Are there moderating effects of other variables on the identified impacts of practices? \\
+  \hline
+\end{tabular}
+\end{table*}
+
+We consider as text-based chatbots the ones that respond primarily through text, although users can have tools that voice over the responses or parse voice input into text. The decision to consider only text-based chatbots respects the intrinsic differences between this type of interaction and voice-based interactions and the existence of exclusive practices for one or the other, such as the use of images in text-based interactions and speech intonation in voice-based interactions. Moreover, although the two forms of interaction share some conversational practices, it would be necessary to investigate their impact separately because it is not guaranteed that these two methods share the same impact on users, which would significantly extend our scope.
+
+
+\section{Search String}
+ 
+The search string was created through the PICOC method (Population, Intervention, Comparison, Outcome, Context) \cite{Wohlin2012}. The population refers to the object of study; the intervention is the means used or caused by the population to achieve some goal; the comparison is what is being compared with the intervention; the outcome is a result of the intervention; and the context is the focus of the study, its restrictions, and limitations. Table \ref{tab:picoc} shows the final definition of the PICOC terms to build the generic search string. Comparison is not applicable because we are not comparing the intervention with anything.
+
+\begin{table}[htbp]
+  \centering
+  \caption{PICOC terms}
+  \label{tab:picoc}
+  \begin{tabular}{ccp{9cm}}
+    \hline
+    PICOC & Keywords & Related Words \\
+    \hline
+    Population & chatbot &	
+    chatterbot,  
+    conversational agent,  
+    conversational interface,  
+    conversational system,  
+    dialogue system,   \\
+    Intervention  &interaction 	&
+    conversation,  
+    expectation,  
+    experience,  
+    impact,  
+    perception,  
+    usability,  
+    user journey \\
+    Comparison & \textit{Not applicable} & \textit{Not applicable} \\
+    Outcome & satisfaction 	&
+    accept,  
+    content,  
+    effective,  
+    enjoy,  
+    happiness,  
+    preference,  
+    quality,  
+    trust \\
+    Context & text-based & 
+        not embodied,   not speech,   not spoken  \\
+  \hline
+\end{tabular}
+\end{table}
+
+We first defined our main keywords for the PICOC: \textit{chatbot}, \textit{interaction}, \textit{satisfaction}, and \textit{text-based}. Then, we did exploratory research with related words defined by us in order to see if the results were relevant and what were the missing words we did not think. We have used VOSViewer\footnote{https://www.vosviewer.com/} to help visualize the missing words. After some iterations of these steps, we came up with the final adjusted generic string:
+
+\vspace{0.3cm}
+\colorbox{formalshade}{\parbox{0.9\columnwidth}{\emph{(chatbot OR chatterbot OR ``conversational agent'' OR ``conversational interface'' OR ``conversational system'' OR ``dialogue system'') \textbf{AND} (interaction OR conversation OR expectation OR experience OR impact OR perception OR usability OR ``user journey'') \textbf{AND} (satisfaction OR accept OR content OR effective OR enjoy OR happiness OR preference OR quality OR trust) \textbf{AND} (NOT embodied AND NOT speech AND NOT spoken)}}}
+\vspace{0.3cm}
+
+The digital databases chosen to run the string were \href{https://dl.acm.org/}{ACM Digital Library}, \href{https://ieeexplore.ieee.org/Xplore/guesthome.jsp}{IEEE Xplore}, and  \href{https://www.scopus.com/}{Scopus}. They were chosen for being extremely relevant to software engineering research \cite{BreretonKBTK07}, for indexing a great number of conferences and journals, and for being able to run our generic search string directly in its entirety. Table \ref{tab:strings} shows the specific string for each source. 
+
+\begin{table}[htbp]
+ \centering
+ \caption{Search Strings per Source}
+ \label{tab:strings}
+ \footnotesize
+ \begin{tabular}{p{1.5cm}p{12.5cm}}
+    \hline
+    Source & String \\
+    \hline
+    ACM Digital Library & [[Abstract: chatbot] OR [Abstract: chatterbot] OR [Abstract: ``conversational agent''] OR [Abstract: ``conversational interface''] OR [Abstract: ``conversational system''] OR [Abstract: ``dialogue system'']] AND [[Abstract: interaction] OR [Abstract: conversation] OR [Abstract: expectation] OR [Abstract: experience] OR [Abstract: impact] OR [Abstract: perception] OR [Abstract: usability] OR [Abstract: ``user journey'']] AND [[Abstract: satisfaction] OR [Abstract: accept] OR [Abstract: content] OR [Abstract: effective] OR [Abstract: enjoy] OR [Abstract: happiness] OR [Abstract: preference] OR [Abstract: quality] OR [Abstract: trust]] AND NOT [Abstract: speech] AND NOT [Abstract: embodied] AND NOT [Abstract: spoken] AND [Publication Date: (01/01/2011 TO *)] \\
+    IEEE Xplore & ((``All Metadata'':chatbot OR ``All Metadata'':chatterbot OR ``All Metadata'':``conversational agent'' OR ``All Metadata'':``conversational interface'' OR ``All Metadata'':``conversational system'' OR ``All Metadata'':``dialogue system'') AND (``All Metadata'':interaction OR ``All Metadata'':conversation OR ``All Metadata'':expectation OR ``All Metadata'':experience OR ``All Metadata'':impact OR ``All Metadata'':perception OR ``All Metadata'':usability OR ``All Metadata'': ``user journey'') AND (``All Metadata'':satisfaction OR ``All Metadata'':accept OR ``All Metadata'':content OR ``All Metadata'':effective OR ``All Metadata'':enjoy OR ``All Metadata'':happiness OR ``All Metadata'':preference OR ``All Metadata'':quality OR ``All Metadata'':trust) AND NOT ``All Metadata'':voice AND NOT ``All Metadata'':speech AND NOT ``All Metadata'':embodied AND NOT ``All Metadata'':spoken)
+    \\
+    Scopus & TITLE-ABS-KEY ( ( chatbot  OR  chatterbot  OR  ``conversational agent''  OR  ``conversational interface''  OR  ``conversational system''  OR  ``dialogue system'' )  AND  ( interaction  OR  conversation  OR  expectation  OR  experience  OR  impact  OR  perception  OR  usability  OR  ``user journey'' )  AND  ( satisfaction  OR  accept  OR  content  OR  effective  OR  enjoy  OR  happiness  OR  preference  OR  quality  OR  trust )  AND NOT  voice  AND NOT  speech  AND NOT  embodied  AND NOT  spoken )  AND  PUBYEAR  $>$ 2010  AND  ( LIMIT-TO ( DOCTYPE ,  ``cp'' )  OR  LIMIT-TO ( DOCTYPE ,  ``ar'' ) )  AND  ( LIMIT-TO ( LANGUAGE ,  ``English'' )  OR  LIMIT-TO ( LANGUAGE ,  ``Spanish'' )  OR  LIMIT-TO ( LANGUAGE ,  ``Portuguese'' ) )  AND  ( LIMIT-TO ( SRCTYPE ,  ``p'' )  OR  LIMIT-TO ( SRCTYPE ,  ``j'' ) )  \\
+  \hline
+\end{tabular}
+\end{table}
+
+The initial idea was to run the strings for title, abstract, and keywords. However, the search engines did not share this specific option. In ACM, it was either the title or the abstract without repeating the string. Hence we chose the abstract. In IEEE, ``All Metadata'' refers to title abstract and keywords, as well as ``TITLE-ABS-KEY'' in Scopus.
+ 
+We took advantage of the available filtering and string options for each source to apply some of our exclusion criteria and automate the exclusion of unwanted papers as suggested by Costal et al. \cite{CostalFFQ21}. For example, in ACM Library, we applied a manual filter for ``Content Type'' selecting only ``Research Article'' and selecting a date range from 2011 until the time of the search. In IEEE Xplore, we applied a manual filter for the date range. Finally, in Scopus, all filters were added to the string, which were: the ``Document Type'' as ``Conference Paper'' or ``Article''; the ``Publication Year'' as older than 2010; ``Language'' as ``English'' or ``Portuguese'' or ``Spanish''; and the ``Source Type'' as ``Journal'' or ``Conference Proceedings''.
+
+\section{Selection Criteria}\label{sec:criteria}
+
+As suggested by Kitchenham and Charters \cite{barbara2007guidelines}, we have defined both inclusion and exclusion criteria. The inclusion criteria refer to the main theme of the papers and which ones should be accepted in the context of chatbots. The inclusion criteria (IC) are shown below:
+
+\begin{enumerate}
+    \item[(IC)] Tests one or more text-based chatbot conversational practices with users by:
+    \begin{enumerate}
+        \item[(1)] applying practices to real text-based chatbots; 
+        \item[(2)] simulating practices through Wizard of Oz experiments or similar;
+        \item[(3)] by showing examples of interactions containing the practices and gathering users' impressions;
+        \item[(4)] by explaining the idea of the practices to users and gathering their impressions about it.
+    \end{enumerate}
+\end{enumerate}
+
+Our inclusion criteria do not require the implementation of a chatbot as long as it uses methods that simulate or present a real-like chatbot environment to the user. For instance, Wizard of Oz is a method that allows designers to assess users' reactions and impressions without needing to fully implement the system, with a human filling in the gaps in functionality \cite{mitchell2021curtain}. 
+
+The exclusion criteria aim to exclude papers that fit the inclusion criteria but do not present some methodology, focus, aspect, or approach \cite{CostalFFQ21}. The exclusion criteria (EC) are shown below:
+
+\begin{enumerate}
+    \item[(EC1)] It does not present the impact of the conversational strategy or the individual practices;
+    \item[(EC2)] The object of analysis does not refer entirely to text-based one-on-one interactions between chatbots and humans (e.g., spoken interaction, embodied agent, machine-machine interaction, social media bots);
+    \item[(EC3)] The focus is not on conversational design and user interaction;
+    \item[(EC4)] It is written in a language other than the one understood by the authors (Portuguese, Spanish, and English);
+    \item[(EC5)] It is not a primary full research paper (e.g., book chapters, magazine articles, dissertation, thesis, literature reviews, work in progress, position paper, duplicated work);
+    \item[(EC6)] Published before 2011.
+\end{enumerate}
+
+Regarding EC1, it guarantees that the select works correctly identified and actively tested or observed the impact of these practices with users, being either a human sentiment or a behavior pattern. The identified impact can result from using a single practice or a set of practices to comply with a broader conversational strategy.
+
+It is crucial to set apart embodied agents from text-based agents with avatars, as verified by EC2. Embodied agents communicate intentions or messages via body expressions, while text-based agents only communicate via text, although they can be represented by an image, either human, robotic, or zoomorphic. Simpler and directly, we accepted agents with an icon or figure as long as it is static. Moreover, we are not interested in chatbots that are only ``bots'', which we consider as agents that communicate but are incapable of engaging in a whole conversation with a human. 
+
+If the work is focused on the technicalities of the conversational practice and not user experience, it will be discarded by EC4. Technicalities can be easily detected by identifying the variables being measured. For example, when considering sentiment analysis and adaptive responses as conversational practice, if the user study is interested in the accuracy or performance of the algorithm, it will be discarded. On the other hand, it will be considered if the variables measured in the user study are user satisfaction or other user-centered variables.
+
+The other ECs are related to quality standards to ensure that the selected papers are credible, have a fully developed research, and were adequately reviewed. Moreover, it is essential to define a short time range for accepted papers since chatbots are emergent and constantly evolving technology, making some older works lose relevance, especially in human-AI interaction. Therefore, we discarded studies before 2011 since it was in the early 2010s that chatbots started to get known by the general public \cite{rapp2021} with the release of the mainstream assistants that are relevant up to nowadays, e.g., Siri in 2010, Watson in 2011, Google Now in 2012 \cite{ADAMOPOULOU2020100006}.
+
+\section{Quality Assessment}
+
+Even though the exclusion criteria already give us relevant works, it is still necessary to run a quality checklist to ensure that the practices are valid and their impacts were properly and scientifically measured to be considered in our review. For that, we have used the following checklist to accept papers:
+
+\begin{enumerate}
+    \item[(QA1)] Are conversational practices pragmatic and replicable? 
+    \item[(QA2)] Is the methodology clear, adequate, and well-defined?
+    \item[(QA3)] Is the number of participants sufficient for wider inference? ($\geq$ 40)
+    \item[(QA4)] Is there a comparison or control group testing the violation or absence of the conversational practices?  
+    \item[(QA5)] Are results clear and relevant?
+    \item[(QA6)] Are the impacts statistically calculated? If not, the qualitative analysis is adequate?
+    \item[(QA7)] Are the impacts of conversational practices properly presented and classified as positive, negative, or neutral?
+    \item[(QA8)] Are limitations and threats to validity presented?
+\end{enumerate}
+
+A study was discarded if it did not meet all questions of this checklist. Since this work is concerned not only with practices but their impacts on users, this checklist established a rigorous cutting line to guarantee scientifically well-measured results, and QA2 to QA8 especially checks this. In QA3, we opted for excluding studies with less than 40 participants based on the recommendation of the Nielsen Norman Group \cite{budiu_moran_2021} that relies on the estimation technique of Sauro and Lewis \cite{SAURO2016103}.  Moreover, QA1 aided the removal of works that approached subjective practices, for example, a work that proposes ``proactive'' chatbots but does not test proper applications of it, such as the chatbot ``starting the conversation'', which is what we are interested in. 
+
+
+\section{Conducting}
+
+For conducting the review we have used Parsifal\footnote{https://parsif.al}, which is a free open source web platform for supporting SLR. Parsifal was chosen because its features and workflow were based on the \acrshort{SLR} process used in this work that was proposed by Kitchenham and Charters \cite{barbara2007guidelines}. It streamlines review by providing easy and fast navigation through titles and abstracts during filtering and automatic detection of duplicated papers. Figure \ref{fig:slr} shows the remaining papers after each step of the review. 
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{figure1.jpeg}
+  \newline
+    \footnotesize{IC=inclusion criteria EC=exclusion criteria QA=quality assessment}
+  \caption{Remaining papers after each step of the SLR.}
+  \label{fig:slr}
+\end{figure}
+
+We collected studies through the search string until February 2022, resulting in a total of 1101 papers (196 from ACM, 171 from IEEE, and 734 from Scopus) as seen in Figure \ref{fig:slr}. We had to remove 163 duplicated studies, leaving 938 papers (196 from ACM, 170 from IEEE, and 572 from Scopus) for applying the inclusion and exclusion criteria by reading the title and abstract. Although the papers analyzed by title and abstract were about chatbots, 704 were removed due to criteria violation. Lastly, we read the full text for deeper analysis and application of quality assessment of 234 papers (70 from ACM, 38 from IEEE, and 126 from Scopus), which resulted in the removal of 194 works and the final number of 40 selected papers (13 from ACM, 3 from IEEE, and 24 from Scopus). The detailed dataset is available on \href{https://doi.org/10.5281/zenodo.7538681}{Zenodo} \cite{anonymous_zenodo}. 
+
+
+\section{Data Extraction}\label{sec:data_extraction}
+
+In systematic reviews, data extraction is vital for building quantitative and straightforward views of the studies. However, our review has the objective of serving as a basis for constructing the guide, therefore being quite restrictive as seen in IC/EC/QA, and it does not tend to have a broad view of the area. Accordingly, the categories of information to be extracted, are highly tied to the research questions. Apart from this reasoning, Table \ref{tab:selected} presents each paper's year for tracking the evolution of works and the number of users that participated in the experiment. Naturally, the higher the sample, the higher the relevance of impacts.
+
+Table \ref{tab:practices} presents the data extracted from each selected paper of Table \ref{tab:selected}. Regarding RQ.1, we have extracted data for the column ``Conversational practice(s)'' as excerpts from selected papers. Therefore, several terms are used for the same practice (e.g., dynamically delayed responses and adaptive response speed) to preserve the integrity of the extracted information. Additionally, many papers used more than one practice to achieve a goal. Thus we extracted these goals to fill the column ``Strategy''. For this column, we did open coding to assign a strategy to each paper, which is the process of iteratively working on a set of concepts that will later be grouped and classified \cite{Wolfswinkel2013}.
+
+The column ``Impact(s)'' was extracted to support the discussion of RQ.2. Although this column was also filled with excerpts, it was adapted for better understanding. If the identified impact referred to a user's feeling or behavior, we filled it with the excerpt itself (e.g., enjoyment, satisfaction, and self-disclosure). On the other hand, if the impact the paper evaluates refers to how the user perceives a chatbot attribute, we added the expression ``perception of'' before it. The impacts refer to the combined use of the listed practices, except in the cases explained in the footer of Table \ref{tab:practices}.
+
+Lastly, columns ``Moderator(s)'' and ``Context'' support the discussion of RQ.3. The moderators were extracted precisely as initially written in the paper and refer to variables that reduce, empower or change the impacts of practices. These variables were either measured statistically with a significant result or observed by authors in their experiments and presented with qualitative analysis. The chatbot's context is also an indirect moderator since, after the data extraction, it is possible to check for different impacts of the same practices in different domains. The context was also extracted through open coding.
+
+\begin{table}[htbp]
+\centering
+\caption{Identification of selected studies with the chatbot's context and number of participants for the user study.}
+\footnotesize
+\begin{tabular}{llll}
+\hline
+Paper                    & Year & Context                      & Users \\
+\hline
+\citePS{Candello2017}    & 2017     & Finance                      & 199   \\
+\hdashline[2pt/2pt]
+\citePS{ARAUJO2018183}   & 2018     & Shopping                     & 175   \\
+\citePS{Fadhil2018}      & 2018     & Health                       & 58    \\
+\citePS{Gnewuch2018}     & 2018     & Customer Service             & 84    \\
+\hdashline[2pt/2pt]
+\citePS{Ashktorab2019}   & 2019     & Shopping, Banking and Travel & 203   \\
+\citePS{Diederich2019}   & 2019     & Customer Service             & 112   \\
+\citePS{Zhou2019}        & 2019     & Interview                    & 1280  \\
+\hdashline[2pt/2pt]
+\citePS{Bawa2020}        & 2020     & Open-domain                  & 91    \\
+\citePS{Beattie2020409}  & 2020     & Recommendation               & 96    \\
+\citePS{DeCicco20201213} & 2020     & Delivery                     & 193   \\
+\citePS{Diederich2020}   & 2020     & Customer Service             & 77    \\
+\citePS{Hendriks2020271} & 2020     & Customer Service             & 159   \\
+\citePS{Lee2020}         & 2020     & Mental Health                & 47    \\
+\citePS{Liao2020430}     & 2020     & Mental Health                & 212   \\
+\citePS{Narducci2020251} & 2020     & Recommendation               & 54    \\
+\citePS{Ng2020190}       & 2020     & Financial                    & 410   \\
+\citePS{SHEEHAN202014}   & 2020     & Booking                      & 189   \\
+\citePS{Shi2020}         & 2020     & Donations                    & 790   \\
+\citePS{Toader2020}      & 2020     & Shopping                     & 240   \\
+\citePS{Xiao2020}        & 2020     & Interview                    & 206   \\
+\hdashline[2pt/2pt]
+\citePS{AhmadSR21}       & 2021     & Open-domain                  & 263   \\
+\citePS{Buhrke20214456}  & 2021     & Customer Service             & 228   \\
+\citePS{Ceha2021}        & 2021     & Learning                     & 58    \\
+\citePS{DeCicco2021140}  & 2021     & Delivery                     & 171  \\
+\citePS{Kull2021840}     & 2021     & Customer Service & 80  \\
+\citePS{Ma202121}        & 2021     & Shopping         & 54  \\
+\citePS{Mozafari20212916} & 2021    & Customer Service & 257 \\
+\citePS{Mozafari20214}   & 2021     & Customer Service & 201 \\
+\citePS{Pizzi2021878}    & 2021     & Shopping         & 400 \\
+\citePS{RanaMS21}        & 2021     & Rental           & 150 \\
+\citePS{Schanke2021736}  & 2021     & Shopping         & 426 \\
+\citePS{Spillner2021}    & 2021     & Recommendation & 75  \\
+\citePS{Tsai2021460}     & 2021     & Customer Service & 155 \\
+\citePS{Wilkinson2021}   & 2021     & Recommendation & 310 \\
+\citePS{Medeiros2021}    & 2021     & Mental Health    & 210 \\
+\citePS{Svikhnushina2021} & 2021    & Open-domain      & 536 \\
+\hdashline[2pt/2pt]
+\citePS{Chaves2022}      & 2022     & Tourism          & 178 \\
+\citePS{Pecune2022}      & 2022     & Recommendation & 289 \\
+\citePS{EsmarkJones2022703} & 2022  & Open-domain      & 139 \\
+\citePS{Rhim2022}        & 2022     & Surveys          & 59  \\
+\hline
+\end{tabular}
+\label{tab:selected}
+\end{table}
+
+\begin{table*}[p]
+     \caption{Conversational practices extracted from each selected study.}
+    \scriptsize
+  \centering
+\rowcolors{2}{gray!10}{gray!30}
+  \begin{tabular}{cp{2.5cm}p{4.2cm}p{4.2cm}p{2.5cm}}
+    \hline
+    Paper & Strategy & Conversational practice(s) & Impact(s) on users & Moderator(s) \\
+    \hline
+\citePS{Candello2017} & Typeface & Machine-like typeface (OCR-A)  & [-]perception of humanness & Familiarity with AI \\
+\hdashline[2pt/2pt]
+\citePS{ARAUJO2018183} & Anthropomorphic cues & Human name, informal language & [N]perception of social presence, [+]mindless perception of anthropomorphism, [+]mindful perception of anthropomorphism & None  \\
+\citePS{Fadhil2018}  & Emoji based dialogue & Emoji & [+]enjoyment, [+]attitude, [+]confidence & None \\
+\citePS{Gnewuch2018} & Social cue & Dynamically delayed responses & [+]perception of humanness, [+]perception of social presence, [+]satisfaction  & None \\
+\hdashline[2pt/2pt]
+\citePS{Ashktorab2019} & Repair [breakdown] & Acknowledging misunderstanding and suggesting solutions & [+]preference & [User's] social orientation, experience with chatbots and technology.    \\
+\citePS{Diederich2019} & Social cue & Sentiment-adaptive responses & [+]perception of empathy, [+]perception of humanness, [+]perception of social presence, [+]satisfaction &  [User's] gender \\ 
+\citePS{Zhou2019} & Reserved and assertive personality & Reserved, calm, assertive, rational, careful, like a counselor & [+]willingness to confide, [+]willingness to listen & [User's] personality and context  \\
+\hdashline[2pt/2pt]
+\citePS{Bawa2020} & Linguistic style & Code-mix & [+]perception of conversational ability, [+]perception of human-ness & [User's] language proficiency   \\
+\citePS{Beattie2020409} & Nonverbal cues & Emojis & [+]social attractiveness, [+]perception of competence, [+]perception of credibility & None \\
+\citePS{DeCicco20201213} & Visual cues & Avatar & [N]perception of social presence & None \\
+\citePS{Diederich2020} & Preset answer options & Buttons & [-]perception of humanness, [-]perception of social presence, [N]satisfaction & None \\
+\citePS{Hendriks2020271} & Self-presentation & Introducing itself as a chatbot & [-]perception of social presence, [-]perception of humanness, [N]satisfaction  & None \\
+\citePS{Lee2020} & Self-disclosure & Small talk & [+]self-disclosure & Passage of time \\
+\citePS{Liao2020430} & Racial mirroring & Profile pictures and names that might have implied their racial identity & [+]interpersonal closeness, [-]disclosure comfort, $^a$[+]satisfaction & None   \\
+\citePS{Narducci2020251} & Interaction modes & Buttons &  [N]satisfied, [+]understood & None \\
+\citePS{Ng2020190} & Socio-emotional features & Human name, respond empathetically, give encouraging statements, active listening skills, using the user’s preferred name, turn-take and small talk & [N]trust, [N]privacy concerns, [-]data disclosure  &  Perception of social presence \\
+\citePS{SHEEHAN202014}  & Repair [miscommunication] & Clarification request & [+]perception of anthropomorphism, [+]adoption intent & None  \\
+\citePS{Shi2020} & Persuasive & Inquiry & [-]donation probability & Perceived identity of the chatbot \\
+\citePS{Toader2020} & Gender cues & Female avatar & [+]forgive in the error condition, [+]satisfaction, [+]social disclosure & None \\
+\citePS{Xiao2020} & Active Listening & Paraphrasing, verbalizing emotions, summarizing and encouraging & [+]engagement, [+]interest, [+]chat experience & None \\
+\hdashline[2pt/2pt]
+\citePS{AhmadSR21} & Extraverted & Many topics in a short amount of time, informal language, compliments and positive emotion words & [N]perception of humanness, [+]perception of social presence, [N]communication satisfaction & User personality \\
+\citePS{Buhrke20214456} & Typing errors & Dynamic error, temporal error and spatial error & [-]perception of humanness, [-]perception of social presence & None \\
+  \hline
+\end{tabular}
+\label{tab:practices}
+  \begin{minipage}{15cm}
+    \centering
+    \footnotesize{
+        \hfil
+        [+]positive impact [-]negative impact [N]neutral impact
+        \newline  \null\hfil
+        $^a$ higher ``satisfaction" in comparison with ``not mirroring" but not with baseline (robot avatar);
+    }
+  \end{minipage}
+\end{table*}
+
+\addtocounter{table}{-1}
+
+\begin{table*}[p]
+     \caption{(continued) Conversational practices extracted from each selected study.}
+    \scriptsize
+  \centering
+\rowcolors{2}{gray!10}{gray!30}
+  \begin{tabular}{cp{2.5cm}p{4.2cm}p{4.2cm}p{2.5cm}}
+    \hline
+ ID & Strategy & Conversational practice(s) & Impact(s) on users & Moderator(s) \\
+    \hline
+\citePS{Ceha2021} & Humor & Jokes, conundrum riddles and funny stories & [+]motivation, [+]effort & Self-defeating humour \\
+\citePS{DeCicco2021140} & Social-oriented & Small talk, exclamatory feedback, GIFs and emoticons & [+]perception of social presence, [N]trust, [+]enjoyment, [N]intention to use & None \\
+\citePS{Kull2021840} & Warmth & Friendly initial message & [+]engagement & Brand affiliation \\
+\citePS{Ma202121} & Mixed-modality interaction & Buttons, sliders and checkboxes & [+]enjoyability, [N]perception of supportiveness, [N]perception of efficiency, [N]perception of precision & None  \\
+\citePS{Mozafari20212916} & Chatbot disclosure & Introduced himself as ``Michael" and revealed himself as a chatbot & [-]trust & Acknowledge expertise or weakness  \\
+\citePS{Mozafari20214} & Chatbot disclosure & Introduced himself as ``Leon". [...] At the end of
+the conversation, it was revealed [...] that the service agent [...] was in fact not a human person, but a chatbot & [-]trust, [-]perception of humanness & Service criticality and failure setting \\
+\citePS{Pizzi2021878} & Conversation initiation & System-initiated non-anthropomorphic assistant & [+]reactance & Anthropomorphic avatar, [user's] gender \\
+\citePS{RanaMS21} & Politeness & Polite greeting, polite goodbye, polite thanks and polite info on hours  & [+]engagement & [User's] gender, age and personality \\
+\citePS{Schanke2021736} & Anthropomorphism & Human name, informal language, typing cues, dynamic delay, jokes & [+]intention to buy, [+]offer sensitivity, $^b$[+]likeability & [Chatbot] disclosure \\
+\citePS{Spillner2021} & Linguistic &  Lexical and structural alignment of responses & [+]user alignment & None \\
+\citePS{Tsai2021460} & Social presence &  Responses were designed to be informal, expressing emotions, and using numerous emojis and funny memes. Asking users their names to greet and address them by name.   & [+]user engagement, [+]satisfaction, [+]brand likeability & None \\
+\citePS{Wilkinson2021} & Justification & Explaining why an item was recommended & [+]trust, [+]perception of transparency  & [User's] age and experience with technology    \\
+\citePS{Medeiros2021} & Supportive messages & Attentional deployment, cognitive change, general emotional support, situation modification & [+]valence, [N]arousal & Participants who believed to be interacting with a human being \\
+\citePS{Svikhnushina2021} & Social and Emotional Qualities & Politeness, small talk, sense of humor, emojis, short exclamations, express feelings, call me[user] by my name, ask questions.  & [+]behavioral intentions & [User's] openness to technologies, empathy propensity and vulnerability \\
+\hdashline[2pt/2pt]
+\citePS{Chaves2022} & Register Compliance & Linguistic features & [+]perception of appropriateness, [+]perception of credibility & Domain \\
+\citePS{Pecune2022} & Rapport-building & Justify its recommendation &[+]trust, [+]satisfaction, [+]perception of usefulness, [+]perception of ease of use & \\
+\citePS{EsmarkJones2022703} & Authenticity signals & Female avatar & [+]perception of authenticity, [+]engagement, [+]satisfaction, [+]loyalty & [Avatar's] race congruence and professional dress\\
+\citePS{Rhim2022} & Humanization & Self-introduction, addressing respondents by their name, adaptive response speed and echoing respondents' answers & [+]perception of anthropomorphism, [+]perception of social presence, [+]satisfaction, [+]self-disclosure & None \\
+  \hline
+\end{tabular}
+  \begin{minipage}{15cm}
+    \centering
+    \footnotesize{
+        \hfil
+        [+]positive impact [-]negative impact [N]neutral impact
+        \newline  \null\hfil
+        $^b$ ``dynamic delayed response" has not improved likeability in individual experiments;
+    }
+  \end{minipage}
+\end{table*}
+
+
+
+\section{SLR Results}
+
+This section describes the results of the SLR's data extraction and answers the research questions by interpreting these results. It also discusses the implications of implementing the conversational practices considering the aggregated result of the selected studies since some address the same practices.
+
+
+\subsubsection{RQ.1. What are the textual or visual approaches used in chatbot conversational design?}
+
+Many practices are used in the literature to cause good impressions on users, although some practices ended up having a negative or neutral impact in some works. These practices are mainly used to humanize the chatbot and use different visual, linguist, or interactive design practices. 
+
+Regarding visual design practices, avatars stand-out as a straightforward way of making the chatbot look literally human \citePS{DeCicco20201213, Liao2020430, Toader2020}, however, defining a chatbot avatar is not as easy as it seems because gender and looks can cause impressions in users even before they interact with the chatbot \citePS{Toader2020}. It is vital to remember that we only considered static avatars, as explained in Section \ref{sec:criteria}.
+
+Other visual design practices are emojis or emoticons \citePS{Beattie2020409, DeCicco2021140, Fadhil2018}, which interplay with linguistic design practices since they accompany or substitute text messages to convey feelings and emotions. As well as emojis, GIFs, and memes \citePS{DeCicco2021140, Tsai2021460} can be used to enhance the expressiveness of emotions.
+
+On the other hand, a wide variety of linguist design practices are used to enhance chatbot conversations, ranging from message content to message formatting, which can convey personality traits from the chatbot. For example, small talk is a practice of talking about casual and out-of-domain subjects \citePS{Lee2020, DeCicco2021140}, such as greetings, jokes, and the chatbot's fictional background. For that, self-disclosing the chatbot's non-human identity plays a vital role since the decision to reveal the chatbot's true identity as a virtual agent \citePS{Mozafari20212916, Mozafari20214} will define its background. 
+
+Moreover, chatbots can be emphatic by adapting responses to what has been said by the user \citePS{Diederich2019} such as demonstrating sadness after the user informed something went wrong or by echoing users' responses through reaffirming what the user has just said \citePS{Rhim2022}. These practices can also be applied when the chatbot cannot solve a problem or does not understand a message to repair a breakdown \citePS{Ashktorab2019}. Another way of conveying feeling through messages is by leveraging punctuation, such as exclamatory feedback \citePS{DeCicco2021140}. Moreover, jokes and funny stories can also be used to pass on joy and excitement \citePS{Ceha2021}.
+
+The initial message of the chatbot can be decisive for user retention. Therefore, chatbots can start by presenting themselves as a human or a machine \citePS{Rhim2022, Mozafari20212916, Zhou2019}, telling their name \citePS{Liao2020430, Schanke2021736}, welcoming the user with a friendly message \citePS{Kull2021840} and presenting what its capabilities are \citePS{Mozafari20214}. This moment is also adequate for collecting the user name for later use when addressing the user during conversation \citePS{Rhim2022, Tsai2021460}. Furthermore, when dealing with bilingual users, the chatbot can also code-mix, which consists of inserting foreign words in the middle of the message \citePS{Bawa2020}.
+
+Regarding language choices, chatbots can be polite \citePS{RanaMS21} but with some touches of well-dosed informality \citePS{Svikhnushina2021}. Language can also be personalized to match the domain by varying the use of verbs, pronouns, conjunctions, and other linguistic features \citePS{Chaves2022}. Moreover, chatbots can mirror their users' language style \citePS{Spillner2021}. The language can also convey some information indirectly by using distinctive typefaces, such as handwritten or machine-like \citePS{Candello2017} 
+
+Chatbots can help users understand them more by being honest and open with what happens behind the conversation. Acknowledging misunderstandings and suggesting solutions are ways of leading users out of a conversation breakdown \citePS{Ashktorab2019}. Moreover, justifications and explanations are fundamental for users to understand why they receive some information, instruction, or recommendation from the chatbot \citePS{Pecune2022, Wilkinson2021}.
+
+Lastly, interaction design practices can humanize the agent, streamline conversation and avoid breakdowns. For example, typing cues and dynamic delayed responses increase the impression that there is a human being typing on the other side by masking the instantaneous response of the chatbot \citePS{Schanke2021736, Gnewuch2018}. Beyond that, buttons and carousels are helpful for guiding users to quickly send the message the chatbot expects to function well \citePS{Diederich2020}.
+
+
+\subsubsection{RQ.2. What are the positive or negative impacts on users of the identified textual or visual approaches in chatbot conversational design?}\label{sec:rq2}
+
+The impacts investigated by the selected papers are tied up with the chatbot domain. Thus, works investigating the impacts of chatbots in the health context are more interested in sentiments that empower users' well-being, such as motivation and enjoyment \citePS{Fadhil2018, Liao2020430}. For mental health, the user must develop feelings of closeness, friendship, and trust to self-disclose to the chatbot \citePS{Lee2020}, which is an essential factor for the success of mental treatment. Conversely, commercial brands are more interested in user retention and satisfaction ratings, although the other feelings previously cited do not impede customer service success. 
+
+It is no secret that users prefer a human agent rather than a virtual agent \cite{Lei20213977}. Because of that, a chatbot that discloses itself as non-human can cause users to instantly lose trust \citePS{Mozafari20212916}, which is not surprising since it is natural that humans have higher confidence toward other humans rather than machines. However, this effect is not due to the displayed identity but to the perceived identity \citePS{Shi2020}, that is, the identity that users believe is the true one. 
+
+Suppose the chatbot pretends it is human, and the user is suspicious about it. In that case, the negative impact may be much worse than disclosing the chatbot identity as non-human because the user will feel deceived \citePS{Schanke2021736}, get angrier, and more frustrated \cite{GRIMES2021113515}. Moreover, disclosing identity combined with showing what the chatbot is capable of and communicating its weaknesses can produce trust levels corresponding to that of undisclosed conversational partners \citePS{Mozafari20212916}. Therefore, for this specific practice of disclosing identity, we can consider that the decrease in the perception of humanness after disclosure \citePS{Hendriks2020271} is a natural effect that must be endured to avoid worse impacts of users finding out they are being deceived.  
+
+Moving forward, design practices used for humanization, social presence, or for conveying emotions have, in general, positive impacts on users. For example, in the experiment conducted by De Cicco et al. \citePS{DeCicco2021140}, a social-oriented chatbot increased users' perception of social presence and enjoyment by using small talk, exclamatory feedback, GIFs, and emoticons. Rhim et al. \citePS{Rhim2022} used self-introduction, addressing users by name, adaptive response speed, and echoing respondents' answers as humanization techniques, which positively affected users' satisfaction and their willingness to spend more time with the humanized chatbot in comparison with the baseline chatbot. 
+
+Other works also used a large set of practices to increase the chatbot humanness and achieved positive impacts as well. For example, practices used towards active listening skills increased engagement and interest \citePS{Xiao2020}, the use of humor through jokes, conundrum riddles, and funny stories stimulated motivation and effort in an educational context \citePS{Ceha2021}, anthropomorphic features enhanced users intention to buy and offer sensitivity in a customer service context \citePS{Schanke2021736} whereas social presence induced brand likeability in the same context \citePS{Tsai2021460}.
+
+Chatbot humanization not only has a positive impact, but it increases the users' perception of humanness or anthropomorphism \citePS{ARAUJO2018183,Rhim2022}, that is, these practices are successful in making the chatbot appear more human. Consequently, as humans tend to see other humans as bad, good, pleasant, unpleasant, and so on, the humanized chatbot must have a personality that pleases its target audience. Shi et al. \citePS{Shi2020} found that a chatbot designed to be persuasive by inquiring users to donate caused the opposite effect. In the work of Ahmad et al. \citePS{AhmadSR21}, although the extraverted personality of their chatbot made users perceive it more as a human, it was not a determinant for satisfaction.
+
+Zhou et al. \citePS{Zhou2019} experimented with two interviewer chatbots, one was designed to be reserved and assertive and the other to be warm and cheerful. Results showed that users were more willing to confide and listen to the reserved and assertive chatbot in a high-stakes situation. Something that was not measured but may have impacted this experiment is that the reserved chatbot had a male avatar, and the other had a female avatar.
+
+The moderate use of unnecessary personality traits in a context is not detrimental, as seen in the work of Diederich et al. \citePS{Diederich2019} in which an empathetic chatbot enhanced positive feelings in users. However, missing essential personality traits may displease users, such as designing a therapist chatbot with a cold personality. In conclusion, the chatbot's personality depends on a study of the target audience to match their interaction style as well as the context it will be inserted in line with real situations. For example, we do not expect a job interviewer to comfort us as we do expect a therapist. When these studies are not feasible, the safer approach is to assign a pleasant yet subtle personality to the chatbot without overdoing it.
+
+The impacts found by works researching chatbot avatars are conflicting, ranging from negative, neutral, and positive. For example, Tsai et al. \citePS{Tsai2021460} found that a human name in conjunction with a human avatar only boosts other humanization design practices, but they are insufficient to impact consumer response. In Pizzi et al. \citePS{Pizzi2021878}, the enforcement of anthropomorphism through avatars in automatically activated agents negatively impacted users, whereas the lack of avatar was positive. These works show that the impact of avatars is highly dependent on other variables.
+
+Although humanization potentializes the willingness of users to self-disclose personally \citePS{Rhim2022}, when it comes to sensitive data, such as talking to a chatbot in a financial context, users have privacy concerns \citePS{Ng2020190}. This may be because users trust more in machines to keep their information secure than humans. Therefore, humanized chatbots tend to decrease their trust to disclose data. Still, the overall benefits of humanizing a chatbot compensate for this downside, although it is necessary to conduct more research on coping with these specific situations.
+
+For customer service and recommendation chatbots, clarity and openness are essential attributes. Mozafari et al. \citePS{Mozafari20214} conducted a study to verify the impact of disclosing the chatbot's true identity and unveiled that, in general, users' trust is negatively affected when the chatbot reveals it is not human. However, disclosing it after a failure ameliorates users' perceptions of integrity and benevolence. Pecune et al. \citePS{Pecune2022} and Wilkinson et al. \citePS{Wilkinson2021} found that users place more trust in chatbots that justify their recommendations, in addition to being more satisfied with the suggestions they receive from these chatbots. Chatbot transparency can also be applied by acknowledging failures and helping the user to get on track by making suggestions, which has also proven to be a user preference for interaction \citePS{Ashktorab2019}.
+
+Still, if avatars are used, gender and physical attributes can improve user perception. Toader et al. \citePS{Toader2020} found that female avatars, in contrast to male avatars, create stronger perceptions of warmth, generosity, and kindness besides being more forgiven when committing errors due to users' biased thinking based on social roles commonly assigned to women. Liao and He \citePS{Liao2020430} conducted an experiment in which they presented to users different versions of a therapeutic chatbot that had varied racial identities expressed through the avatar's name and physical attributes. Results revealed that when users matched the racial identity of the avatar, it facilitated the interpersonal relationship. However, it made users more concerned about being judged.
+
+The use of informality, such as casual language, GIFs, and jokes, are coupled with sentiments of joy, closeness, friendship, and motivation in health and learning contexts. However, they do not determine user satisfaction in commercial contexts \citePS{DeCicco2021140, Ceha2021}. Emojis were individually put under test in two studies, and both of them had very positive and expressive results regarding the use of these elements \citePS{Fadhil2018,Beattie2020409}. However, since politeness is also a positive design practice \citePS{RanaMS21, Svikhnushina2021}, the use of informality must be moderated so as not to exceed the limits of good manners and to cancel the professional image of the chatbot.
+
+Typing errors were also investigated as a design practice of informality to make the chatbot more human. However, it did not have a positive impact since users thought it was ``a lack of developer competence'' \citePS{Buhrke20214456}. Finally, interaction design practices, such as buttons, can streamline conversations. However, they have a neutral effect on satisfaction and decrease the perception of humanness due to the mechanical action of selecting a pre-defined response in contrast to the natural feel of freely building a response \citePS{Diederich2020,Narducci2020251}. Therefore, such elements must be used with caution.
+
+\subsubsection{RQ.3. Are there moderating effects of other variables on the identified impacts of practices? }
+
+We have identified different moderating variables that were statistically measured and significantly changed the impacts of the practices.  Chatbots with an anthropomorphic avatar that automatically initiates conversation leads to lower levels of satisfaction compared to the non-avatar agent \citePS{Pizzi2021878}; using humor is generally positive, but the use of self-defeating jokes negatively impacts enjoyment \citePS{Ceha2021}; the chatbot acknowledging its limitations smooths the negative impact of revealing the chatbot identity \citePS{Mozafari20212916}; the chatbot revealing it is not human at the start of the conversation reduces users' trust, but right after a failure is positive \citePS{Mozafari20214}; and users finding out that they were talking to a chatbot when it was pretending to be human decreased positive effects of humanization design practices \citePS{Schanke2021736}.
+
+One practice that particularly suffers from the interplay with other measures is avatars. As we started discussing in RQ.2, human avatars potentiate other humanization techniques but increase the expectation of users. Therefore, users can feel deceived by the human image and be more frustrated with chatbot failures. Moreover, every detail of the human avatar, such as gender and physical attributes, moderate the impact on users. By a joint analysis of selected works, the safest approach seems to be a female human avatar, with racial mirroring in conjunction with self-disclosing the chatbot as non-human for transparency. Furthermore, although the perception of humanness may decrease, a robot avatar can also be used without negatively impacting satisfaction \citePS{Liao2020430}. 
+
+Other moderating variables that are beyond the control of designers must be taken into account when using the practices such as conversation duration \citePS{Lee2020}, context of use \citePS{Zhou2019, Chaves2022}, user's personality \citePS{Zhou2019, RanaMS21, AhmadSR21}, language proficiency \citePS{Bawa2020}, age \citePS{Wilkinson2021, RanaMS21}, gender \citePS{Diederich2019, RanaMS21} and experience with technology \citePS{Wilkinson2021, Ashktorab2019}. Besides these works and apart from the ones that did not find significant moderating effects from age and gender \citePS{SHEEHAN202014, Diederich2019, Diederich2020, Gnewuch2018}, others have not tested moderating effects of age and gender. Moreover, the participants' demographics generally exclude older adults and the elderly as well as adolescents. 
+
+In the work of Rana et al. \citePS{RanaMS21}, it was statistically found that women were more sensitive to the chatbot's polite triggers, being more positively impacted than men. In some cases, men even gave a lower rating to the polite chatbot. Considering that it is not always possible to run deep tests with target users, one strategy to mitigate these effects is to balance the use of practices to avoid exaggerations. For example, if a chatbot is extraordinarily informal and uses too many jokes, women may feel uncomfortable, whereas men feel joyful.
+
+Ahmad et al. \citePS{AhmadSR21} found no correlation between specific user's personality traits and chatbot preferences because the conjunction of many personality traits makes users unique, and they conclude there is a need for personalization during the conversation. Personalization is limited in conversational design but can be enhanced on the technical side by identifying users' traits with natural language processing, which is not in our scope. However, the previous recommendation of no exaggerating applies, preventing the chatbot from being inappropriate for certain groups.
+
+Chaves et al. \citePS{Chaves2022} found that the correct use of linguistic features (e.g., verbs, coordinate conjunctions, pronouns) positively impacts users, but the linguistic features to be used change from domain to domain. Similarly, Zhou et al. \citePS{Zhou2019} presented evidence that users' preference for a chatbot personality depends if it is a high-stakes situation.
+
+Designers should also check for users' perceptions of practices. As seen in the work of Ng et al. \citePS{Ng2020190} and Shi et al. \citePS{Shi2020}, regardless of the practice that has been used, what matters is what the user believes and perceives, which moderates impacts. For example, if the chatbot is designed to pretend it is human, but the user does not believe in this identity, the impact of humanness is annulled. This can be mitigated by running pre-tests to measure users' perceptions of practices.
+
+Through qualitative analysis of participants' responses, Ashktorab et al. \citePS{Ashktorab2019} and Rhim et al. \citePS{Rhim2022} have found that the positive effect of textual practices is harmed by the lack of variability in messages causing users to see the chatbot as ``an auto-machine''. Therefore, designers should conceive different responses for conveying the same message when using any practice.
+
+
+\section{Chapter Summary}
+
+This chapter detailed the protocol used to conduct the \acrshort{SLR} besides the results of this review. The summarized results are shown in Tables \ref{tab:selected} and \ref{tab:practices}. The search string returned a total of 1101 papers, and after removing duplicates and filtering by title, abstract, and full text, there were 40 selected papers. These papers revealed a significant effort in making the chatbot more human with anthropomorphic features and tailoring these features to the best setting, such as testing some personality traits. Moreover, there were attempts to facilitate communication with interactive design practices and make the conversation more transparent with openness and clarification. The collected conversational practices had an overall positive impact on users, but many have moderating variables that are difficult to avoid because they are inherent to users.

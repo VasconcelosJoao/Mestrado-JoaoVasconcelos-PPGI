@@ -1,0 +1,144 @@
+p6.mp4
+
+Interviewer: [00:00:09] Pronto. Então, eu vou gravar para poder fazer a transcrição para minha dissertação, mas eu não vou te identificar e nem vou divulgar a gravação, tá bom?
+
+Participant6: [00:00:20] Beleza.
+
+Interviewer: [00:00:22] Então, as primeiras perguntas são sobre o seu perfil profissional para eu construir o seu perfil e entender qual é o seu background para fazer interpretações sobre a sua experiência. Então você pode falar para mim um pouco sobre a sua formação, o tempo de experiência, com o que você trabalhou mais no desenvolvimento de software, se foi web, mobile ou qualquer outra coisa.
+
+Participant6: [00:00:49] Beleza. Formação... Eu fiz Sistemas de Informação, formei em 2005. Logo depois eu fiz uma especialização em Engenharia de Software. Depois fiquei afastado tanto academicamente quanto profissionalmente da área de TI. Até que, há mais ou menos dois anos e meio atrás, eu entrei no mestrado para Biotecnologia. E há mais ou menos dois anos eu passei a atuar profissionalmente como analista de TI. E eu também sou professor de TI, professor universitário. Eu atuo mais com integração do que com desenvolvimento, mas faço um pouquinho de desenvolvimento web também.
+
+Interviewer: [00:01:46] Entendi. Então você integra serviços, é isso?
+
+Participant6: [00:01:50] É, isso. API, integração externa com parceiros, esse tipo de coisa.
+
+Interviewer: [00:01:56] Entendi. E você, já participou indireta ou diretamente do desenvolvimento de algum chatbot?
+
+Participant6: [00:02:03] Não.
+
+Interviewer: [00:02:04] Não. Nenhuma experiência né? 
+
+Participant6: [00:02:07] Não, não.
+
+Interviewer: [00:02:09] Como usuário, você já interagiu muito com chatbots?
+
+Participant6: [00:02:13] Já bastante.
+
+Interviewer: [00:02:15] E qual que são suas impressões sobre chatbots? Impressões sinceras. Pode ser sincero.
+
+Participant6: [00:02:22]  No geral, eu não me sinto desconfortável usando. Costuma ser um experiência bem tranquila. Alguns casos, às vezes meio que mais dificultam do que facilitam a nossa interação. Mas, no geral, as minhas experiências têm sido boas.
+
+Interviewer: [00:02:48] Ah, que legal! Então você não tem nenhum preconceito, digamos assim, ao utilizar chatbot, né?
+
+Participant6: [00:02:56] Não, não. Tranquilo.
+
+Interviewer: [00:02:57] Legal. Bom, agora falando sobre a etapa 1, que foi a etapa que você elaborou a conversa sem ter consultado o guia, quais foram os desafios e facilidades que você enfrentou para elaborar a conversa na etapa 1?
+
+Participant6: [00:03:12] Então eu achei que eu estava fazendo uma conversa, digamos, fluida. Só que depois eu acabei vendo que não tava tão fluido assim, né? Eu acho que eu tentei forçar muito o formato da interação com o usuário. Tentei ficar com uma coisa muito mecânica mesmo. Eu achei que na primeira fase eu fiz as coisas de uma forma meio mecânica.
+
+Interviewer: [00:03:51] Entendi. Então a sua dificuldade na etapa 1 foi fazer uma conversa mais natural.
+
+Participant6: [00:03:58] Isso, exato.
+
+Interviewer: [00:03:59] Entendi. Você planejou, assim, como se fosse um formulário. Foi isso?
+
+Participant6: [00:04:04] É. Mais ou menos isso.
+
+Interviewer: [00:04:06] Você teve essa dificuldade né de transformar em conversa.
+
+Participant6: [00:04:09] Uhum, exatamente.
+
+Interviewer: [00:04:11] E quais conhecimentos experiências prévias te ajudaram a fazer essa etapa? Embora você tenha relatado dificuldade, o que você utilizou dos seus conhecimentos prévios para construir essa conversa?
+
+Participant6: [00:04:24] Trabalhando com integração de APIs, eu tenho contato com o pessoal que cuida de mensageria, de mensagem de erro para usuário, esse tipo de coisa. Aí isso me ajudou um pouquinho, só que ao mesmo tempo atrapalhou, porque eu acho que foi dessa experiência que veio essa coisa mais mecânica.
+
+Interviewer: [00:04:41] Entendi. E na etapa 2, agora tendo consultado o guia, quais foram os desafios ou facilidades que você enfrentou ao ler e aplicar o guia na etapa 2?
+
+Participant6: [00:04:56] Acho que... As duas coisas se relacionam. O desafio foi tentar deixar a conversa mais amigável. E como eu disse, se foi mecânica na primeira fase, era tentar deixar menos mecânica na segunda, mas acho que facilitou bastante a forma como o guia está escrito, que já dá muitas dicas pra gente assim já meio que orienta mesmo o trabalho. E aí eu consegui tirar, identificar aqueles pontos que estavam mais secos e consegui melhorar isso. Consegui trazer uma experiência um pouco melhor.
+
+Interviewer: [00:05:38] Entendi então a disposição do conteúdo e a forma da apresentação foi um dos pontos que mais ajudou.
+
+Participant6: [00:05:44] Com certeza.
+
+Interviewer: [00:05:45] Entendi. E quais foram as práticas mais ou menos úteis para você considerando esse tema de conversa? Se você quiser abrir o guia, não sei se está fácil para você.
+
+Participant6: [00:05:59] Você tem o link fácil? Eu não abri meu e-mail aqui.
+
+Interviewer: [00:06:03] Espera aí, pego aqui rapidinho.
+
+Participant6: [00:06:19] Acho que vai dar aqui. Beleza.
+
+Interviewer: [00:06:36] Certo. Então, voltando na pergunta e na aplicação nessa conversa, quais foram as práticas mais ou menos úteis para você? Qual que você acha assim: "Nossa, essa aqui vai me ajudar muito" ou uma que assim, "Nossa, isso aqui é nada a ver".
+
+Participant6: [00:06:52] Tá. Eu comecei a ler o guia pelo início lá, e eu achei, e no início, quando eu li a primeira vez, quando eu cheguei naquele mapa conceitual, eu achei um pouco confuso. Mas depois, quando eu li o resto, a explicação, aí eu consegui entender melhor. Inclusive voltei no mapa para poder identificar as as características ali que eu precisava trabalhar melhor de acordo com um caso de uso, né? Mas o que eu gostei mesmo foi o caso de uso que tem lá no guia. Acho que ele foi o que mais me ajudou que com exemplos com com uma apresentação mesmo, de uma interação com o usuário. Aquilo ali me ajudou bastante.
+
+Interviewer: [00:07:47] Entendi. O caso de uso ali foi o maior facilitador, digamos assim, para você?
+
+Participant6: [00:07:52] Com certeza, porque dali eu tirei um exemplo de como deveria fluir a conversa.
+
+Interviewer: [00:08:01] E dentro da naturalidade, da emocionalidade, das transparências, teve alguma? Alguma daqueles indicações, por exemplo. Na naturalidade nós temos auto apresentação, ecoar respostas. Enfim, teve alguma linha específica que você aplicou mais, que você aplicou menos?
+
+Participant6: [00:08:25] E. Deixa eu identificar onde que está aqui. Mas teve uma.
+
+Interviewer: [00:08:33] Fica à vontade.
+
+Participant6: [00:08:34]  Eu acho que é na transparência... É, exato, na transparência. Foi onde eu identifiquei aquelas partes da minha conversa inicial que estavam mais com cara de formulário, como a gente falou. E aí, ali onde está a presença de capacidades. Por exemplo, eu tinha escrito o texto de apresentação de uma forma. Já mudei por causa disso aqui. Depois naquele faça sugestões ali eu entendi um pouco melhor como eu deveria. E respondendo mesmo a interação com o usuário, eu acho que o da transparência foi o que mais me auxiliou.
+
+Interviewer: [00:09:34] Entendi. Então foi acrescentar ele na sua conversa, realmente apresentar para o usuário o que ele pode esperar do seu chatbot? Então isso foi algo que você mais melhorou ali, na sua opinião.
+
+Participant6: [00:09:49] E assim, de uma forma mais clara e ao mesmo tempo dando margem para o usuário responder da forma como ele quisesse. Na primeira eu tentei deixar muito travado, tipo, você tem que responder nesse formato e tal. E ali eu já entendi que a coisa não era bem assim.
+
+Interviewer: [00:10:07] Entendi. Em outros casos de uso ou temas, você acha que o conjunto dessas práticas, no caso transparência, foi o que você mais utilizou? Você acha que em outro tema você também utilizaria mais essa transparência? Ou você acha que essa relação iria mudar? Talvez você utilizasse mais emocionalidade?
+
+Participant6: [00:10:28] Eu acho que muda até. E uma coisa que eu compreendi depois, como eu disse na primeira leitura, eu achei o mapa conceitual confuso. Mas depois que eu li as características de cada uma delas, da neutralidade emocional, da transparência, eu consegui entender o mapa. E eu vejo que é mais ou menos o que está ali mesmo, de acordo com o propósito do chatbot. Você vai utilizar mais uma coisa ou outra e a naturalidade realmente tem que estar presente em qualquer situação, né? Mas eu acho que entre transparência e emocionalidade, dependendo do que for, o contexto vai mudar. Apesar de que, pelo contexto que está lá no mapa, em tese, eu teria que ter ido mais pro lado da emocionalidade, né? Pelo contexto do caso de uso que foi apresentado. Mas, por outro lado, eu acabei usando mais a transparência.
+
+Interviewer: [00:11:30] Por senso crítico, você sentiu mais a necessidade da transparência na sua conversa né?
+
+Participant6: [00:11:37] É, acho que pela deficiência que a minha primeira conversa teve. Não é nem tanto pelo contexto, foi mais pelo pela deficiência que eu consegui identificar na forma como eu estruturei. Mas de fato eu entendo que a relação como está descrita lá no mapa tá legal assim. Se eu tivesse talvez mais experiência com isso, com desenvolvimento de chatbot, talvez eu teria de fato utilizado mais a emocionalidade do que a transparência.
+
+Interviewer: [00:12:16] Legal. E dentro da naturalidade, da transparência, da emocionalidade, tem alguma prática que você acha que não seria útil em nenhuma situação?
+
+Participant6: [00:12:27] Não, não, não identifiquei nada que não tenha utilidade.
+
+Interviewer: [00:12:31] Não vai depender do tema, né?
+
+Participant6: [00:12:34] E na verdade, assim, eu acho que em todos os temas a gente vai usar os três, mas um deles vai sobressair de acordo com o contexto, né?
+
+Interviewer: [00:12:45] Entendi. E na sua opinião, quais as principais diferenças entre as conversas que você elaborou na etapa um e na etapa dois para o que você já comentou?
+
+Participant6: [00:12:57] Acho que não sai muito do que eu falei, não. Acho que o principal mesmo foi essa coisa de tentar mecanizar a resposta do usuário porque eu forçava um formato de resposta, quando na verdade depois eu entendi que eu deveria deixar o usuário livre. E do lado da máquina é que eu tenho que trabalhar a questão da linguagem natural. Então eu tentei forçar um formato de horário. Tentei forçar resposta "sim ou não" e depois eu vi que não precisa disso, que na verdade eu tenho que tratar isso. Se eu for o programador, eu tenho que tratar isso e não forçar o usuário a falar como o chatbot vai entender.
+
+Interviewer: [00:13:44] Perfeito. E você citou que a forma a apresentação do guia foi um fator que colaborou para você conseguir alterar sua conversa. Tem mais algum fator que foi decisivo para você conseguir melhorar a sua conversa? Fator, característica do guia?
+
+Participant6: [00:14:03] Acho que o conteúdo todo ele está muito bem estruturado, fácil de entender e é a forma como ele está colocado. Ajuda a gente a identificar essas deficiências. Então, acho que como um todo, o guia está muito bacana mesmo.
+
+Interviewer: [00:14:22] Entendi. E do ponto de vista de potenciais usuários do chatbot que você propôs, como você acha que eles iriam se sentir com a conversa da etapa 1? E como você acha que eles iriam se sentir com a conversa da etapa 2?
+
+Participant6: [00:14:36] Eu acho que na primeira eles não iam se sentir à vontade para começar. Eles iam sentir que realmente eles estão como se estivessem clicando em alguma coisa ao invés de estar conversando com alguém. Aquilo que a gente falou, como se fosse preencher um formulário, tivesse que respeitar um formato de entrada, esse tipo de coisa. Já na segunda, eu acho que provavelmente não está... Não é o ideal ainda, mas eu consegui deixar a conversa mais natural, mais fluida, de uma forma que a pessoa não se sentisse ela mesmo uma máquina, e que ela conseguisse se relacionar mesmo sabendo que está conversando com a máquina e conseguisse se relacionar de uma forma mais simples, mais fluida mesmo.
+
+Interviewer: [00:15:36] Entendi. E agora as últimas perguntas. Caso você viesse a desenvolver um chatbot no futuro, como e quando você utilizaria o guia nesse processo de desenvolvimento? Ou quais seriam os fatores determinantes para que você não utilizasse o guia?
+
+Participant6: [00:15:54] Eu acho que eu com certeza utilizaria. Primeiro que por não ter experiência com isso, eu sinto que o guia facilita o aprendizado da forma que deve ser feita a interação, esse tipo de coisa. Segundo que mesmo depois de já ter alguma experiência, eu acho que talvez eu não consultaria tanto, mas não por não precisar, mas porque da forma como o guia está proposto, eu entendo que ele permite que a gente internalize essas características e essas, essas funcionalidades e aquele conteúdo. A gente consegue internalizar ele para poder utilizar depois, sem que precise consultar de fato o guia. Mas ele não deixa de ser a base, né?
+
+Interviewer: [00:16:54] Entendi. Então você não iria consultar, mas você iria aplicar pelo fato de já ter absorvido o conteúdo, certo?
+
+Participant6: [00:17:01] Eu acho que no início da experiência como desenvolvedor de chatbots, eu consultaria bastante, mas depois, com o tempo, eu acho que eu conseguiria utilizá-lo só para resgatar o conteúdo. E aí, se houvesse alguma dúvida, eu voltaria a consultar sim.
+
+Interviewer: [00:17:21] Entendi. E por último, para você, quais são os pontos fortes e fracos do guia? E no caso dos fracos, se você teria alguma sugestão de melhoria.
+
+Participant6: [00:17:32] Hum, vamos ver. Acho que o ponto forte é que a forma como está estruturado, principalmente as três características, eu acho que elas estão muito claras e a gente consegue entender muito bem como aplicá-las. A única coisa que me deixou um pouco confuso foi mesmo o mapa conceitual. Não sei se foi a leitura que eu fiz dele de início, porque depois que eu li o resto do conteúdo eu consegui entender melhor. Mas talvez se pudesse, eu não sei, se colocá-lo depois das três características se poderia ajudar um pouco mais.
+
+Interviewer: [00:18:20] É porque você acha que a absorção dele é mais fácil tendo lido as práticas primeiro?
+
+Participant6: [00:18:27] É porque eu acho que de início eu não entendi o que seriam as três práticas, né? E aí depois que eu as li, eu consegui entender de fato o mapa.
+
+Interviewer: [00:18:39] Você acha que descrevendo melhor o mapa talvez, não como mapa, mas instrução de aplicação ou algo assim, tornando o linguajar mais fácil, você acha que seria mais fácil?
+
+Participant6: [00:18:51] Pode ajudar, com certeza.
+
+Interviewer: [00:18:55] Mais alguma coisa que você queira complementar?
+
+Participant6: [00:18:58] Então, não. Gostei bastante. Achei que até para quem não tem experiência com isso a gente consegue. Na primeira vez que lê, já consegue ter melhoria. Então, acho que está muito bacana mesmo.
+
+Interviewer: [00:19:15] Ótimo, excelente. Vou encerrar aqui a gravação.
+

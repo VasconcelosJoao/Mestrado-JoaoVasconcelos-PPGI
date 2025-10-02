@@ -1,0 +1,152 @@
+\label{introducao}
+
+A área de Inteligência Artificial (\acrshort{IA}), seja no contexto de pesquisa ou na indústria, registrou uma expansão significativa nos últimos anos. Este crescimento pode ser observado de várias maneiras, incluindo o desenvolvimento de tecnologias avançadas, o investimento, a atenção dos meios de comunicação social e as suas áreas de aplicação, como a saúde, setor bancário, sistemas de vigilância e vários outros \cite{correa, jobin, cerqueira}. Porém, está rápida expansão alertou a indústria e academia para as implicações éticas da utilização de tais sistemas \cite{cerqueira}.
+
+A popularização de sistemas baseados em \acrshort{IA} trouxe consigo uma série de incidentes de grande visibilidade. Um número crescente de pesquisadores, meios de comunicação, bem como de governos, tem pedido o desenvolvimento de sistemas de \acrshort{IA} mais éticos devido ao aumento destes casos de fracasso \cite{vakkuri2020}. Entre este conjunto de falhas encontra-se o sistema COMPAS, um software baseado em \acrshort{IA} projetado para a avaliação da probabilidade de reincidência de um réu criminal. Angwin et al. \cite{compass} relataram que este sistema apresenta preconceitos raciais contra negros e outras minorias. Outro caso relevante é o da \acrshort{IA} de recrutamento de funcionários da Amazon, que demonstrou preconceito contra candidatas mulheres \cite{vakkuri2020}. A aprendizagem da \acrshort{IA} foi moldada pelo fato de ter observado predominantemente contratações de homens devido ao uso de dados de recrutamento do passado, o que a levou a inferir que os candidatos homens eram os mais adequados para a contratação \cite{vakkuri2020}. Ao citar questões relacionadas a privacidade, o uso de \acrshort{IA} para casos de personificação são os mais citados \cite{deepmind}, seguido por fraudes e \textit{sockpuppeting}. Todas essas questões estão relacionadas às consequências éticas de sistemas de \acrshort{IA} específicos, especialmente os de \textit{deepfakes}.. \textit{Deepfakes} são vídeos e arquivos de áudio que foram sintetizados e gerados por \acrshort{IA}, nos quais pessoas reais são representadas em situações que nunca ocorreram \cite{deepfake}. A disseminação de tais vídeos tem o potencial de causar danos à reputação e até mesmo danos legais, principalmente quando usados de forma maliciosa. Além disso, podem diminuir a confiança do público no contexto digital, contribuindo para uma ampla desconfiança em relação à mídia. Isso, por sua vez, pode dar origem a maiores preocupações com segurança e privacidade.
+
+Esses problemas estão diretamente relacionados à operacionalização dos princípios éticos de \acrshort{IA}. Os possíveis problemas com o sistema COMPAS e o sistema de recrutamento da Amazon poderiam ter sido evitados se os princípios éticos, como justiça, equidade, remediação, reparação, não maleficência, responsabilidade e beneficência, tivessem sido levados em consideração durante o processo de desenvolvimento. Da mesma forma, os desafios associados aos sistemas de \textit{deepfake} poderiam ter sido mitigados pela incorporação de princípios éticos, como reversibilidade, remediação, contestação, segurança, proteção, não maleficência, responsabilidade, privacidade, consentimento, confiabilidade, entre outros. Portanto, é fundamental que o desenvolvimento de sistemas de IA seja orientado por uma estrutura ética robusta que não apenas antecipe os possíveis impactos negativos, mas também forneça estratégias para sua prevenção e mitigação. A incorporação desses princípios em um estágio inicial do processo pode contribuir para a criação de sistemas mais justos, seguros e confiáveis.
+
+Com isso, a fim de prevenir novos incidentes e garantir a prevenção de potenciais problemas no futuro, diversas diretrizes e princípios éticos para o desenvolvimento de \acrshort{IA} foram propostas nos últimos anos \cite{cerqueira-2}. Mas, mesmo com diversas pesquisas na área, ainda há falta de consenso quanto à definição de “\acrshort{IA} ética” e aos requisitos éticos, normas técnicas e melhores práticas necessárias para a sua implementação \cite{jobin}. De acordo com Cerqueira \cite{cerqueirahiccs}, outra dificuldade encontrada é que as propostas não satisfazem os requisitos do desenvolvimento de sistemas éticos baseados em \acrshort{IA} no mundo real, visto que estes princípios éticos são, em sua maioria, abstratos e gerais e não constituem provas reais de que possam influenciar a tomada de decisões éticas.
+
+A análise feita por Corrêa et al. \cite{correa} teve como resultado a identificação de que "existe uma necessidade de regulamentação e que um dos maiores desafios que enfrentamos atualmente neste domínio é o fato de os princípios éticos não poderem ser universalizados, tornando a normalização dos parâmetros éticos contextuais um verdadeiro desafio na procura de regulamentação". Organizações privadas e governamentais buscam solucionar os problemas éticos advindos de sistemas de \acrshort{IA}. Assim, as leis e regulações ainda se baseiam em princípios, não cumprindo de maneira correta seu papel de restringir tais sistemas \cite{correa}.
+
+Outra dificuldade pode ser atribuída ao fato de que uma parte considerável das diretrizes existentes permanece em um nível teórico, não oferecendo soluções práticas que possam ser inseridas no ciclo de vida do desenvolvimento de software. Consequentemente, esta lacuna impede equipes de desenvolvimento de adotarem práticas éticas de forma eficaz. Portanto, para a operacionalização de requisitos éticos de \acrshort{IA}, é importante que existam soluções práticas que apoiem este processo. Estas soluções são desenvolvidas em diferentes formatos, sendo eles:
+\begin{itemize}
+    \item Processos: Série de passos, ações ou atividades realizadas com o objetivo de obter um resultado especifico \cite{dict}.
+    \item Ferramentas: Um sistema que auxilia em alguma fase do processo de desenvolvimento de software pode ser considerado uma ferramenta de software \cite{tool}.
+    \item Técnicas: Uma técnica é constituída por um conjunto de métodos, abordagens e habilidades utilizados na aplicação de conhecimentos técnicos sistemáticos \cite{technique}.
+    \item Metodologias: Uma metodologia é composta de métodos, estudando-os e utilizando-os para compor uma estrutura maior \cite{method}.
+    \item Métodos: Um método é uma maneira de estruturar o pensamento e ações de uma forma clara e explícita, servindo como prescrições para ações humanas \cite{method}.
+    \item \emph{Frameworks}: Um \emph{framework} é uma solução de design genérica para um problema ou domínio específico. Define os vários elementos de design envolvidos na solução e as suas relações \cite{method}.
+\end{itemize}
+
+No entanto, as soluções práticas existentes ainda não estão suficientemente desenvolvidas devido a um certo número de dificuldades encontradas \cite{tools-fit}. Ayling \& Chapman \cite{tools-fit} identificaram um conjunto de obstáculos encontrados quando se tenta operacionalizar o conjunto de requisitos éticos. O primeiro obstáculo se dá pela complexidade do domínio, que torna difícil desenvolver ou adquirir a ferramenta mais adequada para os objetivos determinados. O segundo se dá pelo fato de que atualmente não existem regulamentos ou legislação específica para sistemas de \acrshort{IA}, dificultando o desenvolvimento de tais ferramentas. Já o terceiro obstáculo é a falta de clarificação das metodologias utilizadas na prática ética da \acrshort{IA}. 
+
+Para ultrapassar estes obstáculos, é necessária a implementação de processos, ferramentas, metodologias, métodos, \emph{frameworks} ou técnicas que utilizem as práticas existentes dentro do contexto de desenvolvimento de software. Assim, este trabalho propõe uma ferramenta automatizada para apoiar a operacionalização dos princípios éticos de \acrshort{IA} através de práticas de Engenharia de Software, especificamente utilizando um conjunto de histórias de usuário sob uma perspectiva de ética de \acrshort{IA}. A ferramenta se destaca ao transformar um conjunto de requisitos éticos em histórias de usuário, permitindo que os desenvolvedores integrem considerações éticas de forma prática e eficiente desde as fases iniciais do projeto, sob a perspectiva da ética em IA.
+
+\section{Justificativa}
+
+A necessidade de ética em \acrshort{IA} decorre dos desafios encontrados em equilibrar a tensão entre o apoio à inovação, visto que é um direito da sociedade a se beneficiar da ciência, e limitar os possíveis danos associados a sistemas baseados em \acrshort{IA} mal projetados \cite{morley}. Portanto, é de grande importância realizar um estudo sistemático para compreender melhor as soluções de éticas para \acrshort{IA} que foram propostas tanto na indústria como no meio acadêmico, tal como as lacunas existentes. Neste trabalho foi proposta uma atualização da revisão sistemática de literatura conduzida por Cerqueira \cite{cerqueira}, visto que o estudo utilizou estudos publicados até maio de 2021. Para uma verificação primária da necessidade desta atualização, foi feita uma pesquisa na base de dados da ACM Digital Library \footnote{https://dl.acm.org}. Esta pesquisa identificou que, desde a publicação da revisão sistemática de literatura \cite{cerqueira}, o número de estudos publicados tem apresentado um padrão de crescimento, como pode ser observado na Figura \ref{fig:year-acm}.
+
+A atualização da revisão sistemática de literatura revelou uma discrepância entre os aspectos teóricos e práticos da ética em \acrshort{IA}. Estudos como o de Barletta et al. \cite{barletta} demonstrou que não é possível encontrar um \emph{framework} completo, de fácil utilização, organizado e uniforme para apoiar os \emph{stakeholders} durante todo o ciclo de vida no atual conjunto de soluções práticas, além de, em um futuro próximo, tal solução não será desenvolvida. Tidjon \& Khomh \cite{tidjon} realizaram uma análise de 100 princípios éticos e suas implementações, com o objetivo de identificar e abordar as lacunas entre esses dois elementos. Entre as lacunas identificadas, os autores observaram uma falta significativa de ferramentas para apoiar a implementação dos princípios éticos em \acrshort{IA}. Foi encontrado também que as ferramentas existentes tendem a focar em um grupo exclusivo de princípios e muitas vezes não abordam todos os aspectos relacionados aos princípios em questão. Além disso, os autores identificaram a falta de padrões efetivos para o desenvolvimento ético em \acrshort{IA} \cite{tidjon}. Então visto que existe a necessidade da utilização de diferentes soluções no formato de uma infraestrutura de ética em \acrshort{IA}, há uma procura por métodos e ferramentas práticas que utilizam padrões já existentes, facilitando a sua adoção por times de desenvolvimento \cite{tidjon}.                       
+
+Portanto, devido a crescente necessidade de ferramentas que auxiliem a implementação de princípios éticos em \textit{IA}, o desenvolvimento de uma solução que transforme requisitos éticos em histórias de usuário éticas neste contexto específico é justificada por sua capacidade de ser aplicada em uma infraestrutura de ética em \textit{IA}. Também é importante entender que em modelos de ciclo de vida de software, como cascata e modelos ágeis, a elicitação e análise de requisitos é uma das, se não a primeira etapa a ser realizada em um projeto \cite{req}. Esta etapa também tem como característica a definição das bases do projeto, identificando as necessidades e expectativas dos \textit{stakeholders}, incluindo questões não-funcionais, que precisam ser abordadas para garantir conformidade com padrões, incluindo o conjunto de princípios éticos de \acrshort{IA} \cite{req, req-agi}. 
+
+Ao integrar o conjunto de princípios éticos desde a fase inicial, é possível garantir que eles sejam considerados no design e desenvolvimento do sistema de forma estruturada e contínua. Além disso, esta etapa é uma fase de comunicação crítica entre desenvolvedores, usuários e outros \textit{stakeholders}, especialmente durante a elicitação \cite{req-agi}. Portanto ao utilizar uma ferramenta de ética em \textit{IA} aplicada diretamente a análise e desenvolvimento de requisitos, é possível facilitar o entendimento e a aplicação prática dos princípios éticos para com \textit{stakeholders} de diferentes níveis técnicos. Isso não só reduz o risco de falhas éticas no produto final, mas também diminui os custos de correções posteriores, que tendem a ser custosos.
+
+Para a solução foi escolhida a transformação de requisitos éticos de alto nível em histórias éticas de usuário. Esta escolha se deu pela sua simplicidade, visto que uma história do usuário pode ser entendida como a representação mais granular de um requisito que os desenvolvedores usam para criar novos recursos, tal como sua ampla adoção na academia e indústria \cite{us-explicit}. Outro fator para a escolha foi a existência do estudo de Halme et al. \cite{user-stories}, que contém o \textit{template} para a escrita e formalização de histórias de usuário éticas. Portanto, ao converter requisitos éticos em histórias de usuário, a ferramenta não apenas facilita a compreensão e implementação dos princípios éticos por parte dos desenvolvedores, mas também promove a integração de padrões éticos interconectados com as funcionalidades do sistema, criando uma ponte entre teoria e prática desde as primeiras etapas do projeto.
+
+\begin{figure} [!ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}
+    [
+    width=\columnwidth,
+    height=6cm,
+    ybar,
+    ymin=0,
+    ymax=12500,
+    bar width=.9cm, 
+    font=\scriptsize,
+    scaled y ticks=base 10:-0
+    nodes near coords,
+    xtick=data,
+    enlarge x limits={abs=\pgfplotbarwidth},
+    nodes near coords align={vertical},
+    ylabel={Estudos},           
+    symbolic x coords={2018, 2019, 2020, 2021, 2022, 2023, 2024},
+    ]
+\addplot coordinates {(2018, 6059) (2019, 6957) (2020, 8029) (2021, 9515) (2022, 9882) (2023, 11706) (2024, 7514)};
+\end{axis}
+\end{tikzpicture}
+\caption{Estudos por ano relacionados a ética em IA na base de dados ACM}
+\label{fig:year-acm}
+\end{figure}
+
+\section{Objetivos}
+\label{objetivos}
+
+O objetivo geral deste trabalho é desenvolver uma ferramenta que operacionalize a conversão de requisitos éticos de alto nível em histórias de usuário éticas.
+
+\subsection{Objetivos Específicos}
+
+Para atingir o objetivo geral deste trabalho, foram definidos os seguintes objetivos específicos:
+
+\begin{itemize}
+
+\item Conduzir a atualização da revisão sistemática de literatura publicada por Cerqueira \cite{cerqueira} para identificar estudos que apresentam avanços na área de ética em \acrshort{IA}, sejam nas abordagens teóricas, com princípios, diretrizes e aplicações, como nas práticas, com processos, ferramentas, metodologias, métodos, \emph{frameworks} ou técnicas.
+
+\item Identificar lacunas não preenchidas pelas soluções práticas existentes nas quais a ferramenta proposta possa ser aplicada;
+
+\item Definir a arquitetura da ferramenta e de seus componentes para alcançar o resultado desejado;
+    
+\item Identificar requisitos funcionais e não-funcionais para a ferramenta proposta;
+
+\item Desenvolver a ferramenta;
+        
+\item Avaliar a ferramenta proposta de acordo com o impacto em times de desenvolvimento de sistemas baseados em \acrshort{IA};
+    
+\item Propor melhorias e definir direções futuras para o avanço da ferramenta com base nos resultados da avaliação.
+    
+\end{itemize}
+
+\section{Resultados esperados}
+ 
+Espera-se com este trabalho os seguintes resultados:
+
+\begin{itemize}
+
+\item Identificação de processos, ferramentas, metodologias, métodos, \emph{frameworks} ou técnicas para o desenvolvimento ético de \acrshort{IA} em todas as fases do ciclo de vida de desenvolvimento de sistemas baseados em \acrshort{IA};
+
+\item Desenvolvimento de uma ferramenta para a conversão de requisitos éticos em histórias de usuário para apoiar a operacionalização de princípios éticos durante o desenvolvimento de sistemas baseados em \acrshort{IA};
+
+\item Avaliação da ferramenta desenvolvida para possível disponibilização aos profissionais de desenvolvimento de software.
+
+\end{itemize}
+
+\section{Método de Pesquisa}
+\label{metodologia}
+
+Esta pesquisa foi guiada pelo método \emph{Design Science Research} (\acrshort{DSR}) \cite{vaishnavi}. Este método é baseada em três conceitos: pesquisa, design e ciência do design. O conceito de pesquisa pode ser definido como uma atividade que contribui para o entendimento de um fenômeno \cite{vaishnavi}. O conceito de design é atrelado a criação de algum artefato que ainda não existe \cite{vaishnavi}. Por fim, o design é transformado em uma ciência e chamado de ciência do design, sendo definida por Vaishnavi et al. \cite{vaishnavi} como:
+\blockquote{O conhecimento sob a forma de construções, técnicas e métodos, modelos, teoria bem desenvolvida para efetuar um mapeamento do espaço funcional - um requisito funcional que constitui um ponto neste espaço multidimensional - para o espaço de atributos, onde um artefacto que satisfaz o mapeamento constitui um ponto nesse espaço}. Esta combinação de conceitos da origem ao método \acrshort{DSR}, que pode ser descrito como "uma pesquisa que cria este tipo de conhecimento em falta através do design, análise, reflexão e abstração" \cite{vaishnavi}. Portanto, o método pode ser resumido pela utilização de design como método de pesquisa, criando conhecimento por meio do desenvolvimento de artefatos \cite{vaishnavi}.
+
+A utilização deste método é justificado pela capacidade de ajudar os pesquisadores a construir e melhorar um artefato através de um processo contínuo de avaliação \cite{vaishnavi}. O método é composto por um modelo de processo composto de cinco etapas principais e suas saídas \cite{vaishnavi}. A Figura \ref{fig:dsr} contém as etapas e uma visão geral dos resultados desenvolvidos em cada uma destas etapas. As características mais detalhadas de cada etapa e sua aplicação neste trabalho são apresentadas a seguir:
+
+\begin{itemize}
+
+\item \textbf{Consciência do problema}: Esta etapa tem como foco a conscientização do problema de pesquisa, para entender os atores envolvidos, os objetivos esperados, as causas do problema, os efeitos e as contribuições ao propor uma resolução. Portanto, nesta etapa foi realizada a atualização da revisão sistemática de literatura conduzida por Cerqueira \cite{cerqueira} para determinar o estado atual de ética em \acrshort{IA} e as abordagens prevalecentes para sua operacionalização. Esta etapa tem como saída a definição do estado atual das soluções práticas de ética em \acrshort{IA} e suas lacunas por meio da \acrshort{RSL} atualizada, possibilitando a definição e elaboração da ferramenta proposta.
+ 
+\item \textbf{Sugestão}: Subsequente a etapa anterior, esta etapa é, em essência, a qual uma nova funcionalidade é imaginada com base em uma nova configuração de elementos existentes ou novos. Nesta etapa, a ferramenta proposta foi definida como um meio para a tradução de requisitos éticos em histórias de usuário éticas utilizando \emph{Large Language Models} (\acrshort{LLM}). O resultado desta etapa foi a formulação de uma proposta e o planejamento da ferramenta.
+
+\item \textbf{Desenvolvimento}: Nesta etapa, o artefato planejado é refinado e desenvolvido. No caso deste trabalho, é importante ressaltar que a ferramenta tem como objetivo facilitar a adoção de ética em \acrshort{IA} por times de desenvolvedores alterando minimamente o fluxo de desenvolvimento de software. O resultado desta etapa foi a primeira versão da ferramenta proposta.
+
+\item \textbf{Avaliação}: Nesta etapa, o artefato é avaliado de acordo com critérios variados, normalmente com o objetivo de gerar evidências empíricas. Desvios quantitativos e qualitativos devem ser notados e explicados provisoriamente, gerando medidas de performance. O resultado desta etapa é a avaliação da ferramenta proposta delimitando possíveis melhorias a serem realizadas em novas iterações do desenvolvimento.
+
+\item \textbf{Conclusão e Comunicação}: Nesta etapa, é realizada a análise dos resultados finais do processo, identificando as contribuições do trabalho, as melhorias potenciais a serem realizadas na ferramenta proposta e trabalhos futuros, tal como a comunicação e compartilhamento dos resultados encontrados. Neste trabalho os resultados serão compartilhados por meio da publicação dos artigos da revisão sistemática de literatura e da ferramenta.
+
+\end{itemize}
+
+\begin{figure}[htb!]
+\centering
+\includegraphics[width=\textwidth]{img/dsr.png}
+\caption{Etapas da Design Science Research com suas respectivas saídas}
+\label{fig:dsr}
+\end{figure}
+
+
+\section{Estrutura do trabalho}
+
+Este trabalho é organizado em quatro capítulos, em adição a introdução, sendo eles:
+\begin{itemize}
+
+\item \textbf{Capítulo \ref{ref}:} apresenta o referencial teórico relacionado a \acrshort{IA}, \emph{Large Language Models} (\acrshort{LLM}), ética em \acrshort{IA}, utilização de histórias de usuário e as tecnologias definidas para o desenvolvimento da ferramenta.
+
+\item \textbf{Capítulo \ref{rsl}:} apresenta a Revisão Sistemática de Literatura conduzida neste trabalho, definindo características e respondendo as questões de pesquisa definidas.
+
+\item \textbf{Capítulo \ref{ferramenta}:} apresenta a metodologia utilizada no desenvolvimento da ferramenta proposta, os resultados ao fim do processo de desenvolvimento e a validação do produto final.
+
+\item \textbf{Capítulo \ref{cronograma}:} apresenta o cronograma proposto para o desenvolvimento deste trabalho.
+
+\item \textbf{Capítulo \ref{conclusoes}:} apresenta as principais conclusões e resultados do trabalho, bem como um panorama do trabalho futuro.
+
+\end{itemize}
