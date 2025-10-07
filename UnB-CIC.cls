@@ -100,7 +100,7 @@
 }
 
 %fontes
-\def\fontelogo{\@ifundefined{XeTeXversion}{ua1}{Arial}}
+\def\fontelogo{\@ifundefined{XeTeXversion}{\familydefault}{Arial}}
 \DeclareOptionX{10pt}{\gdef\@fontsize{10pt}}
 \DeclareOptionX{11pt}{\gdef\@fontsize{11pt}}
 \DeclareOptionX{12pt}{\gdef\@fontsize{12pt}}
@@ -154,13 +154,28 @@
 
 \usepackage{tocbasic} % added % removed from later and placed here
 \RequirePackage[brazil,american]{babel}% Idiomas
-\RequirePackage[fixlanguage]{babelbib}%  Idioma das referências
 \RequirePackage[utf8]{inputenc}%         Arquivos na codificação UTF-8
 \RequirePackage[T1]{fontenc}%            Habilita busca com caracteres latinos
 \RequirePackage{lmodern}%                Habilita busca com caracteres latinos
 \RequirePackage{amsmath}%				 Ambiente para equações
 \RequirePackage{xcolor}% 				 Necessário para algum pacote não identificado. Relacionado ao AtBeginDocument e \@conteudoPreTextual (se por o comando dentro do begin{document}, funciona)
 \RequirePackage[figure,table]{totalcount}
+
+% ⬇️ CORREÇÃO PARA O WARNING DO BABELBIB / TRACKLANG
+\RequirePackage[fixlanguage]{babelbib}%  Idioma das referências
+
+\makeatletter
+    \@ifpackageloaded{babelbib}{%
+      \let\old@bbl@language\bbl@language
+      \def\bbl@language#1{%
+        \ifx#1\l@brazil
+          \def\bbl@currentlanguage{portuguese}%
+        \else
+          \old@bbl@language{#1}%
+        \fi
+      }%
+    }
+\makeatother
 
 \@ifundefined{XeTeXversion}{%
 	\PassOptionsToPackage{pdftex}{hyperref}

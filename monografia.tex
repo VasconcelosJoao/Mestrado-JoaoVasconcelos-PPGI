@@ -3,146 +3,193 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \PassOptionsToPackage{table}{xcolor}
 
-% Opções:
-%  - Graduação: bacharelado|engenharia|licenciatura
-%  - Pós-graduação: [qualificacao], mestrado|doutorado, ppca|ppginf
+% Configuração do tipo de documento
+% Graduação: bacharelado|engenharia|licenciatura
+% Pós-graduação: [qualificacao], mestrado|doutorado, ppca|ppginf
+\documentclass[qualificacao, mestrado, ppginf]{UnB-CIC}
 
-% \documentclass[engenharia]{UnB-CIC}%
-\documentclass[qualificacao, mestrado, ppginf]{UnB-CIC}%
-\selectlanguage{portuguese}\brtrue\enfalse % added
-% \selectlanguage{american}\entrue\brfalse % added
-%%%%%%%%%%%%%%%% BEGIN USER'S PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%
+\selectlanguage{portuguese}
+\brtrue
+\enfalse
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pacotes do usuário
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Pacotes básicos ---
 \usepackage{anyfontsize}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{lineno}
 
-% creating separate reference section for the SLR
-%\usepackage[labeled]{multibib} 
-%\newcites{PS}{Estudos Primários} 
+% --- Pacotes para tabelas ---
+\usepackage{multirow}
+\usepackage{arydshln}           % Linhas tracejadas
+\usepackage{diagbox}            % Linha diagonal em tabelas
+\usepackage{rotating}
+\usepackage{adjustbox}
 
-% colors
-\definecolor{formalshade}{rgb}{0.95,0.95,1}
-
-% packages for charts
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.9}
-\usepackage{pgf-pie}
-% package for charts
-\usepackage{tikz}
-\usetikzlibrary{patterns}
-
-% create checkmark symbols
-\usepackage{calc}
-
-% subfigure
+% --- Pacotes para figuras ---
 \usepackage{caption}
 \usepackage{subcaption}
 
-% outros
-%\usepackage{url}
-\usepackage{multirow} 
-\usepackage{arydshln} % dash lines
-\usepackage{diagbox} % diagonal line in tables
-\usepackage{csquotes} % block citations
-\usepackage{rotating}
-\usepackage{adjustbox}
-\usepackage{tcolorbox}
-\usepackage{float}
-\usepackage{placeins}
-\usepackage{todonotes}
-\usepackage{xcolor}
-\usepackage{paralist}
+% --- Pacotes para gráficos ---
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage{pgf-pie}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+
+% --- Pacotes para algoritmos ---
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+
+% --- Pacotes para código ---
 \usepackage{listings}
+\usepackage{tcolorbox}
 \tcbuselibrary{minted,breakable,xparse,skins}
-\usepackage{caption}
 
+% --- Correção para warnings ---
+\usepackage{csquotes}
+
+% --- Outros pacotes úteis ---
+\usepackage{calc}               % Cálculos
+\usepackage{paralist}           % Listas compactas
+\usepackage{todonotes}          % Notas TODO
+\usepackage{pdfpages}           % Incluir PDFs
+
+% --- Configuração de hyperlinks ---
 \hypersetup{
- colorlinks=true,
- citecolor=blue,
- linkcolor=blue}
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue
+}
 
-%%%%%%%%%%%%%%%% END USER'S PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{pdfpages}% incluir PDFs, usado no apêndice
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Informações do Trabalho
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\orientador[a]{\prof[a] \dr[a] Edna Dias Canedo}{University of Brasília (UnB)}%
-\coordenador[a]{\prof[a] \dr[a] Cláudia Nalon}{University of Brasília (UnB)}%
-\diamesano{01}{Outubro}{2025}%
-
-\membrobanca{\prof \dr } {}%
-\membrobanca{\prof \dr } {}%
-
-\autor{João Lucas Pinto}{Vasconcelos}%
-
-\titulo{Ética em Inteligência Artificial no Desenvolvimento de Software}%
-
-\palavraschave{Ética, Ética em Inteligência Artificial, Engenharia de Requisitos, Requisitos Éticos, Aprendizagem de Máquina, Desenvolvimento de Software.}%
-\keywords{Ethics, Ethics in Artificial Intelligence, Requirements Engineering, Ethical Requirements, Machine Learning, Software Development.}%
-
-\newcommand{\unbcic}{\texttt{UnB-CIC}}%
+% --- Cores personalizadas ---
+\definecolor{formalshade}{rgb}{0.95,0.95,1}
+\definecolor{bg}{gray}{0.95}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Texto
+% Informações do trabalho
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength {\marginparwidth }{2cm}
-\begin{document}%
 
-    \newenvironment{code}{\captionsetup{type=listing}}{}
-    % \SetupFloatingEnvironment{listing}{name=Source Code}
+% --- Autor ---
+\autor{João Lucas Pinto}{Vasconcelos}
 
-    \definecolor{bg}{gray}{0.95}
-    \DeclareTCBListing{mintedbox}{O{}m!O{}}{%
-      breakable=true,
-      listing engine=minted,
-      listing only,
-      minted language=#2,
-      minted style=default,
-      minted options={%
+% --- Título ---
+\titulo{Ética em Inteligência Artificial no Desenvolvimento de Software}
+
+% --- Orientação ---
+\orientador[a]{\prof[a] \dr[a] Edna Dias Canedo}{University of Brasília (UnB)}
+
+% --- Coordenação ---
+\coordenador[a]{\prof[a] \dr[a] Cláudia Nalon}{University of Brasília (UnB)}
+
+% --- Banca examinadora ---
+\membrobanca{\prof \dr } {}
+\membrobanca{\prof \dr } {}
+
+% --- Data ---
+\diamesano{01}{Outubro}{2025}
+
+% --- Palavras-chave ---
+\palavraschave{%
+    Ética, 
+    Ética em Inteligência Artificial, 
+    Engenharia de Requisitos, 
+    Requisitos Éticos, 
+    Aprendizagem de Máquina, 
+    Desenvolvimento de Software.%
+}
+
+\keywords{%
+    Ethics, 
+    Ethics in Artificial Intelligence, 
+    Requirements Engineering, 
+    Ethical Requirements, 
+    Machine Learning, 
+    Software Development.%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configurações de código (minted)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareTCBListing{mintedbox}{O{}m!O{}}{%
+    breakable=true,
+    listing engine=minted,
+    listing only,
+    minted language=#2,
+    minted style=default,
+    minted options={%
         linenos,
         gobble=0,
         breaklines=true,
         breakafter=,,
         fontsize=\small,
         numbersep=8pt,
-        #1},
-      boxsep=0pt,
-      left skip=0pt,
-      right skip=0pt,
-      left=25pt,
-      right=0pt,
-      top=3pt,
-      bottom=3pt,
-      arc=5pt,
-      leftrule=0pt,
-      rightrule=0pt,
-      bottomrule=2pt,
-      toprule=2pt,
-      colback=bg,
-      colframe=orange!70,
-      enhanced,
-      overlay={%
+        #1
+    },
+    boxsep=0pt,
+    left skip=0pt,
+    right skip=0pt,
+    left=25pt,
+    right=0pt,
+    top=3pt,
+    bottom=3pt,
+    arc=5pt,
+    leftrule=0pt,
+    rightrule=0pt,
+    bottomrule=2pt,
+    toprule=2pt,
+    colback=bg,
+    colframe=orange!70,
+    enhanced,
+    overlay={%
         \begin{tcbclipinterior}
         \fill[orange!20!white] (frame.south west) rectangle ([xshift=20pt]frame.north west);
-        \end{tcbclipinterior}},
-      #3}
-      
-    \capitulo{corpo}{1_intro}{Introdução}             
-    \capitulo{corpo}{2_ref}{Referencial Teórico}
-    \capitulo{corpo}{3_rsl}{Revisão Sistemática de Literatura} 
-    \capitulo{corpo}{4_ferramenta}{Proposta da Ferramenta}
-    \capitulo{corpo}{5_cronograma}{Cronograma Proposto}
-    \capitulo{corpo}{6_conclusao}{Conclusão}                              
-    
-     % \renewcommand\bibname{References}
-    \bibliographystyle{babunsrt}
-    \bibliography{references}
-    %\bibliographystylePS{babunsrt}
-    %\bibliographyPS{slr.bib}
+        \end{tcbclipinterior}
+    },
+    #3
+}
 
-    % \apendice{postexto}{apendice_tabelas}{Data extracted from primary studies}%
-    % \anexo{postexto}{exemplo}{Documentação Original \unbcic\ (parcial)}%
-\end{document}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Início do documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\marginparwidth}{2cm}
+
+\begin{document}
+
+% Ambiente para códigos
+\newenvironment{code}{\captionsetup{type=listing}}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Capítulos do corpo do trabalho
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\capitulo{corpo}{1_intro}{Introdução}
+\capitulo{corpo}{2_ref}{Referencial Teórico}
+\capitulo{corpo}{3_rsl}{Revisão Sistemática de Literatura}
+\capitulo{corpo}{4_proposta}{Proposta}
+\capitulo{corpo}{5_cronograma}{Cronograma Proposto}
+\capitulo{corpo}{6_conclusao}{Conclusão}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliografia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{babunsrt}
+\bibliography{references}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Apêndices e Anexos (se houver)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Descomente as linhas abaixo para incluir apêndices ou anexos:
+% \apendice{postexto}{apendice_tabelas}{Data extracted from primary studies}
+% \anexo{postexto}{exemplo}{Documentação Original \unbcic\ (parcial)}
+
+\end{document}
