@@ -4,7 +4,7 @@ A incorporação da Inteligência Artificial (IA) em sistemas de software tem tr
 
 Nesse contexto, esta Revisão Sistemática da Literatura (RSL) tem como objetivo identificar, analisar e sintetizar o estado da arte sobre a incorporação da ética em sistemas de Inteligência Artificial aplicados ao desenvolvimento de software. A revisão busca compreender quais princípios, frameworks, métodos e ferramentas têm sido utilizados para operacionalizar requisitos éticos, e de que forma essas abordagens contribuem ou ainda falham em apoiar práticas éticas nas etapas de engenharia de requisitos, projeto, implementação e manutenção de sistemas.
 
-O presente capítulo segue o protocolo metodológico proposto por \cite{kitchenham-book}, amplamente adotado na Engenharia de Software Empírica, que estabelece um processo estruturado para garantir rigor metodológico e reprodutibilidade. Além disso, a revisão atualiza e expande estudos anteriores, como os de \cite{cerqueira} e \cite{Rossi2025}, incorporando avanços recentes no campo da ética em IA, bem como novas regulamentações e frameworks normativos, como o \textit{AI Act} da União Europeia \cite{EUAIAct2024}, as Diretrizes de Ética da UNESCO \cite{UNESCO2021} e modelos de operacionalização ética emergentes, a exemplo do \textit{VPCIO Framework} \cite{Martin2025}.
+O presente capítulo segue o protocolo metodológico proposto por \cite{kitchenham-book}, amplamente adotado na Engenharia de Software Empírica, que estabelece um processo estruturado para garantir rigor metodológico e reprodutibilidade. Além disso, a revisão atualiza e expande estudos anteriores, como os de \cite{cerqueira} e \cite{Rossi2025}, incorporando avanços recentes no campo da ética em IA, bem como novas regulamentações e frameworks normativos, como o \textit{AI Act} da União Europeia \cite{EUAIAct2024}, as Diretrizes de Ética da UNESCO \cite{UNESCO2021} e modelos de operacionalização ética emergentes, a exemplo do \textit{VPCIO Framework} \cite{Martin2025}, um modelo recente que estrutura a tradução de valores éticos em práticas concretas de engenharia por meio das dimensões Values, Principles, Context, Implementation e Outcomes.
 
 O desenvolvimento da revisão é estruturado conforme o framework de \cite{garner}, que organiza o processo em três etapas principais: (i) planejamento da revisão, no qual são definidos os objetivos, questões de pesquisa e protocolo metodológico; (ii) condução da revisão, que compreende a busca, filtragem e extração dos estudos primários; e (iii) análise e síntese dos resultados, onde são consolidados os achados e discutidas as implicações teóricas e práticas.
 
@@ -27,13 +27,13 @@ Do ponto de vista de viabilidade, há: (i) crescimento do volume de publicaçõe
 
 Adotamos o \textit{framework} de \cite{Garner2016} para estruturar a decisão e o desenho metodológico da atualização, organizando a RSL em três etapas principais que preservam transparência, reprodutibilidade e rastreabilidade dos julgamentos:
 
-Etapa 1 — Planejamento da Revisão.
+Etapa 1: Planejamento da Revisão.  
 Define-se o escopo e os objetivos, as \textit{research questions} (RQs), a estratégia de busca e os critérios. Especificamos: (a) as RQs alinhadas à incorporação de princípios e requisitos éticos de IA no ciclo de vida do software; (b) a formulação PICOC (Population, Intervention, Comparison, Outcome, Context) para derivar a \textit{string} de busca; (c) os critérios de inclusão/exclusão (IC/EC) e o \textit{checklist} de qualidade (QA) a serem aplicados de forma consistente ao longo da seleção e extração.
 
-Etapa 2 — Condução da Revisão.
+Etapa 2: Condução da Revisão.  
 Descreve-se a execução da busca (bases como Scopus, IEEE Xplore, ACM Digital Library, SpringerLink e Web of Science), a deduplicação, a triagem por título, resumo e texto completo, e a codificação padronizada. Documentamos versões da \textit{string} adaptadas por base, filtros (período, tipo de estudo, idioma) e os procedimentos de dupla checagem e resolução de discordâncias.
 
-Etapa 3 — Análise e Síntese dos Resultados.
+Etapa 3: Análise e Síntese dos Resultados.  
 Especifica-se o formulário de extração (metadados, método, artefatos, princípios éticos, fase do ciclo de vida afetada, métricas/indicadores, evidências) e a estratégia de síntese. Combinamos análise temática (categorias: tipo de contribuição, princípios, práticas e ferramentas) e síntese quantitativa descritiva (frequências, séries temporais, mapas por venue), possibilitando discutir maturidade, lacunas e implicações para a prática e a pesquisa.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,9 +101,9 @@ String de busca base (inglês).
 (\,``artificial intelligence'' OR AI OR ``machine learning'' OR ML OR ``deep learning''\,)\ AND\ (ethic* OR ``ethical AI'' OR ``responsible AI'' OR ``trustworthy AI'' OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR ``algorithmic accountability''\,)\ AND\ (``software engineering'' OR ``software development'' OR ``requirements engineering'' OR DevOps OR MLOps OR ``software lifecycle'' OR SDLC OR ``development lifecycle''\,)\ AND\ (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)
 \end{quote}
 
-Essa formulação combina termos de \textit{domínio} (IA/ML), \textit{valor/ética} (incluindo variações como ``ethical AI'' e ``algorithmic accountability'') e \textit{processo} (engenharia de software e artefatos de operacionalização), visando equilíbrio entre \textit{recall} e \textit{precision} em campos de Título-Resumo-Palavras-chave \cite{kitchenham-book}.
+Essa formulação combina termos de \textit{domínio} (IA/ML), \textit{valor/ética} e \textit{processo} (engenharia de software e artefatos de operacionalização), visando equilíbrio entre \textit{recall} e \textit{precision}. Buscas-piloto indicaram que essa estrutura recupera estudos relevantes sem excesso de ruído em campos de título, resumo e palavras-chave \cite{kitchenham-book}.
 
-Janela temporal.
+Janela temporal.  
 A busca abrangerá publicações a partir de 2015, ano que marca a consolidação do deep learning como paradigma dominante em IA após os avanços com redes neurais convolucionais (AlexNet, 2012; ResNet, 2015) e o início de discussões sistemáticas sobre vieses e transparência em sistemas automatizados. Este recorte captura tanto a evolução tecnológica quanto o surgimento de frameworks éticos e regulatórios relevantes.
 
 Adaptações por base.
@@ -147,7 +147,7 @@ Esses critérios refletem as recomendações de Kitchenham para definir escopo e
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Avaliação da qualidade dos estudos (QA)}
+\subsection{Avaliação da qualidade dos estudos}
 
 A avaliação da qualidade (QA) foi planejada para apoiar decisões consistentes de inclusão, síntese e análise de sensibilidade, seguindo recomendações clássicas para revisões em Engenharia de Software \cite{kitchenham-book} e princípios de transparência de relato do PRISMA 2020 \cite{PRISMA2020}. O checklist foi definido \textit{a priori}, pilotado em um subconjunto de 15 estudos representativos (5 experimentais, 5 estudos de caso, 5 propostas conceituais) e aplicado por dois revisores de forma independente; discordâncias foram resolvidas por consenso, com arbitragem de um terceiro revisor quando necessário. Também estimamos a confiabilidade interavaliadores (coeficiente $\kappa$ de Cohen, alvo $\geq$ 0,70) durante a fase piloto para calibrar critérios e descritores.
 
@@ -182,7 +182,7 @@ As análises de sensibilidade seguirão protocolos pré-especificados e seus res
 Procedimento e rastreabilidade.
 A aplicação do QA será registrada por estudo em planilha estruturada (Parsifal e arquivo exportado), com justificativas textuais por item, identificação de avaliadores, data de avaliação, versão do formulário e resolução de discordâncias documentada. Todos os julgamentos, revisões de escore e decisões de inclusão/exclusão motivadas por QA serão auditáveis (logs e histórico de versões). Esses procedimentos atendem às diretrizes de atualização e manutenção de revisões \cite{Garner2016} e às boas práticas de documentação exigidas por checklists de relato \cite{PRISMA2020}.
 
-\subsection{Registro do protocolo e materiais (Parsifal, OSF, Mendeley Data)}
+\subsection{Registro do protocolo e materiais}
 
 Para assegurar transparência, prioridade intelectual e reprodutibilidade, o protocolo e os materiais serão disponibilizados publicamente, com carimbo temporal e versionamento:
 
