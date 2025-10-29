@@ -1,4 +1,12 @@
+% ============================================================================
+% CAPÍTULO 3 - REVISÃO SISTEMÁTICA DE LITERATURA
+% ============================================================================
+
 \label{cap:rsl}
+
+% ----------------------------------------------------------------------------
+% INTRODUÇÃO DO CAPÍTULO (sem numeração de seção)
+% ----------------------------------------------------------------------------
 
 A implementação da \gls{IA} em sistemas de software tem modificado de forma substancial a maneira como as soluções tecnológicas são criadas, desenvolvidas e implementadas. No entanto, este avanço vem acompanhado de um conjunto crescente de preocupações éticas a respeito da transparência, da justiça, da responsabilidade, da explicabilidade e da privacidade dos usuários. Vários casos de vieses algorítmicos, decisões automatizadas que resultam em discriminação e uso indevido de dados demonstram que não podemos nos contentar em integrar os princípios éticos de forma pontual, mas sim de forma sistemática em todo o ciclo de vida do desenvolvimento de software.
 
@@ -8,436 +16,712 @@ Este capítulo segue o protocolo metodológico clássico de Kitchenham \& Charte
 
 O processo de revisão é ancorado também no referencial de atualização de Garner \cite{garner}. Em linhas gerais:
 \begin{enumerate}[label=\Roman*.]
-\item Planejamento: definição de objetivos, questões de pesquisa e protocolo metodológico auditável.
-\item Condução: execução das buscas, deduplicação, triagens em múltiplas fases e extração padronizada.
-\item Análise e síntese: categorização temática e síntese quantitativa descritiva, com discussão de implicações.
+\item \textbf{Planejamento:} definição de objetivos, questões de pesquisa e protocolo metodológico auditável.
+\item \textbf{Condução:} execução das buscas, deduplicação, triagens em múltiplas fases e extração padronizada.
+\item \textbf{Análise e síntese:} categorização temática e síntese quantitativa descritiva, com discussão de implicações.
 \end{enumerate}
+
 A atualização desta \acrshort{RSL} justifica-se pelo rápido progresso das tecnologias de \acrshort{IA}, pelo aumento expressivo de publicações sobre ética computacional e engenharia responsável, e pelo surgimento de abordagens técnicas e organizacionais (por exemplo, \gls{LLMs} e sistemas de suporte ético) que introduzem desafios inéditos de transparência, auditabilidade e governança.
 
 Dessa forma, este capítulo fornece a base metodológica da revisão, evidenciando os avanços esperados, as lacunas a investigar e a organização do trabalho. Os resultados desta \acrshort{RSL} serão utilizados posteriormente para subsidiar o modelo proposto no Capítulo~\ref{cap:proposta}.
 
-%------------------------------------------------------
+
+% ============================================================================
+% SEÇÃO 3.1 - JUSTIFICATIVA E CONTEXTO DA REVISÃO
+% ============================================================================
+
 \section{Justificativa e Contexto da Revisão}
+\label{sec:justificativa-contexto}
 
 O avanço regulatório e as diretrizes internacionais em \acrshort{IA} criam um contexto empírico e normativo que justifica a atualização desta revisão sistemática. Em particular, a publicação do \acrshort{AI Act} da União Europeia no \textit{Official Journal} (12/07/2024) estabelece um marco regulatório horizontal baseado em risco; recomendações complementares como os \textit{OECD AI Principles} (2019) e a \textit{\acrshort{UNESCO} Recommendation} (2021) consolidam princípios de confiança, direitos humanos, transparência e responsabilização, com impactos diretos sobre processos, artefatos e evidências exigidas no desenvolvimento de software com \acrshort{IA} \cite{EUAIAct2024,OECD2019,UNESCO2021}.
 
+% ----------------------------------------------------------------------------
 \subsection{Relevância Científica e Prática}
+\label{subsec:relevancia-cientifica-pratica}
+
 A literatura técnica tem se expandido rapidamente em torno de abordagens para operacionalizar requisitos éticos, tanto por meio de modelos conceituais (por exemplo, VPCIO) quanto por soluções baseadas em \acrshort{LLMs} que apoiam atividades de engenharia (por exemplo, extração de requisitos regulatórios, entrevistas de elicitação automatizadas, auditorias textuais e relatórios explicativos) \cite{Martin2025,Abualhaija2025,Korn2025,Deng2025,Bolgouras2025}. Esse movimento sugere maturação do campo e disponibilidade de novos resultados passíveis de síntese sistemática.
 
+% ----------------------------------------------------------------------------
 \subsection{Diferencial em Relação a Revisões Anteriores}
+\label{subsec:diferencial-revisoes-anteriores}
+
 Esta atualização amplia e aprofunda investigações anteriores (por exemplo, Cerqueira \cite{cerqueira}), incorporando novas fontes, bases e marcos normativos e privilegiando a operacionalização prática de princípios éticos na engenharia de software, tanto no plano teórico quanto no empírico, com foco no período entre janeiro de 2020 e setembro de 2025.
 
+% ----------------------------------------------------------------------------
 \subsection{Viabilidade da Revisão}
+\label{subsec:viabilidade-revisao}
+
 \begin{itemize}
 \item Crescimento do volume de publicações primárias em periódicos e conferências de engenharia de software e ética de \acrshort{IA} desde 2020;
 \item Maior disponibilidade de textos integrais e artefatos suplementares (protocolos, bases e código) em repositórios institucionais e abertos;
 \item Diversidade de métodos empíricos (estudos de caso, experimentos, surveys e avaliações) que permitem comparações e sínteses robustas.
 \end{itemize}
 
-%------------------------------------------------------
+
+% ============================================================================
+% SEÇÃO 3.2 - METODOLOGIA DA REVISÃO SISTEMÁTICA
+% ============================================================================
 
 \section{Metodologia da Revisão Sistemática}
 \label{sec:metodologia-rsl}
 
-Esta seção documenta, de forma íntegra e auditável, o \textit{protocolo metodológico} que regerá a execução da \acrshort{RSL}. O objetivo é tornar explícitos: (i) os referenciais adotados e seus papéis; (ii) as decisões de desenho (\gls{RQs}, PICOC, \textit{strings}, bases, janelas, \gls{IC/EC}, \gls{QA}, extração e síntese); e (iii) os mecanismos de transparência (registro público e materiais suplementares). Foram selecionadas três bases de dados especializadas ACM Digital Library, IEEE Xplore e DBLP por sua relevância e cobertura consolidada em Engenharia de Software e Sistemas de IA. O protocolo segue o padrão de Kitchenham \& Charters \cite{barbara2007guidelines}, com atualização guiada por Garner et al. \cite{garner} e relato alinhado às diretrizes PRISMA 2020/PRISMA-S \cite{PRISMA2020,PRISMAS}.
+Esta seção documenta, de forma íntegra e auditável, o \textbf{protocolo metodológico} que regerá a execução da \acrshort{RSL}. O objetivo é tornar explícitos: (i) os referenciais adotados e seus papéis; (ii) as decisões de desenho (\gls{RQs}, PICOC, \textit{strings}, bases, janelas, \gls{IC/EC}, \gls{QA}, extração e síntese); e (iii) os mecanismos de transparência (registro público e materiais suplementares). 
 
+Foram selecionadas \textbf{quatro bases de dados especializadas} \textbf{ACM Digital Library}, \textbf{IEEE Xplore}, \textbf{Scopus} e \textbf{Web of Science} por sua relevância e cobertura consolidada em Engenharia de Software e Sistemas de \acrshort{IA}, equilibrando precisão (bases especializadas ACM/IEEE) com abrangência multidisciplinar (Scopus/WoS). 
+
+O protocolo segue o padrão de Kitchenham \& Charters \cite{barbara2007guidelines}, com atualização guiada por Garner et al. \cite{garner} e relato alinhado às diretrizes \acrshort{PRISMA} 2020/\acrshort{PRISMA}-S \cite{PRISMA2020,PRISMAS}.
+
+% ----------------------------------------------------------------------------
 \subsection{Framework Metodológico Adotado}
+\label{subsec:framework-metodologico}
 
-O processo metodológico combina as diretrizes de Kitchenham \& Charters (2007) padrão consolidado para \acrshort{RSL} em Engenharia de Software com etapas de planejamento, condução e análise \cite{barbara2007guidelines} com o referencial de Garner (2016), que oferece critérios e um processo decisório para atualizar revisões (gatilhos, escopo e mudanças metodológicas), além de recomendações de transparência sobre o que foi alterado na atualização \cite{garner}. \acrshort{PRISMA} 2020/\acrshort{PRISMA}-S orientam o \textit{reporting} do fluxo de seleção e da estratégia de busca \cite{PRISMA2020}.
+O processo metodológico combina três referenciais complementares para assegurar rigor, reprodutibilidade e transparência:
 
+% ............................................................................
 \subsubsection{Kitchenham \& Charters (2007)}
-No planejamento, define-se o escopo da pesquisa, as \acrshort{RQs}, a estratégia de busca e os critérios de \acrshort{IC/EC}. Na condução, executam-se buscas nas bases selecionadas, com deduplicação e triagens em múltiplas fases. Por fim, a análise envolve extração padronizada de dados, categorização temática e síntese qualitativa e quantitativa \cite{barbara2007guidelines}.
+\label{subsubsec:kitchenham-charters}
 
-\subsubsection{Framework de Garner (2016)}
-O referencial de Garner complementa Kitchenham ao fundamentar quando atualizar, o que alterar e como relatar revisões atualizadas, reforçando transparência e rastreabilidade (janela temporal, escopo, bases e ajustes no protocolo) \cite{garner}.
+Padrão consolidado para \acrshort{RSL} em Engenharia de Software, com etapas bem definidas \cite{barbara2007guidelines}:
 
+\begin{itemize}[noitemsep]
+  \item \textbf{Planejamento:} Definição do escopo da pesquisa, \acrshort{RQs}, estratégia de busca e critérios de \acrshort{IC/EC}.
+  \item \textbf{Condução:} Execução das buscas nas bases selecionadas, com deduplicação e triagens em múltiplas fases (título, resumo, texto completo).
+  \item \textbf{Análise:} Extração padronizada de dados, categorização temática e síntese qualitativa e quantitativa.
+\end{itemize}
+
+% ............................................................................
+\subsubsection{Framework de Garner et al. (2016)}
+\label{subsubsec:garner-framework}
+
+Complementa Kitchenham ao fornecer critérios e processos para \textbf{atualização de RSLs} \cite{garner}:
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Gatilhos para atualização:} Identifica quando uma RSL existente precisa ser atualizada (novas evidências, mudanças regulatórias, avanços tecnológicos).
+  \item \textbf{Transparência sobre mudanças:} Documenta explicitamente o que foi alterado em relação à revisão anterior (escopo, janela temporal, bases de dados, strings de busca).
+  \item \textbf{Rastreabilidade:} Assegura que decisões metodológicas sejam auditáveis e replicáveis.
+\end{itemize}
+
+% ............................................................................
+\subsubsection{PRISMA 2020 / PRISMA-S}
+\label{subsubsec:prisma}
+
+Orienta o \textit{reporting} do fluxo de seleção e da estratégia de busca \cite{PRISMA2020,PRISMAS}:
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Checklist:} 27 itens essenciais para relato transparente de RSLs.
+  \item \textbf{Fluxo PRISMA:} Diagrama padronizado mostrando registros identificados, excluídos e incluídos em cada fase.
+  \item \textbf{PRISMA-S:} Extensão específica para documentação de estratégias de busca eletrônica (strings, filtros, datas de execução).
+\end{itemize}
+
+% ............................................................................
 \subsubsection{Integração dos Frameworks}
-A integração articula três componentes complementares: (i) o rigor metodológico de Kitchenham (planejamento, condução, análise); (ii) os critérios de atualização de Garner (transparência sobre mudanças de escopo, janela temporal e protocolo); e (iii) as diretrizes de relato \acrshort{PRISMA} 2020/PRISMA-S (fluxo de seleção para revisões atualizadas, registro de \textit{strings} e metadados).
+\label{subsubsec:integracao-frameworks}
 
-Durante o planejamento, foram definidos escopo, objetivos, \acrshort{RQs} e estratégia de busca. Na condução, aplicam-se os \acrshort{IC/EC} sistematicamente, com registro completo do fluxo \acrshort{PRISMA}. A análise e síntese combinam categorização temática e síntese quantitativa descritiva, gerando uma visão abrangente do estado da arte.
+A integração articula três componentes complementares:
 
-%--------------------------------------------------------------------
+\begin{enumerate}
+  \item \textbf{Rigor metodológico (Kitchenham):} Estrutura sistemática de planejamento, condução e análise.
+  \item \textbf{Transparência de atualização (Garner):} Critérios explícitos para mudanças de escopo, janela temporal e protocolo em relação a revisões anteriores.
+  \item \textbf{Padronização de relato (PRISMA):} Fluxo de seleção, registro de \textit{strings} e metadados segundo padrões internacionais.
+\end{enumerate}
 
+Durante o planejamento, foram definidos escopo, objetivos, \acrshort{RQs} e estratégia de busca. Na condução, os \acrshort{IC/EC} são aplicados sistematicamente, com registro completo do fluxo \acrshort{PRISMA}. A análise e síntese combinam categorização temática e síntese quantitativa descritiva, gerando uma visão abrangente do estado da arte.
+
+
+% ----------------------------------------------------------------------------
 \subsection{Objetivos da Revisão Sistemática}
+\label{subsec:objetivos-rsl}
 
 \noindent\textbf{Objetivo geral.}
 Estabelecer, com rigor e reprodutibilidade, uma síntese crítica e abrangente sobre \textit{como} princípios e requisitos éticos de \acrshort{IA} têm sido \textbf{operacionalizados} no ciclo de vida do desenvolvimento de software, identificando \textbf{(a)} quais valores/princípios são efetivamente considerados, \textbf{(b)} quais \textit{frameworks}, métodos, processos, ferramentas e artefatos suportam sua incorporação, \textbf{(c)} qual o \textbf{nível de maturidade e a qualidade da evidência} associada a essas abordagens (benefícios, custos, riscos, métricas), e \textbf{(d)} quais \textbf{lacunas e desafios} persistem para orientar pesquisa aplicada e prática profissional.
 
 \medskip
 \noindent\textbf{Objetivos específicos} (alinhados às \acrshort{RQs} e ao plano de síntese):
+
 \begin{enumerate}
 \item \textbf{Mapear princípios e requisitos éticos} de \acrshort{IA} considerados na literatura aplicada à engenharia de software (por exemplo, justiça, transparência, explicabilidade, privacidade, responsabilidade, não maleficência), explicitando o vínculo entre valores e decisões de engenharia (dados, modelos, arquitetura, governança).
-\item \textbf{Catalogar abordagens de operacionalização} (\textit{frameworks}, métodos, processos, padrões, checklists, artefatos, ferramentas) e \textbf{localizá-las no SDLC} (requisitos, arquitetura/projeto, implementação, verificação/validação, operação, MLOps/DevOps, governança/conformidade), descrevendo entradas, saídas e pontos de integração.
+
+\item \textbf{Catalogar abordagens de operacionalização} (\textit{frameworks}, métodos, processos, padrões, \textit{checklists}, artefatos, ferramentas) e \textbf{localizá-las no SDLC} (requisitos, arquitetura/projeto, implementação, verificação/validação, operação, MLOps/DevOps, governança/conformidade), descrevendo entradas, saídas e pontos de integração.
+
 \item \textbf{Avaliar a maturidade e a evidência empírica} das abordagens identificadas, sintetizando \textbf{benefícios, custos, limitações, riscos} e \textbf{métricas/indicadores} (por exemplo, cobertura regulatória, mitigação de vieses, qualidade/traçabilidade de explicações, impacto em processos).
-\item \textbf{Identificar lacunas e desafios recorrentes} (metodológicos, organizacionais, regulatórios e técnicos) que dificultam a integração sistemática de ética em \acrshort{IA} ao desenvolvimento de software, produzindo implicações práticas e \textbf{agenda de pesquisa} coerentes com as evidências.
+
+\item \textbf{Identificar lacunas e desafios recorrentes} (metodológicos, organizacionais, regulatórios e técnicos) que dificultam a integração sistemática de ética em \acrshort{IA} ao desenvolvimento de software, produzindo implicações práticas e agenda de pesquisa coerentes com as evidências.
+
 \item \textbf{Fornecer base empírica e conceitual} para o modelo proposto no Capítulo~\ref{cap:proposta}, assegurando traçabilidade entre achados da \acrshort{RSL} e decisões de projeto do artefato/processo sugerido.
 \end{enumerate}
 
 
-%---------------------------------------------------------------------------------------------
-
+% ----------------------------------------------------------------------------
 \subsection{Questões de Pesquisa}
-\label{sec:RQs}
+\label{subsec:questoes-pesquisa}
 
-As \acrshort{RQs} cobrem conteúdo (\textit{o que}), operacionalização (\textit{como}), maturidade/evidências (\textit{quão eficaz}) e lacunas (\textit{onde avançar}); cada \acrshort{RQ} é acompanhada de justificativa.
+As \acrshort{RQs} cobrem \textit{conteúdo} (o que), \textit{operacionalização} (como), \textit{maturidade/evidências} (quão eficaz) e \textit{lacunas} (onde avançar); cada RQ é acompanhada de justificativa. A Tabela~\ref{tab:research-questions} sintetiza as questões e suas respectivas justificativas.
 
-\begin{table}[H]
+\begin{table}[htbp]
 \centering
 \caption{Questões de pesquisa e justificativas}
-\label{tab:questoes-pesquisa}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}p{1cm}p{6.5cm}p{10.5cm}@{}}
+\label{tab:research-questions}
+\begin{tabular}{p{0.08\textwidth}p{0.42\textwidth}p{0.42\textwidth}}
 \toprule
-\textbf{RQ} & \textbf{Questão} & \textbf{Justificativa} \\ 
+\textbf{RQ} & \textbf{Questão} & \textbf{Justificativa} \\
 \midrule
-\textbf{RQ1} & Quais princípios e requisitos éticos de \acrshort{IA} são reportados como aplicáveis ao desenvolvimento de software? & Princípios éticos funcionam como requisitos de qualidade/valor que condicionam decisões de engenharia. Mapear explicitamente tais princípios é necessário para alinhar práticas a expectativas regulatórias, normativas e sociais (por exemplo, OECD AI Principles). \\ 
+\textbf{RQ1} & Quais princípios e requisitos éticos de \acrshort{IA} são reportados como aplicáveis ao desenvolvimento de software? 
+& Princípios éticos funcionam como requisitos de qualidade/valor que condicionam decisões de engenharia. Mapear explicitamente tais princípios é necessário para alinhar práticas a expectativas regulatórias, normativas e sociais (ex.: OECD AI Principles). \\
+\hline
 \addlinespace
-\textbf{RQ2} & Quais abordagens (frameworks, métodos, processos, padrões, checklists, ferramentas, artefatos) são propostas ou utilizadas para incorporar ética em \acrshort{IA} no ciclo de vida do software? & A literatura carece de sínteses operacionais. Catalogar abordagens permite compreender pontos de integração com práticas de engenharia (requisitos, arquitetura, testes, MLOps), entradas/saídas, dependências organizacionais e evidências de adoção. \\ 
+\textbf{RQ2} & Quais abordagens (\textit{frameworks}, métodos, processos, padrões, \textit{checklists}, ferramentas, artefatos) são propostas ou utilizadas para incorporar ética em \acrshort{IA} no ciclo de vida do software? 
+& A literatura carece de sínteses operacionais. Catalogar abordagens permite compreender pontos de integração com práticas de engenharia (requisitos, arquitetura, testes, MLOps), entradas/saídas, dependências organizacionais e evidências de adoção. \\
+\hline
 \addlinespace
-\textbf{RQ3} & Que evidências empíricas existem sobre efetividade, custo, limitações e riscos das abordagens de operacionalização? & Decisões de adoção dependem de evidências confiáveis; interessa a robustez metodológica (casos, experimentos, avaliações), métricas (por exemplo, cobertura regulatória, mitigação de vieses, qualidade de explicações) e ameaças à validade (\acrshort{PRISMA} 2020). \\ 
+\textbf{RQ3} & Que evidências empíricas existem sobre efetividade, custo, limitações e riscos das abordagens de operacionalização? 
+& Decisões de adoção dependem de evidências confiáveis; interessa a robustez metodológica (casos, experimentos, avaliações), métricas (ex.: cobertura regulatória, mitigação de vieses, qualidade de explicações) e ameaças à validade (PRISMA 2020). \\
+\hline
 \addlinespace
-\textbf{RQ4} & Quais lacunas, desafios e necessidades futuras são apontados? & Identificar lacunas orienta a agenda de pesquisa e fundamenta propostas de melhoria de processos e ferramentas, além de priorizar capacitação, governança e conformidade. \\ 
+\textbf{RQ4} & Quais lacunas, desafios e necessidades futuras são apontados, e como a ética em \acrshort{IA} é integrada nas diferentes fases do ciclo de vida de desenvolvimento de software? 
+& Identificar lacunas orienta a agenda de pesquisa e fundamenta propostas de melhoria de processos e ferramentas. Mapear quando e como ética é considerada (requisitos, design, testes, manutenção) permite priorizar capacitação, governança e conformidade. \\
 \bottomrule
-\end{tabular}%
-}
+\end{tabular}
 \end{table}
 
-%----------------------------------------------------------------------
 
+% ----------------------------------------------------------------------------
 \subsection{Estratégia PICOC}
+\label{subsec:estrategia-picoc}
 
 A estratégia PICOC assegura alinhamento entre \acrshort{RQs}, busca e seleção e explicita o escopo \textit{software-centric} frente a estudos predominantemente algorítmicos sem conexão com práticas de engenharia \cite{barbara2007guidelines}.
 
 \begin{description}[style=nextline]
-  \item[Population (P):] estudos primários envolvendo profissionais e contextos de engenharia de software (requisitos, arquitetura, qualidade, MLOps/DevOps, segurança/privacidade) que abordem ética em \acrshort{IA}.
-  \item[Intervention (I):] princípios, requisitos, frameworks, métodos, processos, padrões, checklists, ferramentas e artefatos que operacionalizam ética no ciclo de vida (incluindo conformidade, governança e auditoria).
-  \item[Comparison (C):] não obrigatória; quando presente, registrar comparações entre abordagens.
-  \item[Outcome (O):] evidências sobre aplicabilidade, efetividade, custo, métricas/indicadores, limitações, riscos, conformidade e reprodutibilidade.
-  \item[Context (C):] ambientes acadêmicos e industriais; domínios (saúde, finanças, setor público, plataformas digitais); níveis de risco regulatório; cenários organizacionais e de dados.
+  \item[Population (P):] Estudos primários envolvendo profissionais e contextos de engenharia de software (requisitos, arquitetura, qualidade, MLOps/DevOps, segurança/privacidade) que abordem ética em \acrshort{IA}.
+  
+  \item[Intervention (I):] Princípios, requisitos, \textit{frameworks}, métodos, processos, padrões, \textit{checklists}, ferramentas e artefatos que operacionalizam ética no ciclo de vida (incluindo conformidade, governança e auditoria).
+  
+  \item[Comparison (C):] Não obrigatória; quando presente, registrar comparações entre abordagens.
+  
+  \item[Outcome (O):] Evidências sobre aplicabilidade, efetividade, custo, métricas/indicadores, limitações, riscos, conformidade e reprodutibilidade.
+  
+  \item[Context (C):] Ambientes acadêmicos e industriais; domínios (saúde, finanças, setor público, plataformas digitais); níveis de risco regulatório; cenários organizacionais e de dados.
 \end{description}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{String de busca e adaptações por base de dados}
+% ----------------------------------------------------------------------------
+\subsection{String de Busca e Adaptações por Base de Dados}
+\label{subsec:string-busca}
 
-A pesquisa será conduzida por meio de duas estratégias complementares: busca digital automatizada e busca manual. A busca digital utilizará uma \textit{string} de busca estruturada com operadores booleanos, construídas a partir das \acrshort{RQs} e do modelo PICOC, seguindo as recomendações Kitchenham \& Charters \cite{barbara2007guidelines}. A busca manual incluirá a inspeção de perfis de autores proeminentes e listas de referências de estudos-chave em venues de referência (sem \emph{snowballing} sistemático).
+A pesquisa será conduzida por meio de duas estratégias complementares: \textbf{busca digital automatizada} e \textbf{busca manual}. A busca digital utilizará uma \textit{string} de busca estruturada com operadores booleanos, construída a partir das \acrshort{RQs} e do modelo PICOC, seguindo as recomendações de Kitchenham \& Charters \cite{barbara2007guidelines}. A busca manual incluirá a inspeção de perfis de autores proeminentes e listas de referências de estudos-chave em \textit{venues} de referência (sem \textit{snowballing} sistemático).
 
-Foram selecionadas três bases de dados digitais ACM Digital Library, IEEE Xplore e DBLP por concentrarem a maior parte da literatura revisada por pares em Engenharia de Software e Ética em IA, com cobertura robusta de conferências e periódicos de alto impacto. A opção por bases especializadas, em detrimento de bases multidisciplinares (Scopus/Web of Science), privilegia a precisão sobre o recall, reduzindo significativamente o número de falsos positivos (estudos fora do escopo software-centric) \cite{brereton-07,barbara2007guidelines}. Essa estratégia é complementada por busca manual em perfis de autores-chave e inspeção de referências, conforme recomendado por Wohlin et al. \cite{wohlin-2014} para revisões em áreas emergentes.
+% ............................................................................
+\subsubsection{Seleção e Justificativa das Bases de Dados}
+\label{subsubsec:selecao-bases}
 
-A \textit{string} de busca base foi iterativamente refinada a partir da proposta de Cerqueira \cite{cerqueira}, utilizando três estudos de controle (Pekka et al. \cite{pekka-rsl}, Cerqueira et al. \cite{cerqueira-2}, Vakkuri et al. \cite{vakkuri-rsl}) e testes-piloto na base ACM. A palavra-chave \textit{user stories} foi adicionada para refinar o escopo em direção a artefatos de engenharia de requisitos. A versão final da \textit{string} base é apresentada na Tabela~\ref{tab:string-base}.
+Foram selecionadas \textbf{quatro bases de dados} \textbf{ACM Digital Library}, \textbf{IEEE Xplore}, \textbf{Scopus} e \textbf{Web of Science} por concentrarem a maior parte da literatura revisada por pares em Engenharia de Software e Ética em \acrshort{IA}, com cobertura robusta de conferências e periódicos de alto impacto. 
 
-\paragraph{Conformidade com PRISMA-S.}
-Para cada base, serão registrados: (i) data e hora local da execução; (ii) plataforma/URL e versão da interface; (iii) campos consultados; (iv) filtros aplicados (período, tipo documental, idioma); (v) a \textit{string} completa tal como submetida; (vi) formato(s) de exportação (BibTeX/CSV/RIS) e contagens de registros exportados. Esses metadados serão disponibilizados como material suplementar, em alinhamento à checklist PRISMA-S \cite{PRISMAS}.
-
-\paragraph{Campos por plataforma.}
-ACM DL e IEEE Xplore serão consultadas com restrição ao campo \emph{Abstract} (quando disponível), conforme documentação das plataformas, para reduzir falsos positivos e aumentar a precisão em estudos primários \cite{ACM-Advanced,IEEE-Advanced}. No DBLP, por se tratar de base bibliográfica, a busca ocorrerá sem restrição de campo, com foco em normalização de metadados e detecção de registros ausentes \cite{DBLP-About}.
-
-\paragraph{Função do DBLP.}
-O DBLP será utilizado como fonte de apoio à normalização (autores, venues, DOIs) e identificação de registros potencialmente omissos de ACM/IEEE. Dado seu escopo bibliográfico, espera-se alto índice de duplicatas, tratadas no pipeline de deduplicação \cite{DBLP-About}.
-
-\subsubsection{String base (jan/2020--set/2025)}
-\begin{table}[htb!]
-\centering
-\caption{\emph{String} de busca base}
-\label{tab:string-base}
-\footnotesize
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}p{5cm}p{10cm}@{}}
-\textbf{\emph{String} base} &
-  (``ethic*'' OR ``ethical AI'' OR ``responsible AI'' OR ``trustworthy AI'' OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR ``algorithmic accountability'') \\
-  & AND (``artificial intelligence'' OR AI OR ``machine learning'' OR ML OR ``deep learning'') \\
-  & AND (``software engineering'' OR ``software development'' OR ``requirements engineering'' OR DevOps OR MLOps OR ``software lifecycle'' OR SDLC OR ``development lifecycle'') \\
-& AND (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)
-\end{tabular}
-\end{adjustbox}
-\end{table}
-
-\subsubsection{Adaptações por base}
-
-As adaptações da \textit{string} para cada base consideraram os campos de indexação e sintaxe específicos. Em ACM e IEEE Xplore, a busca foi restrita ao \textit{abstract} para aumentar a precisão e reduzir falsos positivos. Em DBLP, utilizou-se a \textit{string} base sem restrição de campo, dada à natureza bibliográfica da base. As versões finais por base são apresentadas na Tabela~\ref{tab:strings-adaptadas}.
-
-\begin{table}[htb!]
-\centering
-\caption{\emph{Strings} de busca adaptadas por base}
-\label{tab:strings-adaptadas}
-\footnotesize
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}p{3cm}p{15cm}@{}}
-  \textbf{Base} & \textbf{\emph{String} adaptada} \\
-  \hline \\
-\textbf{ACM Digital Library} &
-  [Abstract: (``ethic*'' OR ``ethical AI'' OR ``responsible AI'' OR ``trustworthy AI'' OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR ``algorithmic accountability'')] \\
-  & AND [Abstract: (``artificial intelligence'' OR AI OR ``machine learning'' OR ML OR ``deep learning'')] \\
-  & AND [Abstract: (``software engineering'' OR ``software development'' OR ``requirements engineering'' OR DevOps OR MLOps OR ``software lifecycle'' OR SDLC OR ``development lifecycle'')] \\
-  & AND [Abstract: (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)] \\
-  & AND [Publication Date: 2020--2025] \\
-  \midrule \\
-  \textbf{IEEE Xplore} &
-  (``Abstract'':``ethic*'' OR ``ethical AI'' OR ``responsible AI'' OR ``trustworthy AI'' OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR ``algorithmic accountability'') \\
-  & AND (``Abstract'':``artificial intelligence'' OR AI OR ``machine learning'' OR ML OR ``deep learning'') \\
-  & AND (``Abstract'':``software engineering'' OR ``software development'' OR ``requirements engineering'' OR DevOps OR MLOps OR ``software lifecycle'' OR SDLC OR ``development lifecycle'') \\
-  & AND (``Abstract'':framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach) \\
-  \midrule \\ 
-\textbf{DBLP} &
-  (``ethic*'' OR ``ethical AI'' OR ``responsible AI'' OR ``trustworthy AI'' OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR ``algorithmic accountability'') \\
-  & AND (``artificial intelligence'' OR AI OR ``machine learning'' OR ML OR ``deep learning'') \\
-  & AND (``software engineering'' OR ``software development'' OR ``requirements engineering'' OR DevOps OR MLOps OR ``software lifecycle'' OR SDLC OR ``development lifecycle'') \\
-  & AND (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach) \\
-\hline
-\end{tabular}
-\end{adjustbox}
-\end{table}
-
-Todas as buscas serão executadas em outubro de 2025, com janela temporal definida de janeiro de 2020 a setembro de 2025, período que abrange a consolidação de marcos regulatórios (AI Act, GDPR) e o amadurecimento técnico de abordagens de fairness, explicabilidade (XAI) e governança ética em IA. Os resultados foram exportados em formatos estruturados (BibTeX, CSV) para consolidação e deduplicação no Parsifal.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Critérios de Seleção}
-
-Os critérios foram definidos \textit{a priori} e serão aplicados em três fases (título, resumo e texto completo), com registro das razões de exclusão conforme \acrshort{PRISMA} \cite{PRISMA2020}. Divergências serão resolvidas por consenso e, quando necessário, por um terceiro revisor.
-
-A busca foi limitada a estudos em inglês, idioma predominante na literatura científica em engenharia de software e ética de IA \cite{barbara2007guidelines}. Essa decisão reduz o risco de viés de seleção decorrente de indexação inconsistente de publicações não inglesas nas bases internacionais utilizadas (Scopus, IEEE, ACM, etc.), além de garantir uniformidade na interpretação de termos técnicos e conceituais. Embora possa haver contribuições relevantes em outros idiomas, a restrição ao inglês é prática comum em revisões sistemáticas da área \cite{barbara2007guidelines} e assegura maior rigor na extração e análise de dados.
-
-\subsubsection{Critérios de Inclusão (IC)}
-\begin{enumerate}[label=\textbf{IC \arabic*:}]
-\item Estudo \textit{primário} que proponha, aplique ou avalie princípios, métodos, processos, padrões, checklists, ferramentas ou artefatos para \textit{operacionalizar} ética em \acrshort{IA} no ciclo de vida do software (requisitos, projeto/arquitetura, implementação, verificação/validação, operação, MLOps/DevOps, governança/conformidade).
-\item Vinculação explícita ao contexto de engenharia de software (acadêmico ou industrial), integrando-se a atividades, artefatos ou práticas do SDLC e/ou a processos de conformidade (\acrshort{AI Act}, GDPR/LGPD).
-\item Disponibilidade de texto completo e descrição metodológica mínima (contexto, procedimento, resultados).
-\item Estudos escritos em inglês.
-\end{enumerate}
-
-\subsubsection{Critérios de Exclusão (EC)}
-\begin{enumerate}[label=\textbf{EC \arabic*:}]
-\item Revisões secundárias, editoriais, \textit{position papers} sem proposta/artefato operacionalizável, tutoriais sem avaliação ou relatórios não científicos.
-\item Estudos exclusivamente algorítmicos focados apenas em desempenho/arquitetura de modelos, sem conexão explícita com: (a) princípios éticos; (b) requisitos não funcionais; (c) artefatos de engenharia (documentação, testes, monitoramento); ou (d) conformidade regulatória. (Exceção: fairness/XAI/privacy integráveis a MLOps/governança.)
-\item Ausência de evidência mínima (método indefinido, resultados não verificáveis, indisponibilidade de texto completo).
-\item Duplicatas; versões abreviadas quando existir versão estendida/arquival do mesmo trabalho (preferência pela versão mais completa e recente).
-\end{enumerate}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Avaliação da qualidade dos estudos (QA)}
-
-A \acrshort{QA} apoia decisões consistentes de inclusão, síntese e análise de sensibilidade, seguindo recomendações para revisões em Engenharia de Software \cite{barbara2007guidelines} e princípios de transparência \acrshort{PRISMA} \cite{PRISMA2020}. O checklist será aplicado por dois revisores independentes; discordâncias serão resolvidas por consenso e, quando necessário, por um terceiro revisor. Uma calibração inicial estimará a concordância interavaliadores (Cohen $\kappa$).
-
-\subsubsection{Checklist de qualidade}
-O instrumento contém oito itens com respostas {0 = não, 0{,}5 = parcialmente, 1 = sim}; pontuação máxima: 8.
-\begin{enumerate}
-  \item Clareza e alinhamento (objetivos/\acrshort{RQs} coerentes com ética em \acrshort{IA} em ES);
-  \item Contexto e cenário (domínio, participantes/dados, artefatos);
-  \item Adequação metodológica (desenho, procedimentos, instrumentos);
-  \item Descrição técnica da abordagem (entradas, saídas, passos);
-  \item Evidência de avaliação (métricas, protocolo e resultados);
-  \item Ameaças à validade (interna, externa, construção, conclusão);
-  \item Consistência de resultados (dados suportam conclusões);
-  \item Reprodutibilidade/artefatos (código/dados/scripts/documentação).\footnotemark
-\end{enumerate}
-\footnotetext{Estudos industriais com restrições legítimas de propriedade intelectual podem receber 0,5 pela descrição conceitual/procedimental suficiente para reprodução sem artefatos; 1 quando houver artefatos públicos ou descrição excepcional com pseudocódigo/diagramas detalhados. serão avaliados quanto à disponibilização de dados sintéticos, anonimizados ou protocolos de acesso controlado.}
-
-\subsubsection{Regras de decisão e análises de sensibilidade}
-Estudos com escore $<60\%$ serão retidos provisoriamente e avaliados em análise de sensibilidade; se degradarem a robustez das conclusões, serão excluídos da síntese principal e reportados em apêndice. Análises: (i) remoção por limiar (50\%, 60\%, 70\%); (ii) ponderação por qualidade; (iii) estratificação por desenho (experimental, observacional, estudo de caso, conceitual); (iv) análise temporal (últimos 3 anos).
-
-\subsubsection{Procedimento e rastreabilidade}
-A aplicação do \acrshort{QA} será registrada por estudo (planilha de extração), com justificativas por item, identificadores dos avaliadores, data e versão do formulário. Todos os julgamentos e decisões motivadas por \acrshort{QA} serão auditáveis (logs/histórico).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Formulário de extração de dados}
-\label{sec:extracao}
-
-Os dados extraídos serão organizados em três níveis complementares, alinhados às RQs e ao plano de síntese:
-
-\subsubsection{Metadados bibliográficos e contextuais}
-
-\begin{table}[H]
- \centering
- \caption{\emph{Template} Formulário de Extração de Dados – Metadados Bibliográficos e Contextuais}
- \label{tab:data-extract-metadata}
- \begin{adjustbox}{width=1\textwidth}
- \begin{tabular}{ | p{5cm} | p{10cm} | l | }
-    \hline
-    \textbf{Item} & \textbf{Valor} & \textbf{RQ} \\
-    \hline
-    Autores & - & - \\
-    \hline
-    Ano de publicação & - & - \\
-    \hline
-    Título do estudo & - & - \\
-    \hline
-    DOI & - & - \\
-    \hline
-    Tipo de publicação & \emph{Conference} ou \emph{Journal} & - \\
-    \hline
-    Venue (periódico/conferência) & Nome do evento ou periódico & - \\
-    \hline
-    Ranking/Classificação do venue & Qualis, CORE, CCF ou outro (quando disponível) & - \\
-    \hline
-    País/região dos autores & Primeiro autor e autor correspondente & - \\
-    \hline
-    Tipo de afiliação & Acadêmica, industrial ou mista & - \\
-    \hline
-    Tipo de estudo & Empírico (experimento, estudo de caso, survey, avaliação em campo), conceitual (framework/método) ou misto & - \\
-    \hline
-\end{tabular}
-\end{adjustbox}
-\end{table}
-
-\subsubsection{Dados de conteúdo técnico (alinhados às RQs)}
-
-\begin{description}[style=nextline]
-\item[RQ1: Princípios éticos:] lista de princípios/requisitos éticos (fairness, transparency, accountability, privacy, explainability, safety, non-maleficence, autonomy, outros); mapeamento a frameworks normativos (OECD, UNESCO, AI Act, IEEE); definições operacionais (quando fornecidas).
-
-\item[RQ2: Abordagens de operacionalização:] tipo de contribuição (framework, método/processo, ferramenta, padrão arquitetural, checklist, artefato de documentação, guideline organizacional); fases do SDLC cobertas (requisitos, design, implementação, testes/validação, deployment, operação/monitoramento, MLOps/DevOps, governança/auditoria); entradas/saídas; dependências (organizacionais, técnicas, de dados); nível de automação (manual, semiautomático, automático).
-
-\item[RQ3: Evidências empíricas:] desenho de avaliação (estudo de caso único/múltiplo, experimento, quase-experimento, survey, avaliação em campo, prova de conceito); métricas/indicadores (cobertura de requisitos regulatórios, detecção de vieses, qualidade/completude de explicações, impacto em tempo/custo de desenvolvimento, satisfação de \textit{stakeholders}); resultados principais; ameaças à validade; disponibilidade de artefatos (código, dados, protocolos).
-
-\item[RQ4: Lacunas e desafios:] lacunas metodológicas (ausência de métricas padronizadas, pouca validação empírica); desafios organizacionais (resistência cultural, falta de capacitação, custos de adoção); desafios regulatórios (ambiguidade, conformidade); desafios técnicos (escalabilidade, integração, \textit{trade-offs}).
-\end{description}
-
-\subsubsection{Dados complementares para análise}
+\paragraph{Justificativa da estratégia de seleção:}
 
 \begin{itemize}[noitemsep]
-\item Domínio: saúde, finanças, educação, justiça criminal, recursos humanos, setor público, plataformas digitais, genérico/não especificado
-\item Nível de risco (AI Act): mínimo, limitado, alto, inaceitável, não classificado
-\item Maturidade: conceitual, protótipo, piloto, produção
-\item Pontuação de qualidade (QA): escore total (0-8) e classificação (baixa $<$ 4,0; média 4,0-5,9; alta $\geq$ 6,0)
+  \item \textbf{ACM Digital Library e IEEE Xplore:} Bases especializadas em Computação e Engenharia de Software, garantindo \textbf{alta precisão} (redução de falsos positivos) ao focar em publicações core da área \cite{ACMAdvancedSearch,IEEEAdvancedSearch}.
+  
+  \item \textbf{Scopus e Web of Science:} Bases multidisciplinares que garantem \textbf{abrangência} e cobertura de periódicos de alto impacto em múltiplas disciplinas (Ética, Direito, Ciências Sociais, Filosofia), capturando perspectivas interdisciplinares sobre ética em \acrshort{IA}.
+  
+  \item \textbf{Complementaridade:} A combinação de bases especializadas (precisão) com multidisciplinares (recall) equilibra rigor e abrangência, conforme recomendado por Brereton et al. \cite{Brereton2007} e Wohlin et al. \cite{Wohlin2014}.
+\end{itemize}
+
+% ............................................................................
+\subsubsection{String de Busca Base}
+\label{subsubsec:string-base}
+
+A \textit{string} de busca base foi iterativamente refinada a partir da proposta de Cerqueira \cite{cerqueira}, utilizando três estudos de controle \cite{Agbese2023,Cerqueira2021,Vakkuri2022} e testes-piloto na base ACM. A palavra-chave \textit{``user stories''} foi adicionada para refinar o escopo em direção a artefatos de engenharia de requisitos. A versão final da \textit{string} base é apresentada na Tabela~\ref{tab:string-base}.
+
+\begin{table}[htbp]
+\centering
+\caption{String de busca base (janeiro/2020 -- setembro/2025)}
+\label{tab:string-base}
+\begin{tabular}{p{0.95\textwidth}}
+\toprule
+\textbf{String base} \\
+\midrule
+\texttt{("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability")} \\
+\textbf{AND} \\
+\texttt{("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning")} \\
+\textbf{AND} \\
+\texttt{("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories")} \\
+\textbf{AND} \\
+\texttt{(framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ............................................................................
+\subsubsection{Adaptações por Base de Dados}
+\label{subsubsec:adaptacoes-bases}
+
+As adaptações da \textit{string} para cada base consideraram os campos de indexação e sintaxe específicos. Em \textbf{ACM} e \textbf{IEEE Xplore}, a busca foi restrita ao \textit{abstract} para aumentar a precisão e reduzir falsos positivos. Em \textbf{Scopus} e \textbf{Web of Science}, utilizou-se a \textit{string} base adaptada para os campos TITLE-ABS-KEY e TS (Topic), respectivamente. A Tabela~\ref{tab:strings-adaptadas} apresenta as versões finais por base.
+
+\begin{table}[htbp]
+\centering
+\caption{Strings de busca adaptadas por base}
+\label{tab:strings-adaptadas}
+\scriptsize
+\begin{tabular}{p{0.20\textwidth}p{0.72\textwidth}}
+\toprule
+\textbf{Base} & \textbf{String adaptada} \\
+\midrule
+\textbf{ACM Digital Library} & 
+Abstract: ("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") Abstract: ("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") Abstract: ("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") Abstract: (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach) AND Filter: (E-PublicationDate: (01/01/2020 TO 09/30/2025)) \\
+\hline
+\addlinespace
+\textbf{IEEE Xplore} & 
+("Abstract":"ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") AND ("Abstract":"artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") AND ("Abstract":"software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") AND ("Abstract":framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach) \\
+\hline
+\addlinespace
+\textbf{Scopus} & 
+TITLE-ABS-KEY(("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") AND ("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") AND ("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") AND (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)) AND PUBYEAR > 2019 AND PUBYEAR < 2026 AND (LIMIT-TO (LANGUAGE , "English")) AND (LIMIT-TO (DOCTYPE , "cp") OR LIMIT-TO (DOCTYPE , "ar")) AND (LIMIT-TO (SUBJAREA , "COMP") OR LIMIT-TO (SUBJAREA , "ENGI") OR LIMIT-TO (SUBJAREA , "DECI") OR LIMIT-TO (SUBJAREA , "SOCI")) \\
+\hline
+\addlinespace
+\textbf{Web of Science} & 
+TS=(("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") AND ("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") AND ("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") AND (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)) AND PY=(2020-2025) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ............................................................................
+\subsubsection{Período Temporal e Justificativa}
+\label{subsubsec:periodo-temporal}
+
+\textbf{Janela temporal:} Janeiro de 2020 a Setembro de 2025.
+
+\paragraph{Justificativa:} Este período captura:
+
+\begin{enumerate}[noitemsep]
+  \item \textbf{Consolidação pós-GDPR (2018):} Amadurecimento de frameworks éticos e conformidade com privacidade de dados.
+  \item \textbf{Surgimento de regulações horizontais:} Publicação do AI Act da União Europeia (2024), estabelecendo marco regulatório baseado em risco.
+  \item \textbf{Amadurecimento técnico:} Avanços em XAI (explicabilidade), fairness (justiça algorítmica) e governança ética.
+  \item \textbf{Impacto da pandemia COVID-19:} Aceleração digital e crescente preocupação com ética em sistemas de IA aplicados à saúde, educação e trabalho remoto.
+\end{enumerate}
+
+% ............................................................................
+\subsubsection{Conformidade com PRISMA-S}
+\label{subsubsec:conformidade-prisma-s}
+
+Para cada base, serão registrados \cite{PRISMAS}:
+
+\begin{itemize}[noitemsep]
+  \item Data e hora local da execução;
+  \item Plataforma/URL e versão da interface;
+  \item Campos consultados (\textit{abstract}, \textit{title-abs-key}, \textit{topic});
+  \item Filtros aplicados (período, tipo documental, idioma);
+  \item A \textit{string} completa tal como submetida;
+  \item Formato(s) de exportação (BibTeX/CSV/RIS) e contagens de registros exportados.
+\end{itemize}
+
+Esses metadados serão disponibilizados como material suplementar, em alinhamento à \textit{checklist} PRISMA-S \cite{PRISMAS}.
+
+% ............................................................................
+\subsubsection{Busca Manual Complementar}
+\label{subsubsec:busca-manual}
+
+A busca manual incluirá:
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Inspeção de perfis de autores proeminentes:} Identificação de trabalhos recentes não indexados ou em \textit{preprint}.
+  \item \textbf{Listas de referências de estudos-chave:} Verificação de citações relevantes não capturadas pelas buscas automatizadas.
+  \item \textbf{Venues de referência:} Monitoramento de ICSE, RE, CHI, FAccT, REFSQ, entre outros.
+\end{itemize}
+
+Esta estratégia é recomendada por Wohlin et al. \cite{Wohlin2014} para revisões em áreas emergentes, onde a indexação pode ser inconsistente.
+
+
+% ----------------------------------------------------------------------------
+\subsection{Critérios de Seleção}
+\label{subsec:criterios-selecao}
+
+Os critérios foram definidos \textit{a priori} e serão aplicados em \textbf{três fases} (título, resumo e texto completo), com registro das razões de exclusão conforme \acrshort{PRISMA} \cite{PRISMA2020}. Divergências serão resolvidas por consenso e, quando necessário, por um terceiro revisor.
+
+A busca foi limitada a estudos em \textbf{inglês}, idioma predominante na literatura científica em engenharia de software e ética de \acrshort{IA} \cite{barbara2007guidelines}. Essa decisão reduz o risco de viés de seleção decorrente de indexação inconsistente de publicações não inglesas nas bases internacionais utilizadas, além de garantir uniformidade na interpretação de termos técnicos e conceituais.
+
+% ............................................................................
+\subsubsection{Critérios de Inclusão (IC)}
+\label{subsubsec:criterios-inclusao}
+
+\begin{description}[style=nextline]
+  \item[IC1:] Estudo \textbf{primário} que proponha, aplique ou avalie princípios, métodos, processos, padrões, \textit{checklists}, ferramentas ou artefatos para \textbf{operacionalizar} ética em \acrshort{IA} no ciclo de vida do software (requisitos, projeto/arquitetura, implementação, verificação/validação, operação, MLOps/DevOps, governança/conformidade).
+  
+  \item[IC2:] Vinculação explícita ao contexto de \textbf{engenharia de software} (acadêmico ou industrial), integrando-se a atividades, artefatos ou práticas do SDLC e/ou a processos de conformidade (AI Act, GDPR/LGPD).
+  
+  \item[IC3:] Disponibilidade de \textbf{texto completo} e descrição metodológica mínima (contexto, procedimento, resultados).
+  
+  \item[IC4:] Estudos escritos em \textbf{inglês}.
+  
+  \item[IC5:] Estudos publicados em \textbf{periódicos ou conferências revisados por pares}.
+  
+  \item[IC6:] Estudos que abordam pelo menos \textbf{um princípio ético} identificado na literatura (transparência, justiça, explicabilidade, privacidade, responsabilidade, não maleficência, autonomia).
+\end{description}
+
+% ............................................................................
+\subsubsection{Critérios de Exclusão (EC)}
+\label{subsubsec:criterios-exclusao}
+
+\begin{description}[style=nextline]
+  \item[EC1:] Revisões secundárias, editoriais, \textit{position papers} sem proposta/artefato operacionalizável, tutoriais sem avaliação ou relatórios não científicos.
+  
+  \item[EC2:] Estudos \textbf{exclusivamente algorítmicos} focados apenas em desempenho/arquitetura de modelos, sem conexão explícita com: (a) princípios éticos; (b) requisitos não funcionais; (c) artefatos de engenharia (documentação, testes, monitoramento); ou (d) conformidade regulatória. \textbf{Exceção:} fairness/XAI/privacy integráveis a MLOps/governança.
+  
+  \item[EC3:] Ausência de evidência mínima (método indefinido, resultados não verificáveis, indisponibilidade de texto completo).
+  
+  \item[EC4:] \textbf{Duplicatas}; versões abreviadas quando existir versão estendida/arquival do mesmo trabalho (preferência pela versão mais completa e recente).
+  
+  \item[EC5:] Estudos puramente filosóficos ou de ética normativa \textbf{sem conexão com práticas de engenharia de software}.
+  
+  \item[EC6:] Estudos fora do período temporal estabelecido (antes de janeiro de 2020 ou após setembro de 2025).
+\end{description}
+
+
+% ----------------------------------------------------------------------------
+\subsection{Avaliação de Qualidade dos Estudos (QA)}
+\label{subsec:avaliacao-qualidade}
+
+A \acrshort{QA} apoia decisões consistentes de inclusão, síntese e análise de sensibilidade, seguindo recomendações para revisões em Engenharia de Software \cite{barbara2007guidelines} e princípios de transparência \acrshort{PRISMA} \cite{PRISMA2020}. O \textit{checklist} será aplicado por dois revisores independentes; discordâncias serão resolvidas por consenso e, quando necessário, por um terceiro revisor. Uma calibração inicial estimará a concordância interavaliadores (Cohen $\kappa$).
+
+% ............................................................................
+\subsubsection{Checklist de Qualidade}
+\label{subsubsec:checklist-qualidade}
+
+O instrumento contém \textbf{oito itens} com respostas \texttt{0 = não}, \texttt{0,5 = parcialmente}, \texttt{1 = sim}; \textbf{pontuação máxima: 8}.
+
+\begin{enumerate}
+  \item \textbf{Clareza e alinhamento:} Objetivos/RQs coerentes com ética em IA em ES?
+  \item \textbf{Contexto e cenário:} Domínio, participantes/dados, artefatos descritos?
+  \item \textbf{Adequação metodológica:} Desenho, procedimentos, instrumentos apropriados?
+  \item \textbf{Descrição técnica da abordagem:} Entradas, saídas, passos detalhados?
+  \item \textbf{Evidência de avaliação:} Métricas, protocolo e resultados reportados?
+  \item \textbf{Ameaças à validade:} Interna, externa, construção, conclusão discutidas?
+  \item \textbf{Consistência de resultados:} Dados suportam conclusões?
+  \item \textbf{Reprodutibilidade/artefatos:} Código/dados/scripts/documentação disponíveis?\footnote{Estudos industriais com restrições legítimas de propriedade intelectual podem receber 0,5 pela descrição conceitual/procedimental suficiente para reprodução sem artefatos; 1 quando houver artefatos públicos ou descrição excepcional com pseudocódigo/diagramas detalhados. Serão avaliados quanto à disponibilização de dados sintéticos, anonimizados ou protocolos de acesso controlado.}
+\end{enumerate}
+
+% ............................................................................
+\subsubsection{Regras de Decisão e Análises de Sensibilidade}
+\label{subsubsec:regras-decisao-sensibilidade}
+
+Estudos com escore $< 60\%$ serão retidos provisoriamente e avaliados em análise de sensibilidade; se degradarem a robustez das conclusões, serão excluídos da síntese principal e reportados em apêndice. Análises:
+
+\begin{enumerate}[noitemsep]
+  \item Remoção por limiar (50\%, 60\%, 70\%);
+  \item Ponderação por qualidade;
+  \item Estratificação por desenho (experimental, observacional, estudo de caso, conceitual);
+  \item Análise temporal (últimos 3 anos).
+\end{enumerate}
+
+% ............................................................................
+\subsubsection{Procedimento e Rastreabilidade}
+\label{subsubsec:procedimento-rastreabilidade-qa}
+
+A aplicação do \acrshort{QA} será registrada por estudo (planilha de extração), com justificativas por item, identificadores dos avaliadores, data e versão do formulário. Todos os julgamentos e decisões motivadas por \acrshort{QA} serão auditáveis (logs/histórico).
+
+\paragraph{Calibração de Revisores:}
+Será realizada calibração inicial em amostra de 10\% dos estudos incluídos, com cálculo de Cohen's Kappa. Meta: $\kappa > 0,70$ (concordância substancial). Se $\kappa < 0,70$, revisores discutirão divergências e refinarão critérios até atingir concordância adequada.
+
+
+% ----------------------------------------------------------------------------
+\subsection{Formulário de Extração de Dados}
+\label{subsec:formulario-extracao}
+
+Os dados extraídos serão organizados em três níveis complementares, alinhados às \acrshort{RQs} e ao plano de síntese:
+
+% ............................................................................
+\subsubsection{Metadados Bibliográficos e Contextuais}
+\label{subsubsec:metadados-bibliograficos}
+
+A Tabela~\ref{tab:template-extracao-metadados} apresenta o template de extração de metadados bibliográficos e contextuais.
+
+\begin{table}[H]
+\centering
+\caption{Template Formulário de Extração de Dados -- Metadados Bibliográficos e Contextuais}
+\label{tab:template-extracao-metadados}
+\scriptsize
+\begin{tabular}{p{0.30\textwidth}p{0.55\textwidth}p{0.10\textwidth}}
+\toprule
+\textbf{Item} & \textbf{Valor} & \textbf{RQ} \\
+\midrule
+Autores & - & - \\
+Ano de publicação & - & - \\
+Título do estudo & - & - \\
+DOI & - & - \\
+Tipo de publicação & Conference ou Journal & - \\
+Venue (periódico/conferência) & Nome do evento ou periódico & - \\
+Ranking/Classificação do venue & Qualis, CORE, CCF ou outro (quando disponível) & - \\
+País/região dos autores & Primeiro autor e autor correspondente & - \\
+Tipo de afiliação & Acadêmica, industrial ou mista & - \\
+Tipo de estudo & Empírico (experimento, estudo de caso, survey, avaliação em campo), conceitual (framework/método) ou misto & - \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ............................................................................
+\subsubsection{Dados de Conteúdo Técnico (alinhados às RQs)}
+\label{subsubsec:dados-conteudo-tecnico}
+
+\paragraph{RQ1: Princípios éticos}
+\begin{itemize}[noitemsep]
+  \item Lista de princípios/requisitos éticos (fairness, transparency, accountability, privacy, explainability, safety, non-maleficence, autonomy, outros);
+  \item Mapeamento a \textit{frameworks} normativos (OECD, UNESCO, AI Act, IEEE);
+  \item Definições operacionais (quando fornecidas).
+\end{itemize}
+
+\paragraph{RQ2: Abordagens de operacionalização}
+\begin{itemize}[noitemsep]
+  \item Tipo de contribuição (\textit{framework}, método/processo, ferramenta, padrão arquitetural, \textit{checklist}, artefato de documentação, \textit{guideline} organizacional);
+  \item Fases do SDLC cobertas (requisitos, design, implementação, testes/validação, deployment, operação/monitoramento, MLOps/DevOps, governança/auditoria);
+  \item Entradas/saídas;
+  \item Dependências (organizacionais, técnicas, de dados);
+  \item Nível de automação (manual, semiautomático, automático).
+\end{itemize}
+
+\paragraph{RQ3: Evidências empíricas}
+\begin{itemize}[noitemsep]
+  \item Desenho de avaliação (estudo de caso único/múltiplo, experimento, quase-experimento, survey, avaliação em campo, prova de conceito);
+  \item Métricas/indicadores (cobertura de requisitos regulatórios, detecção de vieses, qualidade/completude de explicações, impacto em tempo/custo de desenvolvimento, satisfação de stakeholders);
+  \item Resultados principais;
+  \item Ameaças à validade;
+  \item Disponibilidade de artefatos (código, dados, protocolos).
+\end{itemize}
+
+\paragraph{RQ4: Lacunas e desafios}
+\begin{itemize}[noitemsep]
+  \item Lacunas metodológicas (ausência de métricas padronizadas, pouca validação empírica);
+  \item Desafios organizacionais (resistência cultural, falta de capacitação, custos de adoção);
+  \item Desafios regulatórios (ambiguidade, conformidade);
+  \item Desafios técnicos (escalabilidade, integração, \textit{trade-offs}).
+\end{itemize}
+
+% ............................................................................
+\subsubsection{Dados Complementares para Análise}
+\label{subsubsec:dados-complementares}
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Domínio:} Saúde, finanças, educação, justiça criminal, recursos humanos, setor público, plataformas digitais, genérico/não especificado.
+  \item \textbf{Nível de risco (AI Act):} Mínimo, limitado, alto, inaceitável, não classificado.
+  \item \textbf{Maturidade:} Conceitual, protótipo, piloto, produção.
+  \item \textbf{Pontuação de qualidade (QA):} Escore total (0-8) e classificação (baixa $< 4,0$; média $4,0$-$5,9$; alta $\geq 6,0$).
 \end{itemize}
 
 Todos os dados serão extraídos em planilha estruturada (Excel/Google Sheets ou banco de dados relacional), com campos categóricos codificados (por exemplo, princípios éticos, fases do SDLC, tipos de estudo) usando taxonomias predefinidas e validadas durante piloto de extração.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Procedimentos de condução, triagem e extração}
+% ----------------------------------------------------------------------------
+\subsection{Procedimentos de Condução, Triagem e Extração}
+\label{subsec:procedimentos-conducao}
 
-A condução da RSL seguirá um processo sistemático e auditável, organizado em quatro etapas principais: consolidação e deduplicação, triagem em múltiplas fases, extração padronizada e relato do fluxo PRISMA 2020 \cite{PRISMA2020}.
+A condução da \acrshort{RSL} seguirá um processo sistemático e auditável, organizado em quatro etapas principais: \textbf{consolidação e deduplicação}, \textbf{triagem em múltiplas fases}, \textbf{extração padronizada} e \textbf{relato do fluxo PRISMA 2020} \cite{PRISMA2020}.
 
-\subsubsection{Consolidação e deduplicação}
+% ............................................................................
+\subsubsection{Consolidação e Deduplicação}
+\label{subsubsec:consolidacao-deduplicacao}
 
-Resultados serão exportados (RIS/BibTeX/CSV) e consolidados (Parsifal). A deduplicação combinará:
+Resultados serão exportados (RIS/BibTeX/CSV) e consolidados no Parsifal \cite{Parsifal}. A deduplicação combinará:
+
 \begin{enumerate}[noitemsep]
-  \item \textbf{Remoção automática}: por DOI idêntico, título normalizado (conversão para minúsculas, remoção de pontuação e espaços extras) e combinação autor-ano;
-  \item \textbf{Revisão manual}: inspeção de casos ambíguos (variações de título, múltiplas versões do mesmo trabalho em diferentes venues, artigos de conferência versus versões estendidas em periódicos).
+  \item \textbf{Remoção automática:} por DOI idêntico, título normalizado (conversão para minúsculas, remoção de pontuação e espaços extras) e combinação autor-ano.
+  \item \textbf{Revisão manual:} inspeção de casos ambíguos (variações de título, múltiplas versões do mesmo trabalho em diferentes \textit{venues}, artigos de conferência versus versões estendidas em periódicos).
 \end{enumerate}
-Será utilizada a ferramenta ASySD (\textit{Automated Systematic Search Deduplicator}) para detecção automática e classificação de duplicatas, seguida de verificação manual \cite{ASySD}.
 
-\subsubsection{Triagem em três fases}
+Será utilizada a ferramenta \textbf{ASySD} (\textit{Automated Systematic Search Deduplicator}) para detecção automática e classificação de duplicatas, seguida de verificação manual \cite{Schiller2023}.
 
-A triagem será conduzida por dois revisores independentes em três fases sucessivas, com resolução de divergências por consenso ou, quando necessário, por um terceiro revisor (árbitro):
+% ............................................................................
+\subsubsection{Triagem em Três Fases}
+\label{subsubsec:triagem-tres-fases}
+
+A triagem será conduzida por \textbf{dois revisores independentes} em três fases sucessivas, com resolução de divergências por consenso ou, quando necessário, por um terceiro revisor (árbitro):
 
 \begin{enumerate}
-  \item \textbf{Triagem por título:} aplicação dos critérios IC/EC de forma conservadora (na dúvida, incluir); estudos claramente irrelevantes são excluídos; inclusões automáticas quando ambos os revisores concordam; discordâncias avançam para a fase seguinte.
+  \item \textbf{Triagem por título:} Aplicação dos critérios \acrshort{IC/EC} de forma conservadora (na dúvida, incluir); estudos claramente irrelevantes são excluídos; inclusões automáticas quando ambos os revisores concordam; discordâncias avançam para a fase seguinte.
   
-  \item \textbf{Triagem por resumo:} aplicação rigorosa dos IC/EC; registro das razões de exclusão em categorias predefinidas (fora do escopo, tipo de publicação inadequado, sem operacionalização, etc.); discordâncias resolvidas por discussão estruturada entre os revisores; casos persistentes → terceiro revisor.
+  \item \textbf{Triagem por resumo:} Aplicação rigorosa dos \acrshort{IC/EC}; registro das razões de exclusão em categorias predefinidas (fora do escopo, tipo de publicação inadequado, sem operacionalização, etc.); discordâncias resolvidas por discussão estruturada entre os revisores; casos persistentes $\rightarrow$ terceiro revisor.
   
-  \item \textbf{Triagem por texto completo:} leitura integral dos estudos candidatos; verificação detalhada de cada critério IC/EC; registro completo das razões de exclusão (uma ou mais categorias por estudo excluído); dupla revisão independente com arbitragem quando necessário.
+  \item \textbf{Triagem por texto completo:} Leitura integral dos estudos candidatos; verificação detalhada de cada critério \acrshort{IC/EC}; registro completo das razões de exclusão (uma ou mais categorias por estudo excluído); dupla revisão independente com arbitragem quando necessário.
 \end{enumerate}
+
 O Parsifal suportará decisões, histórico e exportações auditáveis.
 
-\subsubsection{Extração de dados}
+% ............................................................................
+\subsubsection{Extração de Dados}
+\label{subsubsec:extracao-dados}
 
-A extração seguirá o formulário da Seção~\ref{sec:extracao}, realizada por um revisor principal e verificada por um segundo revisor em amostra de 20\% dos estudos incluídos (seleção aleatória). Se a discordância exceder 15\%, a extração será revisitada por ambos os revisores.Dados extraídos incluem: metadados bibliográficos, princípios éticos (RQ1), abordagens de operacionalização (RQ2), evidências empíricas (RQ3), lacunas e desafios (RQ4), além de mapeamento para fases do SDLC e domínios de aplicação.
+A extração seguirá o formulário da Seção~\ref{subsec:formulario-extracao}, realizada por um revisor principal e verificada por um segundo revisor em amostra de \textbf{20\% dos estudos incluídos} (seleção aleatória). Se a discordância exceder 15\%, a extração será revisitada por ambos os revisores.
 
-\subsubsection{Fluxo de seleção e transparência}
+Dados extraídos incluem: metadados bibliográficos, princípios éticos (RQ1), abordagens de operacionalização (RQ2), evidências empíricas (RQ3), lacunas e desafios (RQ4), além de mapeamento para fases do SDLC e domínios de aplicação.
 
-O fluxo completo será documentado por diagrama PRISMA 2020 (versão para revisões atualizadas), com: (i) total por base; (ii) duplicatas removidas; (iii) triados e excluídos por fase (com razões); (iv) incluídos na síntese; (v) incluídos na QA \cite{PRISMA2020}.
+% ............................................................................
+\subsubsection{Fluxo de Seleção e Transparência}
+\label{subsubsec:fluxo-selecao-transparencia}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+O fluxo completo será documentado por \textbf{diagrama PRISMA 2020} (versão para revisões atualizadas), com \cite{PRISMA2020}:
 
-\subsection{Estratégia de análise e síntese}
+\begin{enumerate}[noitemsep]
+  \item Total por base;
+  \item Duplicatas removidas;
+  \item Triados e excluídos por fase (com razões);
+  \item Incluídos na síntese;
+  \item Incluídos na \acrshort{QA}.
+\end{enumerate}
 
-A síntese combinará abordagens qualitativas e quantitativas complementares, organizadas para responder sistematicamente às RQs.
 
-\subsubsection{Análise temática (qualitativa)}
+% ----------------------------------------------------------------------------
+\subsection{Estratégia de Análise e Síntese}
+\label{subsec:estrategia-analise-sintese}
+
+A síntese combinará abordagens qualitativas e quantitativas complementares, organizadas para responder sistematicamente às \acrshort{RQs}.
+
+% ............................................................................
+\subsubsection{Análise Temática (Qualitativa)}
+\label{subsubsec:analise-tematica}
 
 Categorização dos dados extraídos seguindo abordagem híbrida (dedutiva e indutiva):
 
-\begin{enumerate}[noitemsep]
-  \item \textbf{RQ1 Taxonomia de princípios éticos:} agrupamento e hierarquização dos princípios reportados (por exemplo, princípios de alto nível como "trustworthiness" versus princípios operacionais como "fairness in training data selection"); mapeamento a frameworks normativos estabelecidos (OECD, UNESCO, AI Act, IEEE 7000).
-  \item \textbf{RQ2 Tipologia de abordagens:} classificação por: 
-    \begin{itemize}[noitemsep]
-    \item \textit{Tipo de contribuição} (framework conceitual, método/processo, ferramenta, guideline, checklist, padrão arquitetural);
-    \item \textit{Fase do SDLC} (requisitos, design, implementação, testes/validação, deployment, operação/monitoramento, governança);
-    \item \textit{Nível de prescrição} (abstrato/conceitual versus concreto/operacional);
-    \item \textit{Escopo de automação} (manual, semiautomático, automático).
-    \end{itemize}
-  \item \textbf{RQ3 Caracterização de evidências:} síntese de desenhos de avaliação (experimentos, estudos de caso, surveys, avaliações de campo), métricas reportadas e força da evidência (conforme níveis de evidência em ES empírica).
-  \item \textbf{RQ4 Consolidação de lacunas e desafios:} identificação de padrões recorrentes em: limitações metodológicas (ex.: ausência de métricas padronizadas); barreiras organizacionais (resistência cultural, falta de capacitação); desafios regulatórios (ambiguidade normativa); desafios técnicos (escalabilidade, trade-offs entre princípios).
+\begin{enumerate}
+  \item \textbf{RQ1 -- Taxonomia de princípios éticos:} Agrupamento e hierarquização dos princípios reportados (por exemplo, princípios de alto nível como ``trustworthiness'' versus princípios operacionais como ``fairness in training data selection''); mapeamento a \textit{frameworks} normativos estabelecidos (OECD, UNESCO, AI Act, IEEE 7000).
+  
+  \item \textbf{RQ2 -- Tipologia de abordagens:} Classificação por:
+  \begin{itemize}[noitemsep]
+    \item Tipo de contribuição (\textit{framework} conceitual, método/processo, ferramenta, \textit{guideline}, \textit{checklist}, padrão arquitetural);
+    \item Fase do SDLC (requisitos, design, implementação, testes/validação, deployment, operação/monitoramento, governança);
+    \item Nível de prescrição (abstrato/conceitual versus concreto/operacional);
+    \item Escopo de automação (manual, semiautomático, automático).
+  \end{itemize}
+  
+  \item \textbf{RQ3 -- Caracterização de evidências:} Síntese de desenhos de avaliação (experimentos, estudos de caso, surveys, avaliações de campo), métricas reportadas e força da evidência (conforme níveis de evidência em ES empírica).
+  
+  \item \textbf{RQ4 -- Consolidação de lacunas e desafios:} Identificação de padrões recorrentes em: limitações metodológicas (ex.: ausência de métricas padronizadas); barreiras organizacionais (resistência cultural, falta de capacitação); desafios regulatórios (ambiguidade normativa); desafios técnicos (escalabilidade, \textit{trade-offs} entre princípios).
 \end{enumerate}
 
-\subsubsection{Síntese quantitativa descritiva}
+% ............................................................................
+\subsubsection{Síntese Quantitativa Descritiva}
+\label{subsubsec:sintese-quantitativa}
 
 Análises de frequência, distribuição e associação para caracterizar o corpus e identificar padrões:
 
-\paragraph{Distribuições univariadas.}
+\paragraph{Distribuições univariadas}
 \begin{itemize}[noitemsep]
   \item Evolução temporal: número de estudos por ano (2020-2025);
   \item Distribuição geográfica: países/regiões de afiliação dos autores;
-  \item Distribuição por venue: periódicos versus conferências; identificação de venues principais (ex.: ICSE, RE, CHI, FAccT);
+  \item Distribuição por \textit{venue}: periódicos versus conferências; identificação de \textit{venues} principais (ex.: ICSE, RE, CHI, FAccT);
   \item Distribuição por tipo de estudo: empírico (experimento, caso, survey) versus conceitual versus misto;
   \item Distribuição por domínio de aplicação: saúde, finanças, justiça criminal, setor público, genérico.
 \end{itemize}
 
-\paragraph{Frequências de categorias.}
+\paragraph{Frequências de categorias}
 \begin{itemize}[noitemsep]
   \item Princípios éticos mais mencionados (ranking por frequência);
-  \item Tipos de abordagem propostos (frameworks vs. métodos vs. ferramentas);
+  \item Tipos de abordagem propostos (\textit{frameworks} vs. métodos vs. ferramentas);
   \item Fases do SDLC contempladas (identificação de gaps de cobertura);
-  \item Métricas reportadas (agrupadas por tipo: fairness, explainability, 
-  privacy, auditability).
+  \item Métricas reportadas (agrupadas por tipo: fairness, explainability, privacy, auditability).
 \end{itemize}
 
-\paragraph{Matrizes cruzadas (análises bivariadas).}
+\paragraph{Matrizes cruzadas (análises bivariadas)}
 \begin{itemize}[noitemsep]
-  \item \textbf{Princípios x Fase do SDLC:} matriz de frequência para identificar quais princípios são considerados em quais fases; visualização de gaps (ex.: privacidade frequente em requisitos, rara em monitoramento; explicabilidade frequente em design, rara em testes).
-  \item \textbf{Tipo de contribuição x Evidência empírica:} tabulação cruzada para avaliar maturidade (ex.: frameworks com/sem validação; ferramentas com/sem avaliação de efetividade).
-  \item \textbf{Domínio de aplicação x Nível de risco (AI Act):} distribuição de estudos por contexto regulatório (ex.: predominância de estudos em domínios de alto risco como saúde e justiça criminal).
-  \item \textbf{Ano x Temas emergentes:} evolução temporal de tópicos específicos (ex.: crescimento de estudos sobre explicabilidade pós-2021; aumento de conformidade regulatória pós-2024).
+  \item \textbf{Princípios $\times$ Fase do SDLC:} Matriz de frequência para identificar quais princípios são considerados em quais fases; visualização de gaps (ex.: privacidade frequente em requisitos, rara em monitoramento; explicabilidade frequente em design, rara em testes).
+  
+  \item \textbf{Tipo de contribuição $\times$ Evidência empírica:} Tabulação cruzada para avaliar maturidade (ex.: \textit{frameworks} com/sem validação; ferramentas com/sem avaliação de efetividade).
+  
+  \item \textbf{Domínio de aplicação $\times$ Nível de risco (AI Act):} Distribuição de estudos por contexto regulatório (ex.: predominância de estudos em domínios de alto risco como saúde e justiça criminal).
+  
+  \item \textbf{Ano $\times$ Temas emergentes:} Evolução temporal de tópicos específicos (ex.: crescimento de estudos sobre explicabilidade pós-2021; aumento de conformidade regulatória pós-2024).
 \end{itemize}
 
-\paragraph{Análises estratificadas por qualidade.} Comparação de resultados (frequências de princípios, tipos de abordagem, presença de evidência) entre estudos de alta (QA $\geq$ 6), média (4,0-5,9) e baixa ($<$ 4,0) qualidade, para avaliar robustez das conclusões.
+\paragraph{Análises estratificadas por qualidade} 
+Comparação de resultados (frequências de princípios, tipos de abordagem, presença de evidência) entre estudos de alta (QA $\geq 6$), média ($4,0$-$5,9$) e baixa ($< 4,0$) qualidade, para avaliar robustez das conclusões.
 
-\subsubsection{Integração e síntese narrativa}
+\paragraph{Análise de co-ocorrências de princípios}
+Investiga quais princípios éticos aparecem frequentemente associados nos mesmos estudos, permitindo identificar interdependências conceituais e práticas. Será construída uma matriz de co-ocorrências, calculando a proporção de estudos que mencionam pares de princípios simultaneamente.
+
+\textbf{Exemplo de matriz (hipotética):}
+
+\begin{table}[htbp]
+\centering
+\caption{Matriz de co-ocorrências de princípios éticos (exemplo ilustrativo)}
+\label{tab:exemplo-coocorrencias}
+\scriptsize
+\begin{tabular}{lcccc}
+\toprule
+ & \textbf{Transparency} & \textbf{Fairness} & \textbf{Privacy} & \textbf{Accountability} \\
+\midrule
+\textbf{Transparency} & & 45\% & 38\% & 52\% \\
+\textbf{Fairness} & 45\% & & 28\% & 41\% \\
+\textbf{Privacy} & 38\% & 28\% & & 35\% \\
+\textbf{Accountability} & 52\% & 41\% & 35\% & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Implicações:} Transparência e responsabilidade frequentemente co-ocorrem ($52\%$); privacidade é menos associada a outros princípios (tendência a ser tratada isoladamente); \textit{frameworks} devem considerar interdependências entre princípios.
+
+% ............................................................................
+\subsubsection{Integração e Síntese Narrativa}
+\label{subsubsec:integracao-sintese-narrativa}
 
 Os achados quantitativos e qualitativos serão integrados em síntese narrativa estruturada por RQ, destacando:
+
 \begin{itemize}[noitemsep]
   \item Convergências e divergências na literatura;
   \item Maturidade do campo (áreas consolidadas versus emergentes);
   \item Gaps de cobertura (princípios, fases do SDLC, domínios);
   \item Implicações para pesquisa (lacunas metodológicas, oportunidades);
-  \item Implicações para prática (recomendações para adoção, barreiras 
-  conhecidas).
+  \item Implicações para prática (recomendações para adoção, barreiras conhecidas).
 \end{itemize}
 
-\paragraph{Nota metodológica.}
-Não será realizada meta-análise quantitativa (pooling estatístico de efeitos ou síntese de tamanhos de efeito), dada a heterogeneidade esperada de desenhos de pesquisa, medidas, contextos e definições operacionais. A síntese será, portanto, predominantemente descritiva e narrativa, com suporte de visualizações (tabelas, gráficos de frequência, heatmaps de matrizes cruzadas) para facilitar a identificação de padrões, tendências e lacunas.
+\paragraph{Nota metodológica}
+Não será realizada meta-análise quantitativa (\textit{pooling} estatístico de efeitos ou síntese de tamanhos de efeito), dada a heterogeneidade esperada de desenhos de pesquisa, medidas, contextos e definições operacionais. A síntese será, portanto, predominantemente descritiva e narrativa, com suporte de visualizações (tabelas, gráficos de frequência, \textit{heatmaps} de matrizes cruzadas) para facilitar a identificação de padrões, tendências e lacunas.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Ferramentas de apoio à síntese}
+% ............................................................................
+\subsubsection{Ferramentas de Apoio à Síntese}
+\label{subsubsec:ferramentas-apoio-sintese}
 
 \begin{itemize}[noitemsep]
-\item \textbf{Gestão bibliográfica:} Parsifal (triagem), Mendeley/Zotero (referências)
-\item \textbf{Extração/codificação:} planilhas estruturadas (Excel/Google Sheets); NVivo/ATLAS.ti (opcional)
-\item \textbf{Análise/visualização:} R/Python/Excel para análises descritivas; Tableau/PowerBI para dashboards exploratórios
-\item \textbf{Colaboração e materiais:} Git/GitHub para scripts e documentação; OSF para registro e materiais suplementares
+\item \textbf{Gestão bibliográfica:} Parsifal (triagem), Mendeley/Zotero (referências).
+\item \textbf{Extração/codificação:} Planilhas estruturadas (Excel/Google Sheets); NVivo/ATLAS.ti (opcional para análise qualitativa aprofundada).
+\item \textbf{Análise/visualização:} R/Python/Excel para análises descritivas; Tableau/PowerBI para \textit{dashboards} exploratórios.
+\item \textbf{Colaboração e materiais:} Git/GitHub para scripts e documentação; OSF para registro e materiais suplementares.
 \end{itemize}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ----------------------------------------------------------------------------
+\subsection{Registro do Protocolo e Materiais}
+\label{subsec:registro-protocolo-materiais}
 
+% ............................................................................
+\subsubsection{Responsabilidades e Auditoria}
+\label{subsubsec:responsabilidades-auditoria}
 
-\subsection{Registro do protocolo e materiais}
+A busca eletrônica será executada por [Pesquisador A]; a revisão PRESS por [Bibliotecário B]. \textit{Logs} (data/hora, \textit{strings}, filtros, contagens) e o relatório PRESS serão publicados em repositório aberto (OSF) \cite{PRISMAS,PRESS2015}.
 
-\paragraph{Responsabilidades e auditoria.}
-A busca eletrônica será executada por [Pesquisador A]; a revisão PRESS por [Bibliotecário B]. Logs (data/hora, \textit{strings}, filtros, contagens) e o relatório PRESS serão publicados em repositório aberto (OSF) \cite{PRISMAS,PRESS2015}.
+\paragraph{Calibração de Revisores}
+Será realizada calibração inicial em amostra de 10\% dos estudos incluídos, com cálculo de Cohen's Kappa. Meta: $\kappa > 0,70$ (concordância substancial).
 
+% ............................................................................
 \subsubsection{Parsifal}
+\label{subsubsec:parsifal}
+
 Ambiente colaborativo para protocolo, triagem (título, resumo, texto completo) e extração, com histórico e exportação (CSV/JSON) \cite{Parsifal}. Relatórios exportados serão anexados ao repositório público.
 
+% ............................................................................
 \subsubsection{OSF Registries}
-O protocolo (\textit{pré-busca}) será registrado no OSF, incluindo: \acrshort{RQs}, PICOC, \textit{strings} por base, janela de busca (jan/2020--set/2025), \acrshort{IC/EC}, formulário de extração, checklist de \acrshort{QA}, plano de síntese e estratégia de sensibilidade. Atualizações (por exemplo, ajuste fino de \textit{strings} após piloto/PRESS) serão registradas com notas de mudança \cite{PRISMAS}.
+\label{subsubsec:osf-registries}
 
+O protocolo (\textit{pré-busca}) será registrado no OSF, incluindo: \acrshort{RQs}, PICOC, \textit{strings} por base, janela de busca (jan/2020--set/2025), \acrshort{IC/EC}, formulário de extração, \textit{checklist} de \acrshort{QA}, plano de síntese e estratégia de sensibilidade. Atualizações (por exemplo, ajuste fino de \textit{strings} após piloto/PRESS) serão registradas com notas de mudança \cite{PRISMAS}.
+
+% ............................................................................
 \subsubsection{Mendeley Data}
+\label{subsubsec:mendeley-data}
+
 Conjuntos de dados estáveis (planilhas finais de extração, bases normalizadas, dicionários de códigos, scripts) serão depositados com DOI, metadados completos e versionamento.
 
-\subsubsection{Rastreabilidade e citação}
+% ............................................................................
+\subsubsection{Rastreabilidade e Citação}
+\label{subsubsec:rastreabilidade-citacao}
+
 O manuscrito citará explicitamente os registros/DOIs (OSF e Mendeley Data), permitindo verificação independente. O diagrama \acrshort{PRISMA} 2020 (revisões atualizadas) fará parte do pacote público \cite{PRISMA2020}.
+
+\paragraph{Audit Trail Completo}
+Registro \textit{timestamped} de todas as decisões de triagem/extração, com justificativas documentadas para casos ambíguos.
+
+\paragraph{Revisão Externa}
+Protocolo validado por [nome do especialista externo] antes da execução da RSL.
