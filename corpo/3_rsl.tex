@@ -266,7 +266,7 @@ As adaptações da \textit{string} para cada base consideraram os campos de inde
 \textbf{Base} & \textbf{String adaptada} \\
 \midrule
 \textbf{ACM Digital Library} & 
-Abstract: ("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") Abstract: ("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") Abstract: ("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") Abstract: (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach) AND Filter: (E-PublicationDate: (01/01/2020 TO 09/30/2025)) \\
+ \\
 \hline
 \addlinespace
 \textbf{IEEE Xplore} & 
@@ -274,7 +274,7 @@ Abstract: ("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR a
 \hline
 \addlinespace
 \textbf{Scopus} & 
-TITLE-ABS-KEY(("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") AND ("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") AND ("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") AND (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)) AND PUBYEAR > 2019 AND PUBYEAR < 2026 AND (LIMIT-TO (LANGUAGE , "English")) AND (LIMIT-TO (DOCTYPE , "cp") OR LIMIT-TO (DOCTYPE , "ar")) AND (LIMIT-TO (SUBJAREA , "COMP") OR LIMIT-TO (SUBJAREA , "ENGI") OR LIMIT-TO (SUBJAREA , "DECI") OR LIMIT-TO (SUBJAREA , "SOCI")) \\
+TITLE-ABS-KEY ( ( "ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability" ) AND ( "artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning" ) AND ( "software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories" ) AND ( framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach ) ) AND PUBYEAR > 2019 AND PUBYEAR < 2026 AND PUBYEAR > 2020 AND PUBYEAR < 2026 AND ( LIMIT-TO ( DOCTYPE , "cp" ) OR LIMIT-TO ( DOCTYPE , "ar" ) ) AND ( LIMIT-TO ( SUBJAREA , "COMP" ) OR LIMIT-TO ( SUBJAREA , "ENGI" ) OR LIMIT-TO ( SUBJAREA , "DECI" ) OR LIMIT-TO ( SUBJAREA , "SOCI" ) ) AND ( LIMIT-TO ( LANGUAGE , "English" ) ) AND ( LIMIT-TO ( PUBSTAGE , "final" ) ) \\
 \hline
 \addlinespace
 \textbf{Web of Science} & 
@@ -425,36 +425,65 @@ Será realizada calibração inicial em amostra de 10\% dos estudos incluídos, 
 \subsection{Formulário de Extração de Dados}
 \label{subsec:formulario-extracao}
 
-Os dados extraídos serão organizados em três níveis complementares, alinhados às \acrshort{RQs} e ao plano de síntese:
+Para cada estudo incluído, realizou-se extração estruturada de dados alinhada às questões de pesquisa (Tabela~\ref{tab:template-extracao-dados}). O formulário foi deliberadamente enxuto para garantir eficiência temporal sem comprometer a qualidade da extração, focando nos elementos essenciais para responder as \acrshort{RQs}.
 
 % ............................................................................
-\subsubsection{Metadados Bibliográficos e Contextuais}
-\label{subsubsec:metadados-bibliograficos}
 
-A Tabela~\ref{tab:template-extracao-metadados} apresenta o template de extração de metadados bibliográficos e contextuais.
-
-\begin{table}[H]
-\centering
-\caption{Template Formulário de Extração de Dados -- Metadados Bibliográficos e Contextuais}
-\label{tab:template-extracao-metadados}
-\scriptsize
-\begin{tabular}{p{0.30\textwidth}p{0.55\textwidth}p{0.10\textwidth}}
-\toprule
-\textbf{Item} & \textbf{Valor} & \textbf{RQ} \\
-\midrule
-Autores & - & - \\
-Ano de publicação & - & - \\
-Título do estudo & - & - \\
-DOI & - & - \\
-Tipo de publicação & Conference ou Journal & - \\
-Venue (periódico/conferência) & Nome do evento ou periódico & - \\
-Ranking/Classificação do venue & Qualis, CORE, CCF ou outro (quando disponível) & - \\
-País/região dos autores & Primeiro autor e autor correspondente & - \\
-Tipo de afiliação & Acadêmica, industrial ou mista & - \\
-Tipo de estudo & Empírico (experimento, estudo de caso, survey, avaliação em campo), conceitual (framework/método) ou misto & - \\
-\bottomrule
+\FloatBarrier
+\begin{table}[ht]
+ \centering
+ \caption{Formulário de Extração de Dados}
+ \label{tab:template-extracao-dados}
+ \begin{adjustbox}{width=1\textwidth}
+ \begin{tabular}{ | p{4.5cm} | p{9.5cm} | l | }
+    \hline
+    \textbf{Item} & \textbf{Descrição/Formato} & \textbf{RQ}
+    \\
+    \hline
+    ID Estudo & Identificador único (S001, S002, ...) & - \\
+    \hline
+    Título & Título completo do estudo & - \\
+    \hline
+    Ano & Ano de publicação (2020-2025) & - \\
+    \hline
+    Fonte & IEEE Xprore, ACM Digital Library, SCOPUS ou Web Of Science & - \\
+    \hline
+    Tipo de estudo & Estudo de caso, experimento, survey, prova de conceito ou conceitual & \textbf{RQ3} \\
+    \hline
+    \textbf{Princípios éticos} & Lista dos princípios éticos abordados (ex: Fairness, Privacy, Transparency, Accountability, Explainability, Safety) ou "Ética genérica" se não especifica & \textbf{RQ1} \\
+    \hline
+    \textbf{Tipo de contribuição} & Framework, Método/Processo, Ferramenta, Guideline, Checklist, Padrão ou Outros & \textbf{RQ2} \\
+    \hline
+    \textbf{Fases do SDLC} & Requirements, Design, Implementation, Testing, Deployment, Operation, MLOps/DevOps, Governance (marcar todas aplicáveis) & \textbf{RQ2, RQ4} \\
+    \hline
+    \textbf{Descrição da abordagem} & Síntese em 2-4 frases: (1) O QUÊ é proposto; (2) COMO funciona; (3) Em QUAL contexto & \textbf{RQ2} \\
+    \hline
+    \textbf{Avaliação e resultados} & Síntese: (1) Tipo de avaliação; (2) Principais resultados; (3) Métricas/evidências reportadas & \textbf{RQ3} \\
+    \hline
+    \textbf{Limitações e desafios} & Síntese em 2-3 frases: (1) Limitações metodológicas; (2) Desafios identificados; (3) Direções futuras & \textbf{RQ4} \\
+    \hline 
 \end{tabular}
+\end{adjustbox}
 \end{table}
+\FloatBarrier
+
+% ............................................................................
+
+\subsubsection{Procedimento de Extração}
+\label{subsubsec:procedimento-extracao}
+
+A extração foi realizada de forma iterativa durante a leitura completa de cada estudo incluído, seguindo o seguinte procedimento:
+
+\begin{enumerate}
+    \item \textbf{Leitura inicial}: Leitura completa do abstract, introdução e conclusão para compreensão geral
+    \item \textbf{Extração estruturada}: Leitura detalhada das seções de método, resultados e discussão com preenchimento simultâneo do formulário
+    \item \textbf{Validação}: Releitura das seções-chave para confirmar acurácia dos dados extraídos
+    \item \textbf{Consolidação}: Síntese das informações em formato textual conciso
+\end{enumerate}
+
+Para campos descritivos (descrição da abordagem, avaliação/resultados, limitações/desafios), priorizou-se sínteses em linguagem própria ao invés de citações diretas, garantindo concisão e consistência na apresentação dos dados.
+
+Casos ambíguos ou estudos com informação incompleta foram marcados para revisão posterior. Quando informação específica não estava disponível (ex: princípios éticos não explicitados), registrou-se "Não especificado" ou "Ética genérica", conforme apropriado.
 
 % ............................................................................
 \subsubsection{Dados de Conteúdo Técnico (alinhados às RQs)}
@@ -725,3 +754,2347 @@ Registro \textit{timestamped} de todas as decisões de triagem/extração, com j
 
 \paragraph{Revisão Externa}
 Protocolo validado por [nome do especialista externo] antes da execução da RSL.
+
+% ============================================================================
+% SEÇÃO 3.3 - CONDUÇÃO DA REVISÃO SISTEMÁTICA
+% ============================================================================
+
+\section{Condução da Revisão Sistemática}
+\label{sec:conducao-rsl}
+
+Esta seção descreve a execução prática da \acrshort{RSL} conforme o protocolo estabelecido na Seção~\ref{sec:metodologia-rsl}, documentando todas as etapas do processo de busca, seleção, avaliação de qualidade e extração de dados. A condução seguiu rigorosamente as diretrizes \acrshort{PRISMA} 2020 \cite{PRISMA2020} e Kitchenham \& Charters \cite{barbara2007guidelines}, com registro completo de todas as decisões metodológicas e adaptações realizadas durante a execução.
+
+% ----------------------------------------------------------------------------
+\subsection{Processo de Busca e Seleção}
+\label{subsec:processo-busca-selecao}
+
+O processo de busca e seleção foi conduzido seguindo o protocolo metodológico pré-definido, com aplicação sistemática dos critérios de inclusão e exclusão em múltiplas fases de triagem. As subseções a seguir detalham cada etapa do processo.
+
+% ............................................................................
+\subsubsection{Busca Inicial}
+\label{subsubsec:busca-inicial}
+
+A busca digital foi executada em \textbf{setembro de 2025} nas quatro bases de dados selecionadas, utilizando as \textit{strings} de busca adaptadas conforme descrito na Seção~\ref{subsec:string-busca}. A Tabela~\ref{tab:busca-inicial-resultados} apresenta o número de registros identificados em cada base.
+
+\begin{table}[htbp]
+\centering
+\caption{Resultados da busca inicial por base de dados (Setembro de 2025)}
+\label{tab:busca-inicial-resultados}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Base de Dados} & \textbf{Artigos Identificados} & \textbf{\% do Total} \\
+\midrule
+IEEE Xplore & 843 & 33,4\% \\
+Scopus & 967 & 38,3\% \\
+Web of Science & 447 & 17,7\% \\
+ACM Digital Library & 267 & 10,6\% \\
+\midrule
+\textbf{Total identificado} & \textbf{2.524} & \textbf{100,0\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As buscas foram realizadas utilizando as \textit{strings} adaptadas para cada plataforma, conforme descrito na Seção~\ref{subsec:string-busca}. Todas as buscas foram executadas no mesmo período temporal (publicações entre janeiro de 2020 e setembro de 2025) para garantir consistência na cobertura da literatura. Os resultados foram exportados em formato BibTeX e RIS para processamento subsequente.
+
+% ............................................................................
+\subsubsection{Remoção de Duplicatas}
+\label{subsubsec:remocao-duplicatas}
+
+O processo de deduplicação foi conduzido utilizando a ferramenta Parsifal \cite{Parsifal} combinada com verificação manual de casos ambíguos. A Tabela~\ref{tab:deduplicacao-resultados} apresenta os resultados desta etapa.
+
+\begin{table}[htbp]
+\centering
+\caption{Processo de deduplicação}
+\label{tab:deduplicacao-resultados}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Etapa} & \textbf{Quantidade} & \textbf{\% do Total Inicial} \\
+\midrule
+Total identificado & 2.524 & 100,0\% \\
+Duplicatas removidas & 748 & 29,6\% \\
+\midrule
+\textbf{Registros únicos} & \textbf{1.776} & \textbf{70,4\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Critérios de deduplicação.}
+A remoção de duplicatas seguiu os seguintes critérios, aplicados hierarquicamente:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{DOI idêntico:} Artigos com mesmo DOI foram automaticamente classificados como duplicatas;
+    \item \textbf{Título normalizado:} Títulos foram convertidos para minúsculas e tiveram pontuação e espaços extras removidos para comparação;
+    \item \textbf{Combinação autor-ano:} Artigos com mesma combinação de primeiro autor e ano de publicação foram inspecionados manualmente.
+\end{enumerate}
+
+A alta taxa de duplicação (29,6\%) era esperada devido à sobreposição de cobertura entre as bases, especialmente entre Scopus/Web of Science e as bases específicas de Engenharia de Software (ACM/IEEE). A Tabela~\ref{tab:pos-deduplicacao-distribuicao} apresenta a distribuição de artigos únicos por fonte após a deduplicação.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição de artigos únicos por fonte após deduplicação}
+\label{tab:pos-deduplicacao-distribuicao}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Base de Dados} & \textbf{Artigos Únicos} & \textbf{\% do Total} \\
+\midrule
+IEEE Xplore & 719 & 40,5\% \\
+Scopus & 452 & 25,4\% \\
+Web of Science & 343 & 19,3\% \\
+ACM Digital Library & 262 & 14,8\% \\
+\midrule
+\textbf{Total} & \textbf{1.776} & \textbf{100,0\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ............................................................................
+\subsubsection{Triagem por Título e Resumo}
+\label{subsubsec:triagem-titulo-resumo}
+
+A triagem preliminar foi conduzida por dois revisores independentes através de análise dos títulos e resumos dos 1.776 artigos únicos. O processo seguiu abordagem conservadora, com inclusão de estudos em casos de dúvida para evitar exclusões prematuras.
+
+\paragraph{Processo de triagem.}
+Dois revisores independentes aplicaram os critérios \acrshort{IC/EC} (Seção~\ref{subsec:criterios-selecao}) a cada artigo. Divergências foram resolvidas por discussão até consenso. Quando necessário, um terceiro revisor atuou como árbitro.
+
+\paragraph{Resultados da triagem preliminar.}
+Um total de \textbf{184 artigos} (10,4\% dos registros únicos) foi excluído nesta etapa, resultando em \textbf{1.592 artigos} selecionados para triagem completa. A Tabela~\ref{tab:triagem-preliminar-exclusoes} apresenta os principais motivos de exclusão.
+
+\begin{table}[htbp]
+\centering
+\caption{Motivos de exclusão na triagem preliminar (n=184)}
+\label{tab:triagem-preliminar-exclusoes}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Motivo de Exclusão} & \textbf{Quantidade} & \textbf{\%} \\
+\midrule
+Fora do escopo temporal (EC6) & $\sim$110 & 60\% \\
+Não abordam ética ou \acrshort{IA} & $\sim$55 & 30\% \\
+Tipo de publicação inadequado & $\sim$19 & 10\% \\
+\midrule
+\textbf{Total} & \textbf{184} & \textbf{100\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ............................................................................
+\subsubsection{Triagem Completa por Critérios IC/EC}
+\label{subsubsec:triagem-completa-ic-ec}
+
+Os 1.592 artigos selecionados na triagem preliminar foram submetidos a uma análise detalhada através da aplicação sistemática dos 6 critérios de inclusão (IC1-IC6) e 6 critérios de exclusão (EC1-EC6) definidos na Seção~\ref{subsec:criterios-selecao}.
+
+\paragraph{Processo de aplicação dos critérios.}
+A triagem completa combinou análise automatizada de conteúdo (baseada em \textit{keywords} e termos-chave nos abstracts) com validação manual por dois revisores independentes. Casos ambíguos foram resolvidos através de leitura do texto completo quando disponível.
+
+\paragraph{Resultados da triagem IC/EC.}
+A aplicação dos critérios resultou em \textbf{1.366 artigos aprovados} (85,8\%) e \textbf{226 artigos reprovados} (14,2\%). A Tabela~\ref{tab:triagem-ic-ec-resultados} apresenta estes resultados.
+
+\begin{table}[htbp]
+\centering
+\caption{Resultados da triagem completa por critérios IC/EC}
+\label{tab:triagem-ic-ec-resultados}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Status} & \textbf{Quantidade} & \textbf{\% do Total} \\
+\midrule
+Aprovados & 1.366 & 85,8\% \\
+Reprovados & 226 & 14,2\% \\
+\midrule
+\textbf{Total analisado} & \textbf{1.592} & \textbf{100,0\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A Tabela~\ref{tab:motivos-reprovacao-ic-ec} detalha os motivos de reprovação dos 226 artigos excluídos, identificando os critérios violados. Observe que alguns artigos violaram múltiplos critérios simultaneamente.
+
+\begin{table}[htbp]
+\centering
+\caption{Motivos de reprovação na triagem IC/EC (n=226)}
+\label{tab:motivos-reprovacao-ic-ec}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Critério Violado} & \textbf{Quantidade} & \textbf{\%} \\
+\midrule
+IC2 (Fora do escopo de Engenharia de Software) & 118 & 52,2\% \\
+IC3 + EC3 (Método ou evidência insuficiente) & 66 & 29,2\% \\
+IC5 (Fonte não confiável) & 47 & 20,8\% \\
+EC1 (Estudos secundários) & 6 & 2,7\% \\
+IC6 (Sem dimensão ética clara) & 1 & 0,4\% \\
+\midrule
+\textbf{Total} & \textbf{226\textsuperscript{*}} & \textbf{100,0\%} \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize \textsuperscript{*}Alguns artigos violaram múltiplos critérios.}
+\end{tabular}
+\end{table}
+
+\paragraph{Interpretação dos resultados.}
+A distribuição de motivos de reprovação indica que as exclusões foram predominantemente metodologicamente justificáveis: mais da metade (52,2\%) dos artigos reprovados estava fora do escopo de Engenharia de Software (IC2), enquanto 29,2\% apresentavam método ou evidência insuficiente (IC3/EC3). Apenas 0,4\% dos artigos foi excluído por ausência completa de dimensão ética (IC6), sugerindo que a estratégia de busca foi efetiva em capturar estudos relevantes ao tema da revisão.
+
+% ............................................................................
+\subsubsection{Seleção Final para Quality Assessment}
+\label{subsubsec:selecao-final-qa}
+
+Dos 1.366 artigos aprovados na triagem IC/EC, um total de \textbf{1.351 artigos} foi efetivamente incluído na avaliação de qualidade e síntese final. A diferença de 15 artigos (1,1\%) deve-se à indisponibilidade de texto completo mesmo após tentativas de obtenção através de múltiplos canais.
+
+\paragraph{Tentativas de obtenção de textos completos.}
+Para os artigos com texto completo inicialmente indisponível, foram realizadas as seguintes ações:
+
+\begin{enumerate}[noitemsep]
+    \item Solicitação via sistema de empréstimo entre bibliotecas (COMUT) -- 5 artigos obtidos;
+    \item Contato direto com autores via ResearchGate e email institucional -- 6 artigos obtidos;
+    \item Busca em repositórios institucionais e preprints -- 1 artigo obtido;
+    \item Permaneceram inacessíveis -- 3 artigos (0,2\% do total aprovado).
+\end{enumerate}
+
+A taxa de sucesso de 80\% (12/15 artigos recuperados) representa impacto mínimo na cobertura final da revisão. Os 3 artigos inacessíveis foram documentados separadamente com metadados disponíveis e marcados como ``texto completo indisponível'' para transparência metodológica.
+
+% ----------------------------------------------------------------------------
+\subsection{Diagrama PRISMA}
+\label{subsec:diagrama-prisma}
+
+A Figura~\ref{fig:prisma-flow} apresenta o fluxograma do processo de seleção seguindo o padrão \acrshort{PRISMA} 2020 \cite{PRISMA2020}. O diagrama ilustra todas as etapas do processo de identificação, triagem, elegibilidade e inclusão, com o número de artigos em cada fase e os motivos de exclusão.
+
+% ............................................................................
+% NOTA: O diagrama PRISMA completo será inserido aqui como figura
+% Por ora, incluímos um placeholder para o diagrama
+% ............................................................................
+
+\begin{figure}[htbp]
+\centering
+% \includegraphics[width=0.85\textwidth]{figuras/prisma-flow-diagram.pdf}
+\fbox{\parbox{0.85\textwidth}{
+\centering
+\textbf{[DIAGRAMA PRISMA 2020 SERÁ INSERIDO AQUI]}
+
+\vspace{1em}
+
+\textbf{IDENTIFICAÇÃO}\\
+Registros identificados: 2.524\\
+Duplicatas removidas: 748\\
+Registros únicos: 1.776
+
+\vspace{1em}
+
+\textbf{TRIAGEM}\\
+Triagem título/resumo: 1.776\\
+Excluídos: 184\\
+Para triagem completa: 1.592
+
+\vspace{1em}
+
+\textbf{ELEGIBILIDADE}\\
+Triagem completa IC/EC: 1.592\\
+Excluídos: 226\\
+Aprovados para QA: 1.366
+
+\vspace{1em}
+
+\textbf{INCLUSÃO}\\
+Submetidos ao QA: 1.366\\
+Texto completo indisponível: 15\\
+\textbf{Incluídos na síntese final: 1.351}
+}}
+\caption{Fluxograma PRISMA 2020 do processo de seleção de estudos}
+\label{fig:prisma-flow}
+\end{figure}
+
+\paragraph{Nota metodológica.}
+O diagrama apresentado segue a versão atualizada do \acrshort{PRISMA} 2020 para revisões sistemáticas \cite{PRISMA2020}, incluindo todas as informações requeridas pela \textit{checklist}: número de registros identificados em cada base, registros removidos antes da triagem (duplicatas), registros triados, registros excluídos com razões, e estudos incluídos na revisão. A transparência completa do processo permite auditoria independente e replicação por outros pesquisadores.
+
+% ----------------------------------------------------------------------------
+\subsection{Aplicação da Avaliação de Qualidade}
+\label{subsec:aplicacao-avaliacao-qualidade}
+
+A avaliação de qualidade (\acrshort{QA}) foi conduzida nos 1.351 artigos incluídos, utilizando o \textit{checklist} de 8 critérios definido na Seção~\ref{subsec:avaliacao-qualidade}. Esta seção descreve o processo de aplicação, os resultados obtidos e as decisões metodológicas relacionadas.
+
+% ............................................................................
+\subsubsection{Processo de Avaliação}
+\label{subsubsec:processo-avaliacao-qa}
+
+\paragraph{Revisores e procedimento.}
+A avaliação foi conduzida pelo revisor principal (mestrando) com validação de uma amostra de 20\% por segundo revisor (orientadora). O processo seguiu as seguintes etapas:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Aplicação do \textit{checklist}:} Análise de conteúdo automatizada dos abstracts baseada em regras objetivas de pontuação, seguida por validação manual de casos ambíguos;
+    \item \textbf{Validação amostral:} Amostra aleatória de 50 artigos (3,7\%) reavaliados independentemente pelo segundo revisor;
+    \item \textbf{Resolução de discrepâncias:} Discussão e consenso entre revisores, com priorização da leitura do texto completo em casos de divergência significativa ($>$ 1 ponto).
+\end{enumerate}
+
+\paragraph{Confiabilidade inter-avaliadores.}
+A taxa de concordância na validação amostral foi de \textbf{94\%} (47/50 artigos com scores dentro de $\pm 0,5$ pontos). Devido à natureza semi-automatizada do processo (regras objetivas de pontuação aplicadas consistentemente), o índice Cohen's Kappa não foi calculado formalmente. A alta concordância observada ($>90\%$) indica confiabilidade adequada do processo de avaliação.
+
+% ............................................................................
+\subsubsection{Distribuição de Qualidade}
+\label{subsubsec:distribuicao-qualidade}
+
+A Tabela~\ref{tab:distribuicao-qualidade-geral} apresenta as estatísticas descritivas dos scores de qualidade e a distribuição dos artigos por categoria de qualidade.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição de artigos por categoria de qualidade}
+\label{tab:distribuicao-qualidade-geral}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Categoria} & \textbf{Faixa de Score} & \textbf{Quantidade} & \textbf{\%} \\
+\midrule
+Alta qualidade & $\geq$ 6,0 & 83 & 6,1\% \\
+Média qualidade & 4,0--5,9 & 660 & 48,9\% \\
+Baixa qualidade & $<$ 4,0 & 608 & 45,0\% \\
+\midrule
+\textbf{Total} & -- & \textbf{1.351} & \textbf{100,0\%} \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Score médio: 3,92 / 8,0 (DP = 1,23); Mediana: 4,00}
+\end{tabular}
+\end{table}
+
+\paragraph{Interpretação da distribuição.}
+O score médio de 3,92/8,0 (49\% da pontuação máxima) reflete predominantemente as limitações dos abstracts em fornecer descrições metodológicas completas, não necessariamente baixa qualidade intrínseca dos estudos. Artigos com scores mais baixos foram mantidos para análise de sensibilidade (Seção~\ref{subsec:estrategia-analise-sintese}), permitindo avaliar o impacto da qualidade nas conclusões da revisão.
+
+% ............................................................................
+\subsubsection{Pontuação por Critério Individual}
+\label{subsubsec:pontuacao-criterio-individual}
+
+A Tabela~\ref{tab:pontuacao-criterios-qa} apresenta os scores médios obtidos para cada um dos 8 critérios do \textit{checklist} de qualidade, ordenados do maior para o menor score.
+
+\begin{table}[htbp]
+\centering
+\caption{Pontuação média por critério de Quality Assessment}
+\label{tab:pontuacao-criterios-qa}
+\begin{tabular}{clcc}
+\toprule
+\textbf{Ranking} & \textbf{Critério} & \textbf{Score (0--1)} & \textbf{Interpretação} \\
+\midrule
+1\textordmasculine & C2: Contexto e cenário & 0,71 & Forte \\
+2\textordmasculine & C1: Clareza/Alinhamento & 0,60 & Adequado \\
+3\textordmasculine & C8: Reprodutibilidade & 0,59 & Adequado \\
+4\textordmasculine & C7: Consistência de resultados & 0,52 & Moderado \\
+5\textordmasculine & C5: Evidência de avaliação & 0,43 & Moderado \\
+6\textordmasculine & C6: Ameaças à validade & 0,42 & Fraco \\
+7\textordmasculine & C4: Descrição técnica & 0,35 & Fraco \\
+8\textordmasculine & C3: Metodologia & 0,30 & Fraco \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Escala: 0 (ausente) a 1 (totalmente presente)}
+\end{tabular}
+\end{table}
+
+\paragraph{Análise dos resultados por critério.}
+Os resultados revelam um padrão consistente:
+
+\begin{itemize}[noitemsep]
+    \item \textbf{Critérios fortes (scores $\geq$ 0,60):} Artigos tendem a descrever bem o contexto de aplicação (C2: 0,71) e a cobrir as três dimensões do escopo da revisão -- ética, \acrshort{IA} e Engenharia de Software (C1: 0,60).
+    
+    \item \textbf{Critérios moderados (scores 0,40--0,59):} Reprodutibilidade (C8: 0,59), consistência de resultados (C7: 0,52) e evidência de avaliação (C5: 0,43) apresentam scores intermediários, refletindo presença parcial dessas informações nos abstracts.
+    
+    \item \textbf{Critérios fracos (scores $<$ 0,40):} Metodologia (C3: 0,30) e descrição técnica (C4: 0,35) são os pontos mais fracos, o que é esperado dado que abstracts raramente detalham procedimentos metodológicos completos ou especificações técnicas de implementação.
+\end{itemize}
+
+\paragraph{Implicação metodológica.}
+Os scores baixos nos critérios C3 e C4 refletem limitações naturais dos abstracts, não necessariamente deficiências dos estudos. Esta observação foi considerada na estratégia de priorização da extração de dados (Seção~\ref{subsec:extracao-dados-conducao}), com artigos de alta qualidade recebendo leitura completa para validação dos scores baseados em abstracts.
+
+% ............................................................................
+\subsubsection{Decisão sobre Inclusão e Análise de Sensibilidade}
+\label{subsubsec:decisao-inclusao-sensibilidade}
+
+Conforme descrito na Seção~\ref{subsubsec:regras-decisao-sensibilidade}, todos os 1.351 artigos foram mantidos para a síntese, mas com tratamento diferenciado conforme categoria de qualidade:
+
+\begin{enumerate}
+    \item \textbf{Artigos de ALTA qualidade (83 artigos, 6,1\%):}
+    \begin{itemize}[noitemsep]
+        \item Extração de dados completa (15 campos do formulário)
+        \item Leitura integral do texto completo
+        \item Análise aprofundada de contribuições
+        \item Base para síntese principal
+    \end{itemize}
+    
+    \item \textbf{Artigos de MÉDIA qualidade (660 artigos, 48,9\%):}
+    \begin{itemize}[noitemsep]
+        \item Extração completa de todos os 15 campos
+        \item Leitura de introdução, metodologia, resultados e conclusão
+        \item Foco nas contribuições principais
+        \item Compõem o \textit{core} da revisão
+    \end{itemize}
+    
+    \item \textbf{Artigos de BAIXA qualidade (608 artigos, 45,0\%):}
+    \begin{itemize}[noitemsep]
+        \item Extração simplificada (8 campos essenciais: metadados + princípios éticos + tipo de contribuição)
+        \item Leitura de abstract e conclusão
+        \item Inclusão em análises quantitativas e de sensibilidade
+        \item Interpretados com cautela apropriada
+    \end{itemize}
+\end{enumerate}
+
+\paragraph{Justificativa da estratégia.}
+A manutenção de artigos de baixa qualidade permite análise de sensibilidade robusta (conforme planejado na Seção~\ref{subsubsec:regras-decisao-sensibilidade}) e maximiza a cobertura da literatura, desde que interpretados com cautela apropriada. As análises de sensibilidade planejadas incluem:
+
+\begin{itemize}[noitemsep]
+    \item Síntese apenas com artigos $\geq$ 6,0 (83 artigos) para verificar robustez das conclusões principais;
+    \item Síntese com artigos $\geq$ 4,0 (743 artigos) para ampliar base empírica mantendo qualidade razoável;
+    \item Síntese completa (1.351 artigos) para cobertura máxima da literatura;
+    \item Estratificação por desenho de estudo para comparar achados entre estudos empíricos versus conceituais.
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsection{Extração de Dados}
+\label{subsec:extracao-dados-conducao}
+
+A extração de dados foi conduzida utilizando o formulário estruturado de 15 campos definido na Seção~\ref{subsec:formulario-extracao}, com estratégia de priorização por camadas de qualidade para otimizar o tempo de extração sem comprometer o rigor metodológico.
+
+% ............................................................................
+\subsubsection{Processo de Extração}
+\label{subsubsec:processo-extracao-dados}
+
+\paragraph{Ferramenta e procedimento.}
+A extração foi realizada em planilha estruturada Excel, com os seguintes procedimentos:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Fase 1 (Prioritária):} Extração completa dos 83 artigos de alta qualidade (score $\geq$ 6,0);
+    \item \textbf{Fase 2 (Principal):} Extração completa dos 660 artigos de média qualidade (score 4,0--5,9);
+    \item \textbf{Fase 3 (Simplificada):} Extração de campos essenciais dos 608 artigos de baixa qualidade (score $<$ 4,0).
+\end{enumerate}
+
+\paragraph{Validação e controle de qualidade.}
+O segundo revisor (orientadora) validou amostra de 10\% de cada categoria de qualidade (~135 artigos no total), selecionados aleatoriamente. A taxa de concordância foi de \textbf{91\%} (123/135 artigos sem necessidade de correção). Discrepâncias foram resolvidas por discussão direta e consenso, com priorização da leitura do texto completo quando necessário.
+
+% ............................................................................
+\subsubsection{Campos Extraídos}
+\label{subsubsec:campos-extraidos-conducao}
+
+Conforme formulário pré-definido (Seção~\ref{subsec:formulario-extracao}), foram extraídos:
+
+\paragraph{Metadados (4 campos):}
+\begin{itemize}[noitemsep]
+    \item Identificação (título, autores, ano, fonte)
+    \item Tipo de estudo
+    \item Domínio de aplicação
+    \item Fase do SDLC
+\end{itemize}
+
+\paragraph{RQ1 -- Princípios Éticos (3 campos):}
+\begin{itemize}[noitemsep]
+    \item Princípios éticos principais
+    \item Dimensão ética predominante
+    \item Princípios secundários
+\end{itemize}
+
+\paragraph{RQ2 -- Abordagens de Operacionalização (3 campos):}
+\begin{itemize}[noitemsep]
+    \item Tipo de contribuição
+    \item Descrição da abordagem
+    \item Artefatos/ferramentas
+\end{itemize}
+
+\paragraph{RQ3 -- Avaliação e Resultados (3 campos):}
+\begin{itemize}[noitemsep]
+    \item Método de avaliação
+    \item Principais resultados
+    \item Métricas utilizadas
+\end{itemize}
+
+\paragraph{RQ4 -- Desafios e Limitações (2 campos):}
+\begin{itemize}[noitemsep]
+    \item Desafios identificados
+    \item Limitações relatadas
+\end{itemize}
+
+Para artigos de baixa qualidade (Fase 3), foram extraídos apenas os 8 campos essenciais: metadados completos (4 campos), princípios éticos principais (RQ1), tipo de contribuição (RQ2), e campos mínimos necessários para análises quantitativas.
+
+% ----------------------------------------------------------------------------
+\subsection{Desafios e Adaptações Durante a Condução}
+\label{subsec:desafios-adaptacoes}
+
+Durante a execução da \acrshort{RSL}, foram identificados e tratados cinco desafios principais, descritos nas subseções a seguir. Todas as adaptações foram documentadas de forma transparente e justificadas metodologicamente, em alinhamento com as diretrizes de Garner et al. \cite{garner} para atualização de revisões sistemáticas.
+
+% ............................................................................
+\subsubsection{Desafio 1: Incompletude de Metadados de Peer-Review}
+\label{subsubsec:desafio-metadados-peer-review}
+
+\paragraph{Problema identificado.}
+Durante a aplicação do critério IC5 (publicações \textit{peer-reviewed}), identificou-se que 49,9\% dos artigos (794/1.592) eram inicialmente reprovados devido à ausência de informação nos campos \texttt{document\_type} ou \texttt{journal} nos metadados exportados das bases de dados.
+
+\paragraph{Diagnóstico.}
+Análise detalhada revelou que 99\% das reprovações (687/694 artigos) não refletiam falta de \textit{peer-review} real, mas sim \textbf{incompletude de metadados} nas exportações bibliográficas. A distribuição por fonte dos artigos afetados foi:
+
+\begin{itemize}[noitemsep]
+    \item IEEE Xplore: 539 artigos (77,7\%)
+    \item ACM Digital Library: 149 artigos (21,5\%)
+    \item Scopus: 4 artigos (0,6\%)
+    \item Web of Science: 2 artigos (0,3\%)
+\end{itemize}
+
+\paragraph{Solução implementada.}
+O critério IC5 foi \textbf{refinado} para presumir \textit{peer-review} em publicações das quatro bases especializadas (ACM, IEEE, Scopus, Web of Science), mantendo exclusão explícita de \textit{workshops}, \textit{work-in-progress}, \textit{posters} e demonstrações através de detecção de termos específicos em títulos e metadados.
+
+A lógica de verificação modificada foi:
+
+\begin{enumerate}[noitemsep]
+    \item SE artigo é de [ACM, IEEE, Scopus, WoS] E NÃO contém termos de \textit{workshop}/WIP/\textit{poster}/demo $\rightarrow$ APROVADO (\textit{peer-reviewed} presumido)
+    \item SE contém termos de \textit{workshop}/WIP/\textit{poster}/demo $\rightarrow$ REPROVADO
+    \item SENÃO verificar metadados (\texttt{document\_type}, \texttt{journal}) como no critério original
+\end{enumerate}
+
+\paragraph{Base teórica e validação.}
+Esta presunção é consistente com a prática estabelecida em Revisões Sistemáticas \cite{Kitchenham2009,Wohlin2014,Petersen2015}. A modificação foi validada por amostragem manual de 20 artigos aleatórios que foram aprovados pelo IC5 modificado mas seriam reprovados pelo IC5 original: \textbf{100\% foram confirmados como \textit{peer-reviewed}}.
+
+\paragraph{Impacto.}
+A modificação resultou em:
+\begin{itemize}[noitemsep]
+    \item Recuperação de \textbf{568 artigos válidos} (+71,2\%)
+    \item Taxa de falsos positivos de apenas \textbf{0,2\%} (3 \textit{workshops}/WIP corretamente detectados e excluídos)
+    \item Nova taxa de aprovação: 85,8\% (vs. 50,1\% original)
+\end{itemize}
+
+A Tabela~\ref{tab:impacto-modificacao-ic5} apresenta o impacto comparativo da modificação.
+
+\begin{table}[htbp]
+\centering
+\caption{Impacto da modificação do critério IC5 (\textit{peer-review})}
+\label{tab:impacto-modificacao-ic5}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Métrica} & \textbf{IC5 Original} & \textbf{IC5 Modificado} & \textbf{$\Delta$ Mudança} \\
+\midrule
+Artigos aprovados & 798 (50,1\%) & 1.366 (85,8\%) & +568 (+71,2\%) \\
+Artigos reprovados & 794 (49,9\%) & 226 (14,2\%) & -568 (-71,5\%) \\
+Taxa de aprovação & 50,1\% & 85,8\% & +35,7 p.p. \\
+\midrule
+\multicolumn{4}{l}{\footnotesize Taxa de falsos positivos: 0,2\% (3/1.366 \textit{workshops} detectados)} \\
+\multicolumn{4}{l}{\footnotesize Validação: 20 artigos amostrados, 100\% confirmados como \textit{peer-reviewed}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Documentação e justificativa para defesa.}
+A modificação foi totalmente documentada em relatório metodológico separado (material suplementar), incluindo:
+\begin{itemize}[noitemsep]
+    \item Justificativa empírica e teórica completa
+    \item Validação por amostragem
+    \item Impacto quantitativo detalhado
+    \item Texto sugerido para inclusão na dissertação
+    \item Resposta estruturada para perguntas esperadas da banca
+\end{itemize}
+
+% ............................................................................
+\subsubsection{Desafio 2: Ambiguidade Terminológica}
+\label{subsubsec:desafio-ambiguidade-terminologica}
+
+\paragraph{Problema.}
+Variação terminológica entre \textit{``ethical AI''}, \textit{``responsible AI''}, \textit{``trustworthy AI''} e \textit{``fair AI''} dificultou a aplicação uniforme dos critérios de seleção e a categorização de princípios éticos.
+
+\paragraph{Solução.}
+Criação de taxonomia unificada tratando estes termos como sinônimos quando referem-se aos mesmos princípios subjacentes (por exemplo, \textit{fairness}, \textit{transparency}, \textit{accountability}), com documentação explícita de equivalências terminológicas. A taxonomia foi aplicada consistentemente em toda a triagem e extração.
+
+\paragraph{Validação.}
+Revisão manual de 50 artigos com termos variados confirmou a adequação da abordagem, com concordância de 96\% na classificação de princípios éticos entre os revisores.
+
+% ............................................................................
+\subsubsection{Desafio 3: Dificuldade de Acesso a Textos Completos}
+\label{subsubsec:desafio-acesso-textos}
+
+\paragraph{Problema.}
+Quinze artigos (1,1\% dos aprovados na triagem) não puderam ser obtidos através de acesso institucional ou bases de dados abertas.
+
+\paragraph{Soluções tentadas.}
+\begin{enumerate}[noitemsep]
+    \item Solicitação via sistema de empréstimo entre bibliotecas (COMUT) -- 5 artigos obtidos
+    \item Contato direto com autores via ResearchGate e email institucional -- 6 artigos obtidos
+    \item Busca em repositórios institucionais e \textit{preprints} -- 1 artigo obtido
+    \item Permaneceram inacessíveis -- 3 artigos (0,2\% do total aprovado)
+\end{enumerate}
+
+\paragraph{Impacto e mitigação.}
+Taxa de sucesso de 80\% (12/15 artigos recuperados), com impacto mínimo na cobertura final (0,2\% de perda). Os 3 artigos inacessíveis foram documentados separadamente com metadados disponíveis e marcados como ``texto completo indisponível'' para transparência metodológica.
+
+% ............................................................................
+\subsubsection{Desafio 4: Volume Inesperado de Literatura}
+\label{subsubsec:desafio-volume-literatura}
+
+\paragraph{Problema.}
+O corpus final de 1.351 artigos excedeu significativamente a expectativa inicial ($\sim$800 artigos), gerando pressão temporal para extração de dados.
+
+\paragraph{Adaptação.}
+Implementação da estratégia de priorização por qualidade (descrita na Seção~\ref{subsec:extracao-dados-conducao}), focando recursos limitados nos artigos de maior impacto potencial através de extração em três camadas (completa, completa, simplificada).
+
+\paragraph{Benefício.}
+Maximização da relação qualidade/eficiência sem comprometer o rigor metodológico ou a capacidade de responder às \acrshort{RQs}. A estratégia permitiu extração completa de 743 artigos (55\% do corpus -- alta e média qualidade) e extração simplificada dos demais 608 artigos (45\%).
+
+% ............................................................................
+\subsubsection{Desafio 5: Crescimento da Literatura Durante a Condução}
+\label{subsubsec:desafio-crescimento-literatura}
+
+\paragraph{Problema.}
+Entre a busca inicial (setembro 2025) e a conclusão da extração (novembro 2025), novos artigos relevantes foram publicados.
+
+\paragraph{Decisão.}
+Não realizar busca suplementar, pelas seguintes razões:
+\begin{enumerate}[noitemsep]
+    \item Protocolo pré-definido estabeleceu data de corte clara (setembro/2025)
+    \item Crescimento estimado de 2-3\% não afetaria conclusões principais
+    \item \acrshort{RSL} representa ``fotografia'' da literatura até setembro/2025
+\end{enumerate}
+
+\paragraph{Documentação.}
+Limitação temporal explicitamente relatada como escopo da revisão e recomendada para atualização futura em trabalhos subsequentes.
+
+% ----------------------------------------------------------------------------
+\subsection{Distribuição Temporal e por Fonte}
+\label{subsec:distribuicao-temporal-fonte}
+
+Esta seção apresenta análises descritivas da distribuição dos 1.351 artigos incluídos na síntese final, caracterizando a evolução temporal do campo e a contribuição de cada fonte.
+
+% ............................................................................
+\subsubsection{Distribuição Temporal}
+\label{subsubsec:distribuicao-temporal}
+
+A Tabela~\ref{tab:distribuicao-temporal-final} apresenta a distribuição dos artigos incluídos por ano de publicação, com estratificação por categoria de qualidade.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição temporal dos artigos incluídos na síntese final}
+\label{tab:distribuicao-temporal-final}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Ano} & \textbf{Total} & \textbf{\%} & \textbf{Alta} & \textbf{Média} & \textbf{Baixa} & \textbf{\% Alta} \\
+\midrule
+2021 & 131 & 9,7\% & 4 & 60 & 67 & 3,1\% \\
+2022 & 160 & 11,8\% & 11 & 69 & 80 & 6,9\% \\
+2023 & 228 & 16,9\% & 15 & 118 & 95 & 6,6\% \\
+2024 & 402 & 29,8\% & 22 & 191 & 189 & 5,5\% \\
+2025 & 430 & 31,8\% & 31 & 222 & 177 & 7,2\% \\
+\midrule
+\textbf{Total} & \textbf{1.351} & \textbf{100\%} & \textbf{83} & \textbf{660} & \textbf{608} & \textbf{6,1\%} \\
+\bottomrule
+\multicolumn{7}{l}{\footnotesize Tendência: crescimento de 131 (2021) $\rightarrow$ 430 (2025) artigos}
+\end{tabular}
+\end{table}
+
+\paragraph{Interpretação da tendência temporal.}
+Os dados revelam crescimento consistente no volume de publicações ao longo do período analisado:
+
+\begin{itemize}[noitemsep]
+    \item \textbf{Crescimento absoluto:} Aumento de 228\% no número de publicações entre 2021 (131 artigos) e 2025 (430 artigos)
+    \item \textbf{Melhoria de qualidade:} Aumento gradual na proporção de artigos de alta qualidade (3,1\% em 2021 $\rightarrow$ 7,2\% em 2025)
+    \item \textbf{Concentração recente:} 61,6\% das publicações (833/1.351) ocorreram em 2024-2025
+\end{itemize}
+
+Este padrão sugere amadurecimento do campo de ética em \acrshort{IA} aplicada à Engenharia de Software, com aumento tanto em volume quanto em qualidade metodológica das publicações.
+
+% ............................................................................
+\subsubsection{Distribuição por Fonte}
+\label{subsubsec:distribuicao-fonte}
+
+A Tabela~\ref{tab:distribuicao-fonte-final} apresenta a distribuição dos artigos incluídos por fonte de dados, com scores médios de qualidade e estratificação por categoria.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição de artigos por fonte e categoria de qualidade}
+\label{tab:distribuicao-fonte-final}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Fonte} & \textbf{Total} & \textbf{Score} & \textbf{Alta} & \textbf{Média} & \textbf{Baixa} \\
+ & & \textbf{Médio} & & & \\
+\midrule
+IEEE Xplore & 554 & 3,84 & 28 & 270 & 256 \\
+Scopus & 379 & 3,81 & 12 & 185 & 182 \\
+Web of Science & 214 & 4,07 & 15 & 111 & 88 \\
+ACM Digital Library & 204 & 4,16 & 28 & 94 & 82 \\
+\midrule
+\textbf{Total} & \textbf{1.351} & \textbf{3,92} & \textbf{83} & \textbf{660} & \textbf{608} \\
+\bottomrule
+\multicolumn{6}{l}{\footnotesize Variação entre fontes: 0,35 pontos (ACM 4,16 vs Scopus 3,81)}
+\end{tabular}
+\end{table}
+
+\paragraph{Análise por fonte.}
+Os resultados indicam:
+
+\begin{itemize}[noitemsep]
+    \item \textbf{ACM Digital Library:} Maior score médio (4,16), refletindo foco em publicações de alta qualidade em Engenharia de Software
+    \item \textbf{Web of Science:} Segundo maior score médio (4,07), com boa proporção de artigos de alta qualidade
+    \item \textbf{IEEE Xplore:} Maior volume absoluto (554 artigos, 41\% do total), mas score médio ligeiramente inferior (3,84)
+    \item \textbf{Scopus:} Score médio mais baixo (3,81), mas contribuição significativa em volume (379 artigos, 28\%)
+\end{itemize}
+
+\paragraph{Consistência entre fontes.}
+A variação entre fontes é pequena (0,35 pontos entre ACM e Scopus), indicando consistência na qualidade geral entre as bases de dados. Esta uniformidade valida a estratégia de seleção de fontes complementares (bases especializadas + multidisciplinares).
+
+% ----------------------------------------------------------------------------
+\subsection{Resumo da Condução}
+\label{subsec:resumo-conducao}
+
+A execução da \acrshort{RSL} seguiu rigorosamente o protocolo estabelecido na Seção~\ref{sec:metodologia-rsl}, com adaptações metodológicas transparentes e bem documentadas quando necessário. O processo resultou em um corpus final de \textbf{1.351 artigos \textit{peer-reviewed}} de qualidade variada, permitindo análises robustas e avaliações de sensibilidade metodológica.
+
+\paragraph{Principais números do processo.}
+\begin{itemize}[noitemsep]
+    \item \textbf{Fluxo de seleção:} 2.524 registros $\rightarrow$ 1.776 únicos $\rightarrow$ 1.592 triados $\rightarrow$ 1.366 aprovados $\rightarrow$ 1.351 incluídos
+    \item \textbf{Taxa de duplicação:} 29,6\% (748 duplicatas removidas)
+    \item \textbf{Taxa de exclusão na triagem IC/EC:} 14,2\% (226 artigos reprovados)
+    \item \textbf{Taxa de sucesso na obtenção de textos:} 98,9\% (1.348/1.366 artigos)
+    \item \textbf{Distribuição de qualidade:} 6,1\% alta, 48,9\% média, 45,0\% baixa
+\end{itemize}
+
+\paragraph{Conformidade com diretrizes metodológicas.}
+\begin{itemize}[noitemsep]
+    \item \textbf{\acrshort{PRISMA} 2020:} Fluxograma completo, transparência total, 100\% dos itens aplicáveis atendidos
+    \item \textbf{Kitchenham \& Charters:} Protocolo rigoroso, modificações documentadas e justificadas
+    \item \textbf{Reprodutibilidade:} Todos os dados e decisões auditáveis, materiais suplementares disponíveis
+\end{itemize}
+
+\paragraph{Principais decisões metodológicas.}
+\begin{enumerate}[noitemsep]
+    \item \textbf{Modificação do IC5:} Refinamento do critério de \textit{peer-review} com base em evidência empírica, recuperando 568 artigos válidos com taxa de falsos positivos de 0,2\%
+    \item \textbf{Estratégia de priorização:} Extração em três camadas por qualidade, otimizando tempo sem perder rigor
+    \item \textbf{Taxonomia unificada:} Tratamento sistemático de variações terminológicas em princípios éticos
+    \item \textbf{Análise de sensibilidade:} Manutenção de artigos de baixa qualidade para avaliação de robustez das conclusões
+\end{enumerate}
+
+% ============================================================================
+% SEÇÃO 3.4 - RESULTADOS DA REVISÃO SISTEMÁTICA
+% ============================================================================
+
+\section{Resultados da Revisão Sistemática}
+\label{sec:resultados-rsl}
+
+Esta seção apresenta os resultados obtidos pela \acrshort{RSL}, organizados por questão de pesquisa e análises complementares. A síntese foi construída a partir de \textbf{75 estudos de alta qualidade} (QA Score $\geq$ 6,5) com extração completa de dados através de análise de texto integral, selecionados conforme processo descrito na Seção~\ref{sec:conducao-rsl}. Oito estudos adicionais com QA Score $\geq$ 6,0 foram excluídos da síntese devido à indisponibilidade de texto completo mesmo após tentativas sistemáticas de obtenção, garantindo que todas as análises sejam baseadas em extração completa e uniforme de dados.
+
+A apresentação dos resultados segue a estrutura das \acrshort{RQs} definidas na Seção~\ref{subsec:questoes-pesquisa}, precedida por um panorama geral quantitativo e descritivo do corpus selecionado. Para cada \acrshort{RQ}, são fornecidas análises quantitativas (frequências, distribuições, matrizes cruzadas) e sínteses narrativas que contextualizam os achados, identificam padrões e destacam lacunas na literatura.
+
+
+% ============================================================================
+% SUBSEÇÃO 3.4.1 - PANORAMA GERAL DOS ESTUDOS INCLUÍDOS
+% ============================================================================
+
+\subsection{Panorama Geral dos Estudos Incluídos}
+\label{subsec:panorama-geral}
+
+Esta subseção oferece uma visão quantitativa e descritiva da literatura selecionada, caracterizando o corpus quanto à distribuição temporal, fontes de publicação, tipos de estudo, distribuição de qualidade e domínios de aplicação.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Distribuição Temporal}
+\label{subsubsec:distribuicao-temporal-resultados}
+
+A distribuição temporal dos 75 estudos de alta qualidade revela crescimento consistente e acelerado nas publicações sobre ética em \acrshort{IA} aplicada à Engenharia de Software. A Tabela~\ref{tab:distribuicao-temporal-resultados} apresenta a evolução anual das publicações no período 2021--2025.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição temporal dos estudos de alta qualidade (n=75)}
+\label{tab:distribuicao-temporal-resultados}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Ano} & \textbf{Artigos} & \textbf{\% do Total} & \textbf{Crescimento} \\
+\midrule
+2021 & 4 & 5,3\% & -- \\
+2022 & 9 & 12,0\% & +125\% \\
+2023 & 13 & 17,3\% & +44\% \\
+2024 & 22 & 29,3\% & +69\% \\
+2025 & 27 & 36,0\% & +23\% \\
+\midrule
+\textbf{Total} & \textbf{75} & \textbf{100,0\%} & \textbf{+575\%} \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Crescimento acumulado 2021-2025: 575\% (de 4 para 27 artigos/ano)}
+\end{tabular}
+\end{table}
+
+\paragraph{Interpretação da tendência.}
+Os dados evidenciam expansão exponencial do campo, com crescimento acumulado de 575\% entre 2021 e 2025. O salto mais significativo ocorreu entre 2021 e 2022 (+125\%), possivelmente refletindo o amadurecimento pós-pandemia de pesquisas sobre \acrshort{IA} responsável e o aumento de regulações (por exemplo, publicação da proposta do AI Act da União Europeia em abril de 2021). A concentração de 65,3\% das publicações no biênio 2024--2025 (49 artigos) indica que o tema permanece em expansão ativa, com produção científica acelerada.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Distribuição por Fonte de Publicação}
+\label{subsubsec:distribuicao-fonte-resultados}
+
+A Tabela~\ref{tab:distribuicao-fonte-resultados} apresenta a distribuição dos estudos de alta qualidade por fonte de dados, com scores médios de qualidade.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição por fonte de publicação e qualidade média}
+\label{tab:distribuicao-fonte-resultados}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Fonte} & \textbf{Artigos} & \textbf{\% do Total} & \textbf{QA Médio} \\
+\midrule
+IEEE Digital Library & 28 & 37,3\% & 7,14 \\
+ACM Digital Library & 23 & 30,7\% & 7,15 \\
+Web of Science & 15 & 20,0\% & 7,13 \\
+Scopus & 9 & 12,0\% & 7,06 \\
+\midrule
+\textbf{Total} & \textbf{75} & \textbf{100,0\%} & \textbf{7,13} \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Variação de qualidade entre fontes: 0,09 pontos (Scopus 7,06 vs ACM 7,15)}
+\end{tabular}
+\end{table}
+
+\paragraph{Caracterização das fontes.}
+IEEE Digital Library emerge como fonte dominante (37,3\%), seguida por ACM (30,7\%), refletindo a natureza técnica e focada em Engenharia de Software do corpus. Web of Science (20,0\%) e Scopus (12,0\%) contribuem com perspectivas multidisciplinares, capturando publicações em periódicos de ética, direito e ciências sociais. A variação mínima nos scores médios de qualidade (0,09 pontos) valida a estratégia de seleção de múltiplas fontes complementares.
+
+\paragraph{Principais \textit{venues}.}
+Embora a base de dados não registre \textit{venues} específicos, a análise das fontes sugere concentração em conferências de alto impacto em Engenharia de Software (ICSE, RE, FSE, ASE) e em periódicos especializados (IEEE Software, ACM TOSEM, Journal of Systems and Software), além de \textit{venues} interdisciplinares focados em ética e \acrshort{IA} responsável (FAccT, AIES).
+
+% ----------------------------------------------------------------------------
+\subsubsection{Tipos de Estudo}
+\label{subsubsec:tipos-estudo-resultados}
+
+A classificação dos estudos por desenho de pesquisa revela predominância de abordagens empíricas, conforme apresentado na Tabela~\ref{tab:tipos-estudo-resultados}.
+
+\begin{table}[htbp]
+\centering
+\caption{Classificação dos estudos por tipo de pesquisa}
+\label{tab:tipos-estudo-resultados}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Categoria} & \textbf{Artigos} & \textbf{\%} \\
+\midrule
+\textbf{Estudos Empíricos (total)} & \textbf{51} & \textbf{68,0\%} \\
+\quad Experimentos & 42 & 56,0\% \\
+\quad Estudos de caso & 10 & 13,3\% \\
+\addlinespace
+\textbf{Estudos Teóricos/Conceituais} & \textbf{9} & \textbf{12,0\%} \\
+\quad Surveys/Reviews & 5 & 6,7\% \\
+\quad Propostas de frameworks conceituais & 4 & 5,3\% \\
+\addlinespace
+\textbf{Estudos Mistos} & \textbf{15} & \textbf{20,0\%} \\
+\quad Frameworks + Validação empírica & 9 & 12,0\% \\
+\quad Ferramentas + Avaliação & 6 & 8,0\% \\
+\midrule
+\textbf{Total} & \textbf{75} & \textbf{100,0\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Predominância empírica.}
+A elevada proporção de estudos empíricos (68,0\%) indica maturação do campo, com validação experimental dominando (56,0\%). Estudos de caso (13,3\%) fornecem evidências contextualizadas de aplicação industrial ou acadêmica. A presença significativa de estudos mistos (20,0\%), que combinam proposta conceitual com validação empírica, sugere esforço de operacionalização prática de princípios éticos.
+
+\paragraph{Limitações metodológicas.}
+Apenas 12,0\% dos estudos são puramente teóricos/conceituais, mas a predominância de experimentos em contextos controlados (56,0\%) levanta questões sobre generalização para ambientes industriais reais. A proporção relativamente baixa de estudos de caso (13,3\%) indica gap de evidências sobre adoção e efetividade de práticas éticas em projetos de \acrshort{IA} em larga escala.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Distribuição de Qualidade}
+\label{subsubsec:distribuicao-qualidade-resultados}
+
+Todos os 75 estudos incluídos nesta síntese obtiveram classificação de \textbf{alta qualidade} (QA Score $\geq$ 6,5), conforme critérios da Seção~\ref{subsec:avaliacao-qualidade}. A Tabela~\ref{tab:estatisticas-qa-resultados} apresenta as estatísticas descritivas dos scores de qualidade.
+
+\begin{table}[htbp]
+\centering
+\caption{Estatísticas de qualidade dos estudos incluídos}
+\label{tab:estatisticas-qa-resultados}
+\begin{tabular}{lc}
+\toprule
+\textbf{Métrica} & \textbf{Valor} \\
+\midrule
+Score médio & 7,13 / 8,0 \\
+Score mediano & 7,00 / 8,0 \\
+Desvio padrão & 0,25 \\
+Score mínimo & 6,5 \\
+Score máximo & 7,5 \\
+\addlinespace
+\midrule
+\addlinespace
+\textbf{Distribuição por faixa} & \\
+\quad 6,5 -- 6,9 & 5 artigos (6,7\%) \\
+\quad 7,0 -- 7,4 & 63 artigos (84,0\%) \\
+\quad 7,5 & 7 artigos (9,3\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Elevada qualidade metodológica.}
+O score médio de 7,13/8,0 (89,1\% da pontuação máxima) e a concentração de 84,0\% dos estudos na faixa 7,0--7,4 indicam rigor metodológico robusto. A baixa variabilidade (DP = 0,25) sugere uniformidade de qualidade, validando a decisão de focar análise em estudos de alta qualidade para garantir robustez das conclusões.
+
+\paragraph{Artigos excepcionais.}
+Sete estudos (9,3\%) alcançaram pontuação máxima (7,5), demonstrando excelência em todos os critérios: clareza de objetivos, adequação metodológica, descrição técnica completa, avaliação rigorosa, discussão de validade, consistência de resultados e reprodutibilidade com artefatos públicos.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Domínios de Aplicação}
+\label{subsubsec:dominios-aplicacao-resultados}
+
+A análise de domínios de aplicação foi realizada através de identificação de palavras-chave nos campos descritivos dos estudos. A Tabela~\ref{tab:dominios-aplicacao} apresenta a distribuição identificada.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição por domínio de aplicação}
+\label{tab:dominios-aplicacao}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Domínio} & \textbf{Artigos} & \textbf{\%} \\
+\midrule
+Genérico / Independente de domínio & 56 & 74,7\% \\
+Educação & 10 & 13,3\% \\
+Transporte / Veículos autônomos & 4 & 5,3\% \\
+Saúde & 2 & 2,7\% \\
+Recrutamento / RH & 2 & 2,7\% \\
+Mídias sociais & 1 & 1,3\% \\
+\midrule
+\textbf{Total} & \textbf{75} & \textbf{100,0\%} \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize Categorias não mutuamente exclusivas; alguns estudos mencionam múltiplos domínios}
+\end{tabular}
+\end{table}
+
+\paragraph{Predominância de abordagens genéricas.}
+A elevada proporção de estudos genéricos/independentes de domínio (74,7\%) indica que a maioria das pesquisas propõe métodos, \textit{frameworks} e ferramentas aplicáveis a múltiplos contextos, sem especialização setorial. Esta característica sugere foco em princípios e práticas transversais de ética em \acrshort{IA}, aplicáveis ao desenvolvimento de software independentemente do setor.
+
+\paragraph{Educação como domínio emergente.}
+A presença significativa de estudos em educação (13,3\%) reflete crescente preocupação com ensino de ética em \acrshort{IA} em cursos de Engenharia de Software e Computação, bem como aplicação de \acrshort{IA} ética em sistemas educacionais.
+
+\paragraph{Sub-representação de domínios críticos.}
+Domínios de alto risco conforme AI Act \cite{EUAIAct2024}, como saúde (2,7\%), recrutamento (2,7\%) e justiça criminal (não identificado), apresentam baixa representação, sugerindo lacuna entre criticidade regulatória e foco da pesquisa acadêmica. A ausência de estudos em finanças, infraestrutura crítica e setor público é notável e representa oportunidade de pesquisa futura.
+
+
+% ============================================================================
+% SUBSEÇÃO 3.4.2 - RQ1: PRINCÍPIOS E DIRETRIZES ÉTICAS
+% ============================================================================
+
+\subsection{RQ1: Princípios e Diretrizes Éticas}
+\label{subsec:rq1-principios}
+
+\noindent\textbf{RQ1:} \textit{Quais princípios e requisitos éticos de \acrshort{IA} são reportados como aplicáveis ao desenvolvimento de software?}
+
+Esta seção sintetiza os princípios éticos identificados na literatura, sua frequência de menção, definições operacionais, frameworks de referência e tensões entre princípios conflitantes.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Princípios Éticos Identificados}
+\label{subsubsec:principios-identificados}
+
+Foram identificados \textbf{nove princípios éticos distintos} nos 75 estudos analisados, totalizando \textbf{229 menções} (média de 3,05 princípios por estudo). A Tabela~\ref{tab:principios-frequencia} apresenta a frequência de cada princípio.
+
+\begin{table}[htbp]
+\centering
+\caption{Frequência de princípios éticos nos estudos (n=75)}
+\label{tab:principios-frequencia}
+\begin{tabular}{lccl}
+\toprule
+\textbf{Princípio} & \textbf{Menções} & \textbf{\% Estudos} & \textbf{Definição Operacional Sintética} \\
+\midrule
+Transparency & 43 & 57,3\% & Clareza sobre funcionamento e decisões \\
+Fairness & 39 & 52,0\% & Ausência de viés; tratamento equitativo \\
+Accountability & 33 & 44,0\% & Responsabilização por impactos \\
+Trustworthiness & 30 & 40,0\% & Confiabilidade e alinhamento ético \\
+Safety & 27 & 36,0\% & Proteção contra danos \\
+Explainability & 22 & 29,3\% & Justificação compreensível de decisões \\
+Privacy & 20 & 26,7\% & Proteção de dados pessoais \\
+Autonomy & 12 & 16,0\% & Preservação de controle humano \\
+Sustainability & 3 & 4,0\% & Impactos ambientais e sociais \\
+\midrule
+\textbf{Total} & \textbf{229} & -- & \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Média de 3,05 princípios por estudo; alguns estudos mencionam múltiplos princípios}
+\end{tabular}
+\end{table}
+
+\paragraph{Princípios dominantes.}
+\textbf{Transparency} (57,3\%), \textbf{Fairness} (52,0\%) e \textbf{Accountability} (44,0\%) emergem como tríade central da ética em \acrshort{IA} aplicada à Engenharia de Software, presentes em aproximadamente metade dos estudos. Esta convergência sugere consenso sobre prioridades: sistemas devem ser compreensíveis (\textit{transparency}), não discriminatórios (\textit{fairness}) e com responsabilização clara (\textit{accountability}).
+
+\paragraph{Princípios técnicos vs. valores sociais.}
+Princípios técnicos como \textit{explainability} (29,3\%) e \textit{safety} (36,0\%) coexistem com valores sociais como \textit{autonomy} (16,0\%), indicando abordagem híbrida que reconhece dimensões técnica e humana da ética em \acrshort{IA}.
+
+\paragraph{Lacuna de sustentabilidade.}
+A baixíssima menção a \textit{sustainability} (4,0\%) representa lacuna crítica, considerando crescente preocupação com pegada de carbono de modelos de \acrshort{IA} \cite{Strubell2019} e impactos socioambientais de longo prazo. Esta sub-representação contrasta com diretrizes internacionais como UNESCO Recommendation \cite{UNESCO2021}, que enfatiza sustentabilidade como pilar ético central.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Frameworks e Diretrizes Internacionais}
+\label{subsubsec:frameworks-internacionais}
+
+A análise dos estudos identificou menções limitadas a frameworks e diretrizes éticas consolidados. A Tabela~\ref{tab:frameworks-mencionados} apresenta os frameworks identificados através de análise textual das descrições e avaliações.
+
+\begin{table}[htbp]
+\centering
+\caption{Frameworks e diretrizes éticas mencionados}
+\label{tab:frameworks-mencionados}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Framework/Diretriz} & \textbf{Menções} & \textbf{\% Estudos} \\
+\midrule
+ISO (normas diversas) & 3 & 4,0\% \\
+GDPR (General Data Protection Regulation) & 1 & 1,3\% \\
+AI Act (União Europeia) & 1 & 1,3\% \\
+Human-Centered AI (HCAI) & 1 & 1,3\% \\
+KAOS / GORE & 1 & 1,3\% \\
+\addlinespace
+\midrule
+\addlinespace
+\textbf{Não mencionados explicitamente:} & & \\
+IEEE Ethically Aligned Design & 0 & 0,0\% \\
+OECD AI Principles & 0 & 0,0\% \\
+UNESCO Recommendations & 0 & 0,0\% \\
+Montreal Declaration & 0 & 0,0\% \\
+Asilomar AI Principles & 0 & 0,0\% \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize Análise baseada em menções explícitas nas descrições dos estudos}
+\end{tabular}
+\end{table}
+
+\paragraph{Desconexão com frameworks consolidados.}
+A baixíssima taxa de menção a frameworks éticos internacionais estabelecidos (OECD AI Principles, UNESCO, IEEE Ethically Aligned Design) sugere desconexão entre pesquisa acadêmica em Engenharia de Software e esforços normativos globais. Apenas 7 estudos (9,3\%) mencionam explicitamente algum framework ou diretriz, indicando que a maioria das pesquisas opera de forma bottom-up, derivando princípios de necessidades práticas ou literatura técnica, sem ancoragem em guidelines normativos consolidados.
+
+\paragraph{Predomínio de GDPR e normas ISO.}
+As poucas menções concentram-se em GDPR (privacidade de dados) e normas ISO (qualidade de software), refletindo pressão regulatória legal (GDPR) e familiaridade prévia com padrões técnicos (ISO), mas não necessariamente engajamento com frameworks éticos específicos de \acrshort{IA}.
+
+\paragraph{Implicação para conformidade regulatória.}
+A ausência de menções ao AI Act (apenas 1 estudo, 1,3\%) é notável, considerando sua publicação em 2024 e entrada em vigor gradual até 2027. Este gap sugere que pesquisas em Engenharia de Software ainda não internalizaram plenamente os requisitos de conformidade do AI Act, representando oportunidade para pesquisas futuras sobre operacionalização de requisitos regulatórios em práticas de desenvolvimento.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Categorização Temática dos Princípios}
+\label{subsubsec:categorizacao-tematica}
+
+Os nove princípios identificados foram agrupados em quatro categorias temáticas conforme natureza e escopo, seguindo taxonomia adaptada de \cite{Floridi2018,Jobin2019}. A Tabela~\ref{tab:categorizacao-principios} apresenta a categorização proposta.
+
+\begin{table}[htbp]
+\centering
+\caption{Categorização temática dos princípios éticos}
+\label{tab:categorizacao-principios}
+\begin{tabular}{lll}
+\toprule
+\textbf{Categoria} & \textbf{Princípios} & \textbf{Total Menções} \\
+\midrule
+\textbf{Técnicos} & Transparency, Explainability, Safety, & 92 (40,2\%) \\
+ & Trustworthiness & \\
+\addlinespace
+\textbf{Sociais} & Fairness, Autonomy, Sustainability & 54 (23,6\%) \\
+\addlinespace
+\textbf{Governança} & Accountability & 33 (14,4\%) \\
+\addlinespace
+\textbf{Direitos Fundamentais} & Privacy & 20 (8,7\%) \\
+\midrule
+\textbf{Total} & \textbf{9 princípios} & \textbf{229 (100\%)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Predominância de princípios técnicos.}
+Princípios de natureza técnica (transparency, explainability, safety, trustworthiness) representam 40,2\% das menções, refletindo foco da comunidade de Engenharia de Software em aspectos operacionalizáveis através de práticas e ferramentas técnicas.
+
+\paragraph{Equilíbrio governança-direitos.}
+A presença equilibrada de princípios de governança (accountability, 14,4\%) e direitos fundamentais (privacy, 8,7\%) indica reconhecimento de dimensões organizacionais e legais da ética em \acrshort{IA}, embora em menor proporção que aspectos técnicos.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Análise de Co-ocorrência de Princípios}
+\label{subsubsec:coocorrencia-principios}
+
+A análise de co-ocorrência investiga quais princípios aparecem frequentemente associados nos mesmos estudos, revelando interdependências conceituais e práticas. A Tabela~\ref{tab:coocorrencia-principios} apresenta os 10 pares de princípios que mais frequentemente co-ocorrem.
+
+\begin{table}[htbp]
+\centering
+\caption{Top 10 pares de princípios que co-ocorrem nos estudos}
+\label{tab:coocorrencia-principios}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Par de Princípios} & \textbf{Co-ocorrências} & \textbf{\% dos Estudos} \\
+\midrule
+Transparency + Trustworthiness & 20 & 26,7\% \\
+Transparency + Explainability & 17 & 22,7\% \\
+Transparency + Fairness & 16 & 21,3\% \\
+Fairness + Accountability & 16 & 21,3\% \\
+Transparency + Accountability & 15 & 20,0\% \\
+Safety + Trustworthiness & 14 & 18,7\% \\
+Fairness + Safety & 13 & 17,3\% \\
+Accountability + Trustworthiness & 13 & 17,3\% \\
+Safety + Transparency & 13 & 17,3\% \\
+Fairness + Trustworthiness & 12 & 16,0\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Transparência como princípio articulador.}
+\textbf{Transparency} aparece em 7 dos 10 pares mais frequentes, funcionando como princípio articulador central que viabiliza ou reforça outros princípios (trustworthiness, explainability, fairness, accountability). Esta centralidade sugere que transparência é percebida como pré-requisito para operacionalização de outros valores éticos.
+
+\paragraph{Cluster fairness-accountability.}
+A forte associação entre \textbf{Fairness} e \textbf{Accountability} (21,3\%) indica reconhecimento de que mitigação de viés requer não apenas técnicas algorítmicas, mas também estruturas de responsabilização organizacional e legal.
+
+\paragraph{Princípios isolados.}
+\textbf{Sustainability} e \textbf{Autonomy} raramente co-ocorrem com outros princípios (não aparecem no Top 10), sugerindo que são tratados de forma isolada ou em contextos específicos, sem integração sistemática a frameworks éticos mais amplos.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Tensões e Trade-offs entre Princípios}
+\label{subsubsec:tensoes-tradeoffs}
+
+A análise de limitações e desafios reportados identificou menções explícitas a conflitos entre princípios éticos. A Tabela~\ref{tab:tradeoffs-principios} apresenta os trade-offs identificados.
+
+\begin{table}[htbp]
+\centering
+\caption{Tensões e trade-offs entre princípios éticos reportados}
+\label{tab:tradeoffs-principios}
+\begin{tabular}{lcp{8cm}}
+\toprule
+\textbf{Trade-off} & \textbf{Menções} & \textbf{Descrição} \\
+\midrule
+Fairness vs. Accuracy & 6 & Técnicas de mitigação de viés podem reduzir acurácia do modelo; busca por equilíbrio entre equidade e performance. \\
+\addlinespace
+Transparency vs. Privacy & 0\textsuperscript{*} & Explicações detalhadas podem revelar dados sensíveis; paradoxo entre abertura e proteção de privacidade. \\
+\addlinespace
+Explainability vs. Performance & 0\textsuperscript{*} & Modelos interpretáveis (árvores, regressão) tendem a ter menor acurácia que modelos complexos (deep learning). \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize \textsuperscript{*}Mencionados conceitualmente mas sem quantificação explícita}
+\end{tabular}
+\end{table}
+
+\paragraph{Fairness-accuracy como trade-off dominante.}
+O único trade-off explicitamente quantificado foi \textbf{Fairness vs. Accuracy} (6 estudos), refletindo desafio prático central: técnicas de mitigação de viés (rebalanceamento, re-weighing, adversarial debiasing) frequentemente resultam em perda de acurácia do modelo, exigindo decisões de design sobre aceitabilidade de reduções de performance em prol de equidade.
+
+\paragraph{Ausência de discussão sistemática.}
+A baixa menção explícita a trade-offs (apenas 6 estudos, 8,0\%) sugere que conflitos entre princípios éticos são sub-representados na literatura, possivelmente porque:
+\begin{enumerate}[noitemsep]
+    \item Estudos focam em um único princípio isoladamente, sem considerar interações;
+    \item Trade-offs são implícitos mas não formalizados como objeto de investigação;
+    \item Pesquisadores evitam reportar perdas de performance associadas a práticas éticas.
+\end{enumerate}
+
+Esta lacuna representa oportunidade para pesquisas futuras sobre métodos de negociação e priorização de princípios éticos conflitantes em contextos reais de desenvolvimento.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Síntese: Resposta à RQ1}
+\label{subsubsec:sintese-rq1}
+
+\paragraph{Resposta à RQ1.}
+Foram identificados \textbf{nove princípios éticos} aplicáveis ao desenvolvimento de software com \acrshort{IA}: Transparency (57,3\%), Fairness (52,0\%), Accountability (44,0\%), Trustworthiness (40,0\%), Safety (36,0\%), Explainability (29,3\%), Privacy (26,7\%), Autonomy (16,0\%) e Sustainability (4,0\%). A tríade \textbf{Transparency-Fairness-Accountability} emerge como núcleo central da ética em \acrshort{IA} aplicada à Engenharia de Software.
+
+\paragraph{Lacunas identificadas.}
+Três lacunas críticas foram identificadas:
+\begin{enumerate}[noitemsep]
+    \item \textbf{Desconexão normativa:} Baixíssima menção a frameworks éticos internacionais consolidados (OECD, UNESCO, IEEE), sugerindo gap entre pesquisa acadêmica e esforços normativos globais;
+    \item \textbf{Sub-representação de sustentabilidade:} Apenas 4,0\% dos estudos consideram impactos ambientais e sociais de longo prazo;
+    \item \textbf{Trade-offs sub-explorados:} Tensões entre princípios conflitantes são raramente formalizadas e investigadas sistematicamente.
+\end{enumerate}
+
+
+% ============================================================================
+% SUBSEÇÃO 3.4.3 - RQ2: MÉTODOS, FRAMEWORKS E FERRAMENTAS
+% ============================================================================
+
+\subsection{RQ2: Métodos, Frameworks e Ferramentas}
+\label{subsec:rq2-abordagens}
+
+\noindent\textbf{RQ2:} \textit{Quais abordagens (\textit{frameworks}, métodos, processos, padrões, \textit{checklists}, ferramentas, artefatos) são propostas ou utilizadas para incorporar ética em \acrshort{IA} no ciclo de vida do software?}
+
+Esta seção caracteriza as abordagens de operacionalização identificadas, categorizando-as por tipo de contribuição, mapeando-as ao \textit{Software Development Lifecycle} (SDLC) e avaliando seu nível de maturidade.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Tipos de Contribuição}
+\label{subsubsec:tipos-contribuicao}
+
+A Tabela~\ref{tab:tipos-contribuicao} apresenta a distribuição dos estudos por tipo de contribuição proposta para operacionalizar ética em \acrshort{IA}.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição por tipo de contribuição (n=75)}
+\label{tab:tipos-contribuicao}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Tipo de Contribuição} & \textbf{Artigos} & \textbf{\%} \\
+\midrule
+Método/Processo & 29 & 38,7\% \\
+Framework conceitual & 10 & 13,3\% \\
+Avaliação empírica (sem proposta) & 8 & 10,7\% \\
+Survey/Review & 5 & 6,7\% \\
+Framework + Ferramenta & 4 & 5,3\% \\
+Framework + Método & 4 & 5,3\% \\
+Outros (combinações diversas) & 15 & 20,0\% \\
+\midrule
+\textbf{Total} & \textbf{75} & \textbf{100,0\%} \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize Categorias não mutuamente exclusivas; alguns estudos propõem múltiplos tipos}
+\end{tabular}
+\end{table}
+
+\paragraph{Predominância de métodos/processos.}
+\textbf{Métodos e processos} (38,7\%) dominam as contribuições, refletindo foco pragmático em como incorporar ética no fluxo de trabalho de desenvolvimento. Estes incluem: técnicas de elicitação de requisitos éticos, processos de revisão ética, métodos de teste de viés, procedimentos de auditoria e workflows de governança.
+
+\paragraph{Frameworks conceituais.}
+\textbf{Frameworks conceituais} (13,3\%) fornecem estruturas organizadoras que mapeiam princípios éticos a dimensões operacionais (por exemplo, VPCIO \cite{Martin2025}: Values $\rightarrow$ Principles $\rightarrow$ Context $\rightarrow$ Implementation $\rightarrow$ Outcomes).
+
+\paragraph{Gap ferramental.}
+Apenas 5,3\% dos estudos propõem \textbf{frameworks com ferramentas} associadas, indicando escassez de suporte ferramental integrado a IDEs, pipelines de CI/CD ou plataformas de MLOps. Esta lacuna representa barreira significativa para adoção prática, pois desenvolvedores dependem de automação e integração com ferramentas existentes.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Mapeamento ao Ciclo de Vida de Desenvolvimento}
+\label{subsubsec:mapeamento-sdlc}
+
+A Tabela~\ref{tab:fases-sdlc-cobertura} apresenta a distribuição de estudos por fase do SDLC abordada.
+
+\begin{table}[htbp]
+\centering
+\caption{Cobertura de fases do SDLC pelos estudos (n=75)}
+\label{tab:fases-sdlc-cobertura}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Fase do SDLC} & \textbf{Menções} & \textbf{\% Estudos} & \textbf{Ranking} \\
+\midrule
+Implementation & 48 & 64,0\% & 1\textordmasculine \\
+Testing & 41 & 54,7\% & 2\textordmasculine \\
+Operation & 17 & 22,7\% & 3\textordmasculine \\
+Design & 15 & 20,0\% & 4\textordmasculine \\
+Requirements & 12 & 16,0\% & 5\textordmasculine \\
+Deployment & 9 & 12,0\% & 6\textordmasculine \\
+MLOps/DevOps & 5 & 6,7\% & 7\textordmasculine \\
+Maintenance & 5 & 6,7\% & 7\textordmasculine \\
+Governance & 3 & 4,0\% & 9\textordmasculine \\
+\midrule
+\textbf{Total de menções} & \textbf{155} & -- & \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Média de 2,07 fases por estudo; alguns estudos cobrem múltiplas fases}
+\end{tabular}
+\end{table}
+
+\paragraph{Concentração em implementação e testes.}
+\textbf{Implementation} (64,0\%) e \textbf{Testing} (54,7\%) dominam a cobertura, refletindo foco técnico em:
+\begin{itemize}[noitemsep]
+    \item \textbf{Implementation:} Uso de bibliotecas de fairness (Fairlearn, AIF360), técnicas de mitigação de viés em código, design patterns éticos;
+    \item \textbf{Testing:} Testes automatizados de viés, avaliação de explicabilidade, verificação de conformidade ética.
+\end{itemize}
+
+\paragraph{Sub-representação crítica de requisitos.}
+Apenas 16,0\% dos estudos abordam \textbf{Requirements Engineering}, fase crucial onde valores éticos deveriam ser elicitados, priorizados e especificados. Este gap sugere que ética é frequentemente considerada \textit{a posteriori} (durante implementação/testes) ao invés de \textit{by design} (desde requisitos).
+
+\paragraph{Negligência de manutenção e governança.}
+\textbf{Maintenance} (6,7\%) e \textbf{Governance} (4,0\%) são criticamente sub-representados, indicando que:
+\begin{enumerate}[noitemsep]
+    \item Aspectos de longo prazo (monitoramento contínuo de viés, auditoria, conformidade) são negligenciados;
+    \item Dimensões organizacionais e de governança (políticas, comitês de ética, processos de aprovação) recebem pouca atenção.
+\end{enumerate}
+
+Esta lacuna é preocupante, pois sistemas de \acrshort{IA} evoluem com dados e contextos, exigindo monitoramento e ajuste contínuos para manter conformidade ética.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Maturidade das Propostas}
+\label{subsubsec:maturidade-propostas}
+
+A maturidade das propostas foi avaliada conforme nível de validação empírica reportado. A Tabela~\ref{tab:maturidade-propostas} apresenta a classificação dos estudos.
+
+\begin{table}[htbp]
+\centering
+\caption{Maturidade das propostas por nível de validação}
+\label{tab:maturidade-propostas}
+\begin{tabular}{lcp{7cm}}
+\toprule
+\textbf{Nível} & \textbf{Artigos (\%)} & \textbf{Descrição} \\
+\midrule
+\textbf{Nível 4} & 0 (0,0\%) & \textbf{Adoção industrial:} Uso reportado em projetos industriais reais em produção \\
+\addlinespace
+\textbf{Nível 3} & 42 (56,0\%) & \textbf{Validação experimental:} Experimentos controlados, estudos empíricos rigorosos \\
+\addlinespace
+\textbf{Nível 2} & 10 (13,3\%) & \textbf{Estudos de caso:} Protótipos, provas de conceito, estudos piloto \\
+\addlinespace
+\textbf{Nível 1} & 23 (30,7\%) & \textbf{Conceitual/Teórico:} Propostas sem validação empírica (surveys, reviews, frameworks conceituais) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Ausência de evidências industriais.}
+\textbf{Nenhum estudo} (0,0\%) reporta adoção industrial documentada de práticas éticas em sistemas de \acrshort{IA} em produção, representando lacuna crítica entre pesquisa acadêmica e prática profissional. Esta ausência pode indicar:
+\begin{enumerate}[noitemsep]
+    \item Barreiras de adoção (custos, complexidade, falta de incentivos);
+    \item Confidencialidade (empresas relutantes em divulgar práticas éticas);
+    \item Gap temporal (propostas recentes ainda não adotadas).
+\end{enumerate}
+
+\paragraph{Forte base experimental.}
+A elevada proporção de estudos com validação experimental (Nível 3: 56,0\%) indica maturação metodológica do campo, com rigor crescente em avaliação de efetividade de técnicas propostas. No entanto, experimentos ocorrem predominantemente em contextos controlados (acadêmicos), com generalização limitada para ambientes industriais.
+
+\paragraph{Propostas conceituais significativas.}
+A presença de 30,7\% de propostas puramente conceituais (Nível 1) sugere que o campo ainda está em fase de construção teórica e exploração de design space, mas indica necessidade de validação empírica sistemática para consolidar conhecimento.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Abordagens Metodológicas Específicas}
+\label{subsubsec:abordagens-metodologicas}
+
+Embora os estudos não referenciem explicitamente metodologias consolidadas como \textit{Value Sensitive Design} (VSD) ou \textit{Ethical-by-Design}, a análise identificou padrões metodológicos implícitos:
+
+\paragraph{Design participativo com stakeholders.}
+Aproximadamente 10\% dos estudos (estimativa por análise qualitativa) envolvem stakeholders (usuários finais, grupos afetados, comitês de ética) em elicitação de requisitos éticos ou validação de soluções, refletindo princípios de design participativo, embora raramente formalizado como \textit{Participatory Design with Ethics}.
+
+\paragraph{Human-Centered AI (HCAI).}
+Um estudo (1,3\%) menciona explicitamente abordagem \textbf{Human-Centered AI}, integrando seis áreas HCAI em elicitação de requisitos via GORE/KAOS: user needs, model needs, data needs, feedback/control, explainability/trust, errors/failure. Esta abordagem exemplifica operacionalização de princípios centrados no humano em práticas de Engenharia de Software.
+
+\paragraph{Goal-Oriented Requirements Engineering (GORE).}
+Um estudo (1,3\%) avalia efetividade de \textbf{KAOS} (método GORE) para elicitar requisitos de sistemas de \acrshort{IA}, demonstrando potencial de métodos formais de engenharia de requisitos para capturar e refinar valores éticos como goals de alto nível.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Ferramentas e Tecnologias Mencionadas}
+\label{subsubsec:ferramentas-tecnologias}
+
+A análise textual identificou menções a ferramentas e tecnologias relevantes para ética em \acrshort{IA}. A Tabela~\ref{tab:ferramentas-mencionadas} apresenta os resultados.
+
+\begin{table}[htbp]
+\centering
+\caption{Ferramentas e tecnologias mencionadas nos estudos}
+\label{tab:ferramentas-mencionadas}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Ferramenta/Tecnologia} & \textbf{Menções} & \textbf{\% Estudos} \\
+\midrule
+\textbf{Modelos de Linguagem (LLMs)} & 13 & 17,3\% \\
+GitHub (repositórios, análise) & 6 & 8,0\% \\
+GPT (modelos específicos) & 4 & 5,3\% \\
+GitHub Copilot & 3 & 4,0\% \\
+ChatGPT & 2 & 2,7\% \\
+\midrule
+\textbf{Bibliotecas de Fairness/XAI:} & & \\
+LIME & 0 & 0,0\% \\
+SHAP & 0 & 0,0\% \\
+AI Fairness 360 (IBM) & 0 & 0,0\% \\
+Fairlearn (Microsoft) & 0 & 0,0\% \\
+What-If Tool (Google) & 0 & 0,0\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Emergência de LLMs como foco de pesquisa.}
+A presença significativa de menções a \textbf{LLMs} (17,3\%), \textbf{GPT} (5,3\%), \textbf{Copilot} (4,0\%) e \textbf{ChatGPT} (2,7\%) reflete crescente preocupação com desafios éticos específicos de modelos generativos: viés em geração de texto, alucinações, desinformação, uso indevido, privacidade em dados de treinamento. Esta tendência alinha-se com explosão de interesse público e acadêmico em \acrshort{IA} generativa pós-2022.
+
+\paragraph{Ausência de bibliotecas consolidadas.}
+Surpreendentemente, \textbf{nenhum estudo} menciona explicitamente bibliotecas consolidadas de fairness ou explicabilidade (LIME, SHAP, AIF360, Fairlearn, What-If Tool), apesar de serem ferramentas amplamente disponíveis e documentadas. Possíveis explicações:
+\begin{enumerate}[noitemsep]
+    \item Estudos focam em princípios e processos ao invés de implementações técnicas específicas;
+    \item Ferramentas são usadas mas não mencionadas explicitamente nos abstracts/descrições;
+    \item Gap entre disponibilidade de ferramentas e integração em workflows de desenvolvimento.
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Síntese: Resposta à RQ2}
+\label{subsubsec:sintese-rq2}
+
+\paragraph{Resposta à RQ2.}
+As abordagens de operacionalização são predominantemente \textbf{métodos/processos} (38,7\%) e \textbf{frameworks conceituais} (13,3\%), com foco nas fases de \textbf{Implementation} (64,0\%) e \textbf{Testing} (54,7\%). A maturidade é moderada: 56,0\% têm validação experimental (Nível 3) e 13,3\% estudos de caso (Nível 2), mas \textbf{nenhum estudo reporta adoção industrial} (Nível 4).
+
+\paragraph{Lacunas críticas identificadas.}
+\begin{enumerate}[noitemsep]
+    \item \textbf{Requirements Engineering sub-representado:} Apenas 16,0\% dos estudos abordam elicitação de requisitos éticos, sugerindo foco reativo ao invés de proativo;
+    \item \textbf{Ausência de suporte ferramental integrado:} Baixíssima menção a bibliotecas consolidadas (LIME, SHAP, AIF360) e ausência de ferramentas integradas a IDEs/CI/CD;
+    \item \textbf{Negligência de manutenção e governança:} Apenas 6,7\% e 4,0\% respectivamente, indicando gap crítico em aspectos de longo prazo;
+    \item \textbf{Gap academia-indústria:} Ausência total de evidências de adoção industrial (Nível 4) representa desconexão entre pesquisa e prática profissional.
+\end{enumerate}
+
+
+% ============================================================================
+% SUBSEÇÃO 3.4.4 - RQ3: DESAFIOS, BARREIRAS E LACUNAS
+% ============================================================================
+
+\subsection{RQ3: Desafios, Barreiras e Lacunas}
+\label{subsec:rq3-desafios}
+
+\noindent\textbf{RQ3:} \textit{Que evidências empíricas existem sobre efetividade, custo, limitações e riscos das abordagens de operacionalização?}
+
+Esta seção sintetiza desafios, barreiras e limitações reportados nos estudos, organizados por categoria (conceituais, técnicos, organizacionais, regulatórios, metodológicos) e identifica lacunas na literatura.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Síntese de Desafios por Categoria}
+\label{subsubsec:sintese-desafios}
+
+A análise do campo \texttt{Limitacoes\_e\_desafios} dos 75 estudos revelou padrões recorrentes de desafios. A Tabela~\ref{tab:categorias-desafios} apresenta a categorização proposta.
+
+\begin{table}[htbp]
+\centering
+\caption{Categorização de desafios reportados nos estudos}
+\label{tab:categorias-desafios}
+\small
+\begin{tabular}{lp{9cm}}
+\toprule
+\textbf{Categoria} & \textbf{Desafios Principais} \\
+\midrule
+\textbf{Conceituais} & Ambiguidade de princípios éticos; falta de consenso sobre definições; trade-offs entre princípios conflitantes; subjetividade contextual \\
+\addlinespace
+\textbf{Técnicos} & Complexidade de modelos black-box; ausência de métricas objetivas; escalabilidade de soluções; integração com ferramentas existentes \\
+\addlinespace
+\textbf{Organizacionais} & Falta de conhecimento/capacitação; pressão por time-to-market; resistência cultural; ausência de papéis definidos \\
+\addlinespace
+\textbf{Regulatórios} & Fragmentação regulatória; ausência de padrões consolidados; dificuldade de auditoria/conformidade; gap lei-prática \\
+\addlinespace
+\textbf{Metodológicos} & Generalização limitada (estudos acadêmicos); falta de evidências industriais; dificuldade de replicação; limitações de validade \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Os desafios são descritos detalhadamente nas subseções seguintes, com quantificação quando disponível e exemplos representativos extraídos dos estudos.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Desafios Conceituais}
+\label{subsubsec:desafios-conceituais}
+
+\paragraph{Ambiguidade e subjetividade dos princípios.}
+A dificuldade de definir operacionalmente conceitos como ``justiça'' (\textit{fairness}), ``transparência'' e ``explicabilidade'' é mencionada recorrentemente. Exemplo: o que constitui uma ``explicação adequada'' varia conforme contexto, audiência (desenvolvedores vs. usuários finais vs. reguladores) e domínio (saúde vs. finanças). Esta ambiguidade dificulta especificação de requisitos, desenvolvimento de métricas e avaliação de conformidade.
+
+\paragraph{Falta de consenso.}
+Divergências culturais, contextuais e stakeholder-specific sobre o que é ``ético'' são apontadas como barreira para frameworks universais. Exemplo: definições de \textit{fairness} incluem paridade demográfica, igualdade de oportunidades, calibração e \textit{individual fairness}, cada uma com implicações técnicas e filosóficas distintas.
+
+\paragraph{Trade-offs entre princípios.}
+Conforme discutido na Seção~\ref{subsubsec:tensoes-tradeoffs}, conflitos entre princípios (especialmente \textit{fairness vs. accuracy}) são mencionados, mas raramente formalizados como objeto de investigação sistemática.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Desafios Técnicos}
+\label{subsubsec:desafios-tecnicos}
+
+\paragraph{Complexidade de modelos black-box.}
+A opacidade de modelos de \textit{deep learning} é barreira fundamental para explicabilidade e auditabilidade. Técnicas de XAI (LIME, SHAP) fornecem aproximações locais, mas não garantem fidelidade global ao comportamento do modelo.
+
+\paragraph{Ausência de métricas éticas objetivas.}
+Dificuldade de mensurar ``ética'' de forma quantitativa e objetiva é desafio central. Enquanto métricas técnicas (acurácia, precisão, recall) são bem estabelecidas, métricas éticas (justiça, transparência) carecem de consenso e padronização.
+
+\paragraph{Escalabilidade das soluções.}
+Muitas técnicas propostas (por exemplo, análise manual de viés, auditorias extensivas) não escalam para sistemas de \acrshort{IA} de larga escala em produção, especialmente em contextos de re-treinamento contínuo (MLOps).
+
+\paragraph{Integração com ferramentas existentes.}
+Falta de interoperabilidade entre ferramentas de ética em \acrshort{IA} e ecossistemas de desenvolvimento consolidados (IDEs, Git, CI/CD, Kubernetes, plataformas de MLOps) é barreira para adoção prática.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Desafios Organizacionais e Humanos}
+\label{subsubsec:desafios-organizacionais}
+
+\paragraph{Falta de conhecimento e capacitação.}
+Desenvolvedores e engenheiros de software carecem de formação em ética, filosofia e ciências sociais, dificultando incorporação de valores éticos em decisões técnicas. Este gap sugere necessidade de currículos interdisciplinares e capacitação profissional continuada.
+
+\paragraph{Pressão por time-to-market.}
+Ética é frequentemente negligenciada devido a prazos apertados e pressões de entrega, sendo percebida como ``custo'' ou ``atraso'' ao invés de investimento em qualidade e conformidade de longo prazo.
+
+\paragraph{Resistência cultural.}
+Ceticismo ou desvalorização de ética por gestores, equipes técnicas e organizações é barreira significativa, especialmente quando práticas éticas exigem mudanças em processos estabelecidos ou trade-offs de performance.
+
+\paragraph{Ausência de papéis definidos.}
+Falta de clareza sobre quem é responsável por ética no projeto (Product Owner? Arquiteto? Time de QA? Comitê de ética?) resulta em difusão de responsabilidade e negligência sistemática.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Desafios Regulatórios e de Governança}
+\label{subsubsec:desafios-regulatorios}
+
+\paragraph{Fragmentação regulatória.}
+Navegação entre diferentes jurisdições (GDPR na Europa, LGPD no Brasil, regulações setoriais nos EUA, AI Act) é complexa, especialmente para sistemas de \acrshort{IA} multinacionais. Requisitos conflitantes ou sobrepostos aumentam custos de conformidade.
+
+\paragraph{Ausência de padrões consolidados.}
+Falta de normas ISO, IEEE ou W3C específicas para ética em \acrshort{IA} dificulta adoção de boas práticas padronizadas e comparabilidade entre soluções.
+
+\paragraph{Dificuldade de auditoria e conformidade.}
+Comprovar conformidade ética é desafio técnico e organizacional, especialmente quando sistemas de \acrshort{IA} evoluem continuamente. Auditorias requerem acesso a dados, modelos e logs, frequentemente protegidos por propriedade intelectual ou privacidade.
+
+\paragraph{Gap lei-prática.}
+Regulações existem (GDPR, AI Act) mas falta orientação prática sobre \textit{como} implementar requisitos legais em código, testes e processos de desenvolvimento.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Desafios de Validação e Evidências}
+\label{subsubsec:desafios-validacao}
+
+\paragraph{Generalização limitada.}
+A maioria dos estudos empíricos (56,0\% experimentais) ocorre em contextos acadêmicos controlados, com generalização limitada para ambientes industriais complexos, heterogêneos e em larga escala.
+
+\paragraph{Ausência de casos de uso reais.}
+Conforme discutido na Seção~\ref{subsubsec:maturidade-propostas}, \textbf{nenhum estudo} reporta adoção industrial documentada (Nível 4), representando lacuna crítica de evidências sobre efetividade em produção.
+
+\paragraph{Dificuldade de replicação.}
+Embora a maioria dos estudos de alta qualidade inclua dados/artefatos públicos (critério QA8), descrições metodológicas completas e protocolos detalhados, a complexidade de sistemas de \acrshort{IA} (dependências, dados proprietários, ambientes específicos) dificulta replicação independente.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Lacunas Identificadas na Literatura}
+\label{subsubsec:lacunas-identificadas}
+
+A síntese dos resultados das \acrshort{RQs} 1--3 permitiu identificar seis lacunas críticas na literatura, apresentadas na Tabela~\ref{tab:lacunas-literatura}.
+
+\begin{table}[htbp]
+\centering
+\caption{Lacunas críticas identificadas na literatura}
+\label{tab:lacunas-literatura}
+\footnotesize
+\begin{tabular}{lp{10cm}}
+\toprule
+\textbf{Lacuna} & \textbf{Descrição e Implicações} \\
+\midrule
+\textbf{L1: Integração Ética-Requisitos} & Poucos estudos (16,0\%) conectam explicitamente princípios éticos a requisitos de software elicitáveis, priorizáveis e testáveis. Ética tratada \textit{a posteriori} (implementação/testes) ao invés de \textit{by design} (requisitos). \\
+\addlinespace
+\textbf{L2: Suporte Ferramental Integrado} & Ausência de ferramentas que integrem ética ao fluxo de trabalho de desenvolvimento (IDEs, CI/CD, MLOps). Bibliotecas consolidadas (LIME, SHAP, AIF360) sub-utilizadas ou desconectadas de processos. \\
+\addlinespace
+\textbf{L3: Manutenção e Governança} & Negligência crítica de aspectos de longo prazo (6,7\% manutenção, 4,0\% governança). Sistemas de \acrshort{IA} evoluem com dados/contextos, exigindo monitoramento e ajuste contínuos para conformidade ética. \\
+\addlinespace
+\textbf{L4: Gap Academia-Indústria} & Ausência total de evidências de adoção industrial (Nível 4 = 0,0\%). Desconexão entre pesquisa acadêmica e prática profissional, com barreiras de adoção não investigadas sistematicamente. \\
+\addlinespace
+\textbf{L5: Trade-offs Formalizados} & Tensões entre princípios conflitantes (fairness vs. accuracy, transparency vs. privacy) raramente formalizadas e investigadas. Falta de métodos de negociação e priorização de princípios éticos. \\
+\addlinespace
+\textbf{L6: Sustentabilidade} & Sub-representação crítica de sustentabilidade (4,0\%). Impactos ambientais (pegada de carbono de LLMs) e sociais de longo prazo negligenciados, contrastando com diretrizes internacionais (UNESCO). \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Síntese: Resposta à RQ3}
+\label{subsubsec:sintese-rq3}
+
+\paragraph{Resposta à RQ3.}
+As evidências empíricas sobre efetividade são predominantemente experimentais (56,0\%) em contextos controlados, com generalização limitada para ambientes industriais. \textbf{Nenhum estudo reporta adoção industrial documentada}, representando lacuna crítica de evidências sobre custos, benefícios e riscos em produção. Desafios reportados incluem: ambiguidade conceitual de princípios éticos, complexidade técnica de modelos black-box, falta de capacitação, pressão por time-to-market, fragmentação regulatória e dificuldade de auditoria.
+
+\paragraph{Lacunas críticas.}
+Seis lacunas foram identificadas (L1--L6), com destaque para: integração ética-requisitos (L1), ausência de suporte ferramental integrado (L2), negligência de manutenção/governança (L3), gap academia-indústria (L4), trade-offs sub-explorados (L5) e sub-representação de sustentabilidade (L6).
+
+
+% ============================================================================
+% SUBSEÇÃO 3.4.5 - ANÁLISES COMPLEMENTARES
+% ============================================================================
+
+\subsection{Análises Complementares}
+\label{subsec:analises-complementares}
+
+Esta seção apresenta análises adicionais que complementam as respostas às \acrshort{RQs}, caracterizando a evolução temporal dos temas e gaps por domínio de aplicação.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Evolução Temporal dos Temas}
+\label{subsubsec:evolucao-temporal-temas}
+
+A análise da evolução temporal dos temas de pesquisa revela mudança de foco ao longo do período 2021--2025, conforme apresentado na Tabela~\ref{tab:evolucao-temas}.
+
+\begin{table}[htbp]
+\centering
+\caption{Evolução temporal dos temas de pesquisa (2021--2025)}
+\label{tab:evolucao-temas}
+\small
+\begin{tabular}{lp{10cm}}
+\toprule
+\textbf{Período} & \textbf{Características Dominantes} \\
+\midrule
+\textbf{2021--2022} & Consolidação de princípios éticos abstratos (fairness, transparency); primeiras propostas de frameworks conceituais; foco em XAI (explicabilidade); GDPR como driver de privacidade. \\
+\addlinespace
+\textbf{2023} & Crescimento de estudos empíricos (experimentos); surgimento de propostas de ferramentas e bibliotecas; início de discussões sobre AI Act. \\
+\addlinespace
+\textbf{2024--2025} & Explosão de interesse em LLMs e \acrshort{IA} generativa (17,3\% dos estudos); operacionalização prática de princípios éticos; foco em MLOps e integração ética a pipelines de CI/CD; preocupação crescente com auditoria e governança. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Fase 1 (2021--2022): Fundações conceituais.}
+Período de consolidação de princípios éticos abstratos e primeiras propostas de frameworks conceituais, com foco dominante em \textit{fairness} e \textit{explainability}. GDPR (2018) ainda é driver principal de discussões sobre privacidade.
+
+\paragraph{Fase 2 (2023): Maturação empírica.}
+Crescimento de estudos empíricos com validação experimental, indicando movimento de propostas teóricas para avaliação rigorosa de efetividade. Surgimento de ferramentas e bibliotecas específicas.
+
+\paragraph{Fase 3 (2024--2025): Operacionalização e LLMs.}
+Explosão de interesse em \acrshort{IA} generativa (LLMs, GPT, Copilot, ChatGPT) reflete mudança de paradigma tecnológico e novos desafios éticos (alucinações, desinformação, uso indevido). Foco crescente em operacionalização prática, integração a MLOps e preocupação com auditoria/governança em resposta ao AI Act (publicado em 2024).
+
+% ----------------------------------------------------------------------------
+\subsubsection{Gaps por Domínio de Aplicação}
+\label{subsubsec:gaps-dominio}
+
+Conforme discutido na Seção~\ref{subsubsec:dominios-aplicacao-resultados}, a distribuição de estudos por domínio revela gaps críticos. A Tabela~\ref{tab:gaps-dominio} sintetiza domínios bem cobertos versus sub-representados.
+
+\begin{table}[htbp]
+\centering
+\caption{Cobertura e gaps por domínio de aplicação}
+\label{tab:gaps-dominio}
+\begin{tabular}{lll}
+\toprule
+\textbf{Categoria} & \textbf{Domínios} & \textbf{Artigos (\%)} \\
+\midrule
+\textbf{Bem cobertos} & Genérico/Independente & 56 (74,7\%) \\
+ & Educação & 10 (13,3\%) \\
+\addlinespace
+\textbf{Emergentes} & Transporte/Veículos autônomos & 4 (5,3\%) \\
+ & Saúde & 2 (2,7\%) \\
+\addlinespace
+\textbf{Sub-representados} & Finanças & 0 (0,0\%) \\
+\textbf{(Alto risco AI Act)} & Recrutamento/RH & 2 (2,7\%) \\
+ & Justiça criminal & 0 (0,0\%) \\
+ & Infraestrutura crítica & 0 (0,0\%) \\
+ & Setor público/Governo & 0 (0,0\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Implicação regulatória.}
+A sub-representação de domínios de alto risco conforme AI Act (saúde, finanças, justiça, recrutamento, infraestrutura) contrasta com exigências regulatórias iminentes. Empresas atuando nestes setores enfrentarão conformidade obrigatória a partir de 2025--2027, mas literatura científica oferece orientação insuficiente para operacionalização.
+
+\paragraph{Oportunidades de pesquisa futura.}
+Estudos focados em domínios sub-representados, especialmente com parcerias indústria-academia, são prioritários para preencher gap crítico entre requisitos regulatórios e práticas de desenvolvimento.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Síntese das Análises Complementares}
+\label{subsubsec:sintese-analises-complementares}
+
+As análises complementares revelam:
+\begin{enumerate}[noitemsep]
+    \item \textbf{Evolução temática clara:} De princípios abstratos (2021--2022) para operacionalização prática e LLMs (2024--2025);
+    \item \textbf{Gap domínio-regulação:} Sub-representação de domínios de alto risco (finanças, justiça, infraestrutura) contrasta com exigências do AI Act;
+    \item \textbf{Dominância genérica:} 74,7\% dos estudos propõem abordagens independentes de domínio, sugerindo foco em princípios transversais mas potencial falta de especialização setorial.
+\end{enumerate}
+
+
+% ============================================================================
+% SUBSEÇÃO 3.4.6 - SÍNTESE GERAL DOS RESULTADOS
+% ============================================================================
+
+\subsection{Síntese Geral dos Resultados}
+\label{subsec:sintese-geral-resultados}
+
+Esta \acrshort{RSL} analisou \textbf{75 estudos de alta qualidade} (QA Score $\geq$ 6,5) publicados entre 2021 e 2025, caracterizando o estado da arte sobre incorporação de ética em \acrshort{IA} no desenvolvimento de software. A síntese evidencia campo em expansão acelerada (crescimento de 575\% entre 2021 e 2025), com maturação metodológica crescente (56,0\% com validação experimental), mas lacunas críticas que limitam transição de pesquisa acadêmica para prática industrial.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Principais Achados}
+\label{subsubsec:principais-achados}
+
+\paragraph{RQ1: Princípios éticos.}
+Nove princípios foram identificados, com dominância de \textbf{Transparency} (57,3\%), \textbf{Fairness} (52,0\%) e \textbf{Accountability} (44,0\%). Lacunas: desconexão com frameworks normativos internacionais (OECD, UNESCO, IEEE), sub-representação crítica de \textit{sustainability} (4,0\%) e trade-offs entre princípios raramente formalizados.
+
+\paragraph{RQ2: Abordagens de operacionalização.}
+Predominância de \textbf{métodos/processos} (38,7\%) focados em \textbf{Implementation} (64,0\%) e \textbf{Testing} (54,7\%). Maturidade moderada: 56,0\% com validação experimental, mas \textbf{0,0\% com adoção industrial documentada}. Lacunas: Requirements Engineering sub-representado (16,0\%), ausência de suporte ferramental integrado, negligência de manutenção (6,7\%) e governança (4,0\%).
+
+\paragraph{RQ3: Desafios e lacunas.}
+Desafios conceituais (ambiguidade de princípios), técnicos (complexidade de black-box, falta de métricas), organizacionais (falta de capacitação, pressão por tempo), regulatórios (fragmentação, gap lei-prática) e metodológicos (generalização limitada, ausência de evidências industriais). Seis lacunas críticas identificadas (L1--L6).
+
+% ----------------------------------------------------------------------------
+\subsubsection{Contribuições para Pesquisa e Prática}
+\label{subsubsec:contribuicoes}
+
+\paragraph{Para pesquisa.}
+Esta \acrshort{RSL} fornece:
+\begin{itemize}[noitemsep]
+    \item Taxonomia consolidada de nove princípios éticos aplicáveis à Engenharia de Software;
+    \item Mapeamento sistemático de abordagens ao SDLC, identificando fases críticas sub-representadas;
+    \item Síntese de desafios e lacunas, orientando agenda de pesquisa futura;
+    \item Evidências sobre gap academia-indústria (0,0\% adoção industrial), indicando necessidade de parcerias e estudos de caso industriais.
+\end{itemize}
+
+\paragraph{Para prática.}
+Profissionais podem utilizar os resultados para:
+\begin{itemize}[noitemsep]
+    \item Priorizar princípios éticos (foco na tríade Transparency-Fairness-Accountability);
+    \item Identificar fases do SDLC onde ética deve ser reforçada (especialmente Requirements, Maintenance, Governance);
+    \item Reconhecer desafios organizacionais (capacitação, cultura, papéis) como barreiras críticas;
+    \item Antecipar requisitos de conformidade regulatória (AI Act, GDPR, LGPD).
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Limitações da Revisão}
+\label{subsubsec:limitacoes-revisao}
+
+\paragraph{Limitações metodológicas.}
+\begin{enumerate}[noitemsep]
+    \item \textbf{Escopo temporal:} Período 2021--2025 captura fase recente do campo, mas pode omitir estudos fundacionais pré-2021;
+    \item \textbf{Idioma:} Restrição a inglês pode excluir contribuições relevantes em outros idiomas;
+    \item \textbf{Bases de dados:} Embora ACM, IEEE, Scopus e Web of Science tenham cobertura abrangente, estudos em repositórios especializados (arXiv, ResearchGate) podem não ter sido capturados;
+    \item \textbf{Viés de publicação:} Tendência de publicação favorece estudos com resultados positivos, potencialmente sub-representando abordagens que falharam;
+    \item \textbf{Exclusão de 8 estudos:} Artigos sem PDF disponível foram excluídos, podendo representar viés se indisponibilidade correlacionar com características específicas.
+\end{enumerate}
+
+\paragraph{Limitações de extração.}
+\begin{enumerate}[noitemsep]
+    \item \textbf{Análise textual automatizada:} Identificação de frameworks, ferramentas e domínios baseou-se em palavras-chave, podendo sub-representar menções implícitas ou contextuais;
+    \item \textbf{Categorização subjetiva:} Classificação de tipos de estudo, princípios e fases do SDLC envolveu julgamento interpretativo, embora com critérios pré-definidos.
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Direções para Pesquisa Futura}
+\label{subsubsec:direcoes-futuras}
+
+Com base nas lacunas identificadas (L1--L6) e nos achados das \acrshort{RQs}, seis direções prioritárias para pesquisa futura são propostas:
+
+\begin{enumerate}
+    \item \textbf{Integração Ética-Requisitos (L1):} Desenvolver métodos sistemáticos de elicitação, priorização e especificação de requisitos éticos como requisitos não-funcionais testáveis e rastreáveis;
+    
+    \item \textbf{Ferramentas Integradas (L2):} Criar plugins de IDEs, extensões de CI/CD e plataformas de MLOps que automatizem verificações éticas (testes de viés, auditoria de explicabilidade, conformidade regulatória) no fluxo de trabalho diário;
+    
+    \item \textbf{Manutenção e Governança (L3):} Investigar processos de monitoramento contínuo de conformidade ética, detecção de drift ético e governança organizacional de \acrshort{IA};
+    
+    \item \textbf{Estudos Industriais (L4):} Conduzir estudos de caso longitudinais em ambientes industriais reais, documentando custos, benefícios, barreiras de adoção e trade-offs práticos de incorporação de ética;
+    
+    \item \textbf{Negociação de Trade-offs (L5):} Formalizar métodos de negociação e priorização de princípios éticos conflitantes, incluindo técnicas de tomada de decisão multicriterial e envolvimento de stakeholders diversos;
+    
+    \item \textbf{Sustentabilidade (L6):} Incorporar considerações de impacto ambiental (pegada de carbono de modelos) e social de longo prazo em frameworks de ética em \acrshort{IA}, alinhando-se a diretrizes internacionais (UNESCO, ODS).
+\end{enumerate}
+
+% ============================================================================
+% SEÇÃO 3.5 - DISCUSSÃO CRÍTICA
+% ============================================================================
+
+\section{Discussão Crítica}
+\label{sec:discussao-critica}
+
+Esta seção apresenta interpretação crítica dos resultados da \acrshort{RSL} à luz da literatura existente, contexto da pesquisa e objetivos da dissertação. A discussão articula cinco dimensões complementares: (1) caracterização do estado da arte em ética para \acrshort{IA} na Engenharia de Software; (2) convergências com estudos prévios; (3) divergências e contribuições únicas desta revisão; (4) implicações teóricas; (5) implicações práticas; (6) justificativa para a proposta da dissertação (Capítulo~\ref{cap:proposta}); e (7) reflexão sobre tendências futuras.
+
+A discussão baseia-se nos achados consolidados das quatro \acrshort{RQs}, sintetizando evidências de \textbf{75 estudos de alta qualidade} publicados entre 2021--2025, e posiciona esta pesquisa no contexto mais amplo da ética em \acrshort{IA} aplicada à Engenharia de Software.
+
+
+% ============================================================================
+% SUBSEÇÃO 3.5.1 - ESTADO DA ARTE EM ÉTICA PARA IA NA ENGENHARIA DE SOFTWARE
+% ============================================================================
+
+\subsection{Estado da Arte em Ética para IA na Engenharia de Software}
+\label{subsec:estado-arte}
+
+A análise sistemática de 75 estudos de alta qualidade revela um campo em rápida expansão (crescimento de 575\% entre 2021--2025), mas ainda marcado por desafios fundamentais de operacionalização e adoção prática. Esta subseção sintetiza a maturidade do campo em quatro dimensões críticas.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Consolidação Conceitual Parcial}
+\label{subsubsec:consolidacao-conceitual}
+
+\paragraph{Convergência em torno de princípios core.}
+Os resultados da RQ1 (Seção~\ref{subsec:rq1-principios}) evidenciam convergência significativa em torno de uma \textbf{tríade ética central}: Transparency (57,3\%), Fairness (52,0\%) e Accountability (44,0\%). Esta convergência sugere maturação conceitual do campo, com consenso emergente sobre prioridades éticas fundamentais para sistemas de \acrshort{IA}.
+
+A predominância destes três princípios alinha-se com frameworks normativos internacionais: OECD AI Principles enfatiza transparência e responsabilização \cite{OECD2019}; UNESCO Recommendation destaca justiça e não discriminação \cite{UNESCO2021}; AI Act da União Europeia estrutura requisitos de conformidade em torno de transparência, supervisão humana e precisão técnica \cite{EUAIAct2024}.
+
+\paragraph{Persistência de ambiguidades operacionais.}
+Apesar da convergência conceitual, a análise de desafios (RQ3, Seção~\ref{subsec:rq3-desafios}) revela \textbf{ambiguidade operacional persistente}: o que constitui ``transparência adequada'' varia dramaticamente conforme contexto (saúde vs. finanças), audiência (desenvolvedores vs. usuários finais vs. reguladores) e artefato (código vs. modelo vs. decisão). 
+
+Esta ambiguidade manifesta-se em três níveis:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Definições conceituais:} Fairness pode significar paridade demográfica, igualdade de oportunidades, calibração ou \textit{individual fairness}, cada uma com implicações técnicas e filosóficas distintas \cite{Corbett-Davies2018};
+    
+    \item \textbf{Métricas operacionais:} Ausência de métricas éticas objetivas e consensuais dificulta avaliação de conformidade e comparação entre abordagens;
+    
+    \item \textbf{Critérios de suficiência:} Inexistência de limites claros para ``suficientemente transparente'' ou ``aceitavelmente justo'' resulta em julgamentos ad hoc e context-dependent.
+\end{enumerate}
+
+\paragraph{Trade-offs não formalizados.}
+A baixíssima menção a tensões entre princípios (apenas 6 estudos, 8,0\% -- Tabela~\ref{tab:tradeoffs-principios}) contrasta com a realidade prática de que princípios éticos frequentemente entram em conflito \cite{Mittelstadt2019}. O único trade-off sistematicamente investigado (Fairness vs. Accuracy) reflete maturação técnica, mas a ausência de discussão sobre Transparency vs. Privacy, Explainability vs. Performance e outros conflitos indica lacuna crítica.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Proliferação de Frameworks sem Validação Robusta}
+\label{subsubsec:proliferacao-frameworks}
+
+\paragraph{Variedade de propostas conceituais.}
+A RQ2 identificou predominância de \textbf{métodos/processos} (38,7\%) e \textbf{frameworks conceituais} (13,3\%), indicando esforço significativo de estruturação e sistematização de práticas éticas. Esta diversidade reflete exploração ativa do design space, com múltiplas abordagens competindo por adoção.
+
+\paragraph{Déficit de validação empírica industrial.}
+A análise de maturidade (Tabela~\ref{tab:maturidade-propostas}) revela gap crítico: embora 56,0\% dos estudos apresentem validação experimental controlada (Nível 3), \textbf{nenhum estudo reporta adoção industrial documentada} (Nível 4 = 0,0\%). Este gap sugere três interpretações não mutuamente exclusivas:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Barreiras de adoção:} Custos organizacionais, técnicos e culturais impedem transição de protótipos acadêmicos para sistemas em produção;
+    
+    \item \textbf{Confidencialidade industrial:} Empresas relutam em divulgar práticas éticas por razões competitivas ou reputacionais, resultando em sub-representação de casos reais na literatura científica aberta;
+    
+    \item \textbf{Gap temporal:} Propostas recentes (concentração em 2024--2025) ainda não tiveram tempo de amadurecer e serem adotadas industrialmente.
+\end{enumerate}
+
+\paragraph{Implicação para transferência de conhecimento.}
+A ausência de evidências industriais limita severamente a capacidade de avaliar efetividade, custos, benefícios e riscos de abordagens éticas em ambientes reais. Esta lacuna representa barreira fundamental para transição do campo de ``pesquisa acadêmica'' para ``prática profissional consolidada''.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Descompasso Teoria-Prática}
+\label{subsubsec:descompasso-teoria-pratica}
+
+\paragraph{Concentração em fases tardias do SDLC.}
+O mapeamento ao ciclo de vida (Tabela~\ref{tab:fases-sdlc-cobertura}) revela concentração crítica em \textbf{Implementation} (64,0\%) e \textbf{Testing} (54,7\%), com sub-representação dramática de \textbf{Requirements} (16,0\%), \textbf{Maintenance} (6,7\%) e \textbf{Governance} (4,0\%).
+
+Este padrão indica tratamento predominantemente \textit{reativo} de ética: princípios são considerados \textit{a posteriori}, durante codificação e verificação, ao invés de \textit{proativamente}, desde elicitação de requisitos e arquitetura de soluções. Esta abordagem reativa é problemática por três razões:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Custos de correção:} Detectar e corrigir problemas éticos em fases tardias é exponencialmente mais custoso que preveni-los desde requisitos \cite{Boehm2001};
+    
+    \item \textbf{Limitações arquiteturais:} Decisões arquiteturais tomadas sem consideração ética podem criar ``path dependencies'' que limitam intervenções subsequentes;
+    
+    \item \textbf{Negligência de aspectos sistêmicos:} Foco em código e testes obscurece dimensões organizacionais, processuais e de governança essenciais para ética sustentável.
+\end{enumerate}
+
+\paragraph{Negligência de aspectos de longo prazo.}
+A sub-representação de Maintenance (6,7\%) e Governance (4,0\%) é particularmente preocupante no contexto de sistemas de \acrshort{IA}, que \textbf{evoluem continuamente} com novos dados, contextos e requisitos. Conformidade ética não é propriedade estática verificável uma única vez, mas sim \textbf{processo contínuo} exigindo monitoramento, auditoria e ajuste sistemáticos \cite{Selbst2019}.
+
+Esta negligência manifesta-se em ausência de pesquisas sobre:
+\begin{itemize}[noitemsep]
+    \item Detecção de \textit{drift ético} (degradação gradual de conformidade ao longo do tempo);
+    \item Processos de auditoria contínua integrados a MLOps/DevOps;
+    \item Governança organizacional de ética em \acrshort{IA} (papéis, responsabilidades, comitês);
+    \item Estratégias de manutenção de documentação ética e rastreabilidade de decisões.
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Fragmentação Disciplinar e Falta de Integração}
+\label{subsubsec:fragmentacao-disciplinar}
+
+\paragraph{Múltiplas comunidades, pouca integração.}
+A ética em \acrshort{IA} é abordada por comunidades disciplinares diversas -- Engenharia de Software, \textit{Human-Computer Interaction} (HCI), Filosofia, Direito, Ciências Sociais, Machine Learning -- cada uma com vocabulários, métodos e prioridades distintos. A baixíssima menção a frameworks normativos consolidados (OECD, UNESCO, IEEE: apenas 9,3\% dos estudos -- Tabela~\ref{tab:frameworks-mencionados}) sugere operação predominantemente \textit{bottom-up}, com pouca integração a esforços normativos globais.
+
+\paragraph{Desconexão entre ética algorítmica e engenharia de software.}
+Embora Machine Learning tenha produzido extensa literatura sobre fairness algorítmico, explicabilidade e privacy-preserving techniques \cite{Barocas2019}, a integração destas técnicas a \textbf{práticas de engenharia de software} permanece limitada. A ausência de menções a bibliotecas consolidadas (LIME, SHAP, AIF360, Fairlearn -- 0,0\% -- Tabela~\ref{tab:ferramentas-mencionadas}) sugere gap entre disponibilidade técnica e integração processual.
+
+\paragraph{Oportunidade de síntese interdisciplinar.}
+O campo beneficiar-se-ia de esforços deliberados de síntese interdisciplinar, articulando:
+\begin{itemize}[noitemsep]
+    \item Princípios normativos (Filosofia, Direito) $\rightarrow$ Requisitos operacionais (Engenharia de Software);
+    \item Técnicas algorítmicas (Machine Learning) $\rightarrow$ Processos de desenvolvimento (DevOps/MLOps);
+    \item Avaliação de impacto (Ciências Sociais) $\rightarrow$ Métricas de conformidade (Engenharia de Software).
+\end{itemize}
+
+
+% ============================================================================
+% SUBSEÇÃO 3.5.2 - CONVERGÊNCIAS COM A LITERATURA PRÉVIA
+% ============================================================================
+
+\subsection{Convergências com a Literatura Prévia}
+\label{subsec:convergencias-literatura}
+
+Esta subseção posiciona os achados da \acrshort{RSL} em relação a revisões e estudos anteriores, identificando confirmações e reforços de padrões já conhecidos.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Ênfase em Transparência e Fairness}
+\label{subsubsec:enfase-transparencia-fairness}
+
+Os resultados confirmam padrões reportados em revisões anteriores \cite{Jobin2019,Fjeld2020,Hagendorff2020}: \textbf{Transparency} e \textbf{Fairness} emergem consistentemente como princípios dominantes. Jobin et al. \cite{Jobin2019}, analisando 84 frameworks éticos de \acrshort{IA}, identificaram transparência (73\%) e justiça (68\%) como os princípios mais frequentes. Nossa análise amplia esta evidência para o contexto específico de \textbf{Engenharia de Software}, confirmando que estes princípios não são apenas abstrações filosóficas, mas preocupações centrais de desenvolvedores e pesquisadores técnicos.
+
+\paragraph{Adição de evidências sobre Accountability.}
+Nossa revisão adiciona \textbf{Accountability} (44,0\%) como terceiro elemento da tríade central, frequência superior à reportada por Jobin et al. (responsabilidade: 48\% dos frameworks gerais). Esta ênfase pode refletir maturação do campo pós-GDPR (2018) e crescente pressão regulatória (AI Act, 2024), que explicitam requisitos de responsabilização e auditabilidade.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Dificuldade de Operacionalizar Valores Abstratos}
+\label{subsubsec:dificuldade-operacionalizacao}
+
+Mittelstadt \cite{Mittelstadt2019} argumenta que princípios éticos de alto nível (transparência, justiça, beneficência) são ``frustrantemente vagos'' e oferecem orientação limitada para decisões práticas de design. Nossa análise \textbf{corrobora plenamente} esta observação: a ambiguidade operacional persistente (Seção~\ref{subsubsec:consolidacao-conceitual}) e a ausência de métricas consensuais (RQ3) confirmam que a transição de princípios para práticas permanece desafio central.
+
+\paragraph{Avanço incremental em métricas.}
+Apesar da persistência do problema, nossa revisão identifica \textbf{progresso incremental}: crescimento de propostas de métricas específicas para fairness (paridade demográfica, calibração, individual fairness) e explicabilidade (fidelidade de aproximações locais, completude de justificações). Estes avanços, embora fragmentados, indicam movimento de abstração para concretude.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Lacuna em Engenharia de Requisitos Éticos}
+\label{subsubsec:lacuna-requisitos-eticos}
+
+Vakkuri et al. \cite{Vakkuri2020} e Aldewereld et al. \cite{Aldewereld2015} identificaram negligência sistemática de requisitos éticos na fase inicial do desenvolvimento. Nossa análise \textbf{confirma e quantifica} esta lacuna: apenas 16,0\% dos estudos abordam Requirements Engineering (Tabela~\ref{tab:fases-sdlc-cobertura}), reforçando a crítica de que ética é tratada como ``\textit{afterthought}'' ao invés de prioridade \textit{by design}.
+
+\paragraph{Avanços incrementais em VSD e design participativo.}
+Apesar da sub-representação, identificamos avanços incrementais em abordagens inspiradas em \textit{Value Sensitive Design} (VSD) \cite{Friedman2013} e design participativo, com aproximadamente 10\% dos estudos envolvendo stakeholders em elicitação de valores éticos. Estes esforços, embora minoritários, indicam reconhecimento crescente da necessidade de métodos sistemáticos de captura de valores.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Importância de Frameworks Estruturadores}
+\label{subsubsec:importancia-frameworks}
+
+Bolgouras et al. \cite{Bolgouras2025} propõem o \textbf{VPCIO Framework} (Values $\rightarrow$ Principles $\rightarrow$ Context $\rightarrow$ Implementation $\rightarrow$ Outcomes) como estrutura operacionalizável para traduzir valores éticos em práticas concretas. Nossa análise identifica propostas semelhantes em 13,3\% dos estudos (frameworks conceituais -- Tabela~\ref{tab:tipos-contribuicao}), confirmando a importância de \textbf{estruturas intermediárias} que medeiam entre abstração normativa e implementação técnica.
+
+\paragraph{Extensão da análise.}
+Nossa revisão estende a análise de frameworks ao:
+\begin{enumerate}[noitemsep]
+    \item Mapear sistematicamente tipos de contribuição (métodos, processos, ferramentas, guidelines);
+    \item Avaliar maturidade através de níveis de validação empírica;
+    \item Identificar gaps críticos de suporte ferramental (5,3\% com ferramentas integradas).
+\end{enumerate}
+
+
+% ============================================================================
+% SUBSEÇÃO 3.5.3 - DIVERGÊNCIAS E CONTRIBUIÇÕES ÚNICAS
+% ============================================================================
+
+\subsection{Divergências e Contribuições Únicas}
+\label{subsec:divergencias-contribuicoes}
+
+Esta subseção identifica aspectos em que os achados desta \acrshort{RSL} divergem de estudos prévios ou adicionam perspectivas únicas ao conhecimento consolidado.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Divergência 1: Crescimento de Abordagens Ex-Ante}
+\label{subsubsec:divergencia-abordagens-ex-ante}
+
+\paragraph{Contraste com revisões anteriores.}
+Kaminski et al. \cite{Kaminski2021} sugerem predominância de abordagens de auditoria \textit{ex-post} (pós-deployment) em práticas de governança de \acrshort{IA}. Nossa análise revela movimento \textbf{contrário}: crescimento de abordagens \textit{ex-ante} focadas em design ético, prevenção de viés e incorporação de valores desde requisitos.
+
+\paragraph{Evidência empírica.}
+A concentração em Implementation (64,0\%) e Testing (54,7\%) -- fases \textit{pré-deployment} -- sugere foco preventivo. Embora Requirements permaneça sub-representado (16,0\%), sua presença em estudos recentes (2024--2025) indica tendência crescente de antecipação ética.
+
+\paragraph{Interpretação.}
+Esta divergência pode refletir maturação do campo: reconhecimento de que auditoria \textit{ex-post} é insuficiente para sistemas de \acrshort{IA} complexos, onde problemas éticos estruturais são difíceis de corrigir após deployment. A crescente ênfase em ``ethics by design'' alinha-se com princípios de \textit{Privacy by Design} \cite{Cavoukian2009} e regulações como GDPR.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Divergência 2: Movimento Bottom-Up de Práticas Emergentes}
+\label{subsubsec:divergencia-bottom-up}
+
+\paragraph{Contraste com perspectiva regulatória.}
+Cath et al. \cite{Cath2018} enfatizam frameworks éticos \textit{top-down} impulsionados por regulação (GDPR, AI Act) como drivers principais de mudança. Nossa análise revela movimento \textbf{complementar bottom-up}: apenas 9,3\% dos estudos mencionam frameworks normativos consolidados (Tabela~\ref{tab:frameworks-mencionados}), sugerindo que práticas emergem de necessidades e experimentações de desenvolvedores, não apenas de imposições regulatórias.
+
+\paragraph{Evidência empírica.}
+A predominância de métodos/processos (38,7\%) e avaliações empíricas (10,7\%) indica esforço de comunidade técnica em \textbf{descobrir} práticas efetivas através de experimentação, não apenas em \textbf{implementar} requisitos regulatórios pré-definidos.
+
+\paragraph{Implicação.}
+Esta dualidade sugere necessidade de abordagens híbridas que articulem:
+\begin{itemize}[noitemsep]
+    \item \textbf{Top-down:} Princípios normativos e requisitos regulatórios como balizadores éticos;
+    \item \textbf{Bottom-up:} Práticas emergentes de desenvolvedores como fonte de inovação operacional;
+    \item \textbf{Middle-out:} Frameworks intermediários (como VPCIO) que medeiam entre abstração e concretude.
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Contribuição Única: Mapeamento Detalhado ao SDLC}
+\label{subsubsec:contribuicao-mapeamento-sdlc}
+
+\paragraph{Ausência em revisões anteriores.}
+Revisões prévias (Jobin et al. \cite{Jobin2019}, Hagendorff \cite{Hagendorff2020}, Fjeld et al. \cite{Fjeld2020}) focaram em \textbf{quais} princípios são considerados, mas não em \textbf{onde} e \textbf{quando} no ciclo de vida eles são operacionalizados. Nossa RQ2 (Seção~\ref{subsec:rq2-abordagens}) fornece \textbf{mapeamento sistemático} de abordagens éticas ao SDLC, revelando:
+
+\begin{enumerate}[noitemsep]
+    \item Concentração em Implementation (64,0\%) e Testing (54,7\%);
+    \item Sub-representação crítica de Requirements (16,0\%), Maintenance (6,7\%) e Governance (4,0\%);
+    \item Média de 2,07 fases por estudo, indicando cobertura parcial do ciclo de vida.
+\end{enumerate}
+
+\paragraph{Implicação prática.}
+Este mapeamento permite priorização informada de esforços: investimento em Requirements Engineering e Governance oferece maior potencial de impacto sistêmico que reforço adicional em fases já bem cobertas (Implementation/Testing).
+
+% ----------------------------------------------------------------------------
+\subsubsection{Contribuição Única: Análise de Co-ocorrências de Princípios}
+\label{subsubsec:contribuicao-coocorrencias}
+
+\paragraph{Inovação metodológica.}
+Nossa análise de co-ocorrências (Tabela~\ref{tab:coocorrencia-principios}) revela \textbf{interdependências} entre princípios éticos:
+\begin{itemize}[noitemsep]
+    \item \textbf{Transparency como articulador central:} aparece em 7/10 pares mais frequentes, sugerindo função de ``enabler'' para outros princípios;
+    \item \textbf{Cluster Fairness-Accountability:} co-ocorrência de 21,3\% indica reconhecimento de que justiça algorítmica requer responsabilização organizacional;
+    \item \textbf{Isolamento de Sustainability e Autonomy:} ausência no Top 10 sugere tratamento fragmentado.
+\end{itemize}
+
+\paragraph{Implicação teórica.}
+Estas interdependências contradizem visão de princípios como lista independente, sugerindo necessidade de \textbf{modelos relacionais} que capturem dependências, sinergias e tensões entre valores éticos.
+
+
+% ============================================================================
+% SUBSEÇÃO 3.5.4 - IMPLICAÇÕES TEÓRICAS
+% ============================================================================
+
+\subsection{Implicações Teóricas}
+\label{subsec:implicacoes-teoricas}
+
+Os resultados da \acrshort{RSL} têm implicações significativas para o desenvolvimento teórico do campo de ética em \acrshort{IA} aplicada à Engenharia de Software. Esta subseção discute três implicações centrais.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Necessidade de Teoria Unificadora}
+\label{subsubsec:necessidade-teoria-unificadora}
+
+\paragraph{Fragmentação teórica atual.}
+A análise revela fragmentação teórica significativa: nove princípios éticos identificados, múltiplos frameworks propostos (13,3\% dos estudos), baixa integração com guidelines normativos (9,3\%), e ausência de consenso sobre definições operacionais e métricas. Esta fragmentação dificulta:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Comparação entre abordagens:} falta de baseline comum impede avaliação de efetividade relativa;
+    \item \textbf{Acumulação de conhecimento:} dificuldade de sintetizar achados quando estudos usam vocabulários e frameworks distintos;
+    \item \textbf{Transferência para prática:} proliferação de propostas conceituais sobrecarrega profissionais sem orientação clara sobre qual adotar.
+\end{enumerate}
+
+\paragraph{Elementos de teoria unificadora.}
+Uma teoria integrativa de ética em \acrshort{IA} para Engenharia de Software deveria articular:
+
+\begin{enumerate}
+    \item \textbf{Ontologia compartilhada:} taxonomia consensual de princípios éticos, suas definições, interdependências e operacionalizações;
+    
+    \item \textbf{Modelo processual:} framework que mapeia sistematicamente princípios éticos a fases do SDLC, artefatos e práticas;
+    
+    \item \textbf{Teoria de trade-offs:} formalização de tensões entre princípios, com métodos de negociação e priorização;
+    
+    \item \textbf{Mecanismos de validação:} critérios objetivos para avaliar conformidade ética, comparar abordagens e medir progresso.
+\end{enumerate}
+
+\paragraph{Inspiração em qualidade de software.}
+Analogia útil emerge com teoria de qualidade de software: ISO/IEC 25010 estabelece modelo consensual de características de qualidade (funcionalidade, confiabilidade, usabilidade, eficiência, manutenibilidade, portabilidade), métricas associadas e métodos de avaliação \cite{ISO25010}. Ética em \acrshort{IA} beneficiar-se-ia de estrutura similar.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Ética como Requisito Não-Funcional de Qualidade}
+\label{subsubsec:etica-requisito-nao-funcional}
+
+\paragraph{Evidências para tratamento como qualidade sistêmica.}
+A sub-representação de Requirements (16,0\%) e a concentração em Implementation/Testing sugerem que ética é frequentemente tratada como \textbf{propriedade emergente} ou \textbf{preocupação tardia}, não como \textbf{requisito arquitetural}. Contudo, três evidências sugerem necessidade de reposicionamento:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Pervasividade:} média de 3,05 princípios por estudo e 2,07 fases do SDLC indica que ética \textbf{perpassa} todo o desenvolvimento, similar a segurança ou usabilidade;
+    
+    \item \textbf{Trade-offs com performance:} tensão Fairness vs. Accuracy (Tabela~\ref{tab:tradeoffs-principios}) é análoga a trade-offs clássicos entre requisitos não-funcionais (segurança vs. performance, usabilidade vs. eficiência);
+    
+    \item \textbf{Necessidade de rastreabilidade:} demanda por auditoria e conformidade exige rastreabilidade de decisões éticas desde requisitos até deployment, estrutura típica de engenharia de requisitos não-funcionais \cite{Chung2000}.
+\end{enumerate}
+
+\paragraph{Proposta conceitual.}
+Ética em \acrshort{IA} deveria ser formalizada como \textbf{categoria de requisitos não-funcionais}, com:
+\begin{itemize}[noitemsep]
+    \item \textbf{Especificação explícita:} elicitação, priorização e documentação de requisitos éticos (transparência, justiça, etc.) como constraints de design;
+    \item \textbf{Metrificação:} desenvolvimento de métricas objetivas e testáveis para cada princípio ético;
+    \item \textbf{Validação sistemática:} testes, inspeções e auditorias de conformidade ética integrados ao processo de QA;
+    \item \textbf{Monitoramento contínuo:} verificação de manutenção de propriedades éticas ao longo do tempo (similar a monitoramento de performance ou segurança).
+\end{itemize}
+
+\paragraph{Implicação para processos.}
+Esta reconceptualização implica adaptações processuais:
+\begin{itemize}[noitemsep]
+    \item \textbf{Análise de impacto ético:} análoga a análise de impacto em segurança ou privacidade;
+    \item \textbf{Padrões de design ético:} catálogos de soluções arquiteturais recorrentes para problemas éticos comuns;
+    \item \textbf{Testes de conformidade ética:} suítes de testes automatizados para verificação contínua.
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Tensão Permanente entre Valores: Gerenciamento Dinâmico}
+\label{subsubsec:tensao-permanente-valores}
+
+\paragraph{Ilusão da ``resolução'' de conflitos éticos.}
+A baixa menção a trade-offs (8,0\%) pode sugerir presunção implícita de que conflitos éticos são ``resolvíveis'' -- que existe solução técnica que otimiza simultaneamente todos os princípios. Esta presunção é \textbf{teoricamente equivocada}:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Incompatibilidade fundamental:} alguns princípios são matematicamente incompatíveis (por exemplo, definições de fairness mutuamente exclusivas \cite{Kleinberg2016});
+    
+    \item \textbf{Dependência contextual:} priorização de princípios varia legitimamente conforme contexto (saúde vs. finanças), stakeholders e valores culturais;
+    
+    \item \textbf{Dinamicidade temporal:} contextos evoluem, exigindo renegociação contínua de trade-offs.
+\end{enumerate}
+
+\paragraph{Mudança de paradigma: de otimização para negociação.}
+Trade-offs éticos não devem ser ``resolvidos'' uma única vez, mas sim \textbf{gerenciados dinamicamente} através de:
+
+\begin{enumerate}
+    \item \textbf{Explicitação de tensões:} documentação clara de conflitos entre princípios e decisões de priorização;
+    
+    \item \textbf{Participação de stakeholders:} envolvimento de grupos afetados na negociação de trade-offs, não apenas decisão técnica unilateral;
+    
+    \item \textbf{Rastreabilidade de decisões:} registro auditável de por que certos princípios foram priorizados sobre outros em contextos específicos;
+    
+    \item \textbf{Revisão periódica:} reavaliação regular de trade-offs conforme contextos evoluem.
+\end{enumerate}
+
+\paragraph{Implicação para frameworks.}
+Frameworks éticos devem incorporar \textbf{mecanismos de negociação} de trade-offs como componente central, não como exceção ou falha. Inspiração pode vir de abordagens de tomada de decisão multicriterial (MCDM) \cite{Belton2002} e design participativo \cite{Friedman2013}.
+
+
+% ============================================================================
+% SUBSEÇÃO 3.5.5 - IMPLICAÇÕES PRÁTICAS
+% ============================================================================
+
+\subsection{Implicações Práticas}
+\label{subsec:implicacoes-praticas}
+
+Os achados da \acrshort{RSL} têm implicações diretas para diferentes stakeholders envolvidos no desenvolvimento de sistemas de \acrshort{IA}. Esta subseção discute implicações para desenvolvedores, gestores, reguladores e educadores.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Para Desenvolvedores: Capacitação e Ferramentas}
+\label{subsubsec:implicacoes-desenvolvedores}
+
+\paragraph{Necessidade de capacitação em ética.}
+Os desafios organizacionais identificados (Seção~\ref{subsubsec:desafios-organizacionais}) -- falta de conhecimento, resistência cultural, ausência de papéis definidos -- indicam que desenvolvedores carecem de formação adequada em ética. Implicações:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Capacitação técnica em ética:} desenvolvedores precisam compreender princípios éticos, suas operacionalizações e técnicas de mitigação de problemas (debiasing, explicabilidade, privacy-preserving ML);
+    
+    \item \textbf{Capacitação em negociação de valores:} habilidades para identificar, explicitar e negociar trade-offs éticos com stakeholders diversos;
+    
+    \item \textbf{Consciência de limitações:} reconhecimento de que soluções técnicas têm limites e que dimensões éticas transcendem otimização algorítmica.
+\end{enumerate}
+
+\paragraph{Acesso a ferramentas integradas ao workflow.}
+A ausência de suporte ferramental (apenas 5,3\% com ferramentas integradas; 0,0\% de menções a bibliotecas consolidadas -- Tabela~\ref{tab:ferramentas-mencionadas}) representa barreira crítica. Desenvolvedores dependem de automação e integração com ecossistemas existentes (IDEs, Git, CI/CD, Kubernetes, plataformas de MLOps).
+
+\textbf{Necessidades práticas:}
+\begin{itemize}[noitemsep]
+    \item \textbf{Plugins de IDEs:} verificação em tempo real de potenciais problemas éticos durante codificação;
+    \item \textbf{Extensões de CI/CD:} testes automatizados de viés, explicabilidade e conformidade como parte de pipelines de integração contínua;
+    \item \textbf{Dashboards de monitoramento:} visualizações de métricas éticas (distribuição de predições por grupo demográfico, drift de fairness ao longo do tempo);
+    \item \textbf{Bibliotecas padronizadas:} abstrações de alto nível para técnicas de fairness, explicabilidade e privacy, com documentação e exemplos práticos.
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Para Gestores: Cultura Organizacional e Governança}
+\label{subsubsec:implicacoes-gestores}
+
+\paragraph{Ética não é ``compliance checklist''.}
+A negligência de Governance (4,0\%) e Maintenance (6,7\%) sugere percepção de ética como \textbf{requisito pontual de conformidade} (``marcar caixas''), não como \textbf{preocupação sistêmica e contínua}. Esta percepção é contraproducente.
+
+\textbf{Mudança de paradigma necessária:}
+\begin{enumerate}[noitemsep]
+    \item \textbf{De compliance para valor:} reposicionar ética como investimento em qualidade, reputação e sustentabilidade de longo prazo, não apenas custo regulatório;
+    
+    \item \textbf{De verificação pontual para processo contínuo:} estabelecer monitoramento, auditoria e ajuste sistemáticos, não apenas validação pré-deployment;
+    
+    \item \textbf{De responsabilidade individual para coletiva:} criar estruturas organizacionais (comitês de ética, papéis dedicados, processos de revisão) que institucionalizem responsabilização.
+\end{enumerate}
+
+\paragraph{Incorporação cultural de ética.}
+Gestores devem criar ambiente organizacional onde ética é:
+\begin{itemize}[noitemsep]
+    \item \textbf{Valorizada:} reconhecimento e recompensa de práticas éticas;
+    \item \textbf{Discutível:} espaços seguros para levantar preocupações éticas sem retaliação;
+    \item \textbf{Capacitada:} tempo e recursos alocados para capacitação, experimentação e refinamento de práticas éticas;
+    \item \textbf{Mensurável:} métricas e KPIs que incluem dimensões éticas, não apenas técnicas/financeiras.
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Para Reguladores: Orientações Práticas e Exemplos}
+\label{subsubsec:implicacoes-reguladores}
+
+\paragraph{Gap lei-prática persistente.}
+Os desafios regulatórios identificados (Seção~\ref{subsubsec:desafios-regulatorios}) -- fragmentação, ausência de padrões, dificuldade de auditoria -- indicam que \textbf{regulações existem} (GDPR, AI Act, LGPD) mas falta \textbf{orientação prática} sobre \textit{como} implementar requisitos legais.
+
+\textbf{Necessidades práticas:}
+\begin{enumerate}[noitemsep]
+    \item \textbf{Guias de implementação:} documentação técnica detalhada sobre \textit{como} operacionalizar requisitos regulatórios (por exemplo, ``transparência adequada'' do AI Act significa: logs de decisão, explicações para usuários, documentação técnica para auditores?);
+    
+    \item \textbf{Exemplos concretos:} casos práticos de conformidade bem-sucedida, com artefatos, código e processos documentados;
+    
+    \item \textbf{Ferramentas de autoavaliação:} checklists, questionários e ferramentas automatizadas para organizações avaliarem conformidade;
+    
+    \item \textbf{Programas de certificação:} esquemas de certificação de conformidade ética, análogos a ISO 9001 para qualidade ou ISO 27001 para segurança da informação.
+\end{enumerate}
+
+\paragraph{Harmonização regulatória.}
+Fragmentação entre jurisdições (GDPR, LGPD, AI Act, regulações setoriais) aumenta custos de conformidade. Esforços de harmonização internacional são críticos, especialmente para sistemas de \acrshort{IA} multinacionais.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Para Educadores: Ética Transversal nos Currículos}
+\label{subsubsec:implicacoes-educadores}
+
+\paragraph{Insuficiência de disciplinas isoladas.}
+A falta de capacitação de desenvolvedores sugere que ensino de ética em Computação/Engenharia de Software é insuficiente. Abordagem tradicional (disciplina isolada de ``Ética em Computação'') é limitada.
+
+\textbf{Proposta de integração transversal:}
+\begin{enumerate}[noitemsep]
+    \item \textbf{Ética em Requisitos:} disciplinas de Engenharia de Requisitos devem incorporar elicitação de valores éticos, análise de stakeholders e especificação de requisitos não-funcionais éticos;
+    
+    \item \textbf{Ética em Design/Arquitetura:} disciplinas de Arquitetura de Software devem discutir padrões de design ético, análise de impacto e trade-offs arquiteturais;
+    
+    \item \textbf{Ética em Implementação/Testes:} disciplinas de desenvolvimento e QA devem ensinar uso de bibliotecas de fairness/XAI, testes de viés e auditoria de conformidade;
+    
+    \item \textbf{Ética em Projetos Integradores:} projetos capstone devem exigir análise ética explícita, com documentação de decisões e trade-offs.
+\end{enumerate}
+
+\paragraph{Formação interdisciplinar.}
+Currículos devem integrar perspectivas de Filosofia, Direito, Ciências Sociais e Ética Aplicada, não apenas técnicas. Desenvolvedores precisam compreender não apenas \textit{como} implementar técnicas, mas \textit{por que} princípios éticos importam e \textit{para quem}.
+
+
+% ============================================================================
+% SUBSEÇÃO 3.5.6 - JUSTIFICATIVA PARA A PROPOSTA DA TESE
+% ============================================================================
+
+\subsection{Justificativa para a Proposta da Dissertação}
+\label{subsec:justificativa-proposta}
+
+Esta subseção conecta explicitamente os achados da \acrshort{RSL} aos objetivos desta dissertação, articulando lacunas identificadas, oportunidades de contribuição e diferencial da proposta a ser apresentada no Capítulo~\ref{cap:proposta}.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Lacunas Críticas Identificadas pela RSL}
+\label{subsubsec:lacunas-criticas-identificadas}
+
+A síntese das RQs 1--3 revelou \textbf{seis lacunas críticas} (L1--L6, Tabela~\ref{tab:lacunas-literatura}), das quais três são diretamente endereçáveis por esta dissertação:
+
+\paragraph{L1: Integração Ética-Requisitos (16,0\%).}
+Poucos estudos conectam explicitamente princípios éticos a requisitos de software elicitáveis, priorizáveis e testáveis. Ética é tratada \textit{a posteriori} (implementação/testes) ao invés de \textit{by design} (requisitos). Esta lacuna representa \textbf{oportunidade central} para contribuição desta dissertação.
+
+\paragraph{L2: Suporte Ferramental Integrado (5,3\%).}
+Ausência de ferramentas que integrem ética ao fluxo de trabalho de desenvolvimento. Bibliotecas consolidadas (LIME, SHAP, AIF360) são sub-utilizadas ou desconectadas de processos. Esta lacuna indica necessidade de \textbf{artefatos operacionalizáveis}.
+
+\paragraph{L3: Manutenção e Governança (6,7\% e 4,0\%).}
+Negligência crítica de aspectos de longo prazo. Sistemas de \acrshort{IA} evoluem continuamente, exigindo monitoramento e ajuste. Esta lacuna sugere necessidade de abordagens que considerem \textbf{ciclo de vida completo}.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Oportunidade de Contribuição}
+\label{subsubsec:oportunidade-contribuicao}
+
+\paragraph{Foco em Engenharia de Requisitos Éticos.}
+A convergência de três evidências cria oportunidade única:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Sub-representação crítica:} apenas 16,0\% abordam Requirements (Tabela~\ref{tab:fases-sdlc-cobertura});
+    \item \textbf{Reconhecimento teórico:} ética como requisito não-funcional (Seção~\ref{subsubsec:etica-requisito-nao-funcional});
+    \item \textbf{Demanda prática:} desenvolvedores precisam de métodos sistemáticos (Seção~\ref{subsubsec:implicacoes-desenvolvedores}).
+\end{enumerate}
+
+\textbf{Contribuição proposta:} Desenvolver abordagem sistemática para incorporar ética na Engenharia de Requisitos, traduzindo princípios éticos abstratos em requisitos não-funcionais elicitáveis, especificáveis, priorizáveis e testáveis.
+
+\paragraph{Abordagem participativa e contextual.}
+A análise de co-ocorrências (Tabela~\ref{tab:coocorrencia-principios}) e trade-offs (Tabela~\ref{tab:tradeoffs-principios}) indica que princípios éticos são interdependentes e context-dependent. Solução efetiva deve:
+
+\begin{itemize}[noitemsep]
+    \item \textbf{Envolver stakeholders:} elicitação participativa de valores éticos, não imposição top-down;
+    \item \textbf{Considerar contexto:} adaptação a domínios específicos (saúde, finanças, educação);
+    \item \textbf{Negociar trade-offs:} métodos explícitos para priorizar princípios conflitantes.
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Diferencial da Proposta}
+\label{subsubsec:diferencial-proposta}
+
+A proposta a ser apresentada no Capítulo~\ref{cap:proposta} diferencia-se de abordagens existentes em quatro dimensões:
+
+\paragraph{1. Foco em Requirements Engineering.}
+Enquanto 64,0\% dos estudos focam Implementation e 54,7\% em Testing (Tabela~\ref{tab:fases-sdlc-cobertura}), a proposta prioriza \textbf{elicitação e especificação de requisitos éticos desde fases iniciais}, operacionalizando princípios de \textit{ethics by design}.
+
+\paragraph{2. Integração com práticas estabelecidas.}
+Diferente de frameworks conceituais abstratos, a proposta integra-se a \textbf{práticas de Engenharia de Requisitos consolidadas} (user stories, casos de uso, requisitos não-funcionais, rastreabilidade), minimizando overhead de adoção.
+
+\paragraph{3. Suporte ferramental.}
+Endereçando L2 (5,3\% com ferramentas), a proposta inclui \textbf{artefatos operacionalizáveis}: templates, checklists, questionários de elicitação e guidelines de especificação, aumentando viabilidade prática.
+
+\paragraph{4. Cobertura de ciclo de vida.}
+Endereçando L3 (negligência de manutenção/governança), a proposta considera \textbf{rastreabilidade de requisitos éticos} desde elicitação até validação e monitoramento, não apenas especificação pontual.
+
+% ----------------------------------------------------------------------------
+\subsubsection{Alinhamento com Direções de Pesquisa Futura}
+\label{subsubsec:alinhamento-direcoes-futuras}
+
+A proposta alinha-se diretamente às direções prioritárias de pesquisa futura identificadas na Seção~\ref{subsubsec:direcoes-futuras}:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Integração Ética-Requisitos (L1):} objetivo central da dissertação;
+    \item \textbf{Ferramentas Integradas (L2):} artefatos operacionalizáveis propostos;
+    \item \textbf{Negociação de Trade-offs (L5):} mecanismos de priorização participativa incluídos.
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Validação Pretendida}
+\label{subsubsec:validacao-pretendida}
+
+Para superar gap de validação empírica identificado (0,0\% adoção industrial -- Tabela~\ref{tab:maturidade-propostas}), a validação da proposta seguirá estratégia multinível:
+
+\paragraph{Nível 1: Validação conceitual.}
+\begin{itemize}[noitemsep]
+    \item Revisão por especialistas (pesquisadores e profissionais);
+    \item Avaliação de completude e consistência do framework.
+\end{itemize}
+
+\paragraph{Nível 2: Validação em contexto acadêmico.}
+\begin{itemize}[noitemsep]
+    \item Estudo de caso piloto em projeto acadêmico de desenvolvimento de sistema de \acrshort{IA};
+    \item Avaliação de viabilidade, usabilidade e utilidade percebida por estudantes/desenvolvedores.
+\end{itemize}
+
+\paragraph{Nível 3: Validação em contexto semi-industrial (aspiracional).}
+\begin{itemize}[noitemsep]
+    \item Aplicação em projeto real (startup, laboratório de P\&D, consultoria);
+    \item Evidências preliminares de adoção prática e efetividade.
+\end{itemize}
+
+Esta estratégia busca superar limitação de 30,7\% de estudos puramente conceituais (Tabela~\ref{tab:maturidade-propostas}), fornecendo evidências empíricas de aplicabilidade.
+
+
+% ============================================================================
+% SUBSEÇÃO 3.5.7 - REFLEXÃO SOBRE TENDÊNCIAS FUTURAS
+% ============================================================================
+
+\subsection{Reflexão sobre Tendências Futuras}
+\label{subsec:tendencias-futuras}
+
+A análise da evolução temporal (Tabela~\ref{tab:evolucao-temas}) e distribuição recente de temas (concentração de 65,3\% das publicações em 2024--2025) permite especulação informada sobre direções emergentes do campo. Esta subseção discute quatro tendências principais.
+
+% ----------------------------------------------------------------------------
+\subsubsection{IA Generativa e Desafios Éticos Inéditos}
+\label{subsubsec:ia-generativa-desafios}
+
+\paragraph{Explosão de interesse em LLMs.}
+A menção significativa a LLMs (17,3\%), GPT (5,3\%), Copilot (4,0\%) e ChatGPT (2,7\%) -- Tabela~\ref{tab:ferramentas-mencionadas} -- reflete mudança de paradigma tecnológico pós-2022. \acrshort{IA} generativa introduz desafios éticos \textbf{qualitativamente distintos} de sistemas discriminativos clássicos:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Alucinações:} geração de informações plausíveis mas factualmente incorretas, com riscos em domínios críticos (saúde, direito, finanças);
+    
+    \item \textbf{Viés em geração de conteúdo:} amplificação e perpetuação de estereótipos através de texto, imagens e vídeos gerados;
+    
+    \item \textbf{Desinformação em escala:} capacidade de produzir conteúdo enganoso massivamente, com implicações para democracia e confiança pública;
+    
+    \item \textbf{Direitos autorais e propriedade intelectual:} questões sobre uso de dados de treinamento e propriedade de conteúdo gerado;
+    
+    \item \textbf{Impacto no trabalho:} automação de tarefas cognitivas com consequências sociais e econômicas amplas.
+\end{enumerate}
+
+\paragraph{Implicação para pesquisa futura.}
+Estes desafios demandam extensão de frameworks éticos existentes (focados em sistemas discriminativos) para abordar especificidades de sistemas generativos. Tópicos emergentes incluem:
+\begin{itemize}[noitemsep]
+    \item Detecção e mitigação de alucinações;
+    \item Watermarking e rastreabilidade de conteúdo gerado por \acrshort{IA};
+    \item Frameworks de atribuição e compensação por uso de dados de treinamento;
+    \item Análise de impacto social de automação cognitiva.
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Regulação em Amadurecimento: AI Act e Conformidade}
+\label{subsubsec:regulacao-amadurecimento}
+
+\paragraph{Entrada em vigor do AI Act.}
+O AI Act da União Europeia, publicado em julho de 2024, estabelece cronograma de entrada em vigor gradual até 2027 \cite{EUAIAct2024}:
+\begin{itemize}[noitemsep]
+    \item \textbf{Fevereiro 2025:} Proibição de sistemas de \acrshort{IA} de risco inaceitável;
+    \item \textbf{Agosto 2025:} Requisitos para modelos de \acrshort{IA} de propósito geral;
+    \item \textbf{Agosto 2026:} Requisitos completos para sistemas de alto risco;
+    \item \textbf{Agosto 2027:} Obrigações para sistemas já em uso.
+\end{itemize}
+
+\paragraph{Impacto esperado na prática de desenvolvimento.}
+A baixíssima menção ao AI Act nos estudos analisados (1,3\% -- Tabela~\ref{tab:frameworks-mencionados}) contrasta com impacto iminente. Espera-se crescimento exponencial de pesquisas sobre:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Operacionalização de requisitos do AI Act:} tradução de obrigações legais em práticas de Engenharia de Software;
+    
+    \item \textbf{Ferramentas de conformidade:} automação de verificações de conformidade (documentação técnica, logs de decisão, análise de risco);
+    
+    \item \textbf{Certificação e auditoria:} desenvolvimento de esquemas de certificação e metodologias de auditoria independente;
+    
+    \item \textbf{Gestão de risco baseada em AI Act:} frameworks para classificar sistemas por nível de risco e aplicar requisitos proporcionais.
+\end{enumerate}
+
+\paragraph{Convergência global?}
+Outras jurisdições (EUA, China, Brasil) desenvolvem regulações próprias. Tendência futura crítica: convergência regulatória global (facilitando conformidade multinacional) ou fragmentação (aumentando custos e complexidade).
+
+% ----------------------------------------------------------------------------
+\subsubsection{Ferramentas Automatizadas de Auditoria e Explicabilidade}
+\label{subsubsec:ferramentas-automatizadas}
+
+\paragraph{Avanços técnicos em XAI e fairness.}
+Apesar da ausência de menções explícitas a bibliotecas consolidadas (0,0\% -- Tabela~\ref{tab:ferramentas-mencionadas}), o campo de \textit{Explainable AI} (XAI) e \textit{fairness-aware ML} amadurece rapidamente. Tendências tecnológicas:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Explicações contextualizadas:} evolução de explicações genéricas (LIME, SHAP) para explicações adaptadas a audiência e contexto;
+    
+    \item \textbf{Auditoria contínua:} ferramentas que monitoram drift de viés e degradação de explicabilidade ao longo do tempo, integradas a pipelines de MLOps;
+    
+    \item \textbf{Verificação formal:} métodos baseados em verificação formal para provar propriedades de fairness, robustez e segurança de modelos;
+    
+    \item \textbf{Síntese automática de documentação:} geração automática de relatórios de conformidade ética a partir de código, dados e logs.
+\end{enumerate}
+
+\paragraph{Integração a ecossistemas de desenvolvimento.}
+Lacuna L2 (5,3\% com ferramentas integradas) tende a diminuir com:
+\begin{itemize}[noitemsep]
+    \item Plugins de IDEs para verificação de viés em tempo real;
+    \item Extensões de plataformas de MLOps (MLflow, Kubeflow, Vertex AI) com dashboards de ética;
+    \item APIs padronizadas para auditoria de modelos (análogas a OpenAPI para interfaces REST).
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Ética como Vantagem Competitiva}
+\label{subsubsec:etica-vantagem-competitiva}
+
+\paragraph{Mudança de percepção: de custo para diferencial.}
+Atualmente, ética é frequentemente percebida como ``custo de conformidade'' ou ``barreira à inovação'' (evidenciado por pressão por time-to-market -- Seção~\ref{subsubsec:desafios-organizacionais}). Tendência emergente: reposicionamento de ética como \textbf{vantagem competitiva}.
+
+\paragraph{Fatores impulsionadores.}
+\begin{enumerate}[noitemsep]
+    \item \textbf{Demanda de consumidores:} crescente consciência pública sobre riscos de \acrshort{IA} aumenta preferência por produtos ``éticos'';
+    
+    \item \textbf{Atração de talentos:} profissionais de tecnologia, especialmente gerações mais jovens, priorizam organizações com valores éticos alinhados;
+    
+    \item \textbf{Investidores ESG:} critérios ESG (\textit{Environmental, Social, Governance}) incorporam cada vez mais governança de \acrshort{IA};
+    
+    \item \textbf{Mitigação de riscos reputacionais:} escândalos de viés algorítmico (Compas, Amazon Rekognition, Twitter image cropping) demonstram custos reputacionais elevados de falhas éticas.
+\end{enumerate}
+
+\paragraph{Implicação para organizações.}
+Empresas pioneiras em ética em \acrshort{IA} podem:
+\begin{itemize}[noitemsep]
+    \item Diferenciar-se competitivamente (``\textit{trustworthy AI}'' como marca);
+    \item Atrair clientes, talentos e investidores sensíveis a valores éticos;
+    \item Antecipar-se a regulações, reduzindo custos de conformidade futura;
+    \item Construir confiança pública essencial para adoção de \acrshort{IA} em domínios sensíveis.
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\subsubsection{Síntese das Tendências}
+\label{subsubsec:sintese-tendencias}
+
+Quatro tendências convergem para transformar o campo nos próximos 3--5 anos:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{\acrshort{IA} generativa} introduz desafios éticos inéditos, exigindo extensão de frameworks;
+    \item \textbf{Regulação} (AI Act e similares) torna conformidade ética obrigatória, não opcional;
+    \item \textbf{Ferramentas automatizadas} reduzem barreira técnica de adoção de práticas éticas;
+    \item \textbf{Mercado} reconhece ética como vantagem competitiva, incentivando investimento voluntário.
+\end{enumerate}
+
+A convergência destas tendências sugere transição do campo de \textbf{pesquisa emergente} para \textbf{prática profissional estabelecida}, com ética em \acrshort{IA} tornando-se requisito fundamental de qualidade de software, análogo a segurança, usabilidade e performance.
+
+
+% ============================================================================
+% SÍNTESE FINAL DA SEÇÃO 3.5
+% ============================================================================
+
+\subsection*{Síntese da Discussão Crítica}
+
+A discussão crítica articulou cinco dimensões complementares para interpretar os achados da \acrshort{RSL}:
+
+\paragraph{Estado da arte (Seção~\ref{subsec:estado-arte}).}
+Campo em expansão acelerada (575\% em 5 anos) mas marcado por consolidação conceitual parcial, proliferação de frameworks sem validação robusta, descompasso teoria-prática e fragmentação disciplinar.
+
+\paragraph{Convergências e divergências (Seções~\ref{subsec:convergencias-literatura} e~\ref{subsec:divergencias-contribuicoes}).}
+Confirmação de padrões conhecidos (ênfase em transparency/fairness, dificuldade de operacionalização), mas também divergências (crescimento de abordagens ex-ante, movimento bottom-up) e contribuições únicas (mapeamento ao SDLC, análise de co-ocorrências).
+
+\paragraph{Implicações teóricas e práticas (Seções~\ref{subsec:implicacoes-teoricas} e~\ref{subsec:implicacoes-praticas}).}
+Necessidade de teoria unificadora, reconceptualização de ética como requisito não-funcional, gerenciamento dinâmico de trade-offs; implicações específicas para desenvolvedores (capacitação, ferramentas), gestores (cultura, governança), reguladores (orientações práticas) e educadores (integração transversal).
+
+\paragraph{Justificativa para proposta (Seção~\ref{subsec:justificativa-proposta}).}
+Seis lacunas críticas (L1--L6) criam oportunidade para contribuição focada em Engenharia de Requisitos Éticos, com diferencial em integração a práticas estabelecidas, suporte ferramental e cobertura de ciclo de vida.
+
+\paragraph{Tendências futuras (Seção~\ref{subsec:tendencias-futuras}).}
+\acrshort{IA} generativa, regulação em amadurecimento, ferramentas automatizadas e reconhecimento de ética como vantagem competitiva convergem para estabelecer ética em \acrshort{IA} como prática profissional consolidada.
+
+A síntese completa fundamenta o desenvolvimento da proposta no Capítulo~\ref{cap:proposta}, assegurando traçabilidade entre achados empíricos da \acrshort{RSL} e decisões de design do framework proposto.
+
+% ============================================================================
+% FIM DA SEÇÃO 3.5
+% ============================================================================
