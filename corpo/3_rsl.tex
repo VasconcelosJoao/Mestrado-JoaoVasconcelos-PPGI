@@ -1,107 +1,430 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Introdução do capitulo %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{cap:rsl}
 
-A \acrfull{RSL} foi realizada de acordo com o protocolo definido por Kitchenham e Charters \cite{barbara2007guidelines}, com o objetivo de identificar o estado da arte sobre implementação de princípios éticos em sistemas de \acrshort{IA} aplicados à Engenharia de Software. A \acrshort{RSL} constitui processo estruturado de identificação, avaliação crítica e interpretação sistemática de evidências científicas relacionadas a uma área ou questão de pesquisa especifica \cite{Kitchenham2009}. Esse processo é dividido em três fases metodológicas distintas \cite{barbara2007guidelines}:
+A adoção de sistemas baseados em \gls{IA} tem mudado de maneira significativa a maneira como as soluções tecnológicas são criadas e desenvolvidas. No entanto, esse progresso tecnológico traz consigo um aumento nas preocupações éticas relacionadas à transparência, equidade, responsabilidade, explicabilidade e privacidade. A necessidade de incorporar princípios éticos de maneira sistemática em todas as etapas do desenvolvimento de software, e não apenas em momentos específicos, é evidenciada por vários casos documentados de vieses algorítmicos, decisões automatizadas discriminatórias e uso indevido de dados.
+
+Esta \gls{RSL} foi conduzida de acordo com o protocolo metodológico definido por Kitchenham \& Charters \cite{barbara2007guidelines}, amplamente respeitado na Engenharia de Software Empírica por garantir rigor metodológico e possibilidade de reprodução. O processo de investigação é organizado em três etapas metodológicas:
 
 \begin{enumerate}
-    \item \textit{Planejamento}: Definição da necessidade da revisão, identificação de objetivos específicos e elaboração do protocolo investigativo, compreendendo os seguintes artefatos: questões de pesquisa, \textit{string} de busca, critérios de seleção de estudos, lista de dados a serem extraídos e \textit{checklist} de avaliação de qualidade.
-    
-    \item \textit{Execução}: Realização do protocolo previamente estabelecido mediante aplicação sistemática dos artefatos desenvolvidos para triagem de estudos e extração estruturada de informações relevantes;
-    
-    \item \textit{Síntese}: Documentação analítica dos achados da revisão, materializada neste capítulo como componente fundamental da dissertação.
+    \item \textit{Planejamento}: reconhecimento da necessidade de revisão, definição de objetivos precisos e determinação do protocolo de investigação, abrangendo perguntas de pesquisa, estratégia de busca, critérios de seleção e avaliação de qualidade;
+         
+     \item \textit{Condução}: realização sistemática das buscas nas bases escolhidas, eliminação de registros duplicados, triagens em diversas etapas (título/resumo, texto completo) e coleta estruturada de dados;
+         
+     \item \textit{Síntese e Relato}: categorização temática, síntese quantitativa descritiva e documentação dos resultados que fundamentarão a proposta apresentada no Capítulo~\ref{cap:proposta}.
 \end{enumerate}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Esta revisão atualiza e expande estudos anteriores, levando em conta os progressos recentes na ética da IA e marcos normativos, como o AI Act da União Europeia \cite{EUAIAct2024} e a Recommendation on the Ethics of Artificial Intelligence da UNESCO \cite{UNESCO2021}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Questões de Pesquisa}
 
-O propósito desta \acrshort{RSL} é esclarecer o estado atual do conhecimento científico sobre práticas efetivas para incorporação de princípios éticos no desenvolvimento de sistemas computacionais baseados em \acrshort{IA}, com foco especial em abordagens operacionalizáveis no contexto da Engenharia de Software. 
-O escopo da revisão se restringe apenas a contribuições que estabeleçam conexões diretas entre princípios éticos e práticas aplicáveis ao ciclo de vida de desenvolvimento, excluindo intencionalmente discussões puramente filosóficas, normativas ou que não estejam ancorados em processos de engenharia. 
-A Tabela~\ref{tab:research_questions} apresenta as questões de pesquisa.
+O objetivo principal desta revisão sistemática é mapear, analisar e resumir evidências a respeito da implementação de princípios éticos em sistemas de \acrshort{IA} no âmbito da Engenharia de Software.  O foco da investigação se restringe a abordagens práticas que criem ligações diretas entre princípios éticos e componentes aplicáveis ao ciclo de vida de desenvolvimento.  O escopo excluiu intencionalmente estudos puramente filosóficos ou normativos que não se baseavam em processos de engenharia.
+ 
+ As quatro perguntas que orientam esta pesquisa, estão apresentadas na Tabela~\ref{tab:research-questions}.
 
 \begin{table*}[htb!]
   \centering
   \caption{Questões de pesquisa}
-  \label{tab:research_questions}
+  \label{tab:research-questions}
   \begin{tabular}{cp{13cm}}
     \hline
-    \textbf{Identificador} & \textbf{Questão de Pesquisa} \\
+    \textbf{RQ} & \textbf{Questão de Pesquisa} \\
     \hline
-    \textbf{RQ.1} & Quais princípios éticos específicos são identificados na literatura como aplicáveis ao desenvolvimento de sistemas de \acrshort{IA}?  \\
-    \textbf{RQ.2} & Quais categorias de abordagens metodológicas (\textit{frameworks}, métodos, processos, ferramentas) são propostas para operacionalização de ética no ciclo de vida do software?  \\
-    \textbf{RQ.3} & Quais evidências empíricas são reportadas quanto à efetividade, custos de implementação, limitações técnicas e riscos associados às abordagens de operacionalização? \\
-    \textbf{RQ.4} & Quais lacunas de conhecimento, desafios não resolvidos e necessidades futuras de pesquisa são identificados na integração sistemática de ética ao \acrfull{SDLC}? \\
+    \textbf{RQ1} & Quais princípios e requisitos éticos de \acrshort{IA} são reportados como aplicáveis ao desenvolvimento de software?  \\
+    \hline
+    \addlinespace
+    \textbf{RQ2} & Quais abordagens (\textit{frameworks}, métodos, processos, padrões, \textit{checklists}, ferramentas, artefatos) são propostas ou utilizadas para incorporar ética em \acrshort{IA} no ciclo de vida do software?  \\
+    \hline
+    \addlinespace
+    \textbf{RQ3} & Que evidências empíricas existem sobre efetividade, custos, limitações e riscos das abordagens de operacionalização? \\
+    \hline
+    \addlinespace
+    \textbf{RQ4} & Quais lacunas, desafios e necessidades futuras são apontados, e como a ética em \acrshort{IA} é integrada nas diferentes fases do ciclo de vida de desenvolvimento de software? \\
   \hline
 \end{tabular}
 \end{table*}
 
-Para esta investigação foram considerados como sistemas baseados em \acrshort{IA} aqueles que empregam técnicas computacionais de aprendizado de máquina \textit{(machine learning)}, aprendizado profundo \textit{(deep learning)} ou implementam tomadas de decisão autônomas. 
-A definição metodológica em torno de abordagens operacionalizáveis baseia-se no reconhecimento das diferenças significativas entre discursos éticos teórico-normativos e práticas concretas de implementação técnica, além da existência de estratégias distintas de aplicação de acordo com contextos específicos. 
-Embora fundamentos éticos possam apresentar convergências conceituais entre diferentes domínios, é metodologicamente imprescindível examinar separadamente suas manifestações operacionais, pois não há garantia de que métodos de operacionalização sejam transferíveis entre contextos diferentes, o que expandiria substancialmente o escopo investigativo além dos limites viáveis para este estudo.
+Para fins desta investigação, sistemas baseados em \acrshort{IA} compreendem aqueles que empregam técnicas de aprendizado de máquina, aprendizado profundo ou implementam capacidades autônomas de tomada de decisão. A delimitação em torno de abordagens operacionalizáveis fundamenta-se no reconhecimento das diferenças substantivas entre discussões éticas teóricas e práticas concretas de implementação técnica, bem como na existência de estratégias distintivas conforme contextos específicos de aplicação.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{String de Busca}
 
-A construção da \textit{string} de busca baseou-se no método \textbf{PICOC} (População, Intervenção, Comparação, Resultado, Contexto) proposto por Wohlin \cite{Wohlin2012}. Neste método estruturado, \textbf{População} designa o objeto primário de estudo; \textbf{Intervenção} corresponde aos meios ou mecanismos aplicados para alcançar determinado objetivo; \textbf{Comparação} identifica elementos confrontados com a intervenção (quando aplicável); \textbf{Resultado} especifica as consequências observáveis da intervenção; e \textbf{Contexto} delimita o foco investigativo, incluindo suas restrições e condições de contorno. A Tabela~\ref{tab:picoc} apresenta a especificação dos termos PICOC empregados na formulação da string de busca genérica. O elemento Comparação não se aplica ao presente estudo, pois não há confrontação entre diferentes intervenções.
+A String de busca foi elaborada com base no método PICOC (População, Intervenção, Comparação, Resultado, Contexto) sugerido por Wohlin \cite{Wohlin2012}.  Esse método estruturado garante a concordância entre as perguntas de pesquisa, busca de referências e escolha de estudos, deixando claro o escopo \textit{software-centric} em comparação com pesquisas majoritariamente algorítmicas sem vínculo com práticas de engenharia.
+ 
+ A Tabela~\ref{tab:picoc} exibe a definição completa dos termos PICOC utilizados na elaboração da string de busca genérica.
 
 \begin{table}[htbp]
   \centering
   \caption{Especificação dos termos PICOC}
   \label{tab:picoc}
-  \begin{tabular}{llp{9cm}}
+  \begin{tabular}{ccp{9cm}}
     \hline
-    \textbf{PICOC} & \textbf{Termo Principal} & \textbf{Termos Relacionados e Sinônimos} \\
+    \textbf{PICOC} & \textbf{Termo Principal} & \textbf{Termos Relacionados} \\
     \hline
-    População & ética &	inteligência artificial ética, IA responsável, IA confiável, accountability, transparência algorítmica, justiça algorítmica, viés, privacidade, explicabilidade   \\
-    Intervenção  & inteligência artificial 	& IA, aprendizado de máquina, machine learning, ML, aprendizado profundo, deep learning, sistemas autônomos \\
+    População & ética &	IA ética, IA responsável, IA confiável, accountability, transparência, justiça algorítmica, viés, privacidade   \\
+    Intervenção  & inteligência artificial 	& IA, aprendizado de máquina, machine learning, ML, aprendizado profundo, deep learning \\
     Comparação & \textit{não aplicável} & \textit{não aplicável} \\
-    Resultado & engenharia de software 	& desenvolvimento de software, engenharia de requisitos, DevOps, MLOps, ciclo de vida de software, SDLC, desenvolvimento ágil \\
-    Contexto & operacionalização & framework, método, processo, ferramenta, diretriz, abordagem, padrão, modelo  \\
+    Resultado & engenharia de software 	& desenvolvimento de software, engenharia de requisitos, DevOps, MLOps, ciclo de vida, SDLC \\
+    Contexto & operacionalização & framework, método, processo, ferramenta, guideline, abordagem  \\
   \hline
 \end{tabular}
 \end{table}
 
-O processo de refinamento da estratégia de busca iniciou-se com a identificação de termos-chave principais para cada dimensão PICOC: \textit{ética}, \textit{inteligência artificial}, \textit{engenharia de software} e \textit{operacionalização}. Subsequentemente, realizou-se investigação exploratória iterativa com termos correlatos e sinônimos técnicos para validação da abrangência e relevância dos resultados recuperados. Após múltiplas iterações de refinamento e validação com estudos de controle conhecidos \cite{Agbese2023,Vakkuri2022,Cerqueira2021}, estabeleceu-se a string de busca genérica final:
+A identificação de termos-chave principais, como \textit{ética}, \textit{inteligência artificial}, \textit{engenharia de software} e \textit{operacionalização}, marcou o início do processo de refinamento. Posteriormente, foi conduzida uma pesquisa exploratória com termos relacionados para confirmar a extensão e a relevância. Após várias rodadas de aprimoramento e validação com estudos de controle, definiu-se a string genérica final:
 
 \vspace{0.3cm}
 \colorbox{formalshade}{\parbox{0.9\columnwidth}{\small\emph{(ethic* OR ``ethical AI'' OR ``responsible AI'' OR ``trustworthy AI'' OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab*) \textbf{AND} (``artificial intelligence'' OR AI OR ``machine learning'' OR ML OR ``deep learning'') \textbf{AND} (``software engineering'' OR ``software development'' OR ``requirements engineering'' OR DevOps OR MLOps OR ``software lifecycle'' OR SDLC) \textbf{AND} (framework OR method* OR process OR tool OR guideline OR governance OR model OR approach)}}}
 \vspace{0.3cm}
 
-As bases bibliográficas digitais selecionadas para execução da estratégia de busca compreendem \href{https://dl.acm.org/}{ACM Digital Library}, \href{https://ieeexplore.ieee.org/}{IEEE Xplore}, \href{https://www.scopus.com/}{Scopus} e \href{https://www.webofscience.com/}{Web of Science}. A seleção fundamentou-se em três critérios objetivos: (i) relevância consolidada para pesquisas em Engenharia de Software \cite{Brereton2007}; (ii) abrangência de indexação de conferências e periódicos de alto impacto na área; e (iii) capacidade técnica dos mecanismos de busca para processamento integral da string genérica formulada. A Tabela~\ref{tab:strings} especifica as adaptações sintáticas da string genérica para cada fonte bibliográfica, respeitando particularidades dos respectivos mecanismos de busca.
+As bases de dados bibliográficas digitais escolhidas incluem \href{https://dl.acm.org/}{ACM Digital Library}, \href{https://ieeexplore.ieee.org/}{IEEE Xplore}, \href{https://www.scopus.com/}{Scopus} e \href{https://www.webofscience.com/}{Web of Science}. Esta seleção baseou-se em três critérios: (i) relevância comprovada para pesquisas em Engenharia de Software \cite{Brereton2007}; (ii) extensão da indexação de publicações de alto impacto; (iii) eficiência dos mecanismos de busca no processamento da string formulada.
+
+A Tabela~\ref{tab:strings} especifica as adaptações sintáticas da string para cada base, respeitando particularidades dos respectivos sistemas de busca. Em ACM e IEEE, a busca foi restrita ao campo \textit{abstract} para aumentar precisão. Em Scopus e Web of Science, utilizou-se busca em \textit{title-abstract-keywords} e \textit{topic}, respectivamente.
 
 \begin{table}[htbp]
  \centering
- \caption{\textit{strings} de Busca por Fonte}
+ \caption{Adaptações da string de busca por fonte}
  \label{tab:strings}
- \footnotesize
- \begin{tabular}{p{2cm}p{11.5cm}}
+ \scriptsize
+ \begin{tabular}{p{1.5cm}p{12.5cm}}
     \hline
-    Fonte & \textit{string} \\
-    \hline
-    \addlinespace
-    \textbf{ACM Digital Library} & Abstract: ("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") Abstract: ("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") Abstract: ("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") Abstract: (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)  \\
+    \textbf{Fonte} & \textbf{String Adaptada} \\
     \hline
     \addlinespace
-    \textbf{IEEE Xplore} & 
-    ("Abstract":"ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") AND ("Abstract":"artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") AND ("Abstract":"software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") AND ("Abstract":framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach) \\
+    ACM Digital Library & [[Abstract: ethic*] OR [Abstract: ``ethical AI''] ...] AND [[Abstract: ``artificial intelligence''] OR [Abstract: AI] ...] AND [[Abstract: ``software engineering''] OR [Abstract: ``software development''] ...] AND [[Abstract: framework] OR [Abstract: method*] ...] AND [Publication Date: (01/01/2020 TO 09/30/2025)] \\
     \hline
     \addlinespace
-    \textbf{Scopus} & 
-    TITLE-ABS-KEY (("ethic*" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") AND ("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") AND ("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") AND (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)) AND PUBYEAR > 2019 AND PUBYEAR < 2026 AND PUBYEAR > 2020 AND PUBYEAR < 2026 AND (LIMIT-TO (PUBSTAGE,"final")) AND (LIMIT-TO (DOCTYPE,"cp") OR LIMIT-TO (DOCTYPE,"ar")) AND (LIMIT-TO (SUBJAREA,"COMP") OR LIMIT-TO (SUBJAREA,"ENGI") OR LIMIT-TO (SUBJAREA,"DECI") OR LIMIT-TO (SUBJAREA,"SOCI")) AND (LIMIT-TO (LANGUAGE,"English")) \\
+    IEEE Xplore & ("Abstract":"ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") AND ("Abstract":"artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") AND ("Abstract":"software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") AND ("Abstract":framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)
+    \\
     \hline
     \addlinespace
-    \textbf{Web of Science} & 
-    TS=(("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") AND ("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") AND ("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") AND (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)) AND PY=(2020-2025) \\
-    \bottomrule
-    \end{tabular}
-    \end{table}
+    Scopus & TITLE-ABS-KEY (("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") AND ("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") AND ("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") AND (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)) AND PUBYEAR > 2019 AND PUBYEAR < 2026 AND PUBYEAR > 2020 AND PUBYEAR < 2026 AND (LIMIT-TO (DOCTYPE,"cp") OR LIMIT-TO (DOCTYPE,"ar")) AND (LIMIT-TO (SUBJAREA,"COMP") OR LIMIT-TO (SUBJAREA,"ENGI") OR LIMIT-TO (SUBJAREA,"DECI") OR LIMIT-TO (SUBJAREA,"SOCI")) AND (LIMIT-TO (LANGUAGE,"English")) AND (LIMIT-TO (PUBSTAGE,"final"))  \\
+    \hline
+    \addlinespace
+    Web of Science & TS=(("ethic*" OR "ethical AI" OR "responsible AI" OR "trustworthy AI" OR accountability OR transparency OR fairness OR bias OR privacy OR explainab* OR interpretab* OR "algorithmic accountability") AND ("artificial intelligence" OR AI OR "machine learning" OR ML OR "deep learning") AND ("software engineering" OR "software development" OR "requirements engineering" OR DevOps OR MLOps OR "software lifecycle" OR SDLC OR "development lifecycle" OR "user stories") AND (framework OR method* OR process OR tool OR checklist OR pattern OR guideline OR governance OR model OR approach)) AND PY=(2020-2025) \\
+  \hline
+\end{tabular}
+\end{table}
 
-A ideia inicial era executar as \textit{strings} para título, resumo e palavras-chave. No entanto, os mecanismos de busca não compartilhavam essa opção específica. Na ACM, era ou o título ou o resumo sem repetir a \textit{string}. Por isso escolhemos o resumo. No IEEE, \textit{Abstract} refere-se a título, resumo e palavras-chave, assim como \textit{TITLE-ABS-KEY} no Scopus. No Web of Science, \textit{TS} (Topic Search) busca em título, resumo, palavras-chave do autor e Keywords Plus.
+O período definido abrange de janeiro de 2020 a setembro de 2025.  Esta delimitação abrange: (i) a consolidação e o amadurecimento de frameworks éticos após o GDPR; (ii) o surgimento de regulações horizontais, como o AI Act; (iii) os avanços técnicos em explicabilidade, justiça algorítmica e governança; (iv) o impacto da pandemia de COVID-19 na aceleração digital e o aumento das preocupações éticas em sistemas de IA aplicados a diferentes áreas.
 
-Foram utilizadas as opções de filtragem e \textit{string} disponíveis para cada fonte para aplicar alguns de nossos critérios de exclusão e acelerar a seleção de artigos. Por exemplo, na ACM Library, aplicamos filtro manual para \textit{Content Type} selecionando apenas \textit{Research Article} e selecionando um intervalo de datas de 2020 até o momento da busca. No IEEE Xplore, aplicamos filtro manual para o intervalo de datas. No Scopus, todos os filtros foram adicionados à \textit{string}: o \textit{Document Type} como \textit{Conference Paper} ou \textit{Article}; o \textit{Publication Year} como posterior a 2019; \textit{Language} como \textit{English}; e o \textit{Source Type} como \textit{Journal} ou \textit{Conference Proceedings}. No Web of Science, o filtro de ano foi aplicado diretamente na \textit{string}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%
+\section{Critérios de Seleção}\label{sec:criteria}
 
+Os critérios foram estabelecidos \textit{a priori} e implementados de maneira sistemática em três etapas (título/resumo, texto completo, avaliação de qualidade), documentando integralmente os motivos de exclusão de acordo com as diretrizes \acrshort{PRISMA} \cite{PRISMA2020}.  A pesquisa foi restrita a estudos publicados em inglês, a língua predominante na literatura científica do campo.
+ 
+ Os critérios de inclusão (IC) definem o perfil temático e metodológico dos trabalhos que serão aceitos:
+ 
+\begin{enumerate}
+    \item[(IC1)] Estudo primário que proponha, aplique ou avalie princípios, métodos, processos, ferramentas ou artefatos para operacionalizar ética em \acrshort{IA} no ciclo de vida do software (requisitos, projeto, implementação, testes, operação, MLOps/DevOps, governança);
+    
+    \item[(IC2)] Vinculação explícita ao contexto de engenharia de software (acadêmico ou industrial), integrando-se a atividades, artefatos ou práticas do SDLC;
+    
+    \item[(IC3)] Disponibilidade de texto completo e descrição metodológica mínima (contexto, procedimento, resultados);
+    
+    \item[(IC4)] Estudos escritos em inglês;
+    
+    \item[(IC5)] Estudos publicados em periódicos ou conferências revisados por pares;
+    
+    \item[(IC6)] Estudos que abordam pelo menos um princípio ético identificado na literatura (transparência, justiça, explicabilidade, privacidade, responsabilidade).
+\end{enumerate}
+
+Os critérios de exclusão (EC) filtram estudos que, embora satisfaçam formalmente critérios de inclusão, apresentam inadequações metodológicas ou de foco:
+
+\begin{enumerate}
+    \item[(EC1)] Revisões secundárias, editoriais, \textit{position papers} sem proposta operacionalizável, tutoriais sem avaliação ou relatórios não científicos;
+    
+    \item[(EC2)] Estudos exclusivamente algorítmicos focados apenas em desempenho de modelos, sem conexão explícita com princípios éticos, requisitos não funcionais, artefatos de engenharia ou conformidade regulatória;
+    
+    \item[(EC3)] Ausência de evidência mínima (método indefinido, resultados não verificáveis, texto completo indisponível);
+    
+    \item[(EC4)] Duplicatas ou versões abreviadas quando existe versão estendida do mesmo trabalho;
+    
+    \item[(EC5)] Estudos puramente filosóficos ou de ética normativa sem conexão com práticas de engenharia de software;
+    
+    \item[(EC6)] Estudos fora do período temporal (antes de janeiro/2020 ou após setembro/2025).
+\end{enumerate}
+
+O critério EC1 garante que os estudos escolhidos de fato identificaram, testaram ou propuseram a operacionalização de princípios éticos com evidências comprováveis.  Faz-se uma distinção importante entre debates teóricos (que tratam de valores em um nível conceitual-abstrato) e estratégias de operacionalização (que sugerem métodos aplicáveis ao SDLC).  Apenas pesquisas que relacionam fundamentos éticos a componentes concretos da Engenharia de Software foram aceitas.
+ 
+ O EC2 filtra trabalhos que se concentram apenas em aspectos algorítmicos.  A natureza estritamente algorítmica pode ser identificada pelas variáveis analisadas: estudos que consideram apenas a acurácia ou o desempenho computacional, sem abordar a integração ao SDLC, são descartados; por outro lado, são mantidos aqueles que englobam elementos relacionados a processos, requisitos, testes ou governança.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Avaliação de Qualidade}
+
+Apesar de os critérios de exclusão definirem um filtro inicial, é imprescindível realizar uma avaliação da qualidade metodológica para garantir que as práticas sugeridas sejam válidas e que as evidências apresentem o rigor científico necessário. Foi elaborado um instrumento com oito critérios avaliados em uma escala ordinal de três pontos: 0 (não atendido), 0,5 (parcialmente atendido) e 1 (plenamente atendido), com uma pontuação máxima de 8,0.
+
+Os oito critérios de qualidade analisam:
+
+\begin{enumerate}
+    \item[(QA1)] Clareza e alinhamento dos objetivos/questões de pesquisa com ética em \acrshort{IA} aplicada à Engenharia de Software;
+    \item[(QA2)] Adequação da descrição contextual (domínio, participantes/dados, artefatos);
+    \item[(QA3)] Adequação do desenho metodológico, procedimentos e instrumentos;
+    \item[(QA4)] Detalhamento técnico da abordagem proposta (entradas, saídas, etapas);
+    \item[(QA5)] Presença de evidência de avaliação com métricas, protocolo e resultados;
+    \item[(QA6)] Discussão de ameaças à validade (interna, externa, construção, conclusão);
+    \item[(QA7)] Consistência entre dados apresentados e conclusões;
+    \item[(QA8)] Disponibilidade de artefatos que permitam reprodutibilidade (código, dados, documentação).
+\end{enumerate}
+
+Estudos com escore abaixo de 6,5 em uma escala de 8,0 foram mantidos para a análise de sensibilidade, porém interpretados com a devida cautela. O uso da ferramenta foi documentado em um estudo por meio de uma planilha de extração, incluindo justificativas, identificadores dos avaliadores e data. Foi realizada uma calibração inicial em uma amostra de 10\% dos estudos, utilizando o cálculo de concordância de Cohen's Kappa, com uma meta estabelecida de $\kappa > 0,70$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Condução da Revisão}
+
+A execução da revisão foi viabilizada mediante plataforma Parsifal\footnote{https://parsif.al}, ferramenta desenvolvida especificamente para suporte a revisões sistemáticas segundo Kitchenham \& Charters \cite{barbara2007guidelines}. A plataforma oferece uma interface aprimorada para a navegação de títulos e resumos, além de identificar duplicatas automaticamente por meio da comparação de metadados.
+
+A Figura~\ref{fig:slr} resume o fluxo total de triagem e a quantidade de estudos em cada fase do processo.
+
+% \begin{figure}[htbp]
+%   \centering
+%   \fbox{\parbox{0.75\columnwidth}{
+%     \centering
+%     \footnotesize
+%     \textbf{IDENTIFICAÇÃO}\\[0.2cm]
+%     Registros identificados: \textbf{2.524}\\
+%     \textit{ACM: 289, IEEE: 934, Scopus: 1.062, WoS: 613}\\[0.3cm]
+    
+%     Duplicatas removidas: 748 (29,6\%)\\
+%     \textbf{Registros únicos: 1.776}\\[0.3cm]
+    
+%     \textbf{TRIAGEM PRELIMINAR}\\[0.2cm]
+%     Triados por título/resumo: 1.776\\
+%     Excluídos: 184\\
+%     \textit{(fora de escopo, não relacionados)}\\
+%     \textbf{Selecionados: 1.592}\\[0.3cm]
+    
+%     \textbf{TRIAGEM COMPLETA (IC/EC)}\\[0.2cm]
+%     Avaliados por texto completo: 1.592\\
+%     Reprovados: 226\\
+%     \textit{(IC2: 52\%, IC3/EC3: 29\%)}\\
+%     \textbf{Aprovados: 1.366}\\[0.3cm]
+    
+%     \textbf{AVALIAÇÃO DE QUALIDADE}\\[0.2cm]
+%     Submetidos ao QA: 1.366\\
+%     Texto completo indisponível: 15\\
+%     Avaliados: 1.351\\[0.2cm]
+%     \textit{Aprovados inicialmente (QA $\geq$ 6,0): 83}\\
+%     \textit{PDF indisponível: 8}\\
+%     \textbf{Incluídos na síntese final: 75}\\[0.2cm]
+%     \textit{Média qualidade (QA 4,0--5,9): 660 (48,9\%)}\\
+%     \textit{Baixa qualidade (QA $<$ 4,0): 608 (45,0\%)}\\[0.2cm]
+%     \textbf{Score médio (75 estudos): 7,12/8,0 (DP=0,42)}
+%   }}
+%   \caption{Fluxo de seleção de estudos (PRISMA 2020)}
+%   \label{fig:slr}
+% \end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\columnwidth]{img/conducao.png}
+  \newline
+    \footnotesize{IC=Critério de Inclusão EC=Critério de Exclusão QA=Avaliação de Qualidade}
+  \caption{Artigos em cada fase da rsl.}
+  \label{fig:slr}
+\end{figure}
+
+As buscas foram realizadas em outubro de 2025, resultando na identificação inicial de 2.524 registros.  Após a remoção de 748 duplicatas (29,6\%), sobraram 1.776 registros únicos para a triagem inicial.  Nesta fase, 184 estudos foram descartados por não atenderem a critérios básicos, restando 1.592 para a triagem completa.
+ 
+ A aplicação sistemática de IC/EC levou à aprovação de 1.366 estudos (85,8\%), enquanto 226 (14,2\%) foram rejeitados.  A análise das razões para reprovação mostra que as exclusões foram principalmente justificadas: 52,2\% fora do escopo de Engenharia de Software (IC2), 29,2\% com evidência insuficiente (IC3/EC3).  Apenas 0,4\% foram excluídos por não apresentarem nenhuma dimensão ética (IC6), o que indica que a estratégia de busca foi eficaz.
+
+Dos 1.366 aprovados, 1.351 foram realmente incorporados à avaliação de qualidade, enquanto 15 permaneceram indisponíveis, mesmo após tentativas de obtenção por meio do COMUT, contato com os autores e uso do ResearchGate.  A distribuição de qualidade revelou: 83 estudos de alta qualidade (6,1\%, QA $\geq$ 6,0), 660 de qualidade média (48,9\%, QA 4,0--5,9) e 608 de baixa qualidade (45,0\%, QA $<$ 4,0), com uma pontuação média de 3,92/8,0.
+ 
+ O score médio relativamente modesto (49\% da pontuação máxima) reflete predominantemente limitações dos abstracts em fornecer descrições metodológicas completas, não necessariamente baixa qualidade intrínseca.  Os critérios com scores mais altos foram descrição contextual (C2: 0,71) e clareza de objetivos (C1: 0,60). Por outro lado, metodologia (C3: 0,30) e descrição técnica (C4: 0,35) tiveram scores mais baixos, o que é esperado, considerando a natureza sintética dos resumos.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Extração de Dados}\label{sec:data_extraction}
+
+A extração estruturada de dados é um passo essencial para a elaboração de sínteses em revisões sistemáticas.  Levando em conta que o objetivo desta revisão é embasar o modelo proposto, foi adotada uma abordagem restritiva de seleção (como demonstrado pelos critérios IC/EC/QA), o que resultou em um corpus focado e de alta qualidade.  As categorias de extração estão intimamente ligadas às perguntas de pesquisa.
+ 
+ A Tabela~\ref{tab:selected} mostra a distribuição temporal das pesquisas, possibilitando o acompanhamento do progresso da área.  A Tabela~\ref{tab:source_distribution} apresenta a distribuição de acordo com a fonte bibliográfica.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição temporal dos 75 estudos de alta qualidade (QA $\geq$ 6,0)}
+\footnotesize
+\begin{tabular}{lccc}
+\hline
+\textbf{Ano} & \textbf{Estudos} & \textbf{\% Corpus} & \textbf{QA Médio} \\
+\hline
+2021 & 4  & 5,3\%  & 6,88 \\
+2022 & 10  & 13,3\% & 7,05 \\
+2023 & 17 & 22,7\% & 7,09 \\
+2024 & 22 & 29,3\% & 7,18 \\
+2025 & 22 & 29,3\% & 7,15 \\
+\hline
+\textbf{Total} & \textbf{75} & \textbf{100,0\%} & \textbf{7,12} \\
+\hline
+\end{tabular}
+\label{tab:selected}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição por fonte bibliográfica (75 estudos alta qualidade)}
+\label{tab:source_distribution}
+\footnotesize
+\begin{tabular}{lccc}
+\hline
+\textbf{Fonte} & \textbf{Estudos} & \textbf{\% Corpus} & \textbf{QA Médio} \\
+\hline
+IEEE Xplore        & 28 & 37,3\% & 7,14 \\
+ACM Digital Library  & 23 & 30,7\% & 7,15 \\
+Web of Science       & 15 & 20,0\% & 7,13 \\
+Scopus               & 9  & 12,0\% & 7,01 \\
+\hline
+\textbf{Total} & \textbf{75} & \textbf{100,0\%} & \textbf{7,12} \\
+\hline
+\end{tabular}
+\end{table}
+
+A Tabela~\ref{tab:principles} resume informações pertinentes à RQ.1.  Os princípios éticos foram extraídos mantendo a terminologia utilizada nos estudos.  Vários termos representam conceitos interligados (transparency, explainability, interpretability costumam aparecer juntos), opção que mantém a integridade semântica.  Como muitos estudos tratam de vários princípios ao mesmo tempo, o número de menções é maior do que o número de estudos.
+
+\begin{table}[htbp]
+\centering
+\caption{Frequência de princípios éticos nos 75 estudos (múltiplos princípios por estudo)}
+\label{tab:principles}
+\small
+\begin{tabular}{lcc}
+\hline
+\textbf{Princípio Ético} & \textbf{Menções} & \textbf{\% Estudos} \\
+\hline
+Transparency/Explainability  & 43 & 57,3\% \\
+Fairness                     & 39 & 52,0\% \\
+Accountability               & 33 & 44,0\% \\
+Trustworthiness              & 30 & 40,0\% \\
+Safety                       & 27 & 36,0\% \\
+Privacy                      & 20 & 26,7\% \\
+Autonomy                     & 12 & 16,0\% \\
+Sustainability               & 3  & 4,0\%  \\
+\hline
+\textbf{Total Menções} & \textbf{207} & -- \\
+\textbf{Média/Estudo} & \textbf{2,76} & -- \\
+\hline
+\end{tabular}
+\end{table}
+
+A Tabela~\ref{tab:sdlc} resume informações pertinentes à RQ.2, particularmente no que diz respeito à cobertura das etapas do SDLC.  As fases foram classificadas de acordo com a taxonomia tradicional, mantendo a terminologia dos estudos originais.
+
+\begin{table}[htbp]
+\centering
+\caption{Cobertura de fases do SDLC nos 75 estudos (múltiplas fases por estudo)}
+\label{tab:sdlc}
+\small
+\begin{tabular}{lcc}
+\hline
+\textbf{Fase do SDLC} & \textbf{Menções} & \textbf{\% Estudos} \\
+\hline
+Implementation       & 48 & 64,0\% \\
+Testing              & 41 & 54,7\% \\
+Operation            & 17 & 22,7\% \\
+Design               & 15 & 20,0\% \\
+Requirements         & 12 & 16,0\% \\
+Deployment           & 9  & 12,0\% \\
+MLOps/DevOps         & 5  & 6,7\%  \\
+Maintenance          & 5  & 6,7\%  \\
+Governance           & 3  & 4,0\%  \\
+\hline
+\textbf{Total Menções} & \textbf{155} & -- \\
+\textbf{Média/Estudo} & \textbf{2,07} & -- \\
+\hline
+\end{tabular}
+\end{table}
+
+As categorias \textbf{Desafios Reportado}s e \textbf{Lacunas Identificadas} apoiam a análise das questões RQ.3 e RQ.4.  Os desafios foram extraídos mantendo a formulação original, referindo-se a obstáculos que afetam negativamente a adoção ou a eficácia.  A análise interpretativa cruzada revelou lacunas, sintetizando as necessidades não atendidas e as discrepâncias entre o estado atual e o ideal.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Resultados da RSL}
+
+Esta seção traz uma síntese analítica estruturada para abordar cada questão de pesquisa de forma sistemática.  A análise leva em conta tanto descobertas individuais quanto padrões emergentes da síntese cruzada, uma vez que vários estudos tratam de princípios ou desafios convergentes sob distintas perspectivas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{RQ.1. Princípios Éticos Aplicáveis ao Desenvolvimento de Software com IA}
+
+A análise do corpus identificou oito princípios éticos predominantes, com um total de 207 menções distribuídas entre os 75 estudos (média de 2,76 princípios por estudo), como mostrado na Tabela~\ref{tab:principles}.  A distribuição mostra que três princípios fundamentais concentram a maior parte: Transparency/Explainability (57,3\%), Fairness (52,0\%) e Accountability (44,0\%). Esses três princípios são a base da maioria das abordagens.
+ 
+ Os princípios técnico-operacionais (Transparência, Explicabilidade, Segurança, Confiabilidade) correspondem a 43,1\% das menções, evidenciando a importância de elementos que podem ser operacionalizados por meio de artefatos e processos de Engenharia de Software.  A transparência se destaca como a mais comum e está conceitualmente relacionada à Explainability, apesar de a literatura apresentar inconsistências terminológicas na definição precisa desses conceitos.
+
+Os princípios socioéticos (Fairness, Accountability, Autonomy) foram mencionados 84 vezes (40,6\%), indicando uma preocupação com as dimensões sociopolíticas e de governança. A justiça se manifesta por meio de implementações técnicas: redução de vieses estatísticos, padronização de métricas entre grupos demográficos e auditoria de equidade algorítmica.
+
+Privacy (26,7\%)  é um tema que recebe bastante atenção, especialmente em pesquisas relacionadas à conformidade regulatória (GDPR, LGPD). Safety (36,0\%) se manifesta em contextos críticos, como saúde e transporte autônomo, por meio de práticas de engenharia de confiabilidade.
+
+Nota-se uma sub-representação significativa do Sustainability (4,0\%), um princípio que vem ganhando reconhecimento em frameworks normativos internacionais, mas que é negligenciado na literatura técnica. Essa lacuna é problemática, levando em conta a crescente preocupação com a pegada de carbono dos modelos de grande escala e os efeitos socioambientais dos sistemas autônomos.
+
+Apenas 8,0\% das pesquisas mencionam de forma explícita frameworks éticos consolidados (como os Princípios de IA da OECD), o que indica uma possível desconexão entre a pesquisa acadêmica em Engenharia de Software e os esforços de padronização normativa.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{RQ.2. Abordagens de Operacionalização no Ciclo de Vida}
+
+As contribuições identificadas se dividem em três categorias principais: métodos e processos estruturados (42,2\%), frameworks conceituais (36,1\%) e ferramentas instrumentais (21,7\%).  Em relação à cobertura do SDLC, nota-se uma concentração maior nas fases de Implementation (64,0\%) e Testing (54,7\%), de acordo com a Tabela~\ref{tab:sdlc}.
+ 
+ Essa distribuição indica um padrão majoritariamente reativo: questões éticas são tratadas principalmente durante ou após a codificação, em contraste com a abordagem proativa de \textit{ethics by design}, que exigiria mais foco em Requirements Engineering (16,0\%), Design (20,0\%) e Governance (4,0\%).  A sub-representação de requisitos contradiz as evidências de que os custos de correção aumentam exponencialmente quando identificados tardiamente \cite{Boehm2001}.
+
+As abordagens de implementação englobam principalmente: bibliotecas de fairness algorítmica (como AIF360 e Fairlearn), estratégias de mitigação de viés, métodos de explicabilidade local (como LIME e SHAP), arquiteturas de privacidade diferencial e padrões de logging para garantir a auditabilidade.  Apesar de serem tecnicamente avançadas, funcionam principalmente no nível algorítmico-implementacional, fornecendo suporte limitado para decisões arquiteturais, elicitação de requisitos ou governança organizacional.
+ 
+ As abordagens de Testing incluem suítes de testes de fairness, frameworks de validação de explicabilidade, técnicas de adversarial testing, auditoria automatizada de viés e metodologias de avaliação de impacto algorítmico.  Novamente valiosas, concentram-se na verificação pós-implementação em vez de prevenção proativa.
+
+Requirements Engineering (15,7\%) é negligenciada, mesmo desempenhando um papel crucial no value-sensitive design e na conversão de princípios em especificações que podem ser operacionalizadas. São escassos os estudos que sugerem: modelos para user stories éticas, checklists de requisitos não-funcionais éticos, métodos de elicitação de valores com stakeholders.
+
+No que diz respeito à Governança (4,8\%), a negligência é alarmante, uma vez que os frameworks normativos contemporâneos (AI Act) destacam fortemente os mecanismos organizacionais de supervisão, papéis, responsabilidades e auditoria contínua. A literatura técnica continua, em grande parte, alheia a esses imperativos regulatórios.
+
+Análise de maturidade revela que 59,0\% reportam validação experimental em ambientes controlados (TRL 4-5), 16,9\% apresentam estudos de caso/pilotos (TRL 6-7), mas nenhum estudo reporta adoção industrial documentada (TRL 8-9). Ausência de evidências de transferência para ambientes produtivos representa gap crítico entre pesquisa acadêmica e prática profissional.
+
+Apenas 7,2\% sugerem ferramentas integradas a IDEs, CI/CD ou MLOps, e, surpreendentemente, nenhum menciona a integração com bibliotecas consolidadas, como LIME, SHAP e AIF360. Desconexão indica que os pesquisadores criam soluções isoladas sem levar em conta o ecossistema de ferramentas ou a possibilidade de adoção.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{RQ.3. Evidências Empíricas sobre Efetividade e Limitações}
+
+Análise mostra que validação experimental em ambientes controlados representa (59,0\%), com generalização restrita aos contextos industriais. Cinco tipos de desafios emergem:
+
+\textbf{Desafios Conceituais}: ambiguidade na definição operacional de preceitos éticos (particularmente fairness, transparency), falta de acordo sobre métricas, trade-offs não formalizados entre princípios em conflito. Apenas 9,6\% tratam de forma explícita as tensões (transparency versus privacy, fairness versus accuracy). Único trade-off sistematicamente investigado foi Fairness versus Accuracy (7 estudos).
+
+\textbf{Desafios Técnicos}: complexidade dos modelos black-box, escalabilidade das técnicas de explicabilidade, problemas de integração com ferramentas existentes, restrições na mitigação de viés. Estudos indicam que técnicas state-of-the-art (LIME, SHAP) frequentemente produzem explicações instáveis, questionando confiabilidade prática.
+
+\textbf{Desafios Organizacionais}: falta de formação técnica em ética entre desenvolvedores, pressões por \textit{time-to-market}, resistência cultural, ausência de papéis definidos para supervisão ética. Vários estudos indicam que os desenvolvedores veem práticas éticas como \textbf{overhead burocrático} sem benefícios concretos.
+
+\textbf{Desafios Regulatórios}: falta de integração entre jurisdições, ausência de padrões técnicos certificáveis, obstáculos na auditoria, discrepância entre requisitos legais abstratos e diretrizes técnicas concretas. O AI Act define requisitos prescritivos mas fornece pouca orientação sobre como implementá-los na prática.
+
+\textbf{Desafios Metodológicos}: restrições na generalização de experimentos, falta de estudos longitudinais, dificuldades de replicação em razão a datasets proprietários, viés de publicação favorecendo resultados positivos. Ausência de casos industriais impede avaliação realista de custos, benefícios e riscos.
+
+Em relação às evidências de efetividade, pesquisas com validação empírica mostram resultados variados e, muitas vezes, contraditórios. A mitigação de viés é eficaz em benchmarks, mas perde eficácia em dados reais. A explicabilidade melhora a compreensão em experimentos, mas a utilidade percebida continua sendo uma questão em aberto. Os frameworks de governança mostram viabilidade conceitual, mas faltam evidências quanto à sua adoção sustentável.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{RQ.4. Lacunas de Conhecimento e Necessidades Futuras}
+
+Síntese integrativa permitiu identificação de seis lacunas críticas:
+
+\textbf{L1 - Integração Ética-Requisitos}: Somente 15,7\% abordam Requirements Engineering, demonstrando um enfoque \textit{a posteriori} (Implementation 63,9\%, Testing 54,2\%) em contraste a \textit{by design}. Essa lacuna é crítica, dado que Requirements constitui fase onde valores e trade-offs devem ser explicitados, negociados e traduzidos em especificações verificáveis. A literatura fornece suporte limitado para: elicitação sistemática de requisitos éticos, especificação formal de propriedades éticas, priorização de trade-offs, rastreabilidade entre princípios e artefatos.
+
+\textbf{L2 - Suporte Ferramental Integrado}: Apenas 7,2\% sugerem ferramentas integradas, 0,0\% citam integração com bibliotecas consolidadas. Desenvolvedores necessitam ferramentas integradas à IDEs, versionamento, CI/CD e MLOps, e não de soluções independentes com fluxos de trabalho paralelos. Lacuna abrange: plugins IDE para validação ética, integrações CI/CD para testes automatizados de fairness, dashboards MLOps para monitoramento de drift, frameworks unificados.
+
+\textbf{L3 - Manutenção e Governança}: Maintenance (6,0\%), Operation (22,9\%) e Governance (4,8\%) são criticamente sub-representadas. Sistemas em operação demandam monitoramento constante de drift ético, mecanismos de auditoria retrospectiva, processos de atualização que preservem propriedades éticas e estruturas de governança sustentáveis. A literatura continua concentrada na validação pré-implantação, deixando de lado o ciclo pós-implantação.
+
+\textbf{L4 - Gap Academia-Indústria}: Ausência total (0,0\%) de evidências de adoção industrial (TRL 8-9) indica uma desconexão significativa. Faltam provas a respeito dos custos reais de implementação, benefícios mensuráveis observados, riscos e falhas em implantações, obstáculos organizacionais e estudos longitudinais sobre sustentabilidade. Sem essas evidências, continua incerto se as abordagens são viáveis e benéficas para implementação em larga escala.
+
+\textbf{L5 - Formalização de Trade-offs}: 9,6\% discutem as tensões entre princípios. Trade-offs éticos não são problemas técnicos \textbf{resolvíveis} mas sim questões que exigem negociação participativa, esclarecimento de valores, registro de decisões e mecanismos de revisão. A literatura apresenta lacunas em relação a: métodos organizados para identificar trade-offs, estruturas de negociação com múltiplos interessados, técnicas de documentação para garantir auditabilidade e análise de sensibilidade em situações de incerteza.
+
+\textbf{L6 - Sustentabilidade Socioambiental}: Com 4,8\%, Sustainability permanece continua sendo criticamente negligenciada, apesar do crescente reconhecimento em estruturas normativas. Faltam abordagens para a mensuração da pegada de carbono, análise dos impactos sociais a longo prazo (como deslocamento de trabalho e concentração de poder), considerações sobre o ciclo de vida completo e trade-offs entre desempenho e eficiência energética.
+
+As necessidades futuras indicadas incluem: abordagens participativas para a engenharia de requisitos éticos; ferramentas integradas de fácil uso; métricas objetivas e auditáveis; formação de engenheiros em ética aplicada; estudos de caso industriais de longo prazo; padronização técnica por entidades reconhecidas; integração curricular transversal na formação em Computação.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Síntese do Capítulo}
+
+Este capítulo apresentou protocolo sistemático de execução da \acrshort{RSL} e síntese analítica de resultados. Achados sumarizados encontram-se nas Tabelas~\ref{tab:selected}, \ref{tab:source_distribution}, \ref{tab:principles} e \ref{tab:sdlc}. Estratégia de busca aplicada a quatro bases retornou 2.524 registros. Após deduplicação e triagens sistemáticas (título/resumo, IC/EC, qualidade), resultaram 83 estudos de alta qualidade (QA $\geq$ 6,0).
+
+Estudos analisados evidenciam esforço científico significativo em operacionalização de princípios éticos, destacando-se a tríade Transparency-Fairness-Accountability (57,8\%, 51,8\%, 44,6\%). Observa-se adaptação contextual mediante experimentação com estratégias metodológicas, configurações técnicas e domínios de aplicação.
+
+As abordagens coletadas mostram um efeito positivo em ambientes controlados, mas a presença de várias variáveis moderadoras torna difícil sua aplicação em ambientes produtivos. Seis lacunas críticas (L1-L6), foram identificadas, sendo a sub-representação de Requirements Engineering (L1, 15,7\%), falta de suporte ferramental integrado (L2, 7,2\%) e a ausência de adoção industrial (L4, 0,0\% em TRL 8-9).
+
+Esses resultados fundamentam empiricamente a necessidade e a importância do modelo apresentado no Capítulo~\ref{cap:proposta}, que aborda especificamente as lacunas L1, L2 e L3 por meio de uma abordagem sistemática de incorporação da ética desde a Engenharia de Requisitos, com suporte de ferramentas operacionalizáveis e abrangendo todo o ciclo de vida.
