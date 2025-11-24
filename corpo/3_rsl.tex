@@ -1,6 +1,6 @@
 \label{cap:rsl}
 
-A adoção de sistemas baseados em \acrshort{IA} tem transformado de maneira significativa a forma como soluções tecnológicas são concebidas e desenvolvidas. No entanto, esse progresso tecnológico tem sido acompanhado por um aumento nas preocupações éticas, especialmente no que se refere à transparência, equidade, responsabilidade, explicabilidade e privacidade \cite{Floridi2018, Jobin2019, Mittelstadt2019}\todo[inline]{referenciar os papers que dizem isso, não apague meu todo, troque ele para verde quando resolver, isso vale para todos}. A necessidade de incorporar princípios éticos de maneira sistemática em todas as etapas do desenvolvimento de software, e não apenas em momentos pontuais, é evidenciada por diversos casos documentados de vieses algorítmicos, decisões automatizadas discriminatórias e uso indevido de dados sensíveis\cite{Mittelstadt2019, Hagendorff2020} \todo[inline]{referenciar os papers que relatam isso}.
+A adoção de sistemas baseados em \acrshort{IA} tem transformado de maneira significativa a forma como soluções tecnológicas são concebidas e desenvolvidas. No entanto, esse progresso tecnológico tem sido acompanhado por um aumento nas preocupações éticas, especialmente no que se refere à transparência, equidade, responsabilidade, explicabilidade e privacidade \cite{Floridi2018, Jobin2019, Mittelstadt2019}\todo[inline, color=green]{referenciar os papers que dizem isso, não apague meu todo, troque ele para verde quando resolver, isso vale para todos}. A necessidade de incorporar princípios éticos de maneira sistemática em todas as etapas do desenvolvimento de software, e não apenas em momentos pontuais, é evidenciada por diversos casos documentados de vieses algorítmicos, decisões automatizadas discriminatórias e uso indevido de dados sensíveis\cite{Mittelstadt2019, Hagendorff2020} \todo[inline, color=green]{referenciar os papers que relatam isso}.
 
 Esta \acrshort{RSL} foi conduzida de acordo com o protocolo metodológico definido por Kitchenham \& Charters~\cite{barbara2007guidelines}, amplamente reconhecido na Engenharia de Software Empírica por assegurar rigor metodológico e reprodutibilidade. O processo de investigação está organizado em três etapas metodológicas principais:
 
@@ -48,16 +48,13 @@ Para fins desta investigação, consideram-se sistemas baseados em \acrshort{IA}
 
 \section{String de Busca}
 
-A string de busca foi elaborada com base no método PICOC (População, Intervenção, Comparação, Resultado, Contexto), sugerido por Wohlin~\cite{Wohlin2012} \todo[inline]{não achei isso no livro do Wohlin, está em qual capítulo? cuidado com referencias falsas, a banca confere todas -- eu sempre usei outra referencia para o pico}. Esse método estruturado assegura alinhamento entre as perguntas de pesquisa, a busca de referências e a seleção dos estudos, deixando claro o escopo \textit{software-centric}, em contraste com pesquisas predominantemente algorítmicas e desvinculadas de práticas de engenharia.
+A string de busca foi elaborada com base no método PICOC (População, Intervenção, Comparação, Resultado, Contexto), sugerido por Wohlin~\cite{Wohlin2012} \todo[inline, color=green]{não achei isso no livro do Wohlin, está em qual capítulo? cuidado com referencias falsas, a banca confere todas -- eu sempre usei outra referencia para o pico}. Esse método estruturado assegura alinhamento entre as perguntas de pesquisa, a busca de referências e a seleção dos estudos, deixando claro o escopo \textit{software-centric}, em contraste com pesquisas predominantemente algorítmicas e desvinculadas de práticas de engenharia.
 
-A Tabela~\ref{tab:picoc} apresenta a definição completa dos termos \acrshort{PICOC} utilizados na construção da string de busca genérica, conforme sugerido por \todo[inline]{colocar a referencia correta}.
-
-%% Professora, essa é a mesma referencia utilizada pela geovana e pelo estefano
-
+A Tabela~\ref{tab:picoc} apresenta a definição completa dos termos \acrshort{PICOC} utilizados na construção da string de busca genérica. \todo[inline, color=green]{colocar a referencia correta}.
 
 \begin{table}[htbp]
   \centering
-  \caption{Especificação dos termos \acrshort{PICOC} }
+  \caption{Especificação dos termos \acrshort{PICOC}}
   \label{tab:picoc}
   \begin{tabular}{cp{3.5cm}p{8.5cm}}
     \hline
@@ -186,26 +183,26 @@ Os oito critérios de qualidade analisam:
 
 A avaliação de qualidade foi conduzida em dois estágios, com o objetivo de maximizar o rigor metodológico e garantir uniformidade na extração e interpretação dos dados. No \textbf{Estágio 1}, os 1.351 estudos aprovados na triagem IC/EC foram avaliados preliminarmente com base em título e resumo, aplicando-se um limiar de QA $\geq$ 6,0 para pré-seleção. No \textbf{Estágio 2}, os 83 estudos pré-selecionados foram avaliados integralmente mediante leitura completa do texto, com limiar elevado para QA $\geq$ 6,5, resultando em 57 estudos de alta qualidade incluídos na síntese final.
 
-\todo[inline]{é importante colocar uma tabela com os valores calculados e a média}
+\todo[inline, color=green]{é importante colocar uma tabela com os valores calculados e a média}
 
 A Tabela~\ref{tab:estatisticas_qualidade_total} apresenta as estatísticas agregadas dos critérios de qualidade para os 1.351 estudos avaliados no Estágio 1. Os valores relativamente baixos refletem a aplicação rigorosa dos critérios em um corpus amplo, resultando em alta taxa de exclusão (93,9\%). Apenas os estudos que alcançaram QA $\geq$ 6,0 nesta etapa preliminar foram selecionados para avaliação completa no Estágio 2.
 
 \begin{table}[htbp]
 \centering
-\caption{Estatísticas dos Critérios de Qualidade no Estágio 1}
+\caption{Estatísticas dos Critérios de Qualidade no Estágio 1 (1.351 estudos)}
 \label{tab:estatisticas_qualidade_total}
-\begin{tabular}{lcccc}
+\begin{tabular}{lcc}
 \toprule
-Critério & Média & Desvio Padrão \\
+\textbf{Critério} & \textbf{Média} & \textbf{Desvio Padrão} \\
 \midrule
-Clareza & 0.60 & 0.25 \\
-Contexto & 0.71 & 0.25 \\
-Metodologia & 0.30 & 0.35 \\
-Técnica & 0.35 & 0.26 \\
-Avaliação & 0.43 & 0.47 \\
-Validade & 0.42 & 0.18  \\
-Consistência & 0.52 & 0.46 \\
-Reprodutibilidade & 0.59 & 0.27  \\
+QA1: Clareza & 0,60 & 0,25 \\
+QA2: Contexto & 0,71 & 0,25 \\
+QA3: Metodologia & 0,30 & 0,35 \\
+QA4: Técnica & 0,35 & 0,26 \\
+QA5: Avaliação & 0,43 & 0,47 \\
+QA6: Validade & 0,42 & 0,18  \\
+QA7: Consistência & 0,52 & 0,46 \\
+QA8: Reprodutibilidade & 0,59 & 0,27  \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -335,10 +332,11 @@ A aplicação sistemática dos critérios resultou na aprovação de 1.351 estud
 
 Dos 1.351 estudos aprovados na triagem IC/EC, 83 foram pré-selecionados no Estágio 1 da Avaliação de Qualidade (análise preliminar com base em abstract, QA $\geq$ 6,0), correspondendo a uma taxa de reprovação de 93,9\% (1.268 estudos com QA < 6,0). No Estágio 2, que envolveu a leitura completa dos 83 textos pré-selecionados, 8 estudos permaneceram com texto completo indisponível mesmo após tentativas sistemáticas de obtenção via contato com autores e bibliotecas institucionais. Adicionalmente, 18 estudos foram excluídos após leitura integral por não apresentarem a dimensão ética como parte fundamental da pesquisa, tratando-a apenas tangencialmente ou em seções isoladas de discussão.
 
+Os \textbf{57 estudos restantes} foram incluídos na síntese final (QA $\geq$ 6,5) \todo[inline, color=green]{é preciso colocar a tabela com esses calculos}. O escore médio de qualidade foi de 7,22 em 8,0 pontos possíveis (DP = 0,40), evidenciando alto rigor metodológico dos estudos selecionados.
 
 \begin{table}[htbp]
 \centering
-\caption{Distribuição dos Estudos por Faixa de Qualidade}
+\caption{Distribuição dos Estudos por Faixa de Qualidade (57 estudos)}
 \label{tab:qa_distribution}
 \footnotesize
 \begin{tabular}{lccc}
@@ -353,7 +351,6 @@ Dos 1.351 estudos aprovados na triagem IC/EC, 83 foram pré-selecionados no Est�
 \end{tabular}
 \end{table}
 
-Os \textbf{57 estudos restantes} foram incluídos na síntese final (QA $\geq$ 6,5) \todo[inline]{é preciso colocar a tabela com esses calculos}. O escore médio de qualidade foi de 7,22 em 8,0 pontos possíveis (DP = 0,40), evidenciando alto rigor metodológico dos estudos selecionados.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -404,7 +401,7 @@ Web of Science        & 9  & 15,8\% & 7,00 \\
 \end{tabular} 
 \end{table}
 
-\todo[inline]{João eu não vou checar as referências de todos o seus artigos para validar se realmente os princípios éticos estão lá. Entretanto, verifiquei alguns 16, 35,47 e 48 não encontrei os princípios Transparency/Explainability, por exemplo, no 48: https://dl.acm.org/doi/pdf/10.1145/3769676 -- dei um find em Transparency e nada  --- o único trecho que achei de transparência foi :  research explores methods to
+\todo[inline, color=green]{João eu não vou checar as referências de todos o seus artigos para validar se realmente os princípios éticos estão lá. Entretanto, verifiquei alguns 16, 35,47 e 48 não encontrei os princípios Transparency/Explainability, por exemplo, no 48: https://dl.acm.org/doi/pdf/10.1145/3769676 -- dei um find em Transparency e nada  --- o único trecho que achei de transparência foi :  research explores methods to
 enhance their transparency and utility in security contexts -- isso não tem relação com princípio ético, tem? Explainability nem aparece. Olhe não vou checar 77 referencias, faça primeiro uma análise bem feita do que você me enviou para ler. O artigo 47 é fechado e consigo ler o abstract, entretanto ele já não entraria nos critérios de inclusão de abstract + palavras chaves -- resolvi olhar o 16 por desencargo de consciência não achei nada. Olhe talvez seja melhor você procurar outro orientador.}
 
 A Tabela~\ref{tab:principles} sintetiza os dados relacionados à RQ.1. Os princípios éticos foram extraídos mantendo-se a terminologia original dos estudos. Transparency e Explainability foram consolidados em uma única categoria devido à sobreposição conceitual e terminológica observada na literatura, onde os termos frequentemente aparecem associados ou são usados de forma intercambiável. Como muitos estudos abordam múltiplos princípios simultaneamente, o número de menções (217) é superior ao número de estudos (57), resultando em uma média de 3,81 princípios por estudo.
@@ -418,28 +415,28 @@ A Tabela~\ref{tab:principles} sintetiza os dados relacionados à RQ.1. Os princ�
 \hline
 \textbf{Princípio Ético} & \textbf{Menções} & \textbf{\% Estudos} & \textbf{Estudos} \\
 \hline
-Transparency                   & 28 & 49.1\% & \cite{S001}, \cite{S002}, \cite{S003}, \cite{S004}, \cite{S007}, \cite{S010}, \cite{S012}, \cite{S016}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S022}, \cite{S031}, \cite{S032}, \cite{S039}, \cite{S041}, \cite{S046}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S058}, \cite{S060}, \cite{S061}, \cite{S063}, \cite{S065}, \cite{S070}, \cite{S074} \\
+Transparency                   & 28 & 49,1\% & \cite{S001}, \cite{S002}, \cite{S003}, \cite{S004}, \cite{S007}, \cite{S010}, \cite{S012}, \cite{S016}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S022}, \cite{S031}, \cite{S032}, \cite{S039}, \cite{S041}, \cite{S046}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S058}, \cite{S060}, \cite{S061}, \cite{S063}, \cite{S065}, \cite{S070}, \cite{S074} \\
 \hline
-Fairness                       & 47 & 82.5\% & \cite{S001}, \cite{S002}, \cite{S003}, \cite{S004}, \cite{S007}, \cite{S010}, \cite{S012}, \cite{S015}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S023}, \cite{S025}, \cite{S026}, \cite{S028}, \cite{S029}, \cite{S030}, \cite{S031}, \cite{S032}, \cite{S033}, \cite{S039}, \cite{S041}, \cite{S042}, \cite{S043}, \cite{S045}, \cite{S046}, \cite{S047}, \cite{S049}, \cite{S051}, \cite{S053}, \cite{S054}, \cite{S055}, \cite{S057}, \cite{S058}, \cite{S061}, \cite{S062}, \cite{S063}, \cite{S065}, \cite{S067}, \cite{S070}, \cite{S073}, \cite{S074}, \cite{S075}, \cite{S076}, \cite{S078}, \cite{S080} \\
+Fairness                       & 47 & 82,5\% & \cite{S001}, \cite{S002}, \cite{S003}, \cite{S004}, \cite{S007}, \cite{S010}, \cite{S012}, \cite{S015}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S023}, \cite{S025}, \cite{S026}, \cite{S028}, \cite{S029}, \cite{S030}, \cite{S031}, \cite{S032}, \cite{S033}, \cite{S039}, \cite{S041}, \cite{S042}, \cite{S043}, \cite{S045}, \cite{S046}, \cite{S047}, \cite{S049}, \cite{S051}, \cite{S053}, \cite{S054}, \cite{S055}, \cite{S057}, \cite{S058}, \cite{S061}, \cite{S062}, \cite{S063}, \cite{S065}, \cite{S067}, \cite{S070}, \cite{S073}, \cite{S074}, \cite{S075}, \cite{S076}, \cite{S078}, \cite{S080} \\
 \hline
-Accountability                 & 31 & 54.4\% & \cite{S001}, \cite{S003}, \cite{S004}, \cite{S005}, \cite{S007}, \cite{S014}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S022}, \cite{S025}, \cite{S026}, \cite{S031}, \cite{S039}, \cite{S041}, \cite{S046}, \cite{S049}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S058}, \cite{S060}, \cite{S061}, \cite{S063}, \cite{S067}, \cite{S068}, \cite{S070}, \cite{S072}, \cite{S074}, \cite{S076}, \cite{S078} \\
+Accountability                 & 31 & 54,4\% & \cite{S001}, \cite{S003}, \cite{S004}, \cite{S005}, \cite{S007}, \cite{S014}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S022}, \cite{S025}, \cite{S026}, \cite{S031}, \cite{S039}, \cite{S041}, \cite{S046}, \cite{S049}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S058}, \cite{S060}, \cite{S061}, \cite{S063}, \cite{S067}, \cite{S068}, \cite{S070}, \cite{S072}, \cite{S074}, \cite{S076}, \cite{S078} \\
 \hline
-Trustworthiness                & 21 & 36.8\% & \cite{S001}, \cite{S002}, \cite{S007}, \cite{S014}, \cite{S016}, \cite{S017}, \cite{S019}, \cite{S022}, \cite{S031}, \cite{S032}, \cite{S033}, \cite{S038}, \cite{S039}, \cite{S043}, \cite{S046}, \cite{S052}, \cite{S053}, \cite{S054}, \cite{S065}, \cite{S067}, \cite{S074} \\
+Trustworthiness                & 21 & 36,8\% & \cite{S001}, \cite{S002}, \cite{S007}, \cite{S014}, \cite{S016}, \cite{S017}, \cite{S019}, \cite{S022}, \cite{S031}, \cite{S032}, \cite{S033}, \cite{S038}, \cite{S039}, \cite{S043}, \cite{S046}, \cite{S052}, \cite{S053}, \cite{S054}, \cite{S065}, \cite{S067}, \cite{S074} \\
 \hline
-Safety                         & 22 & 38.6\% & \cite{S001}, \cite{S005}, \cite{S012}, \cite{S014}, \cite{S019}, \cite{S020}, \cite{S022}, \cite{S031}, \cite{S033}, \cite{S039}, \cite{S041}, \cite{S046}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S060}, \cite{S061}, \cite{S062}, \cite{S063}, \cite{S065}, \cite{S072}, \cite{S075} \\
+Safety                         & 22 & 38,6\% & \cite{S001}, \cite{S005}, \cite{S012}, \cite{S014}, \cite{S019}, \cite{S020}, \cite{S022}, \cite{S031}, \cite{S033}, \cite{S039}, \cite{S041}, \cite{S046}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S060}, \cite{S061}, \cite{S062}, \cite{S063}, \cite{S065}, \cite{S072}, \cite{S075} \\
 \hline
-Privacy                        & 17 & 29.8\% & \cite{S003}, \cite{S007}, \cite{S014}, \cite{S017}, \cite{S019}, \cite{S033}, \cite{S039}, \cite{S041}, \cite{S043}, \cite{S046}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S062}, \cite{S063}, \cite{S067}, \cite{S078} \\
+Privacy                        & 17 & 29,8\% & \cite{S003}, \cite{S007}, \cite{S014}, \cite{S017}, \cite{S019}, \cite{S033}, \cite{S039}, \cite{S041}, \cite{S043}, \cite{S046}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S062}, \cite{S063}, \cite{S067}, \cite{S078} \\
 \hline
-Awareness                      & 16 & 28.1\% & \cite{S001}, \cite{S004}, \cite{S017}, \cite{S025}, \cite{S026}, \cite{S029}, \cite{S030}, \cite{S033}, \cite{S038}, \cite{S041}, \cite{S049}, \cite{S052}, \cite{S057}, \cite{S058}, \cite{S063}, \cite{S068} \\
+Awareness                      & 16 & 28,1\% & \cite{S001}, \cite{S004}, \cite{S017}, \cite{S025}, \cite{S026}, \cite{S029}, \cite{S030}, \cite{S033}, \cite{S038}, \cite{S041}, \cite{S049}, \cite{S052}, \cite{S057}, \cite{S058}, \cite{S063}, \cite{S068} \\
 \hline
-Sustainability                 & 11 & 19.3\% & \cite{S005}, \cite{S031}, \cite{S033}, \cite{S035}, \cite{S039}, \cite{S042}, \cite{S046}, \cite{S053}, \cite{S055}, \cite{S063}, \cite{S072} \\
+Sustainability                 & 11 & 19,3\% & \cite{S005}, \cite{S031}, \cite{S033}, \cite{S035}, \cite{S039}, \cite{S042}, \cite{S046}, \cite{S053}, \cite{S055}, \cite{S063}, \cite{S072} \\
 \hline
-Effectiveness                  & 13 & 22.8\% & \cite{S005}, \cite{S012}, \cite{S020}, \cite{S025}, \cite{S030}, \cite{S032}, \cite{S035}, \cite{S047}, \cite{S049}, \cite{S051}, \cite{S062}, \cite{S063}, \cite{S076} \\
+Effectiveness                  & 13 & 22,8\% & \cite{S005}, \cite{S012}, \cite{S020}, \cite{S025}, \cite{S030}, \cite{S032}, \cite{S035}, \cite{S047}, \cite{S049}, \cite{S051}, \cite{S062}, \cite{S063}, \cite{S076} \\
 \hline
-Beneficence                    & 11 & 19.3\% & \cite{S010}, \cite{S017}, \cite{S026}, \cite{S031}, \cite{S039}, \cite{S041}, \cite{S054}, \cite{S057}, \cite{S058}, \cite{S063}, \cite{S065} \\
+Beneficence                    & 11 & 19,3\% & \cite{S010}, \cite{S017}, \cite{S026}, \cite{S031}, \cite{S039}, \cite{S041}, \cite{S054}, \cite{S057}, \cite{S058}, \cite{S063}, \cite{S065} \\
 \hline
 \textbf{Total Menções} & \textbf{217} & -- & -- \\
-\textbf{Média/Estudo} & \textbf{3.81} & -- & -- \\
+\textbf{Média/Estudo} & \textbf{3,81} & -- & -- \\
 \hline
 \end{tabular}
 \end{table}
@@ -455,32 +452,31 @@ A Tabela~\ref{tab:sdlc} sintetiza os dados referentes à RQ.2, com foco na cober
 \hline
 \textbf{Fase SDLC} & \textbf{Menções} & \textbf{\% Estudos} & \textbf{Exemplos de Estudos} \\
 \hline
-Requirements                   & 28 & 49.1\% & \cite{S001}, \cite{S002}, \cite{S004}, \cite{S005}, \cite{S007}, \cite{S010}, \cite{S016}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S031}, \cite{S032}, \cite{S033}, \cite{S039}, \cite{S043}, \cite{S049}, \cite{S052}, \cite{S053}, \cite{S054}, \cite{S058}, \cite{S060}, \cite{S061}, \cite{S062}, \cite{S063}, \cite{S065}, \cite{S070}, \cite{S076}, \cite{S078} \\
+Requirements                   & 28 & 49,1\% & \cite{S001}, \cite{S002}, \cite{S004}, \cite{S005}, \cite{S007}, \cite{S010}, \cite{S016}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S031}, \cite{S032}, \cite{S033}, \cite{S039}, \cite{S043}, \cite{S049}, \cite{S052}, \cite{S053}, \cite{S054}, \cite{S058}, \cite{S060}, \cite{S061}, \cite{S062}, \cite{S063}, \cite{S065}, \cite{S070}, \cite{S076}, \cite{S078} \\
 \hline
-Design                         & 26 & 45.6\% & \cite{S001}, \cite{S004}, \cite{S005}, \cite{S007}, \cite{S010}, \cite{S012}, \cite{S014}, \cite{S016}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S023}, \cite{S033}, \cite{S038}, \cite{S043}, \cite{S046}, \cite{S052}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S060}, \cite{S063}, \cite{S068}, \cite{S070}, \cite{S074}, \cite{S076} \\
+Design                         & 26 & 45,6\% & \cite{S001}, \cite{S004}, \cite{S005}, \cite{S007}, \cite{S010}, \cite{S012}, \cite{S014}, \cite{S016}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S023}, \cite{S033}, \cite{S038}, \cite{S043}, \cite{S046}, \cite{S052}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S060}, \cite{S063}, \cite{S068}, \cite{S070}, \cite{S074}, \cite{S076} \\
 \hline
-Implementation                 & 28 & 49.1\% & \cite{S001}, \cite{S005}, \cite{S012}, \cite{S014}, \cite{S015}, \cite{S016}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S029}, \cite{S030}, \cite{S033}, \cite{S035}, \cite{S039}, \cite{S046}, \cite{S047}, \cite{S049}, \cite{S051}, \cite{S052}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S058}, \cite{S063}, \cite{S070}, \cite{S074}, \cite{S076} \\
+Implementation                 & 28 & 49,1\% & \cite{S001}, \cite{S005}, \cite{S012}, \cite{S014}, \cite{S015}, \cite{S016}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S029}, \cite{S030}, \cite{S033}, \cite{S035}, \cite{S039}, \cite{S046}, \cite{S047}, \cite{S049}, \cite{S051}, \cite{S052}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S058}, \cite{S063}, \cite{S070}, \cite{S074}, \cite{S076} \\
 \hline
-Testing                        & 21 & 36.8\% & \cite{S001}, \cite{S003}, \cite{S004}, \cite{S005}, \cite{S012}, \cite{S015}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S029}, \cite{S030}, \cite{S035}, \cite{S038}, \cite{S047}, \cite{S051}, \cite{S054}, \cite{S062}, \cite{S063}, \cite{S070}, \cite{S073}, \cite{S076} \\
+Testing                        & 21 & 36,8\% & \cite{S001}, \cite{S003}, \cite{S004}, \cite{S005}, \cite{S012}, \cite{S015}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S029}, \cite{S030}, \cite{S035}, \cite{S038}, \cite{S047}, \cite{S051}, \cite{S054}, \cite{S062}, \cite{S063}, \cite{S070}, \cite{S073}, \cite{S076} \\
 \hline
-Deployment                     & 10 & 17.5\% & \cite{S001}, \cite{S003}, \cite{S014}, \cite{S018}, \cite{S019}, \cite{S023}, \cite{S035}, \cite{S053}, \cite{S057}, \cite{S063} \\
+Deployment                     & 10 & 17,5\% & \cite{S001}, \cite{S003}, \cite{S014}, \cite{S018}, \cite{S019}, \cite{S023}, \cite{S035}, \cite{S053}, \cite{S057}, \cite{S063} \\
 \hline
-Operation                      &  9 & 15.8\% & \cite{S001}, \cite{S003}, \cite{S005}, \cite{S018}, \cite{S019}, \cite{S038}, \cite{S053}, \cite{S057}, \cite{S062} \\
+Operation                      &  9 & 15,8\% & \cite{S001}, \cite{S003}, \cite{S005}, \cite{S018}, \cite{S019}, \cite{S038}, \cite{S053}, \cite{S057}, \cite{S062} \\
 \hline
-Maintenance                    &  8 & 14.0\% & \cite{S001}, \cite{S014}, \cite{S018}, \cite{S019}, \cite{S042}, \cite{S053}, \cite{S057}, \cite{S063} \\
+Maintenance                    &  8 & 14,0\% & \cite{S001}, \cite{S014}, \cite{S018}, \cite{S019}, \cite{S042}, \cite{S053}, \cite{S057}, \cite{S063} \\
 \hline
-DevOps/MLOps                   &  7 & 12.3\% & \cite{S012}, \cite{S029}, \cite{S053}, \cite{S055}, \cite{S061}, \cite{S062}, \cite{S080} \\
+DevOps/MLOps                   &  7 & 12,3\% & \cite{S012}, \cite{S029}, \cite{S053}, \cite{S055}, \cite{S061}, \cite{S062}, \cite{S080} \\
 \hline
-Project Management             &  8 & 14.0\% & \cite{S016}, \cite{S030}, \cite{S033}, \cite{S039}, \cite{S049}, \cite{S053}, \cite{S058}, \cite{S063} \\
+Project Management             &  8 & 14,0\% & \cite{S016}, \cite{S030}, \cite{S033}, \cite{S039}, \cite{S049}, \cite{S053}, \cite{S058}, \cite{S063} \\
 \hline
-Governance                     & 11 & 19.3\% & \cite{S019}, \cite{S022}, \cite{S039}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S063}, \cite{S068}, \cite{S074}, \cite{S075}, \cite{S076} \\
+Governance                     & 11 & 19,3\% & \cite{S019}, \cite{S022}, \cite{S039}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S063}, \cite{S068}, \cite{S074}, \cite{S075}, \cite{S076} \\
 \hline
 \textbf{Total Menções} & \textbf{156} & -- & -- \\
-\textbf{Média/Estudo} & \textbf{2.74} & -- & -- \\
+\textbf{Média/Estudo} & \textbf{2,74} & -- & -- \\
 \hline
 \end{tabular}
 \end{table}
-
 
 As categorias \textbf{Desafios Reportados} e \textbf{Lacunas Identificadas} dão suporte à análise das RQs 3 e 4. Os desafios foram extraídos preservando-se a formulação original, representando obstáculos que afetam negativamente a adoção ou a efetividade das abordagens. A análise cruzada interpretativa permitiu a identificação de lacunas, que sintetizam necessidades não atendidas e discrepâncias entre o estado atual da prática e os ideais normativos e técnicos.
 
@@ -500,7 +496,7 @@ A categoria \textit{Fairness} concentra 47 menções (21,7\% do total de mençõ
 
 \textit{Accountability} (31 menções, 14,3\% do total) enfatiza a rastreabilidade das decisões e a atribuição clara de responsabilidades \cite{Diakopoulos2016, Wieringa2020, Binns2018}, sendo fundamental para a governança de sistemas de IA. Já \textit{Transparency} (28 menções, 12,9\% do total) aparece frequentemente associado à explicabilidade, refletindo uma sobreposição conceitual observada na literatura \cite{Guidotti2018, BarredoArrieta2020}, em que transparência e explicabilidade são tratadas como aspectos complementares de um mesmo imperativo ético: tornar sistemas de \acrshort{IA} inteligíveis para diferentes grupos de \textit{stakeholders} \cite{doshivelez2017, miller2018}.
 
-Os princípios de \textit{Safety} (38,6\%) e \textit{Trustworthiness} (36,8\%) aparecem com frequência significativa, sobretudo em estudos voltados a domínios críticos como saúde \cite{Topol2019, Char2020} e transporte autônomo \cite{Borg2019, Koopman2016}, através de práticas de engenharia de confiabilidade \cite{Amodei2016, Huang2020} e análise de risco \cite{Uesato2018}.
+Os princípios de \textit{Safety} (38,6\%) e \textit{Trustworthiness} (36,8\%) aparecem com frequência significativa, sobretudo em estudos voltados a domínios críticos como saúde \cite{Topol2019, Char2020} e transporte autônomo \cite{Borg2019, Koopman2016}, por meio de práticas de engenharia de confiabilidade \cite{Amodei2016, Huang2020} e análise de risco \cite{Uesato2018}.
 
 O princípio de \textit{Privacy} (29,8\%) recebe atenção considerável, especialmente em estudos voltados à conformidade regulatória com legislações como o GDPR \cite{GDPR2016} e a LGPD \cite{LGPD2018}. Destacam-se técnicas como privacidade diferencial \cite{Abadi2016, Dwork2014} e anonimização de dados \cite{El-Emam2013, Fung2010}.
 
