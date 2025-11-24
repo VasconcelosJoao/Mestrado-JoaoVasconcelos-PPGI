@@ -1,6 +1,6 @@
 \label{cap:introducao}
 
-A adoção cada vez maior de sistemas baseados em \gls{IA}tem alterado de maneira notável as práticas de desenvolvimento de software e os processos de tomada de decisão em vários setores essenciais. Esse crescimento é fomentado pela junção de três fatores: o aumento da disponibilidade de grandes volumes de dados, evolução das capacidades computacionais e desenvolvimento de técnicas de aprendizado de máquina. Como consequência, algoritmos de \acrshort{IA} estão cada vez mais integrados em situações onde suas decisões atuam sobre direitos fundamentais, acesso a serviços essenciais e oportunidades de vida de indivíduos e comunidades.
+A adoção cada vez maior de sistemas baseados em \gls{IA} tem alterado de maneira notável as práticas de desenvolvimento de software e os processos de tomada de decisão em vários setores essenciais. Esse crescimento é fomentado pela junção de três fatores: o aumento da disponibilidade de grandes volumes de dados, evolução das capacidades computacionais e desenvolvimento de técnicas de aprendizado de máquina. Como consequência, algoritmos de \acrshort{IA} estão cada vez mais integrados em situações onde suas decisões atuam sobre direitos fundamentais, acesso a serviços essenciais e oportunidades de vida de indivíduos e comunidades.
 
 No entanto, o avanço tecnológico tem sido acompanhado por preocupações cada vez maiores em relação às implicações éticas dos sistemas de \acrshort{IA}. Diversos incidentes documentados evidenciam problemas sérios decorrentes da ausência de análises éticas sistemáticas durante o desenvolvimento desses sistemas. Um caso emblemático foi divulgado em 2019 por pesquisadores da Universidade de Berkeley, em colaboração com a Universidade de Chicago e a Universidade de Boston. O estudo revelou que um algoritmo amplamente utilizado por hospitais norte-americanos para alocação de cuidados de saúde, abrangendo aproximadamente 200 milhões de pacientes, apresentava um viés racial substancial. Desenvolvido pela empresa Optum, o sistema utilizava os custos históricos de saúde como um \textit{proxy} para avaliar necessidades médicas. Contudo, devido a desigualdades socioeconômicas que resultam em menores gastos médicos entre pacientes negros, o algoritmo exigia que esses indivíduos estivessem significativamente mais doentes do que pacientes brancos para receberem cuidados equivalentes. Como consequência, os cuidados recomendados para populações negras com necessidades semelhantes foram reduzidos em mais de 50\% \cite{Ziad2019}.
 
@@ -12,32 +12,31 @@ Em resposta a essas preocupações, diversos \textit{frameworks} e regulamentaç
 
 Apesar desses avanços normativos, persiste uma lacuna significativa entre princípios éticos abstratos e sua operacionalização concreta ao longo do ciclo de vida do desenvolvimento de software. As diretrizes existentes permanecem, em sua maioria, em um nível teórico, sem oferecer soluções práticas sistematicamente integradas às diferentes fases do processo de desenvolvimento. Essa lacuna dificulta que equipes técnicas adotem práticas éticas de forma eficaz, gerando riscos de falhas éticas no produto final, custos elevados de correções posteriores e potenciais danos a usuários e comunidades.
 
-Para fundamentar a definição precisa do problema, foi conduzida uma \gls{RSL} seguindo o protocolo de Kitchenham \& Charters \cite{barbara2007guidelines} e as diretrizes PRISMA 2020 \cite{PRISMA2020}. A busca sistemática em quatro bases de dados (ACM Digital Library, IEEE Xplore, Scopus, Web of Science) resultou na identificação inicial de 2.524 registros. Após a deduplicação e a aplicação sistemática de critérios de inclusão e exclusão em múltiplos estágios, chegou-se a um \textit{corpus} final de 75 estudos de alta qualidade (QA~$\geq$~6{,}5 em uma escala de 8{,}0), publicados entre 2021 e 2025.
+Para fundamentar a definição precisa do problema e mapear o estado da arte, foi conduzida uma \gls{RSL} seguindo o protocolo de Kitchenham \& Charters \cite{barbara2007guidelines} e as diretrizes PRISMA 2020 \cite{PRISMA2020}. A busca sistemática em múltiplas bases de dados resultou na identificação e análise de 57 estudos recentes de alta qualidade sobre operacionalização de ética em \acrshort{IA} no contexto da Engenharia de Software. Os resultados detalhados da \acrshort{RSL}, incluindo o protocolo completo, critérios de qualidade, distribuição temporal e geográfica dos estudos, bem como a análise aprofundada dos princípios éticos e das fases do ciclo de vida de desenvolvimento abordadas, são apresentados integralmente no Capítulo~\ref{cap:rsl}.
 
-A análise evidenciou oito princípios éticos predominantes, com 229 menções distribuídas entre os 75 estudos: \textit{Transparency/Explainability} (64{,}0\%), \textit{Fairness} (52{,}0\%), \textit{Accountability} (44{,}0\%), \textit{Trustworthiness} (40{,}0\%), \textit{Safety} (36{,}0\%), \textit{Privacy} (26{,}7\%), \textit{Autonomy} (16{,}0\%) e \textit{Sustainability} (4{,}0\%). Os três primeiros (\textit{Transparency/Explainability}, \textit{Fairness} e \textit{Accountability}) formam uma tríade conceitual central, identificada como a base das abordagens mais consolidadas na literatura.
+A análise sistemática da literatura evidenciou um conjunto de princípios éticos predominantes na área, com destaque para \textit{fairness} (82,5\% dos estudos), \textit{accountability} (54,4\%) e \textit{transparency} (49,1\%), que formam a base conceitual das abordagens mais consolidadas. No que se refere à cobertura ao longo do \textit{Software Development Life Cycle} (SDLC), observou-se uma distribuição relativamente equilibrada entre as fases iniciais e intermediárias: \textit{Requirements Engineering} (49,1\%), \textit{Implementation} (49,1\%), \textit{Design} (45,6\%) e \textit{Testing} (36,8\%). No entanto, as fases posteriores apresentam cobertura significativamente menor: \textit{Governance} (19,3\%), \textit{Deployment} (17,5\%), \textit{Operation} (15,8\%), \textit{Maintenance} (14,0\%) e \textit{DevOps/MLOps} (12,3\%).
 
-A distribuição da cobertura por fases do \textit{Software Development Life Cycle} (SDLC) revelou uma concentração crítica nas fases posteriores: \textit{Implementation} (64{,}0\%) e \textit{Testing} (54{,}7\%). Em contraste, fases consideradas fundamentais para o \textit{value-sensitive design} apresentaram sub-representação severa: \textit{Requirements Engineering} (16{,}0\%), \textit{Design} (20{,}0\%), \textit{Governance} (4{,}0\%) e \textit{Maintenance} (6{,}7\%). Essa distribuição indica um padrão predominantemente reativo, em que questões éticas são tratadas principalmente durante ou após a codificação, contrastando com a abordagem proativa \textit{by design} preconizada por regulações contemporâneas.
+Embora a presença de requisitos éticos nas fases iniciais seja encorajadora, a análise qualitativa dos estudos revelou dois problemas críticos: primeiro, a falta de integração e rastreabilidade sistemática de princípios éticos \textit{entre} as diferentes fases do desenvolvimento; segundo, o tratamento frequentemente isolado e fragmentado das considerações éticas, sem mecanismos consistentes para propagação de decisões éticas ao longo do ciclo de vida. Essa fragmentação contrasta com a abordagem \textit{by design} preconizada por regulações contemporâneas, que requer integração transversal de princípios éticos desde a concepção até a manutenção dos sistemas.
 
-
-A síntese da \acrshort{RSL} permitiu a identificação de seis lacunas críticas que caracterizam o problema investigado:
+A síntese da \acrshort{RSL} permitiu a identificação de seis lacunas críticas que caracterizam o problema investigado (detalhadas no Capítulo~\ref{cap:rsl}):
 
 \begin{enumerate}
-    \item \textbf{Sub-representação da Engenharia de Requisitos (L1):} Apenas 16{,}0\% dos estudos abordam a fase de requisitos, apesar de seu papel fundamental no \textit{value-sensitive design}. A literatura concentra-se em fases posteriores, indicando um tratamento reativo das questões éticas, em detrimento de uma abordagem preventiva;
+    \item \textbf{Integração e rastreabilidade entre fases (L1):} Embora requisitos, design e implementação apresentem cobertura significativa, observa-se uma lacuna crítica na integração e rastreabilidade sistemática de princípios éticos entre essas fases. A literatura oferece suporte limitado para mecanismos de propagação de decisões éticas, validação de consistência transversal e gestão de \textit{trade-offs} que emergem durante as transições do ciclo de vida;
     
-    \item \textbf{Ausência de suporte ferramental integrado (L2):} Somente 6{,}7\% dos estudos propõem ferramentas integradas a ambientes de desenvolvimento (IDEs, CI/CD, MLOps). Desenvolvedores carecem de suporte prático e contextualizado para operacionalizar princípios éticos nos fluxos de trabalho cotidianos;
+    \item \textbf{Ausência de suporte ferramental integrado (L2):} Desenvolvedores carecem de suporte prático e contextualizado para operacionalizar princípios éticos nos fluxos de trabalho cotidianos. Há escassez de ferramentas integradas a ambientes de desenvolvimento (IDEs, CI/CD, MLOps), plugins para validação ética em tempo real e \textit{frameworks} unificados que integrem bibliotecas existentes;
     
-    \item \textbf{Negligência de manutenção e governança (L3):} \textit{Maintenance} (6{,}7\%), \textit{Operation} (22{,}7\%) e \textit{Governance} (4{,}0\%) estão criticamente sub-representadas, apesar da necessidade documentada de monitoramento contínuo de sistemas em produção e da existência de estruturas organizacionais de supervisão;
+    \item \textbf{Negligência de fases pós-implantação (L3):} As fases posteriores do ciclo de vida (governança, \textit{deployment}, operação, manutenção e DevOps/MLOps) estão criticamente sub-representadas (12,3\% a 19,3\%), apesar da necessidade documentada de monitoramento contínuo de \textit{drift} ético, auditoria retrospectiva e estruturas organizacionais de supervisão sustentável;
     
-    \item \textbf{Desconexão academia--indústria (L4):} Há ausência total (0{,}0\%) de evidências de adoção industrial documentada. Faltam estudos sobre custos, benefícios, barreiras organizacionais e sustentabilidade das abordagens propostas em ambientes produtivos;
+    \item \textbf{Desconexão academia--indústria (L4):} Há escassez significativa de evidências de adoção industrial documentada. Faltam estudos sobre custos reais de implementação, benefícios mensuráveis, riscos em contextos produtivos, barreiras organizacionais e culturais, e sustentabilidade de longo prazo das abordagens propostas em ambientes industriais complexos;
     
-    \item \textbf{Trade-offs éticos não formalizados (L5):} Apenas 9{,}6\% dos estudos discutem explicitamente tensões entre princípios (por exemplo: transparência vs. privacidade; justiça vs. acurácia). A ausência de métodos estruturados para negociação e documentação de decisões éticas compromete a auditabilidade;
+    \item \textbf{Formalização e negociação de \textit{trade-offs} (L5):} Apenas uma minoria dos estudos discute explicitamente tensões e conflitos entre princípios éticos. A literatura carece de métodos estruturados para identificação sistemática de conflitos, \textit{frameworks} de negociação multi-\textit{stakeholder}, técnicas padronizadas de documentação para auditoria e abordagens para revisitação de \textit{trade-offs} ao longo do ciclo de vida;
     
-    \item \textbf{Sustentabilidade socioambiental negligenciada (L6):} Com apenas 4{,}0\% de menções, os princípios de sustentabilidade permanecem marginalizados, apesar da crescente preocupação com impactos ambientais (pegada de carbono de modelos) e sociais (deslocamento laboral, concentração de poder) de sistemas de \acrshort{IA}.
+    \item \textbf{Sustentabilidade socioambiental negligenciada (L6):} Com apenas 19,3\% de menções, o princípio de \textit{sustainability} é significativamente sub-representado. Faltam abordagens sistemáticas para mensuração da pegada de carbono, análise de impactos sociais e ambientais de longo prazo, e \textit{trade-offs} explícitos entre desempenho computacional e eficiência energética, apesar do crescimento exponencial no consumo energético de modelos de grande escala.
 \end{enumerate}
 
-Essas lacunas evidenciam que, apesar do crescente corpo de conhecimento sobre ética em \acrshort{IA}, exemplificado pelo aumento de 575\% no volume de publicações entre 2021 e 2025 (de 4 para 27 estudos de alta qualidade por ano), persiste uma desconexão crítica entre princípios abstratos e práticas concretas de Engenharia de Software. Profissionais carecem de orientações práticas, sistemáticas e integradas ao fluxo de trabalho para identificar, especificar e verificar requisitos éticos. Essa ausência pode resultar em sistemas que, mesmo tecnicamente avançados, falham em atender às expectativas sociais, regulatórias e éticas, gerando riscos de danos a usuários, responsabilização legal e perda de confiança pública.
+Essas lacunas evidenciam que, apesar do crescente corpo de conhecimento sobre ética em \acrshort{IA}, persistem desconexões críticas entre a especificação de princípios éticos em fases iniciais e sua manutenção consistente ao longo de todo o ciclo de vida. Mesmo quando requisitos éticos são considerados, frequentemente faltam mecanismos sistemáticos para sua propagação, rastreabilidade e validação através das diferentes fases de desenvolvimento. Profissionais carecem de orientações práticas e integradas ao fluxo de trabalho para não apenas identificar e especificar requisitos éticos, mas também para mantê-los consistentes e auditáveis ao longo de todo o SDLC. Essa ausência pode resultar em sistemas que, mesmo tecnicamente avançados, falham em atender às expectativas sociais, regulatórias e éticas, gerando riscos de danos a usuários, responsabilização legal e perda de confiança pública.
 
-Este trabalho propõe o desenvolvimento do \gls{REAI}, um modelo sistemático para a operacionalização de princípios éticos de \acrshort{IA} no contexto da Engenharia de Requisitos, com foco específico em endereçar as lacunas L1 (sub-representação da Engenharia de Requisitos), L2 (ausência de suporte ferramental integrado) e L5 (\textit{trade-offs} éticos não formalizados).
+Este trabalho propõe o desenvolvimento do \gls{REAI}, um modelo sistemático para a operacionalização de princípios éticos de \acrshort{IA} no contexto da Engenharia de Requisitos, com foco específico em endereçar as lacunas L1 (integração e rastreabilidade entre fases), L2 (ausência de suporte ferramental integrado) e L5 (formalização e negociação de \textit{trade-offs} éticos).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -45,75 +44,51 @@ Este trabalho propõe o desenvolvimento do \gls{REAI}, um modelo sistemático pa
 
 A necessidade de uma operacionalização sistemática da ética em \acrshort{IA} decorre dos desafios encontrados em equilibrar a inovação tecnológica, o direito da sociedade de beneficiar-se dos avanços científicos e a mitigação de danos potenciais associados a sistemas mal projetados. A \acrshort{RSL} conduzida nesta pesquisa fornece uma fundamentação empírica robusta para essa necessidade.
 
-O crescimento de 575\% no volume de publicações sobre ética em \acrshort{IA} aplicada à Engenharia de Software, entre 2021 e 2025, evidencia a maturação da área e o reconhecimento crescente de sua importância. Os 75 estudos de alta qualidade analisados demonstram um esforço científico significativo na operacionalização de princípios éticos, com destaque para a tríade conceitual central: \textit{Transparency/Explainability} (64{,}0\%), \textit{Fairness} (52{,}0\%) e \textit{Accountability} (44{,}0\%). Essa concentração indica uma convergência em torno de princípios considerados fundamentais pela comunidade acadêmica e profissional.
+A escolha da Engenharia de Requisitos como foco central deste trabalho é estratégica e fundamentada em evidências empíricas e teóricas. Embora a \acrshort{RSL} tenha revelado que 49,1\% dos estudos abordam a fase de requisitos --- indicando reconhecimento crescente de sua importância ---, a análise qualitativa identificou uma lacuna crítica: a falta de mecanismos sistemáticos para integração, rastreabilidade e propagação consistente de decisões éticas ao longo de todo o ciclo de vida. Estudos tratam requisitos éticos de forma isolada, sem conectá-los adequadamente às fases subsequentes de design, implementação e manutenção.
 
-No entanto, a análise revela uma discrepância crítica entre os aspectos teóricos e práticos. Enquanto 64{,}0\% dos estudos abordam \textit{Transparency/Explainability} como princípio, apenas 16{,}0\% propõem abordagens para a fase de \textit{Requirements Engineering} etapa em que os valores éticos deveriam ser explicitados, negociados e operacionalizados. Essa sub-representação é especialmente problemática, considerando que \textit{Requirements} constitui uma fase fundamental para o \textit{value-sensitive design}, momento em que princípios abstratos devem ser traduzidos em especificações concretas e verificáveis.
+A fase de requisitos representa o momento inicial e crítico em que valores éticos podem ser explicitados, negociados e traduzidos em especificações técnicas verificáveis. Decisões tomadas nesse estágio determinam a arquitetura, o comportamento e as propriedades do sistema, tornando essencial não apenas a identificação precoce de riscos éticos, mas também o estabelecimento de mecanismos robustos de rastreabilidade que permitam validar a preservação desses princípios ao longo de todo o desenvolvimento.
 
-A concentração nas fases posteriores do \acrshort{SDLC}, \textit{Implementation} (64{,}0\%) e \textit{Testing} (54{,}7\%), indica um padrão predominantemente reativo. Questões éticas são tratadas principalmente durante ou após a codificação, momento em que as correções tornam-se significativamente mais custosas. Evidências consolidadas demonstram que os custos de correção aumentam exponencialmente quando problemas são identificados tardiamente \cite{Boehm2001}, reforçando a importância crítica da incorporação de considerações éticas desde as fases iniciais.
+A adoção de uma perspectiva de Engenharia de Software baseada no paradigma do \textit{value-sensitive design} \cite{Friedman2013} reconhece que sistemas tecnológicos não são neutros, mas refletem e reforçam valores incorporados em suas decisões de projeto. Dessa forma, ignorar a dimensão ética durante a especificação de requisitos --- ou especificá-la sem mecanismos adequados de rastreabilidade e integração --- equivale a permitir que vieses, prioridades implícitas e valores não examinados sejam codificados no sistema ou que decisões éticas sejam perdidas durante as transições entre fases.
 
-A análise da \acrshort{RSL} identificou ausência total (0{,}0\%) de evidências de adoção industrial documentada, revelando um \textit{gap} crítico entre a pesquisa acadêmica e a prática profissional. Faltam estudos sobre custos reais de implementação, benefícios mensuráveis observados, barreiras organizacionais concretas e sustentabilidade das abordagens propostas. Essa desconexão academia-indústria (L4) sugere que as soluções apresentadas podem não estar adequadamente alinhadas com as restrições e necessidades de ambientes produtivos.
+A literatura em Engenharia de Software Empírica \cite{Boehm2001, Pressman2021} demonstra que o custo de correção de defeitos aumenta exponencialmente ao longo do ciclo de vida do software. Problemas éticos identificados em fases avançadas de desenvolvimento ou em produção resultam em retrabalho substancial, custos financeiros elevados, danos reputacionais e, potencialmente, violações regulatórias. A situação é agravada quando decisões éticas tomadas na fase de requisitos não são adequadamente rastreadas e validadas nas fases posteriores, levando a inconsistências e degradação progressiva das propriedades éticas do sistema. Sistemas já implantados que apresentam falhas éticas podem gerar impactos irreversíveis, incluindo discriminação, violação de direitos fundamentais, danos psicológicos e perda de confiança pública.
 
-Adicionalmente, apenas 6{,}7\% dos estudos propõem ferramentas integradas a ecossistemas de desenvolvimento (\textit{IDEs, CI/CD, MLOps}). Desenvolvedores necessitam de suporte prático e contextualizado, integrado aos fluxos de trabalho existentes, e não de soluções \textit{standalone} que imponham processos paralelos. Essa lacuna (L2) representa uma barreira significativa para a adoção efetiva de práticas éticas em escala industrial.
+Além disso, marcos regulatórios contemporâneos, como o \textit{AI Act} da União Europeia \cite{EUAIAct2024} e a \textit{Recommendation on the Ethics of Artificial Intelligence} da UNESCO \cite{UNESCO2021}, impõem obrigações legais que exigem demonstração de conformidade com princípios éticos ao longo de todo o ciclo de vida. Organizações que desenvolvem sistemas de \acrshort{IA} de alto risco devem ser capazes de rastrear decisões éticas, justificar escolhas de \textit{design}, auditar propriedades algorítmicas e demonstrar responsabilidade (\textit{accountability}). Essas exigências só podem ser atendidas se requisitos éticos forem não apenas especificados, mas também sistematicamente rastreados, propagados e validados desde as fases iniciais até a manutenção e operação contínua dos sistemas.
 
-A formalização de \textit{trade-offs} éticos permanece criticamente negligenciada, com apenas 9{,}6\% dos estudos discutindo explicitamente tensões entre princípios. \textit{Trade-offs}, como transparência versus privacidade ou justiça versus acurácia, não são problemas técnicos \textit{resolvíveis} por meio de otimizações matemáticas, mas sim questões que exigem negociação participativa, explicitação de valores, documentação de decisões e mecanismos de revisão. A ausência de métodos estruturados para essa negociação (L5) compromete a auditabilidade e a responsabilização.
+A operacionalização da ética em \acrshort{IA} no nível da Engenharia de Requisitos também responde a uma demanda crescente por transparência e participação de \textit{stakeholders}. Usuários finais, comunidades afetadas, reguladores e outros atores sociais têm o direito de influenciar o desenvolvimento de sistemas que impactam suas vidas. A Engenharia de Requisitos oferece mecanismos consolidados para elicitação participativa, análise de impacto, negociação de \textit{trade-offs} e documentação de decisões, tornando-se o espaço natural para a incorporação de valores éticos. No entanto, para que essa participação seja efetiva, é necessário que os requisitos éticos elicitados possam ser rastreados e validados ao longo de todo o desenvolvimento, garantindo que decisões participativas não sejam perdidas ou distorcidas nas fases subsequentes.
 
-Em modelos de ciclo de vida de software, sejam em abordagem cascata ou ágil, a elicitação e a análise de requisitos constituem as primeiras etapas, caracterizando-se pela definição das bases do projeto, identificação de necessidades e expectativas de \textit{stakeholders}, incluindo requisitos não funcionais necessários para garantir conformidade com padrões éticos. Ao integrar princípios éticos desde a fase inicial, é possível assegurar que esses sejam considerados no design e desenvolvimento de forma estruturada e contínua. Além disso, \textit{Requirements Engineering} constitui uma fase de comunicação crítica entre desenvolvedores, usuários e diversos \textit{stakeholders}.
+Do ponto de vista técnico, a especificação de requisitos éticos permite sua tradução em critérios verificáveis e testáveis. Requisitos não funcionais relacionados a \textit{fairness}, transparência, privacidade, segurança e responsabilidade podem ser formalmente modelados, priorizados, rastreados e validados, da mesma forma que requisitos de desempenho, confiabilidade ou usabilidade. A rastreabilidade sistemática permite não apenas verificar se requisitos éticos foram implementados, mas também identificar pontos de inconsistência, conflitos emergentes durante o desenvolvimento e necessidades de revisão. Sem mecanismos explícitos de rastreabilidade e integração, a ética permanece como um ideal abstrato declarado na fase de requisitos, mas progressivamente degradado ou abandonado nas fases subsequentes.
 
-Propor um modelo aplicado diretamente à análise e especificação de requisitos facilita o entendimento e a aplicação prática de princípios éticos por \textit{stakeholders} com diferentes níveis de conhecimento técnico. Isso reduz o risco de falhas éticas no produto final e diminui os custos de correções posteriores, que tendem a ser significativamente elevados quando identificadas em fases avançadas do ciclo de vida ou após a implantação.
+Por fim, a escolha da Engenharia de Requisitos alinha-se à tradição da área de desenvolver métodos, processos e artefatos reutilizáveis que suportem a sistematização de boas práticas. Modelos, \textit{templates}, \textit{checklists}, matrizes de rastreabilidade e guias de elicitação são instrumentos consolidados da Engenharia de Requisitos, facilitando a adoção prática e a disseminação de conhecimento entre profissionais. Ao propor mecanismos de rastreabilidade e integração desde a fase de requisitos, este trabalho contribui para que princípios éticos especificados sejam efetivamente mantidos e validados ao longo de todo o ciclo de vida.
 
-No contexto brasileiro, a justificativa adquire relevância adicional ao considerar: (i) a obrigatoriedade de conformidade com a \acrshort{LGPD}, que exige mecanismos sistemáticos para garantir o tratamento ético de dados pessoais; (ii) a necessidade de fortalecer as capacidades nacionais em desenvolvimento responsável de \acrshort{IA}, posicionando o Brasil em discussões globais sobre governança de \acrshort{IA}; (iii) a escassez de pesquisas que traduzam princípios éticos em práticas concretas de Engenharia de Software adaptadas à realidade brasileira; e (iv) a oportunidade de contribuir para debates globais com perspectivas contextualizadas às particularidades socioculturais, econômicas e regulatórias do país.
-
+Portanto, a justificativa central deste trabalho está na necessidade de preencher as lacunas L1, L2 e L5 identificadas na \acrshort{RSL}, oferecendo uma abordagem sistemática, prática e integrada que não apenas facilite a especificação de requisitos éticos, mas também garanta sua rastreabilidade, consistência e auditabilidade ao longo de todo o ciclo de vida de desenvolvimento de sistemas de \acrshort{IA}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Objetivos}
-\label{sec:objetivos}
 
 \subsection{Objetivo Geral}
 
-O objetivo geral deste trabalho é propor e especificar o \acrshort{REAI}, um modelo de requisitos éticos para sistemas baseados em Inteligência Artificial, com foco na Engenharia de Requisitos, que endereça lacunas identificadas na literatura e mitiga riscos decorrentes da não implementação sistemática de princípios éticos.
+Desenvolver um modelo sistemático para a operacionalização de princípios éticos de \acrshort{IA} no contexto da Engenharia de Requisitos, denominado \gls{REAI}, que permita a especificação, rastreabilidade e verificação de requisitos éticos no ciclo de vida de desenvolvimento de sistemas baseados em \acrshort{IA}, com foco na integração consistente desses requisitos ao longo das diferentes fases do SDLC.
 
 \subsection{Objetivos Específicos}
 
-Para alcançar o objetivo geral, esta pesquisa define os seguintes objetivos específicos:
-
 \begin{enumerate}
-    \item Conduzir uma revisão sistemática de literatura para mapear e analisar os princípios e requisitos éticos de \acrshort{IA} discutidos na literatura científica e em normativas internacionais e nacionais aplicáveis ao desenvolvimento de software;
-    
-    \item Identificar e caracterizar lacunas, desafios e riscos decorrentes da ausência de incorporação sistemática de princípios éticos ao longo do ciclo de vida do software, com ênfase na fase de Engenharia de Requisitos;
-    
-    \item Propor o modelo \acrshort{REAI}, com especificação detalhada de seus componentes (catálogo, \textit{templates}, processos, \textit{checklists}) que operacionalizam os princípios éticos identificados na literatura.
-\end{enumerate}
+    \item Identificar, por meio de uma \gls{RSL}, os princípios éticos aplicáveis ao desenvolvimento de software com \acrshort{IA}, as abordagens existentes para sua operacionalização, as evidências empíricas disponíveis e as lacunas de conhecimento;
 
+    \item Desenvolver um catálogo estruturado de requisitos éticos aplicáveis a sistemas de \acrshort{IA}, fundamentado nos princípios identificados na \acrshort{RSL} e nos marcos regulatórios contemporâneos;
+
+    \item Propor \textit{templates} de especificação de requisitos éticos, adaptados ao formato de \textit{user stories}, que facilitem a integração com práticas ágeis de desenvolvimento;
+
+    \item Definir um processo sistemático de elicitação de requisitos éticos, organizado em etapas claramente delimitadas, com técnicas específicas para cada fase;
+
+    \item Elaborar um \textit{checklist} de verificação que permita a auditoria da completude e consistência dos requisitos éticos especificados;
+
+    \item Estabelecer mecanismos de rastreabilidade entre requisitos éticos e os princípios que os fundamentam, bem como mecanismos para propagação e validação desses requisitos ao longo das diferentes fases do ciclo de vida, facilitando a auditoria e justificativa das decisões de \textit{design}.
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Resultados Esperados}
-
-Espera-se, com este trabalho, alcançar os seguintes resultados:
-
-\begin{enumerate}
-    \item Mapeamento sistemático de processos, ferramentas, metodologias, métodos, \textit{frameworks} ou técnicas voltadas ao desenvolvimento ético de sistemas baseados em \acrshort{IA}, em diferentes fases do ciclo de vida, por meio de uma \acrshort{RSL} que analisou 75 estudos de alta qualidade publicados entre 2021 e 2025;
-    
-    \item Caracterização detalhada de seis lacunas críticas (L1--L6) na operacionalização de ética em \acrshort{IA}, com análise quantitativa da distribuição por fases do \textit{Software Development Life Cycle} (SDLC) e por princípios éticos, orientando agendas futuras de pesquisa;
-    
-    \item Especificação completa do \acrlong{REAI}, um modelo sistemático e prático para a incorporação de princípios éticos na \textit{Requirements Engineering}, que endereça, especificamente, as lacunas L1 (sub-representação da fase de requisitos, 16{,}0\%), L2 (ausência de ferramentas integradas, 6{,}7\%) e L5 (trade-offs éticos não formalizados, 9{,}6\%);
-    
-    \item Desenvolvimento de um conjunto de recursos práticos reutilizáveis, incluindo: catálogo de requisitos éticos, \textit{templates} de especificação, processo de elicitação, \textit{checklist} de verificação e matriz de rastreabilidade, que podem ser adaptados e estendidos por pesquisadores e profissionais de Engenharia de Software;
-    
-    \item Avaliação da completude, aplicabilidade e usabilidade do modelo proposto, por meio de análise qualitativa estruturada, com identificação de pontos de melhoria e direcionamentos para pesquisas futuras;
-    
-    \item Contribuição para o fortalecimento da comunidade brasileira no desenvolvimento responsável de \acrshort{IA}, oferecendo um recurso educacional contextualizado à realidade nacional, facilitando a conformidade com a \acrshort{LGPD} e posicionando a pesquisa brasileira em discussões globais sobre ética em \acrshort{IA}.
-\end{enumerate}
-
-Como contribuição principal, espera-se que o modelo \acrshort{REAI} forneça suporte prático e sistemático, por meio de artefatos que possam ser utilizados por engenheiros de requisitos e desenvolvedores, independentemente de experiência prévia com ética em \acrshort{IA}. Espera-se, também, que o modelo facilite a rastreabilidade e a auditoria, por meio do mapeamento explícito entre princípios éticos, requisitos especificados e decisões de design, apoiando a conformidade regulatória com a \acrshort{LGPD} e o \textit{AI Act}.
-
-Além disso, espera-se que o modelo \acrshort{REAI} seja disponibilizado publicamente em um repositório no GitHub, sob licença aberta, incluindo documentação completa, exemplos de aplicação e materiais educacionais complementares, facilitando sua adoção e evolução colaborativa pela comunidade de Engenharia de Software.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Método de Pesquisa}
+\section{Metodologia}
 \label{sec:metodologia}
 
 Esta pesquisa é guiada pelo método \textit{Design Science Research} (\acrshort{DSR}) \cite{Hevner2004}. O \acrshort{DSR} é um método baseado em três conceitos fundamentais: pesquisa, design e ciência do design. A pesquisa pode ser definida como a atividade que contribui para o entendimento de um fenômeno. O design está relacionado à criação de um artefato que ainda não existe. A ciência do design é definida como o conhecimento sob a forma de construções, técnicas, métodos e modelos que permitem o mapeamento do espaço funcional para o espaço de atributos. Essa combinação de conceitos dá origem ao método \acrshort{DSR}, que pode ser descrito como uma forma de pesquisa que cria conhecimento por meio do design, da análise, da reflexão e da abstração. Portanto, o método pode ser resumido como a utilização do design como método de pesquisa, gerando conhecimento por meio do desenvolvimento de artefatos.
@@ -121,7 +96,6 @@ Esta pesquisa é guiada pelo método \textit{Design Science Research} (\acrshort
 A utilização deste método é justificada por sua capacidade de auxiliar pesquisadores na construção e aprimoramento de artefatos, por meio de um processo contínuo de avaliação. O método é composto por um modelo de processo com cinco etapas principais e suas respectivas saídas. A Figura~\ref{fig:metodologia} apresenta as etapas e uma visão geral dos resultados desenvolvidos em cada fase. A Tabela~\ref{tab:metodologia-fases} descreve detalhadamente as características de cada etapa.
 
 As três primeiras etapas (\textit{Consciência do Problema}, \textit{Sugestão} e \textit{Desenvolvimento}) constituem o escopo deste projeto de dissertação. As etapas subsequentes (\textit{Avaliação} e \textit{Conclusão}) serão desenvolvidas após a aprovação na banca de qualificação. Cada etapa e sua aplicação neste trabalho são apresentadas a seguir:
-
 
 %----------------------------------------------------------------------------------------%
  
@@ -179,43 +153,57 @@ As três primeiras etapas (\textit{Consciência do Problema}, \textit{Sugestão}
 
 %----------------------------------------------------------------------------------------%
 
-\subsection{Fase 1: Consciência do Problema}
+\subsection{Fase 1: Identificação do Problema e Motivação}
 
-Esta etapa tem como foco a conscientização do problema de pesquisa, compreendendo os atores envolvidos, os objetivos esperados, as causas do problema, seus efeitos e as contribuições potenciais ao se propor uma solução. Foi conduzida uma \gls{RSL}, seguindo o protocolo de Kitchenham \& Charters \cite{barbara2007guidelines} e as diretrizes PRISMA 2020 \cite{PRISMA2020}, com o objetivo de determinar o estado atual da ética em \acrshort{IA} e as abordagens prevalentes para sua operacionalização.
+A primeira etapa consistiu em caracterizar o problema de pesquisa e justificar sua relevância. Essa caracterização foi fundamentada em:
 
-A busca sistemática em quatro bases de dados resultou na identificação inicial de 2.524 registros. Após o processo de deduplicação e a aplicação sistemática de critérios de inclusão e exclusão em múltiplos estágios, chegou-se a um \textit{corpus} final de 75 estudos de alta qualidade (QA~$\geq$~6{,}5 em uma escala de 8{,}0), publicados entre 2021 e 2025. A análise evidenciou oito princípios éticos predominantes, sendo \textit{Transparency/Explainability} (64{,}0\%), \textit{Fairness} (52{,}0\%) e \textit{Accountability} (44{,}0\%) a tríade conceitual central mais recorrente.
+\begin{itemize}
+    \item Análise de casos documentados de falhas éticas em sistemas de \acrshort{IA}, como viés algorítmico, discriminação automatizada e uso indevido de dados;
+    
+    \item Revisão das principais regulamentações e \textit{frameworks} internacionais (AI Act, UNESCO, IEEE), evidenciando a crescente demanda por conformidade ética;
+    
+    \item Execução de uma \gls{RSL} sistemática, que identificou lacunas críticas na operacionalização de princípios éticos, especialmente relacionadas à integração, rastreabilidade e propagação de requisitos éticos ao longo do ciclo de vida de desenvolvimento.
+\end{itemize}
 
-A distribuição de cobertura por fases do \textit{Software Development Life Cycle} (SDLC) revelou uma concentração crítica em fases posteriores, com \textit{Implementation} (64{,}0\%) e \textit{Testing} (54{,}7\%), ao passo que a fase de \textit{Requirements Engineering} apresentou sub-representação significativa (16{,}0\%). Essa análise fundamentou a identificação das seis lacunas críticas (L1 a L6) apresentadas anteriormente, justificando o foco desta pesquisa na fase de Engenharia de Requisitos.
+A execução da \acrshort{RSL} seguiu rigorosamente o protocolo de Kitchenham \& Charters \cite{barbara2007guidelines} e as diretrizes PRISMA 2020 \cite{PRISMA2020}, assegurando transparência metodológica e reprodutibilidade. O resultado desta fase está documentado integralmente no Capítulo~\ref{cap:rsl}.
 
-A saída desta etapa foi a definição do estado atual das soluções práticas relacionadas à ética em \acrshort{IA} e de suas respectivas lacunas, por meio da \acrshort{RSL}, permitindo a definição e elaboração do modelo proposto. Os resultados completos encontram-se detalhados no Capítulo~\ref{cap:rsl}.
+\subsection{Fase 2: Definição dos Objetivos da Solução}
 
-\subsection{Fase 2: Sugestão}
+Com base no problema identificado, foi estabelecido o objetivo central: desenvolver um modelo sistemático para a operacionalização de princípios éticos na Engenharia de Requisitos de sistemas de \acrshort{IA}, com ênfase em mecanismos de rastreabilidade e integração ao longo do ciclo de vida. Os objetivos específicos foram desdobrados em componentes mensuráveis e verificáveis, conforme detalhado na Seção anterior.
 
-Subsequente à etapa anterior, esta fase corresponde ao momento em que uma nova funcionalidade é imaginada com base em uma nova configuração de elementos existentes ou inéditos. Com base nos resultados da \acrshort{RSL}, foram estabelecidos os requisitos e características iniciais do artefato a ser desenvolvido. A análise das lacunas L1 (sub-representação da fase de \textit{Requirements Engineering}, 16{,}0\%), L2 (ausência de ferramentas integradas, 6{,}7\%) e L5 (trade-offs éticos não formalizados, 9{,}6\%) orientou a decisão de propor um modelo com foco específico na Engenharia de Requisitos.
-
-Nesta etapa, o modelo proposto foi definido como um meio para a operacionalização sistemática de requisitos éticos no contexto do desenvolvimento de sistemas baseados em \acrshort{IA}. O \acrlong{REAI} foi concebido para atender às seguintes necessidades identificadas na literatura: (i) operacionalizar princípios éticos abstratos em requisitos concretos e verificáveis; (ii) fornecer suporte sistemático desde a elicitação até a verificação de requisitos éticos; (iii) integrar-se de forma natural às práticas existentes de Engenharia de Requisitos; (iv) explicitar e documentar trade-offs entre princípios éticos potencialmente conflitantes; e (v) ser aplicável independentemente do domínio, tecnologia ou metodologia de desenvolvimento utilizada.
-
-O resultado desta fase foi a formulação da proposta e o planejamento do modelo \acrshort{REAI}, com a especificação de cinco componentes integrados: (i) Catálogo de Requisitos Éticos, (ii) Template de \textit{User Stories} Éticas, (iii) Processo de Elicitação, (iv) Checklist de Verificação e (v) Matriz de Rastreabilidade.
-
-\subsection{Fase 3: Desenvolvimento}
-
-Nesta etapa, o artefato planejado é refinado e desenvolvido. Esta fase, atualmente em andamento, consiste no design e na especificação detalhada do modelo \acrshort{REAI}. É importante ressaltar que o modelo tem como objetivo facilitar a adoção de práticas éticas em sistemas baseados em \acrshort{IA} por times de desenvolvimento, com o mínimo de alterações nos fluxos já existentes de Engenharia de Software.
-
-O modelo \acrshort{REAI} é composto por cinco componentes integrados que operacionalizam princípios éticos no contexto da Engenharia de Requisitos:
+O modelo proposto, denominado \acrshort{REAI}, foi projetado para atender aos seguintes requisitos de design:
 
 \begin{enumerate}
-    \item \textbf{Catálogo de Requisitos Éticos:} mapeamento sistemático entre os oito princípios éticos identificados na \acrshort{RSL} e tipos de requisitos não funcionais correspondentes, com exemplos contextualizados por domínio de aplicação;
+    \item \textbf{Sistematização:} fornecer diretrizes estruturadas e reprodutíveis para a identificação e especificação de requisitos éticos;
+    
+    \item \textbf{Praticidade:} oferecer artefatos operacionalizáveis, como \textit{templates}, \textit{checklists} e processos de elicitação;
+    
+    \item \textbf{Rastreabilidade:} garantir que requisitos éticos possam ser rastreados até os princípios que os fundamentam e propagados consistentemente ao longo das fases do ciclo de vida, facilitando auditoria e validação de conformidade;
+    
+    \item \textbf{Compatibilidade:} integrar-se a práticas ágeis de desenvolvimento, como \textit{user stories} e \textit{backlogs};
+    
+    \item \textbf{Abrangência:} cobrir os principais princípios éticos consolidados na literatura e em marcos regulatórios;
+    
+    \item \textbf{Integração:} fornecer mecanismos para propagação e validação de requisitos éticos entre as diferentes fases do desenvolvimento, endereçando a lacuna de integração identificada na \acrshort{RSL}.
+\end{enumerate}
 
-    \item \textbf{Template de \textit{User Stories} Éticas:} formato estruturado, adaptado de \textit{user stories}, que incorpora explicitamente princípios éticos, facilitando a especificação de requisitos em metodologias ágeis;
+\subsection{Fase 3: Design e Desenvolvimento}
 
-    \item \textbf{Processo de Elicitação:} procedimento organizado em três etapas para a identificação sistemática de requisitos éticos, considerando o contexto do projeto e os \textit{stakeholders} envolvidos;
+Esta fase consiste na concepção e construção do artefato propriamente dito. O desenvolvimento do modelo \acrshort{REAI} foi conduzido de forma iterativa, com base nos seguintes componentes:
+
+\begin{enumerate}
+    \item \textbf{Catálogo de Requisitos Éticos:} taxonomia estruturada de requisitos, organizada por princípios éticos, com descrições detalhadas, justificativas e exemplos práticos;
+
+    \item \textbf{Templates de Especificação:} modelos estruturados para especificação de requisitos éticos no formato de \textit{user stories}, facilitando integração com metodologias ágeis;
+
+    \item \textbf{Processo de Elicitação:} procedimento organizado em etapas sistemáticas para a identificação de requisitos éticos, considerando o contexto do projeto e os \textit{stakeholders} envolvidos;
 
     \item \textbf{Checklist de Verificação:} conjunto de perguntas orientadoras, organizadas por princípio ético, com o objetivo de verificar a completude e a consistência dos requisitos especificados;
 
-    \item \textbf{Matriz de Rastreabilidade:} mecanismo de mapeamento entre requisitos éticos e os princípios que os fundamentam, facilitando auditoria e justificativa das decisões de design.
+    \item \textbf{Matriz de Rastreabilidade e Integração:} mecanismo de mapeamento entre requisitos éticos e os princípios que os fundamentam, incluindo diretrizes para propagação e validação desses requisitos ao longo das diferentes fases do ciclo de vida (design, implementação, testes, deployment, manutenção), facilitando auditoria, justificativa das decisões de design e manutenção da consistência ética ao longo do SDLC.
 \end{enumerate}
 
-O desenvolvimento segue uma abordagem iterativa, com refinamentos baseados na análise crítica da literatura e nas características identificadas como necessárias para o endereçamento das lacunas L1, L2 e L5. O resultado desta etapa é a primeira versão do modelo \acrshort{REAI}, apresentada no Capítulo~\ref{cap:proposta}.
+O desenvolvimento segue uma abordagem iterativa, com refinamentos baseados na análise crítica da literatura e nas características identificadas como necessárias para o endereçamento das lacunas L1 (integração e rastreabilidade entre fases), L2 (ausência de suporte ferramental) e L5 (formalização de \textit{trade-offs} éticos). O resultado desta etapa é a primeira versão do modelo \acrshort{REAI}, apresentada no Capítulo~\ref{cap:proposta}.
 
 \subsection{Fases 4--5: Avaliação, Conclusão e Comunicação}
 
@@ -225,17 +213,16 @@ As fases finais da metodologia, que serão executadas após a aprovação na ban
 
 Nesta etapa, o artefato desenvolvido será avaliado de acordo com critérios variados, com o objetivo de gerar evidências empíricas sobre sua qualidade. O modelo \acrshort{REAI} será avaliado quanto à sua adequação teórica e aplicabilidade prática no contexto da Engenharia de Requisitos para sistemas baseados em \acrshort{IA}.
 
-A avaliação será conduzida por meio de análise qualitativa estruturada, considerando os seguintes aspectos: (i) completude do modelo em relação à cobertura dos princípios éticos identificados na \acrshort{RSL}; (ii) aplicabilidade prática dos componentes propostos; (iii) usabilidade dos templates e checklists; (iv) efetividade na especificação de requisitos éticos verificáveis e rastreáveis; e (v) coerência interna entre os componentes do modelo.
+A avaliação será conduzida por meio de análise qualitativa estruturada, considerando os seguintes aspectos: (i) completude do modelo em relação à cobertura dos princípios éticos identificados na \acrshort{RSL}; (ii) aplicabilidade prática dos componentes propostos; (iii) usabilidade dos templates e checklists; (iv) efetividade na especificação de requisitos éticos verificáveis e rastreáveis; (v) eficácia dos mecanismos de rastreabilidade e integração entre fases do ciclo de vida; e (vi) coerência interna entre os componentes do modelo.
 
 Desvios quantitativos e qualitativos eventualmente observados serão documentados e analisados, gerando indicadores de desempenho e sugestões de melhorias. O resultado desta etapa será a avaliação do modelo proposto, com delimitação de ajustes a serem realizados em futuras iterações do desenvolvimento.
 
 \subsubsection{Fase 5: Conclusão e Comunicação} 
 Esta etapa compreende a análise final dos resultados obtidos ao longo do processo de pesquisa, identificando as contribuições teóricas e práticas do trabalho, bem como possíveis melhorias no modelo proposto e perspectivas de trabalhos futuros.
 
-A conclusão incluirá: (i) uma síntese das contribuições alcançadas; (ii) a discussão das limitações metodológicas; (iii) recomendações para aplicação do modelo \acrshort{REAI} em contextos acadêmicos e industriais; e (iv) direcionamentos para pesquisas futuras.
+A conclusão incluirá: (i) uma síntese das contribuições alcançadas, especialmente no endereçamento das lacunas L1, L2 e L5; (ii) a discussão das limitações metodológicas; (iii) recomendações para aplicação do modelo \acrshort{REAI} em contextos acadêmicos e industriais; e (iv) direcionamentos para pesquisas futuras, incluindo extensões para abordar as demais lacunas identificadas (L3, L4 e L6).
 
 A comunicação dos resultados será realizada por meio da defesa pública da dissertação, da publicação dos artigos científicos oriundos da revisão sistemática e da proposta do modelo, bem como da disponibilização do modelo em repositório público. O cronograma detalhado para execução dessas fases está apresentado no Capítulo~\ref{cap:cronograma}.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -246,9 +233,9 @@ Este projeto de dissertação está organizado em seis capítulos, estruturados 
 \begin{itemize}
     \item \textbf{Capítulo~\ref{cap:fundamentacao} -- Referencial Teórico:} apresenta o referencial teórico relacionado à \acrshort{IA}, aos princípios de ética em \acrshort{IA}, à Engenharia de Software, à Engenharia de Requisitos e aos marcos regulatórios (LGPD, AI Act, UNESCO), contextualizando teoricamente a pesquisa;
 
-    \item \textbf{Capítulo~\ref{cap:rsl} -- Revisão Sistemática da Literatura:} apresenta a Revisão Sistemática da Literatura conduzida neste trabalho, documentando integralmente o protocolo, a execução e os resultados, incluindo a análise de 75 estudos, a identificação de oito princípios éticos, a caracterização das lacunas críticas (L1–L6) e a síntese das evidências que fundamentam a proposta;
+    \item \textbf{Capítulo~\ref{cap:rsl} -- Revisão Sistemática da Literatura:} apresenta a Revisão Sistemática da Literatura conduzida neste trabalho, documentando integralmente o protocolo, a execução e os resultados, incluindo a análise dos 57 estudos selecionados, a identificação dos princípios éticos predominantes, a caracterização das lacunas críticas (L1–L6) e a síntese das evidências que fundamentam a proposta;
 
-    \item \textbf{Capítulo~\ref{cap:proposta} -- Proposta do Modelo REAI:} apresenta a concepção, a fundamentação e a especificação detalhada do \acrlong{REAI}, incluindo a descrição de seus cinco componentes (catálogo, templates, processo, checklist e rastreabilidade), bem como a análise de sua aplicabilidade;
+    \item \textbf{Capítulo~\ref{cap:proposta} -- Proposta do Modelo REAI:} apresenta a concepção, a fundamentação e a especificação detalhada do \acrlong{REAI}, incluindo a descrição de seus componentes (catálogo, templates, processo, checklist e mecanismos de rastreabilidade e integração), bem como a análise de sua aplicabilidade para endereçamento das lacunas L1, L2 e L5;
 
     \item \textbf{Capítulo~\ref{cap:cronograma} -- Cronograma Proposto:} apresenta o cronograma proposto para o desenvolvimento das fases restantes da pesquisa (avaliação, conclusão e comunicação), incluindo planejamento detalhado, marcos principais e análise de riscos;
 
