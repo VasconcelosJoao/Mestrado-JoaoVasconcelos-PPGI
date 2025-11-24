@@ -184,13 +184,15 @@ Os oito critérios de qualidade analisam:
     \item[(QA8)] Disponibilidade de artefatos que permitam a reprodutibilidade, tais como código, dados ou documentação.
 \end{enumerate}
 
-A avaliação de qualidade foi conduzida em dois estágios, com o objetivo de maximizar o rigor metodológico e garantir uniformidade na extração e interpretação dos dados.
+A avaliação de qualidade foi conduzida em dois estágios, com o objetivo de maximizar o rigor metodológico e garantir uniformidade na extração e interpretação dos dados. No \textbf{Estágio 1}, os 1.351 estudos aprovados na triagem IC/EC foram avaliados preliminarmente com base em título e resumo, aplicando-se um limiar de QA $\geq$ 6,0 para pré-seleção. No \textbf{Estágio 2}, os 83 estudos pré-selecionados foram avaliados integralmente mediante leitura completa do texto, com limiar elevado para QA $\geq$ 6,5, resultando em 57 estudos de alta qualidade incluídos na síntese final.
 
 \todo[inline]{é importante colocar uma tabela com os valores calculados e a média}
 
+A Tabela~\ref{tab:estatisticas_qualidade_total} apresenta as estatísticas agregadas dos critérios de qualidade para os 1.351 estudos avaliados no Estágio 1. Os valores relativamente baixos refletem a aplicação rigorosa dos critérios em um corpus amplo, resultando em alta taxa de exclusão (93,9\%). Apenas os estudos que alcançaram QA $\geq$ 6,0 nesta etapa preliminar foram selecionados para avaliação completa no Estágio 2.
+
 \begin{table}[htbp]
 \centering
-\caption{Estatísticas dos Critérios de Qualidade}
+\caption{Estatísticas dos Critérios de Qualidade no Estágio 1}
 \label{tab:estatisticas_qualidade_total}
 \begin{tabular}{lcccc}
 \toprule
@@ -302,8 +304,8 @@ A execução da revisão foi viabilizada por meio da plataforma Parsifal\footnot
 \node[below=of qa2] (incl) {
   Estudos incluídos na síntese final\\
   \textbf{n = 57}\\
-  \scriptsize QA médio = 7,20 (DP = 0,40);\\
-  faixa 6,5--7,5; período 2021--2025
+  \scriptsize QA médio = 7,22 (DP = 0,40);\\
+  faixa 6,5--8,0; período 2021--2025
 };
 
 % SETAS VERTICAIS
@@ -333,7 +335,25 @@ A aplicação sistemática dos critérios resultou na aprovação de 1.351 estud
 
 Dos 1.351 estudos aprovados na triagem IC/EC, 83 foram pré-selecionados no Estágio 1 da Avaliação de Qualidade (análise preliminar com base em abstract, QA $\geq$ 6,0), correspondendo a uma taxa de reprovação de 93,9\% (1.268 estudos com QA < 6,0). No Estágio 2, que envolveu a leitura completa dos 83 textos pré-selecionados, 8 estudos permaneceram com texto completo indisponível mesmo após tentativas sistemáticas de obtenção via contato com autores e bibliotecas institucionais. Adicionalmente, 18 estudos foram excluídos após leitura integral por não apresentarem a dimensão ética como parte fundamental da pesquisa, tratando-a apenas tangencialmente ou em seções isoladas de discussão.
 
-Os \textbf{57 estudos restantes} foram incluídos na síntese final (QA $\geq$ 6,5) \todo[inline]{é preciso colocar a tabela com esses calculos}. O escore médio de qualidade foi de 7,20 em 8,0 pontos possíveis (DP = 0,40), evidenciando alto rigor metodológico dos estudos selecionados.
+
+\begin{table}[htbp]
+\centering
+\caption{Distribuição dos Estudos por Faixa de Qualidade}
+\label{tab:qa_distribution}
+\footnotesize
+\begin{tabular}{lccc}
+\toprule
+\textbf{Faixa de QA} & \textbf{N° Estudos} & \textbf{\% do Corpus} & \textbf{QA Médio} \\
+\midrule
+6,5 -- 7,0 & 34 & 59,65\% & 6,92 \\
+7,5 -- 8,0 & 23 & 40,35\% & 7,65 \\
+\midrule
+\textbf{Total} & \textbf{57} & \textbf{100,0\%} & \textbf{7,22} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Os \textbf{57 estudos restantes} foram incluídos na síntese final (QA $\geq$ 6,5) \todo[inline]{é preciso colocar a tabela com esses calculos}. O escore médio de qualidade foi de 7,22 em 8,0 pontos possíveis (DP = 0,40), evidenciando alto rigor metodológico dos estudos selecionados.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -358,7 +378,7 @@ A Tabela~\ref{tab:selected} apresenta a distribuição temporal dos estudos sele
 2024 & 12 & 21,1\% & 7,17 \\
 2025 & 24 & 42,1\% & 7,37 \\
 \hline
-\textbf{Total} & \textbf{57} & \textbf{100,0\%} & \textbf{7,20} \\
+\textbf{Total} & \textbf{57} & \textbf{100,0\%} & \textbf{7,22} \\
 \hline
 \multicolumn{4}{l}{\footnotesize Crescimento de 300\% entre 2021 e 2025 (de 6 para 24 artigos/ano).} \\
 \end{tabular}
@@ -378,7 +398,7 @@ Scopus                & 13 & 22,8\% & 7,26 \\
 ACM Digital Library   & 11 & 19,3\% & 7,45 \\
 Web of Science        & 9  & 15,8\% & 7,00 \\
 \hline
-\textbf{Total} & \textbf{57} & \textbf{100,0\%} & \textbf{7,20} \\
+\textbf{Total} & \textbf{57} & \textbf{100,0\%} & \textbf{7,22} \\
 \hline
 \multicolumn{4}{l}{\footnotesize IEEE e Scopus concentram 64,9\% dos estudos de alta qualidade.} \\ 
 \end{tabular} 
@@ -396,7 +416,7 @@ A Tabela~\ref{tab:principles} sintetiza os dados relacionados à RQ.1. Os princ�
 \scriptsize
 \begin{tabular}{lccp{6.5cm}}
 \hline
-\textbf{Princípio Ético} & \textbf{Menções} & \textbf{\% Estudos} & \textbf{Exemplos de Estudos} \\
+\textbf{Princípio Ético} & \textbf{Menções} & \textbf{\% Estudos} & \textbf{Estudos} \\
 \hline
 Transparency                   & 28 & 49.1\% & \cite{S001}, \cite{S002}, \cite{S003}, \cite{S004}, \cite{S007}, \cite{S010}, \cite{S012}, \cite{S016}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S022}, \cite{S031}, \cite{S032}, \cite{S039}, \cite{S041}, \cite{S046}, \cite{S053}, \cite{S054}, \cite{S057}, \cite{S058}, \cite{S060}, \cite{S061}, \cite{S063}, \cite{S065}, \cite{S070}, \cite{S074} \\
 \hline
@@ -552,7 +572,7 @@ As necessidades futuras apontadas pela literatura incluem: desenvolvimento de ab
 
 \section{Síntese do Capítulo}
 
-Este capítulo apresentou o protocolo sistemático de condução da \acrshort{RSL} e a síntese analítica dos resultados. Os achados sumarizados encontram-se nas Tabelas~\ref{tab:selected}, \ref{tab:source_distribution}, \ref{tab:principles} e \ref{tab:sdlc}, bem como na Figura~\ref{fig:slr}. A estratégia de busca, aplicada a quatro bases de dados, resultou em 2.491 registros iniciais. Após deduplicação e triagens sistemáticas (título/resumo, critérios de inclusão e exclusão, avaliação de qualidade em dois estágios), foram incluídos na síntese final \textbf{57 estudos de alta qualidade} (QA $\geq$ 6,5, com QA médio de 7,20).
+Este capítulo apresentou o protocolo sistemático de condução da \acrshort{RSL} e a síntese analítica dos resultados. Os achados sumarizados encontram-se nas Tabelas~\ref{tab:selected}, \ref{tab:source_distribution}, \ref{tab:principles} e \ref{tab:sdlc}, bem como na Figura~\ref{fig:slr}. A estratégia de busca, aplicada a quatro bases de dados, resultou em 2.491 registros iniciais. Após deduplicação e triagens sistemáticas (título/resumo, critérios de inclusão e exclusão, avaliação de qualidade em dois estágios), foram incluídos na síntese final \textbf{57 estudos de alta qualidade} (QA $\geq$ 6,5, com QA médio de 7,22).
 
 Os estudos analisados evidenciam um esforço científico significativo na operacionalização de princípios éticos, com destaque para Fairness (82,5\%), Accountability (54,4\%) e Transparency (49,1\%), que formam uma tríade conceitual central. A análise temporal revela um crescimento expressivo de 300\% entre 2021 e 2025, demonstrando o aumento do interesse acadêmico no tema. IEEE Xplore e Scopus concentram 64,9\% dos estudos de alta qualidade, confirmando sua relevância como fontes primárias.
 
