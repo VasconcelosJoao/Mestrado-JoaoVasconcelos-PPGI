@@ -708,23 +708,23 @@
 			\vfill%
 			\@nomeorientador\ (\@sexoorientador)\\
 			\@filiorientador\\[1cm]
-			\if@quintomembro%
-				\begin{tabular}{cc}
-					\@nomedois & \@nometres\\
-					\@filidois & \@filitres\\[1cm]%
-					\@nomequatro & \@nomecinco\\%
-					\@filiquatro & \@filicinco%
-				\end{tabular}\\[1cm]
-			\else%
-				\begin{tabular}{cc}
-					\@nomedois & \@nometres\\
-					\@filidois & \@filitres%
-				\end{tabular}\\[1cm]
-				\if@quartomembro%
-					\@nomequatro\\%
-					\@filiquatro\\[1cm]
-				\fi%
-			\fi%
+            \if@quintomembro%
+                \begin{tabular}{>{\centering\arraybackslash}p{0.45\textwidth}>{\centering\arraybackslash}p{0.45\textwidth}}
+                    \@nomedois & \@nometres\\
+                    \@filidois & \@filitres\\[1cm]%
+                    \@nomequatro & \@nomecinco\\%
+                    \@filiquatro & \@filicinco%
+                \end{tabular}\\[1cm]
+            \else%
+                \begin{tabular}{>{\centering\arraybackslash}p{0.45\textwidth}>{\centering\arraybackslash}p{0.45\textwidth}}
+                    \@nomedois & \@nometres\\
+                    \@filidois & \@filitres%
+                \end{tabular}\\[1cm]
+                \if@quartomembro%
+                    \@nomequatro\\%
+                    \@filiquatro\\[1cm]
+                \fi%
+            \fi%
 			\@nomecoordenador\\
 			\@sexocoordenador \ \en{of the}\br{do}\ %
 			\if@posgraduacao \en{Postgraduate Program in}\br{Programa de P\'{o}s-gradua\c{c}\~{a}o em} \@nomeDoPrograma\else \@nomecurso\fi%
