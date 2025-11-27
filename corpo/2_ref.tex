@@ -95,7 +95,7 @@ As fases posteriores  \textit{Deployment}, \textit{Operation}, \textit{Monitorin
 \section{Fundamentos de \textit{Fuzzing} e Testes Automatizados}
 \label{sec:fuzzing}
 
-\textit{Fuzzing} é uma técnica consolidada de teste de software voltada para a detecção automática de falhas, por meio da geração massiva de entradas \cite{Zhang2019}. Embora amplamente empregada na área de segurança, sua aplicação para avaliação ética de sistemas ainda é emergente.
+\textit{Fuzzing} é uma técnica consolidada de teste de software voltada para a detecção automática de falhas, por meio da geração massiva de entradas~\cite{Manes2019}. Embora amplamente empregada na área de segurança, sua aplicação para avaliação ética de sistemas ainda é emergente.
 
 \subsection{Fuzzing Tradicional}
 
@@ -112,7 +112,7 @@ Técnicas como \textit{coverage-guided fuzzing} e \textit{model-based fuzzing} t
 
 \subsection{Fuzzing para IA}
 
-Zhang et al.~\cite{Zhang2019} demonstram que o \textit{fuzzing} pode ser adaptado para detectar:
+Trabalhos recentes demonstram que técnicas de \textit{fuzzing} podem ser adaptadas para o contexto de sistemas de IA. Monjezi et al.~\cite{Monjezi2024} propõem \textit{causal graph fuzzing} para avaliar a robustez de práticas de fairness, evidenciando o potencial da técnica para detectar fragilidades em propriedades éticas. Esta dissertação estende essa direção, propondo a aplicação de \textit{fuzzing} para detectar:
 
 \begin{itemize}
     \item vieses estatísticos;
@@ -121,7 +121,7 @@ Zhang et al.~\cite{Zhang2019} demonstram que o \textit{fuzzing} pode ser adaptad
     \item efeitos adversos de decisões algorítmicas.
 \end{itemize}
 
-Entretanto, a literatura analisada no MSL revela que ainda não existem \textit{frameworks} completos ou \textit{engines} modulares dedicadas à avaliação ética de sistemas de IA , reforçando a contribuição desta dissertação.
+Entretanto, a literatura analisada no MSL revela que ainda não existem \textit{frameworks} completos ou \textit{engines} modulares dedicadas à avaliação ética de sistemas de IA, reforçando a contribuição desta dissertação.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Trabalhos Correlatos}
@@ -159,8 +159,8 @@ O estudo \cite{S046} revisita e expande o uso de \textit{Model Cards} para a doc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Técnicas Automatizadas Próximas ao Fuzzing}
 
-\paragraph{\textbf{Fuzzing Ético e Testes Baseados em Perturbações (Zhang et al., 2019).}}
-O trabalho de Zhang et al.~\cite{Zhang2019} é o mais próximo do escopo desta dissertação. Os autores adaptam técnicas de \textit{coverage-guided fuzzing} para testar modelos de IA, propondo a geração sistemática de entradas que expõem vieses e inconsistências. Embora o estudo demonstre a viabilidade da técnica, limita-se a um protótipo experimental, sem modularização, integração ao SDLC ou aplicação a múltiplos princípios éticos. O presente trabalho avança significativamente ao desenvolver três \textit{fuzzing engines} completas, modulares e integráveis, com foco explícito em \textit{Fairness}, \textit{Transparency} e \textit{Accountability}.
+\paragraph{\textbf{Fuzzing para Fairness em ML (Monjezi et al., 2024).}}
+O trabalho de Monjezi et al.~\cite{Monjezi2024} é o mais próximo ao escopo desta dissertação. Os autores propõem \textit{causal graph fuzzing} para testar práticas de fairness em modelos de ML, utilizando perturbações em grafos causais para expor fragilidades e inconsistências. O estudo demonstra a viabilidade da técnica para avaliação de propriedades éticas, mas limita-se à propriedade de fairness, sem modularização, integração ao SDLC ou aplicação a múltiplos princípios éticos. O presente trabalho avança significativamente ao desenvolver três engines completas, modulares e integráveis, com foco explícito em \textit{Fairness}, \textit{Transparency} e \textit{Accountability}.
 
 \paragraph{\textbf{Auditorias Automatizadas Experimentais (S005, S046).}}
 Os estudos \cite{S005, S046} apresentam iniciativas preliminares de auditoria parcial em sistemas de IA. Em \cite{S005}, são propostos métodos para avaliar sustentabilidade e impacto sistêmico, utilizando métricas computacionais e indicadores sociais. Em \cite{S046}, auditorias são acopladas a \textit{pipelines} experimentais. Em ambos os casos, os autores apontam limitações como baixa cobertura, ausência de testes exploratórios e falta de escalabilidade, lacunas diretamente abordadas pela proposta de \textit{fuzzing} ético desenvolvida nesta dissertação.
