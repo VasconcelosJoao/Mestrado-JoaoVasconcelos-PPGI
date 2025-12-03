@@ -1,38 +1,38 @@
 \label{introducao}
 
-A adoção crescente de sistemas baseados em Inteligência Artificial (IA) tem transformado profundamente a forma como soluções tecnológicas são concebidas, desenvolvidas e implantadas em larga escala. Esse avanço, embora promissor, tem evidenciado fragilidades importantes relacionadas ao impacto ético desses sistemas, especialmente no que diz respeito à transparência, equidade, responsabilidade, explicabilidade e privacidade \cite{Floridi2018, Ryan2020, Jobin2019, S042}. Incidentes amplamente documentados, envolvendo vieses algorítmicos, decisões discriminatórias ou uso inadequado de dados sensíveis, revelam que princípios éticos, embora amplamente discutidos em diretrizes internacionais \cite{UNESCO2021, EUAIAct2024}, ainda não são sistematicamente integrados ao ciclo de vida do desenvolvimento de software \cite{Mittelstadt2019, Hagendorff2020}.
+O crescimento no uso de sistemas baseados em Inteligência Artificial (IA) tem promovido uma reestruturação profunda dos paradigmas que orientam a concepção, o desenvolvimento e a implementação de soluções tecnológicas em larga escala. Apesar do avanço impulsionado por capacidades analíticas e operacionais cada vez mais sofisticadas, persistem fragilidades estruturais que permeiam o debate contemporâneo, sobretudo no que se refere à transparência dos processos, à equidade algorítmica, à responsabilização técnica, à interpretabilidade dos modelos e à proteção de dados pessoais \cite{Floridi2018, Ryan2020, Jobin2019, S042}. A literatura registra ocorrências envolvendo vieses algorítmicos, decisões discriminatórias e uso inadequado de dados sensíveis, sinalizando que, embora abordados em diretrizes internacionais \cite{UNESCO2021, EUAIAct2024}, a incorporação desses referenciais às práticas concretas de desenvolvimento permanece limitada \cite{Mittelstadt2019, Hagendorff2020}. Esse conjunto de elementos mostra como é importante combinar articular fundamentos normativos a avanços tecnológicos, de modo a orientar o desenvolvimento responsável dessas arquiteturas computacionais.
 
-Casos recorrentes reforçam essa lacuna. No setor de saúde, o estudo de Obermeyer et al.~\cite{Obermeyer2019} revelou que um algoritmo comercial utilizado por redes hospitalares norte-americanas apresentava viés racial sistêmico, subestimando as necessidades médicas de pacientes negros e reduzindo drasticamente seu acesso a programas de cuidado intensivo. No domínio do reconhecimento facial, Buolamwini \& Gebru \cite{Buolamwini2018} demonstraram disparidades interseccionais significativas em sistemas comerciais, que chegavam a errar em mais de 34,7\% dos casos envolvendo mulheres negras. Em sistemas de contratação automatizada, Sheard \cite{Sheard2025} documentou discriminações algorítmicas contra mulheres, pessoas idosas e candidatos com sotaques ou deficiências, gerando questionamentos sobre a confiabilidade e a responsabilidade desses sistemas.
+Análises empíricas conduzidas em diferentes setores tornam perceptível a materialização dessas limitações no funcionamento de sistemas de IA. No setor de saúde, Obermeyer et al.~\cite{Obermeyer2019} identificaram a existência de um viés racial estrutural em um algoritmo comercial utilizado por redes hospitalares nos Estados Unidos, o qual subestimava necessidades médicas de pacientes negros e reduzia o acesso a programas de cuidados intensivos. Em sistemas de reconhecimento facial, Buolamwini \& Gebru \cite{Buolamwini2018} observaram disparidades interseccionais significativas, com taxas de erro superiores a 34,7\% para mulheres negras. Já no campo da contratação automatizada, Sheard \cite{Sheard2025} destacou incidências discriminatórias direcionadas a mulheres, idosos e candidatos com sotaque ou deficiência, o que expõe a recorrente incapacidade dos processos de desenvolvimento em detectar comportamentos sensíveis. Esses casos demonstram que, na ausência de procedimentos robustos de verificação e controle, tecnologias orientadas por IA tendem a reproduzir desigualdades preexistentes, reforçando a urgência de estratégias que mitiguem riscos desde as etapas iniciais de desenvolvimento.
 
-Esses problemas evidenciam que princípios éticos como \textit{fairness}, \textit{transparency}, \textit{accountability} e \textit{explainability} não podem permanecer como recomendações normativas abstratas. Sua integração depende de mecanismos práticos, repetíveis e automatizáveis ao longo do ciclo de vida do software, capazes de antecipar riscos, detectar falhas e apoiar os desenvolvedores na implementação de soluções robustas e alinhadas às diretrizes internacionais.
+Esses problemas indicam que as diretrizes relacionadas aos princípios de \textit{fairness}, \textit{transparency}, \textit{accountability} e \textit{explainability} demandam mais do que formulações abstratas. Sua efetiva implementação depende de procedimentos sistemáticos, reproduzíveis e vinculados aos artefatos técnicos do desenvolvimento, permitindo antecipar riscos, detectar falhas e apoiar decisões de engenharia de maneira alinhada às recomendações internacionais.
 
-Entretanto, a literatura demonstra que a grande maioria dos princípios éticos existentes ainda opera em um nível altamente conceitual e pouco operacionalizado \cite{S042, S058}. O método ECCOLA \cite{S012, S013}, por exemplo, identifica que diretrizes éticas são frequentemente generalistas, pouco específicas para contextos de Engenharia de Software e sem ligação direta com artefatos técnicos. Morley et al.~\cite{Morley2020} encontraram um conjunto ainda limitado de ferramentas práticas para traduzir princípios éticos em atividades concretas do ciclo de vida. Holstein et al.~\cite{Holstein2019} identificaram que engenheiros e cientistas de dados têm dificuldades em definir métricas adequadas, interpretar indicadores de \textit{fairness} e avaliar implicações éticas em seus modelos.
+Observa-se, contudo, que a consolidação desses princípios enfrenta limites relevantes quando se observa o distanciamento entre suas formulações conceituais e as exigências práticas do desenvolvimento de software \cite{S042, S058}. O método ECCOLA \cite{S012, S013}, por exemplo, aponta que diretrizes éticas tendem a assumir caráter generalista, pouco conectado às especificidades dos processos de engenharia, e frequentemente desvinculado dos artefatos técnicos empregados ao longo do processo de desenvolvimento. Morley et al.~\cite{Morley2020} identificaram que ainda há um conjunto restrito de ferramentas capazes de transformar esses princípios em procedimentos aplicáveis às etapas do ciclo de vida do software. De modo semelhante, Holstein et al.~\cite{Holstein2019} verificaram que engenheiros e cientistas de dados enfrentam dificuldades tanto para definir métricas adequadas quanto para interpretar indicadores de \textit{fairness} e avaliar implicações éticas em seus modelos. Em conjunto, esses estudos sugerem um hiato metodológico estrutural, marcado pela ausência de métodos operacionalizáveis capazes de entrelaçar considerações éticas às atividades práticas de engenharia.
 
-Do ponto de vista da Engenharia de Software, a fase de \textit{Testing} permanece especialmente carente de soluções automatizadas para avaliação ética. Enquanto diversas abordagens tratam da mitigação de vieses em pré ou pós-processamento \cite{S003, S004, S022}, poucos estudos oferecem técnicas de teste ético que possam ser integradas a \textit{pipelines} modernos de desenvolvimento, como DevOps/MLOps.
+Do ponto de vista da Engenharia de Software, a fase de \textit{Testing} permanece particularmente desassistida por mecanismos automatizados que possibilitem examinar dimensões éticas de sistemas baseados em IA. Grande parte das propostas existentes concentram-se na mitigação de vieses em etapas de pré ou pós-processamento \cite{S003, S004, S022}, faltam técnicas capazes de integrar princípios éticos aos \textit{pipelines} contemporâneos de desenvolvimento, como DevOps/MLOps. Essa insuficiência compromete a validação dos comportamentos sensíveis durante os processos avaliativos dos modelos, evidenciando a necessidade de métodos mais precisos e situados, capazes de explorar riscos éticos contextualizados no momento exato da avaliação do sistema, consolidando uma etapa de testes mais compatível com as demandas éticas emergentes na área.
 
-Nesse contexto, técnicas de \textit{fuzzing}, tradicionalmente utilizadas para detecção automatizada de falhas de segurança, emergem como uma alternativa promissora. Estudos recentes sugerem que princípios éticos abstratos podem ser traduzidos em propriedades testáveis por meio da geração automática de entradas, execução massiva de casos e verificação de padrões de comportamento \cite{Zhang2019}. Contudo, o uso de \textit{fuzzing} para avaliar conformidade ética em sistemas de IA permanece incipiente, apresentando lacunas importantes em modularidade, generalidade e integração com práticas industriais.
+A aplicação de técnicas de \textit{fuzzing}, originalmente desenvolvidas para investigação automatizada de falhas relacionadas à segurança cibernética, constitui uma via metodológica promissora para empregar estratégias intensivas de geração de entradas voltadas à verificação de propriedades éticas em sistemas baseados em IA. Investigações recentes assinalam que princípios abstratos podem ser convertidos em atributos verificáveis mediante execuções ampliadas e observação estruturada dos comportamentos obtidos \cite{Zhang2019}. Apesar desse potencial, poucos estudos têm explorado o \textit{fuzzing} sob uma perspectiva ética, especialmente no que se refere à adaptação de seus procedimentos às dinâmicas reais dos ambientes de desenvolvimento utilizados na indústria. Essa limitação acentua a necessidade por métodos orientados ao uso do \textit{fuzzing} na avaliação ética durante as atividades de teste, ampliando assim a capacidade de inspeção técnica dos modelos.
 
-Para fundamentar a seleção dos princípios e riscos éticos tratados neste trabalho, foi conduzido um Mapeamento Sistemático da Literatura (MSL), apresentado no Capítulo~\ref{cap:rsl}. O mapeamento analisou 58 estudos primários publicados entre 2020 e 2025, identificando os princípios éticos predominantes na literatura e as abordagens propostas para sua operacionalização ao longo do ciclo de vida do software. Os resultados mostraram que \textit{Fairness} (82,8\%), \textit{Accountability} (55,2\%) e \textit{Transparency} (50,0\%) são os princípios mais recorrentes e os que apresentam maior maturidade em termos de abordagens técnicas, tornando-se candidatos naturais à operacionalização neste trabalho. Além disso, a fase de \textit{Testing} foi identificada como uma das menos atendidas pela literatura (37,9\%), revelando uma lacuna crítica para o desenvolvimento de soluções automatizadas.
+Para fundamentar a seleção dos princípios e riscos éticos tratados nesta pesquisa, realizou-se um Mapeamento Sistemático da Literatura (MSL), detalhado no Capítulo~\ref{cap:rsl}. A análise de 58 estudos primários publicados entre 2020 e 2025 possibilitou identificar quais princípios apresentam maior densidade analítica na comunidade acadêmica, bem como as principais propostas de sua operacionalização ao longo do ciclo de vida do software. Os resultados confirmaram a predominância de \textit{Fairness} (82,8\%), \textit{Accountability} (55,2\%) e \textit{Transparency} (50,0\%), configurando-se, portanto, como os eixos conceituais centrais a serem aprofundados nesta proposta de dissertação. O levantamento também sinalizou que a etapa de \textit{Testing} apresenta baixa incidência nas investigações existentes (37,9\%), apontando para um campo de desenvolvimento ainda pouco explorado no contexto de soluções automatizadas.
 
-Diante desse cenário, este trabalho propõe o desenvolvimento de três \textit{fuzzing engines} éticas, dedicadas aos princípios de Transparência, Justiça e Responsabilidade, integradas ao sistema de \textit{fuzzing} ético desenvolvido no projeto de João Rossi. Essas \textit{engines} permitirão a avaliação sistemática de riscos éticos em modelos de IA já implementados, apoiando od desenvolvedores na detecção automatizada de falhas éticas e promovendo maior alinhamento entre diretrizes normativas e práticas da Engenharia de Software.
+Considerando esse panorama analítico, esta pesquisa propõe o desenvolvimento de três \textit{fuzzing engines} éticas orientadas pelos princípios de Transparência, Justiça e Responsabilidade, concebidas como extensões do sistema de \textit{fuzzing} ético elaborado no projeto de João Rossi. Cada \textit{engines} permitirão a avaliação sistemática de riscos éticos em modelos de IA já implementados, apoiando os desenvolvedores na detecção automatizada de falhas éticas e promovendo maior alinhamento entre diretrizes normativas e práticas da Engenharia de Software.
 
-A seguir, são apresentados o problema de pesquisa, as justificativas, os objetivos, os resultados esperados, o método de pesquisa e a estrutura da dissertação.
+A seguir, apresentam-se o problema de pesquisa, as justificativas, os objetivos, os resultados esperados, o método adotado e a estrutura geral da proposta de dissertação.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema de Pesquisa}
 
-Apesar do crescente interesse global em ética aplicada à IA e da proliferação de princípios, guias e recomendações, ainda existe uma lacuna significativa entre diretrizes conceituais e sua operacionalização prática ao longo do ciclo de vida do software. A literatura demonstra que:
+Apesar do crescente interesse internacional em ética aplicada à IA e da multiplicação de princípios, diretrizes e marcos regulatórios, persiste um descompasso expressivo entre formulações conceituais e sua efetiva incorporação aos processos técnicos que estruturam o ciclo de vida do software. A literatura especializada tem reiterado que:
 
 \begin{itemize}
     \item princípios éticos são majoritariamente abstratos e pouco integrados a artefatos técnicos \cite{Mittelstadt2019, Hagendorff2020, S012, S042, S058};
     \item a fase de \textit{Testing} é substancialmente subatendida, com poucas abordagens de avaliação ética automatizada \cite{S003, S004, S022};
     \item práticas atuais dependem de verificações manuais, custosas e pouco escaláveis \cite{S014, Holstein2019};
-    \item não há ferramentas amplamente utilizadas para detectar sistematicamente violações éticas em modelos de IA.
+    \item não há, no estado da arte, ferramentas consolidadas capazes de identificar violações éticas de forma sistemática em modelos de IA.
 \end{itemize}
 
-Assim, apesar dos avanços recentes e da crescente pressão regulatória (por exemplo, o \textit{EU AI Act} \cite{EUAIAct2024} e o \textit{Australia’s AI Ethics Principles}\footnote{\url{https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles/australias-ai-ethics-principles}}), ainda não existem mecanismos consolidados e automatizáveis que permitam verificar a conformidade ética em sistemas de IA já implementados, sobretudo no que diz respeito aos princípios de Transparência, Justiça e Responsabilidade.
+Mesmo com o fortalecimento de instrumentos regulatórios (como, o \textit{EU AI Act} \cite{EUAIAct2024} e o \textit{Australia’s AI Ethics Principles}\footnote{\url{https://www.industry.gov.au/publications/australias-artificial-intelligence-ethics-principles/australias-ai-ethics-principles}}), permanece ausente um arcabouço metodológico que ofereça mecanismos automatizáveis para examinar a conformidade ética de sistemas já implementados, sobretudo no que diz respeito aos princípios de Transparência, Justiça e Responsabilidade.
 
-Diante disso, formula-se a seguinte questão geral de pesquisa:
+Dessa problemática estruturante desponta a questão central desta pesquisa:
 
 \begin{quote}
 \textbf{Como avaliar sistematicamente os riscos éticos associados aos princípios de Transparência, Justiça e Responsabilidade em modelos de IA por meio de técnicas de \textit{fuzzing} automatizadas?}
@@ -41,9 +41,9 @@ Diante disso, formula-se a seguinte questão geral de pesquisa:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Justificativa}
 
-A necessidade de mecanismos práticos para avaliação ética decorre de uma combinação de fatores técnicos, sociais e regulatórios. Estudos como o de Birhane et al.~\cite{Birhane2022} evidenciam que apenas 1\% das pesquisas em aprendizagem de máquina discute potenciais impactos negativos, revelando uma distância preocupante entre o desenvolvimento técnico e a reflexão ética. Holstein et al.~\cite{Holstein2019} identificam que engenheiros carecem de suporte prático para avaliar \textit{fairness}, selecionar métricas adequadas e interpretar resultados.
+\noindent\hspace*{1em} A necessidade por mecanismos operacionais de avaliação ética decorre de uma combinação de fatores técnicos, sociais e regulatórios que pressionam o desenvolvimento de sistemas de IA em direção a padrões mais robustos de responsabilidade.  Estudos como o de Birhane et al.~\cite{Birhane2022} mostram que apenas 1\% das pesquisas em aprendizagem de máquina examina potenciais impactos negativos, acentua o descompasso entre o avanço técnico e a reflexão crítica sobre suas consequências sociais e epistemológicas.  De modo complementar, Holstein et al.~\cite{Holstein2019} demonstram a insuficiência do suporte oferecido aos profissionais de engenharia, particularmente no que se refere à avaliação de equidade, à seleção de métricas adequadas e à interpretação consistente dos resultados produzidos pelos modelos.  
 
-O mapeamento sistemático conduzido nesta pesquisa confirma lacunas estruturais relevantes:
+O mapeamento sistemático conduzido nesta proposta confirma a existência de limitações estruturais significativas, entre as quais se destacam:  
 
 \begin{itemize}
     \item \textbf{L2 — Ausência de suporte ferramental integrado}: as ferramentas propostas não se integram a IDEs ou a pipelines DevOps/MLOps \cite{S010, S021, S030};
@@ -51,13 +51,13 @@ O mapeamento sistemático conduzido nesta pesquisa confirma lacunas estruturais 
     \item \textbf{Baixa presença da fase de Testing}: apenas 37,9\% dos estudos abordam testes éticos (Tabela~\ref{tab:sdlc}).
 \end{itemize}
 
-Diante disso, a proposição de \textit{fuzzing engines} éticas atende, simultaneamente:
+Nesse quadro, o desenvolvimento de \textit{fuzzing engines} éticas atende, simultaneamente a diferentes ordens de necessidade: 
 
 \begin{itemize}
-    \item a uma necessidade técnica (ferramentas automatizadas e integráveis);
-    \item a uma necessidade científica (preenchimento de lacunas do estado da arte);
-    \item a uma necessidade regulatória (demonstração de conformidade ética em sistemas de alto risco);
-    \item e a uma necessidade social (redução de riscos de discriminação, opacidade e irresponsabilidade).
+    \item técnica, ao propor soluções automatizáveis e integráveis a práticas contemporâneas de engenharia;
+    \item  científica, ao avançar sobre lacunas persistentes no estado da arte; 
+    \item  regulatória, ao favorecer mecanismos verificáveis de conformidade em sistemas classificados como de alto risco; ;
+    \item e social, ao contribuir para mitigar práticas discriminatórias, opacas ou irresponsáveis. 
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,7 +65,7 @@ Diante disso, a proposição de \textit{fuzzing engines} éticas atende, simulta
 
 \subsection{Objetivo Geral}
 
-Desenvolver e avaliar \textit{fuzzing engines} automatizadas para detectar falhas éticas relacionadas aos princípios de Transparência, Justiça e Responsabilidade em modelos de IA já implementados.
+\noindent\hspace*{1em} Desenvolver e avaliar \textit{fuzzing engines} automatizadas para detectar falhas éticas relacionadas aos princípios de Transparência, Justiça e Responsabilidade em modelos de IA já implementados.
 
 \subsection{Objetivos Específicos}
 
@@ -82,13 +82,13 @@ Desenvolver e avaliar \textit{fuzzing engines} automatizadas para detectar falha
 \section{Resultados Esperados e Contribuições}
 \label{sec:contribuicoes}
 
-Espera-se que este trabalho produza contribuições:
+\noindent\hspace*{1em} Espera-se que este trabalho produza contribuições organizadas em três eixos analíticos: 
 
 \textbf{(i) Teóricas:}
 \begin{itemize}
-    \item operacionalização de princípios éticos abstratos em mecanismos testáveis;
-    \item proposta de uma taxonomia de riscos éticos compatíveis com técnicas de \textit{fuzzing};
-    \item estrutura metodológica para a realização de testes éticos automatizados.
+    \item operacionalização de princípios éticos abstratos em mecanismos formalizáveis e passíveis de teste;
+    \item definição de uma taxonomia de riscos éticos adequada a técnicas de \textit{fuzzing};
+    \item delineamento de uma estrutura metodológica para a execução de testes éticos automatizados.
 \end{itemize}
 
 \textbf{(ii) Empíricas:}
@@ -110,9 +110,9 @@ Espera-se que este trabalho produza contribuições:
 \section{Método de Pesquisa}
 \label{sec:metodo}
 
-Esta pesquisa adota uma abordagem metodológica inspirada no \textit{Design Science Research} (DSR) \cite{Hevner2004, Wieringa2014, Peffers2007}, orientada ao desenvolvimento e à avaliação de artefatos técnicos para apoiar a operacionalização de princípios éticos em sistemas de IA. Em DSR, o objetivo central é projetar soluções inovadoras (métodos, modelos, ferramentas, \textit{frameworks}) para problemas relevantes em contextos reais, articulando de forma cíclica as etapas de identificação do problema, projeto do artefato, demonstração, avaliação e comunicação.
+A presente pesquisa emprega uma abordagem metodológica fundamentada no \textit{Design Science Research} (DSR) \cite{Hevner2004, Wieringa2014, Peffers2007}, orientada ao desenvolvimento e à avaliação de artefatos técnicos que viabilizem a implementação de princípios éticos em sistemas de IA. No contexto, o propósito principal do DSR consiste na criaçao de soluções inovadoras (métodos, modelos, ferramentas, \textit{frameworks}) para problemas relevantes em ambientes práticos, por meio de um processo cíclico que integra as fases de identificação do problema, concepção do artefato, demonstração, avaliação e comunicação.
 
-No contexto desta dissertação, o problema de pesquisa foi inicialmente delimitado com base na literatura sobre ética em IA e Engenharia de Software, a qual aponta dificuldades em operacionalizar princípios éticos abstratos em práticas concretas de desenvolvimento, especialmente na fase de \textit{Testing}. O artefato principal desenvolvido consiste em três \textit{fuzzing engines} automatizadas para avaliar riscos éticos associados aos princípios de \textit{Transparency}, \textit{Fairness} e \textit{Accountability} em modelos de IA, integradas a um sistema de \textit{fuzzing} ético mais amplo.
+A questão de pesquisa foi inicialmente formulada com base na literatura especializada em ética aplicada à IA e à Engenharia de Software, a qual destaca os desafios de converter princípios éticos abstratos em práticas de desenvolvimento concretas, com foco na etapa de \textit{Testing}. O principal artefato produzido é composto por três \textit{fuzzing engines} automatizadas, concebidas para avaliar riscos éticos relacionados aos princípios de \textit{Transparency}, \textit{Fairness} e \textit{Accountability} em modelos de IA, integradas a um sistema mais abrangente de \textit{fuzzing} ético.
 
 A Figura~\ref{fig:metodologia} sintetiza as etapas metodológicas da pesquisa, estruturadas em sete fases encadeadas. Cada fase produz saídas específicas que alimentam as etapas subsequentes, assegurando rastreabilidade entre o conhecimento extraído da literatura, as decisões de projeto e a avaliação empírica dos artefatos desenvolvidos.
 
@@ -167,9 +167,9 @@ arrow/.style={->, thick}
 \label{fig:metodologia}
 \end{figure}
 
-A \textbf{Fase 1} corresponde ao Mapeamento Sistemático da Literatura (Capítulo~\ref{cap:rsl}), conduzido segundo as diretrizes de Petersen et al.~\cite{Petersen2015}. Esse mapeamento identificou, em 58 estudos primários, os princípios éticos mais recorrentes na literatura sobre ética em IA no contexto da Engenharia de Software, bem como as abordagens existentes para sua operacionalização ao longo do SDLC. A saída principal dessa fase é a seleção dos três princípios prioritários --- \textit{Fairness}, \textit{Accountability} e \textit{Transparency} --- que orientam todo o restante da pesquisa.
+A \textbf{Fase 1} corresponde ao Mapeamento Sistemático da Literatura (Capítulo~\ref{cap:rsl}), conduzido segundo as diretrizes de Petersen et al.~\cite{Petersen2015}.Durante essa etapa, analisaram-se 58 estudos primários que destacaram os princípios éticos mais comuns na literatura acerca de ética em inteligência artificial na engenharia de software, além das estratégias existentes para operacionalizá-los ao longo do ciclo de desenvolvimento de software (SDLC). A saída principal dessa fase é a seleção dos três princípios prioritários --- \textit{Fairness}, \textit{Accountability} e \textit{Transparency} --- que orientam todo o restante da pesquisa.
 
-Na \textbf{Fase 2}, são identificados e refinados os riscos éticos específicos associados a esses princípios que podem ser tratados por meio de técnicas de \textit{fuzzing}. Essa fase combina o conhecimento sintetizado no MSL com o referencial teórico sobre ética em IA e práticas de \textit{Ethics by Design}, resultando em uma taxonomia inicial de riscos éticos testáveis, alinhada às lacunas L2 (ausência de suporte ferramental integrado) e L4 (\textit{gap} academia--indústria) identificadas no Capítulo~\ref{cap:rsl}.
+Na \textbf{Fase 2}, são identificados e refinados os riscos éticos específicos associados a esses princípios que podem ser tratados por meio de técnicas de \textit{fuzzing}. Essa etapa combina o conhecimento sintetizado no MSL com o referencial teórico sobre ética em IA e práticas de \textit{Ethics by Design}, resultando em uma taxonomia inicial de riscos éticos testáveis, alinhada às lacunas L2 (ausência de suporte ferramental integrado) e L4 (\textit{gap} academia--indústria) identificadas no Capítulo~\ref{cap:rsl}.
 
 A \textbf{Fase 3} consiste na especificação das técnicas de \textit{fuzzing} adequadas para cada risco selecionado. Inspirando-se em trabalhos como Zhang et al.~\cite{Zhang2019} e em técnicas consolidadas de \textit{fuzzing} em testes de software, são definidos, para cada risco: o tipo de perturbação a ser aplicada, o espaço de entrada explorado, os oráculos de teste e as métricas de avaliação. O produto desta fase é um mapeamento explícito entre riscos éticos e estratégias de \textit{fuzzing}, que servirá como guia de implementação.
 
@@ -181,7 +181,7 @@ Na \textbf{Fase 6}, realiza-se a avaliação empírica das engines em modelos de
 
 Por fim, a \textbf{Fase 7} sintetiza e documenta os resultados obtidos. Nessa etapa, os achados empíricos são analisados, tanto quantitativa quanto qualitativamente, relacionando-os às lacunas identificadas na literatura e às contribuições esperadas (Seção~\ref{sec:contribuicoes}). Essa síntese fundamenta as conclusões apresentadas no Capítulo~\ref{cap:conclusao}, bem como as recomendações para pesquisas futuras e as implicações práticas para o desenvolvimento e teste de sistemas de IA.
 
-De forma integrada, as sete fases descritas asseguram que o desenvolvimento das \textit{fuzzing engines} esteja ancorado em evidências consolidadas (via MSL), orientado por princípios éticos reconhecidos, tecnicamente fundamentado em técnicas de \textit{fuzzing} e empiricamente avaliado em modelos reais, em consonância com os fundamentos do \textit{Design Science Research}.
+De modo integrado, as sete fases garantem que o desenvolvimento das \textit{fuzzing engines} esteja ancorado em evidências consolidadas (via MSL), orientado por princípios éticos reconhecidos, tecnicamente fundamentado em técnicas de \textit{fuzzing} e empiricamente avaliado em modelos reais, em consonância com os fundamentos do \textit{Design Science Research}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Estrutura da Dissertação}
