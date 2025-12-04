@@ -37,9 +37,10 @@ A identificação dos riscos éticos foi realizada a partir de duas fontes princ
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Critérios de Seleção dos Riscos Testáveis}
+\section{Critérios de Seleção dos Riscos Testáveis}
+\label{sec:criterios_selecao}
 
-A seleção considerou critérios metodológicos rigorosos baseados na viabilidade de operacionalização ética via fuzzing:
+A partir da taxonomia de riscos éticos estabelecida na Tabela~\ref{tab:riscos_mapeados}, a seleção dos riscos a serem operacionalizados via \textit{fuzzing} considerou critérios metodológicos rigorosos baseados na viabilidade técnica:
 
 \begin{enumerate}
     \item \textbf{Observabilidade Comportamental}: O risco deve manifestar-se através de comportamentos observáveis nas saídas do modelo, permitindo a definição de oráculos objetivos que distinguem comportamento aceitável de violação ética.
@@ -53,51 +54,6 @@ A seleção considerou critérios metodológicos rigorosos baseados na viabilida
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \subsection{Especificação Formal dos Riscos por Princípio}
-
-% \subsubsection{Justiça (\textit{Fairness})}
-
-% Os cinco riscos associados ao princípio de Justiça (R-F1 a R-F5) apresentam diferentes graus de viabilidade para operacionalização via fuzzing automatizado:
-
-% \begin{itemize}
-%     \item \textbf{R-F1 (Discriminação)}: Plenamente implementável. A discriminação manifesta-se em diferenças observáveis de output quando atributos demográficos são mutados. Técnicas aplicáveis: \textit{mutation-based fuzzing} e \textit{differential fuzzing}.
-    
-%     \item \textbf{R-F2 (Acesso desigual)}: Plenamente implementável. A disparidade de qualidade entre perfis é mensurável através de métricas objetivas (extensão, completude, recursos oferecidos). Técnicas aplicáveis: \textit{generation-based fuzzing} e \textit{differential fuzzing}.
-    
-%     \item \textbf{R-F3 (Reforço de desigualdades)}: Parcialmente implementável. O fuzzing detecta apenas manifestações explícitas onde o modelo assume horizontes de possibilidade diferentes para grupos sociais distintos. Formas sutis de reforço de desigualdade requerem análise sociológica qualificada. Técnica aplicável: \textit{metamorphic testing}.
-    
-%     \item \textbf{R-F4 (Desempenho inconsistente)}: Plenamente implementável. A disparidade de desempenho entre subgrupos é diretamente mensurável através de benchmarks paralelos. Técnicas aplicáveis: \textit{differential fuzzing} e \textit{mutation-based fuzzing}.
-    
-%     \item \textbf{R-F5 (Atribuição estrutural/individual)}: Não implementável. A distinção entre explicações estruturais e individuais requer julgamento sociológico e análise normativa que transcendem capacidades de testes automatizados. Nenhuma técnica de fuzzing é aplicável.
-% \end{itemize}
-
-% \subsubsection{Responsabilidade (\textit{Accountability})}
-
-% Os três riscos de Responsabilização (R-A1 a R-A3) são predominantemente de natureza organizacional, com apenas um sendo operacionalizável no nível algorítmico:
-
-% \begin{itemize}
-%     \item \textbf{R-A1 (Identificação de responsável)}: Não implementável. A atribuição de responsabilidade é questão jurídica e organizacional, não algorítmica. Depende de estruturas de governança, contratos e mecanismos de reparação externos ao sistema. Nenhuma técnica de fuzzing pode avaliar esses elementos.
-    
-%     \item \textbf{R-A2 (Contestabilidade de decisões)}: Plenamente implementável. A presença de mecanismos de contestação manifesta-se em comportamentos observáveis: reconhecimento do direito de recurso, fornecimento de explicações, abertura a reconsideração. Técnicas aplicáveis: \textit{generation-based fuzzing} e \textit{adversarial prompt injection}.
-    
-%     \item \textbf{R-A3 (Mecanismos de correção)}: Não implementável. A capacidade de investigar e corrigir falhas depende de processos organizacionais externos: equipes de resposta, metodologias de análise, ciclos de desenvolvimento. Esses elementos estão fora do escopo de testes algorítmicos.
-% \end{itemize}
-
-% \subsubsection{Transparência (\textit{Transparency})}
-
-% Os três riscos de Transparência (R-T1 a R-T3) apresentam viabilidade variável, com dois plenamente testáveis e um parcialmente:
-
-% \begin{itemize}
-%     \item \textbf{R-T1 (Opacidade de decisões)}: Plenamente implementável. A qualidade e consistência de explicações são mensuráveis: explicações para decisões equivalentes devem ser consistentes, e explicações devem ser fornecidas quando solicitadas. Técnicas aplicáveis: \textit{metamorphic testing} e \textit{generation-based fuzzing}.
-    
-%     \item \textbf{R-T2 (Vieses ocultos)}: Plenamente implementável. Vieses ocultos são revelados empiricamente através de tratamento diferencial observável. Mesmo que o modelo não declare seus vieses, perturbações sistemáticas expõem correlações não justificadas. Técnicas aplicáveis: \textit{mutation-based fuzzing} e \textit{differential fuzzing}.
-    
-%     \item \textbf{R-T3 (Potencial enganoso)}: Parcialmente implementável. O fuzzing pode testar vulnerabilidades a padrões adversariais conhecidos que induzem respostas enganosas, mas a determinação de quando uma explicação é adequada requer julgamento humano contextual. Técnica aplicável: \textit{adversarial prompt injection}, com complementação por revisão humana.
-% \end{itemize}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Justiça (\textit{Fairness})}
 
 %------------------------------------------------------------------------------
@@ -323,7 +279,7 @@ O risco R-F5 representa uma forma de viés epistêmico onde o sistema atribui a 
 
 \subsubsection{Análise de Implementabilidade}
 
-\textbf{Implementável via fuzzing: Não.}
+\textbf{Implementável via fuzzing}: Não.
 
 A distinção entre explicações estruturais e individuais requer análise semântica profunda, compreensão de causalidade social e julgamento normativo que transcendem capacidades de testes automatizados. Não existe oráculo algorítmico capaz de determinar se uma explicação atribui corretamente peso a fatores estruturais versus individuais, pois:
 
@@ -334,9 +290,7 @@ A distinção entre explicações estruturais e individuais requer análise sem�
     \item O julgamento requer conhecimento de evidências empíricas sobre determinantes sociais.
 \end{itemize}
 
-\textbf{Recomendação}: Este risco deve ser avaliado através de revisão por especialistas em ciências sociais, não por testes automatizados. O fuzzing não é a ferramenta adequada para este tipo de avaliação ética.
-
-Não aplicável. A avaliação deste risco requer julgamento humano qualificado.
+\textbf{Recomendação}: Este risco deve ser avaliado através de revisão por especialistas em ciências sociais, não por testes automatizados. O \textit{fuzzing} não é a ferramenta adequada para este tipo de avaliação ética.
 
 \subsubsection{Justificativa de Exclusão}
 
@@ -365,14 +319,14 @@ O risco R-A1 refere-se à possibilidade de sistemas de IA causarem danos sem que
 
 \subsubsection{Análise de Implementabilidade}
 
-\textbf{Implementável via fuzzing: Não.}
+\textbf{Implementável via fuzzing}: Não.
 
-A identificação de responsáveis é uma questão organizacional, jurídica e contratual, não algorítmica. Nenhuma técnica de fuzzing pode avaliar se existe estrutura de governança adequada, se contratos definem responsabilidades, ou se mecanismos de reparação estão disponíveis. O fuzzing opera no nível comportamental do modelo, mas a atribuição de responsabilidade ocorre no nível institucional externo ao sistema.
+A identificação de responsáveis é uma questão organizacional, jurídica e contratual, não algorítmica. Nenhuma técnica de \textit{fuzzing} pode avaliar se existe estrutura de governança adequada, se contratos definem responsabilidades, ou se mecanismos de reparação estão disponíveis. O \textit{fuzzing} opera no nível comportamental do modelo, mas a atribuição de responsabilidade ocorre no nível institucional externo ao sistema.
 
 Especificamente:
 \begin{itemize}
-    \item \textbf{Canary injection} pode verificar se logs existem, mas não se são usados para atribuir responsabilidade.
-    \item Nenhuma técnica de fuzzing pode avaliar estruturas de governança ou contratos.
+    \item \textit{Canary injection} pode verificar se logs existem, mas não se são usados para atribuir responsabilidade.
+    \item Nenhuma técnica de \textit{fuzzing} pode avaliar estruturas de governança ou contratos.
     \item A questão ``quem é responsável'' é jurídica, não técnica.
 \end{itemize}
 
@@ -451,11 +405,11 @@ O risco R-A3 refere-se à ausência de mecanismos que permitam investigar falhas
 
 \subsubsection{Análise de Implementabilidade}
 
-\textbf{Implementável via fuzzing: Não.}
+\textbf{Implementável via fuzzing}: Não.
 
-A capacidade de investigar e corrigir falhas depende de processos organizacionais externos ao modelo: equipes de resposta a incidentes, metodologias de análise de causa raiz, ciclos de desenvolvimento para incorporar correções. Nenhuma técnica de fuzzing pode avaliar se esses processos existem ou funcionam.
+A capacidade de investigar e corrigir falhas depende de processos organizacionais externos ao modelo: equipes de resposta a incidentes, metodologias de análise de causa raiz, ciclos de desenvolvimento para incorporar correções. Nenhuma técnica de \textit{fuzzing} pode avaliar se esses processos existem ou funcionam.
 
-Diferentemente de R-A1, não há sequer pré-requisitos técnicos testáveis neste caso. A existência de logs (verificável via canary injection) é necessária mas não suficiente --- o que importa é se existem processos que utilizam esses logs para corrigir falhas, o que está fora do escopo algorítmico.
+Diferentemente de R-A1, não há sequer pré-requisitos técnicos testáveis neste caso. A existência de logs (verificável via \textit{canary injection}) é necessária mas não suficiente, o que importa é se existem processos que utilizam esses logs para corrigir falhas, o que está fora do escopo algorítmico.
 
 \textbf{Recomendação}: Este risco deve ser avaliado através de auditoria de processos de desenvolvimento e manutenção, não por testes algorítmicos.
 
@@ -467,7 +421,7 @@ O risco R-A3 foi excluído do escopo de testes automatizados pelos seguintes mot
     \item \textbf{Natureza Processual}: A investigação e correção de falhas depende de processos de gestão, não de comportamento do modelo.
     \item \textbf{Elementos Externos}: Equipes, metodologias e ciclos de desenvolvimento estão fora do sistema testável.
     \item \textbf{Ausência de Observáveis}: Não há outputs do modelo que indiquem se mecanismos de correção existem ou funcionam.
-    \item \textbf{Confusão de Níveis}: Testar se logs existem (possível) é diferente de testar se são usados para correção (impossível via fuzzing).
+    \item \textbf{Confusão de Níveis}: Testar se logs existem (possível) é diferente de testar se são usados para correção (impossível via \textit{fuzzing}).
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -652,7 +606,7 @@ Portanto, os testes fuzzy funcionam como triagem inicial, mas a avaliação defi
 
 \section{Síntese do Capítulo}
 
-Este capítulo apresentou a proposta técnica para o desenvolvimento de \textit{fuzzing engines} dedicadas aos princípios de Transparência, Justiça e Responsabilização.
+Este capítulo apresentou a especificação técnica para o desenvolvimento de \textit{fuzzing engines} dedicadas aos princípios de Transparência, Justiça e Responsabilização.
 
 \subsection{Resumo de Implementabilidade}
 
@@ -670,8 +624,8 @@ A análise rigorosa dos 11 riscos identificados resultou na seguinte classifica�
 
 \textbf{Riscos parcialmente implementáveis (2):}
 \begin{itemize}
-    \item R-F3 (Reforço de desigualdades): \textit{Metamorphic testing} --- limitado a manifestações explícitas
-    \item R-T3 (Engano por falta de explicações): \textit{Adversarial prompt injection} --- limitado a padrões conhecidos
+    \item R-F3 (Reforço de desigualdades): \textit{Metamorphic testing}, limitado a manifestações explícitas
+    \item R-T3 (Engano por falta de explicações): \textit{Adversarial prompt injection}, limitado a padrões conhecidos
 \end{itemize}
 
 \textbf{Riscos não implementáveis via fuzzing (3):}
