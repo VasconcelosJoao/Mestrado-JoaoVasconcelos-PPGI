@@ -1,48 +1,52 @@
 \label{cap:fundamentacao}
 
-Este capítulo apresenta os conceitos essenciais que orientam o desenvolvimento das \textit{fuzzing engines} para avaliação ética de sistemas de Inteligência Artificial (IA). A exposição teórica está organizada em quatro eixos principais:  (i) princípios éticos em IA, (ii) métodos e \textit{frameworks} para operacionalização ética, (iii) fundamentos de \textit{fuzzing} e testes automatizados aplicados à IA, e (iv) trabalhos correlatos diretamente relacionados ao escopo desta dissertação. A organização foi guiada pelo conjunto de 58 estudos primários selecionados no Mapeamento Sistemático da Literatura (MSL), apresentado no Capítulo~\ref{cap:rsl}.
+Este capítulo apresenta os conceitos essenciais que orientam o desenvolvimento das \textit{fuzzing engines} para avaliação ética de sistemas de Inteligência Artificial (IA). A exposição teórica está organizada em quatro eixos principais: (i) princípios éticos em IA; (ii) métodos e \textit{frameworks} para operacionalização ética; (iii) fundamentos de \textit{fuzzing} e testes automatizados aplicados à IA; e (iv) trabalhos correlatos diretamente relacionados ao escopo desta dissertação. A organização foi guiada pelo conjunto de 58 estudos primários selecionados no Mapeamento Sistemático da Literatura (MSL), apresentado no Capítulo~\ref{cap:rsl}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Princípios Éticos em Inteligência Artificial}
 \label{sec:principios}
 
-O ecossistema de diretrizes éticas em IA cresceu rapidamente desde 2016, consolidando conjuntos de princípios que aparecem de forma recorrente em documentos internacionais \cite{Jobin2019, UNESCO2021, EUAIAct2024} e nos \textit{Australia's AI Ethics Principles}~\cite{australia2019aiethics}. No entanto, os estudos analisados no MSL demonstram que, embora muitos princípios sejam discutidos globalmente, apenas alguns são consistentemente operacionalizados em contextos de Engenharia de Software. Entre os princípios identificados nos 58 estudos, três se destacam por sua prevalência e profundidade de aplicação técnica: \textit{Fairness}, \textit{Accountability} e \textit{Transparency}. Estes são analisados em maior detalhe nas subseções seguintes, por serem diretamente implementados nesta pesquisa.
+Aludir à ética implica reconhecer que um sistema de princípios orienta a capacidade humana de autodeterminação diante do que se compreende como certo ou errado. No campo da Inteligência Artificial, essa dimensão ética adquire relevância particular, pois o vínculo de confiança entre usuários e sistemas automatizados depende da aderência dessas tecnologias a valores normativos minimamente compartilhados. Como observa Floridi \cite{Floridi2018}, a incorporação de princípios éticos não é mera formalidade, mas condição para que a IA promova dignidade humana, evite riscos e sustente formas socialmente legítimas de inovação.
 
-\subsection{Fairness}
+Sob essa perspectiva, a ética constitui uma premissa indispensável para o uso responsável da IA, pois orienta o desenvolvimento de tecnologias comprometidas com a promoção de uma sociedade justa, com o respeito à diversidade e com a mitigação dos riscos de que sistemas algorítmicos reproduzam ou ampliem desigualdades já existentes, inclusive no mercado de trabalho. Logo, discutir ética em IA acarreta enfrentar tanto as expectativas normativas que orientam esses sistemas quanto as assimetrias de poder e os efeitos sociais diferenciados que decorrem da capacidade da IA de remodelar práticas, decisões e ambientes sociais \cite{Floridi2018}.
+
+A produção de diretrizes éticas para orientar o desenvolvimento de sistemas de IA intensificou-se após 2016, resultando na formulação de princípios que aparecem de maneira recorrente em diferentes iniciativas internacionais \cite{Jobin2019, UNESCO2021, EUAIAct2024} e nos \textit{Australia's AI Ethics Principles}~\cite{australia2019aiethics}. Todavia, os estudos analisados no MSL demonstram que, \textit{mesmo diante da} ampla difusão desses princípios no cenário global, apenas alguns são consistentemente operacionalizados em contextos de Engenharia de Software. Entre os princípios identificados nos 58 estudos, três se destacam por sua prevalência e profundidade de aplicação técnica: \textit{Fairness}, \textit{Accountability} e \textit{Transparency}.  Nas subseções seguintes, tais princípios são examinados sob uma perspectiva analítica, considerando os riscos associados e as possibilidades concretas de sua operacionalização técnica.
+
+\subsection{\textit{Fairness}}
 \label{sec:fairness}
 
 O princípio de \textit{Fairness} emergiu como o mais recorrente no corpus analisado, estando presente em 48 dos 58 estudos. A literatura enfatiza os riscos de discriminação algorítmica decorrentes de dados enviesados \cite{S003, S007, S034}, de modelos historicamente treinados com atributos sensíveis \cite{S015, S022} e de comportamentos diferenciados entre grupos protegidos \cite{S030, S034}. Entre as abordagens identificadas, destacam-se:
 
 \begin{itemize}
     \item métricas estatísticas de equidade, como \textit{demographic parity}, \textit{equalized odds} e \textit{predictive parity} \cite{S003, S004, S034};
-    \item métodos de mitigação de viés em diferentes estágios do pipeline, como pré-processamento \cite{S022, S026}, \textit{in-processing} \cite{S009, S015} e pós-processamento \cite{S004, S034};
+    \item métodos de mitigação de viés em diferentes estágios do \textit{pipeline}, como pré-processamento \cite{S022, S040}, \textit{in-processing} \cite{S045, S015} e pós-processamento \cite{S004, S034};
     \item auditorias automatizadas aplicadas a modelos de classificação e regressão, principalmente nos domínios de saúde, seleção de pessoal e crédito \cite{S003, S012, S038}.
 \end{itemize}
 
 Apesar dos avanços, os estudos destacam limitações importantes, como a falta de consenso sobre qual métrica utilizar em cada cenário \cite{S003, S004} e a dificuldade em analisar \textit{trade-offs} entre equidade e acurácia \cite{S015, S034}.
 
-\subsection{Accountability}
+\subsection{\textit{Accountability}}
 \label{sec:accountability}
 
 O princípio de \textit{Accountability} foi identificado em 32 dos 58 estudos. Esse princípio refere-se à necessidade de atribuir responsabilidade por decisões algorítmicas, garantindo rastreabilidade, auditoria e governança ao longo do ciclo de vida dos sistemas de IA \cite{S001, S014, S046}. Enquanto parte da literatura enfatiza mecanismos organizacionais de supervisão \cite{S014, S046}, outras contribuições propõem:
 
 \begin{itemize}
     \item mecanismos de \textit{logging} ético e auditoria de decisões \cite{S005, S046};
-    \item padrões arquiteturais que garantem verificabilidade \cite{S014, S043};
+    \item padrões arquiteturais que garantam verificabilidade \cite{S014, S043};
     \item \textit{frameworks} de governança baseados em responsabilidades distribuídas \cite{S025, S038}.
 \end{itemize}
 
-O MSL evidencia que, embora existam processos e frameworks conceituais, ainda há escassez de ferramentas automatizadas capazes de verificar a responsabilidade técnica durante testes ou execuções, lacuna esta diretamente abordada por esta pesquisa.
+O MSL evidencia que, embora existam processos e \textit{frameworks} conceituais, ainda há escassez de ferramentas automatizadas capazes de verificar a responsabilidade técnica durante testes ou execuções, lacuna esta diretamente abordada por esta pesquisa.
 
-\subsection{Transparency}
+\subsection{\textit{Transparency}}
 \label{sec:transparency}
 
-O princípio de \textit{Transparency} foi identificado em 29 estudos e frequentemente, é tratado de forma sobreposta ao princípio de \textit{Explainability} \cite{S006, S012}. No corpus analisado, este princípio engloba:
+O princípio de \textit{Transparency} foi identificado em 29 estudos e, frequentemente, é tratado de forma sobreposta ao princípio de \textit{Explainability} \cite{S006, S012}. No corpus analisado, este princípio engloba:
 
 \begin{itemize}
-    \item explicações locais e globais, por meio de técnicas como LIME, SHAP e Grad-CAM  \cite{S008, S027};
-    \item modelos intrinsecamente interpretáveis \cite{S009};
-    \item documentação estruturada de modelos, como os \textit{model cards} \cite{S046};
+    \item explicações locais e globais, por meio de técnicas como LIME, SHAP e Grad-CAM \cite{S008, S027};
+    \item modelos intrinsecamente interpretáveis \cite{S006};
+    \item documentação estruturada de modelos, como os \textit{model cards} \cite{S023};
     \item requisitos de transparência previstos em diretrizes internacionais \cite{UNESCO2021, EUAIAct2024}.
 \end{itemize}
 
@@ -52,9 +56,9 @@ Os estudos mais recentes ressaltam a importância de medir a transparência de m
 \section{Abordagens e Métodos para Operacionalização Ética}
 \label{sec:operacionalizacao}
 
-Embora os princípios éticos sejam amplamente discutidos, sua operacionalização ainda é incipiente, um ponto enfatizado repetidamente pelos estudos analisados \cite{S012, S014, S030}. Os 58 estudos foram classificados em três categorias principais.
+Embora os princípios éticos sejam amplamente discutidos, sua operacionalização ainda é incipiente, um ponto enfatizado repetidamente pelos estudos analisados \cite{S012, S014, S030}. Os 58 estudos foram classificados em três categorias principais, detalhadas a seguir.
 
-\subsection{Métodos e Frameworks Estruturados}
+\subsection{Métodos e \textit{Frameworks} Estruturados}
 
 Diversos estudos propõem métodos formais para incorporar considerações éticas ao ciclo de vida de sistemas de IA. Destacam-se:
 
@@ -76,7 +80,7 @@ A análise também identificou ferramentas específicas voltadas para a operacio
     \item protótipos de auditoria automatizada, ainda majoritariamente em fase experimental \cite{S005, S046, S038}.
 \end{itemize}
 
-No entanto, nenhum dos estudos analisados apresenta ferramentas integradas a pipelines de CI/CD ou IDEs, explicitando a lacuna mencionada em \cite{S012, S021, S030}.
+No entanto, nenhum dos estudos analisados apresenta ferramentas integradas a \textit{pipelines} de CI/CD ou IDEs, explicitando a lacuna mencionada em \cite{S012, S021, S030}.
 
 \subsection{Integração ao Ciclo de Vida do Desenvolvimento}
 
@@ -86,33 +90,135 @@ A análise das fases do SDLC (RQ2 do MSL) demonstrou que a maioria das abordagen
     \item \textbf{Requisitos} (55,2\% dos estudos): identificação e elicitação de necessidades éticas \cite{S001, S006, S014};
     \item \textbf{Design} (50,0\%): decisões arquiteturais e padrões para suportar responsabilidade e transparência \cite{S006, S014, S043};
     \item \textbf{Implementação} (56,9\%): aplicações técnicas diretas, como mitigação de viés, explicabilidade e \textit{logging} \cite{S003, S009, S027};
-    \item \textbf{Testes} (37,9\%): foco restrito à avaliação de \textit{fairness} e explicabilidade, quase sempre em cenários experimentais \cite{S003, S004, S022}.
+    \item \textbf{Testes} (37,9\%): foco restrito à avaliação de \textit{Fairness} e explicabilidade, quase sempre em cenários experimentais \cite{S003, S004, S022}.
 \end{itemize}
 
-As fases posteriores  \textit{Deployment}, \textit{Operation}, \textit{Monitoring} e \textit{Governance}, são muito menos representadas, apesar de críticas para manutenção ética contínua dos sistemas.
+As fases posteriores, \textit{Deployment}, \textit{Operation}, \textit{Monitoring} e \textit{Governance}, são muito menos representadas, apesar de críticas para manutenção ética contínua dos sistemas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Fundamentos de Fuzzing e Testes Automatizados}
+\section{Fundamentos de \textit{Fuzzing} e Testes Automatizados}
 \label{sec:fuzzing}
 
-\textit{Fuzzing} é uma técnica consolidada de teste de software voltada para a detecção automática de falhas, por meio da geração massiva de entradas \cite{Manes2019}. Embora amplamente empregada na área de segurança, sua aplicação para avaliação ética de sistemas ainda é emergente.
+\textit{Fuzzing} é uma técnica consolidada de teste de software voltada para a detecção automática de falhas, por meio da geração massiva de entradas \cite{Manes2019}. Embora amplamente empregada na área de segurança, sua aplicação para avaliação ética de sistemas ainda é emergente. Esta seção apresenta os fundamentos do \textit{fuzzing} tradicional, as técnicas específicas adotadas neste trabalho e as considerações relevantes para sua aplicação em Grandes Modelos de Linguagem (LLMs).
 
-\subsection{Fuzzing Tradicional}
+\subsection{\textit{Fuzzing} Tradicional}
 
 Os elementos fundamentais do \textit{fuzzing} incluem:
 
 \begin{itemize}
-    \item geradores de entradas, baseados em mutação ou geração sintética;
-    \item oráculos, capazes de determinar se a saída representa uma falha;
-    \item instrumentação, utilizada para coletar métricas e rastrear caminhos de execução;
-    \item \textit{feedback loops}, que permitem a priorização de casos de teste promissores.
+    \item \textbf{Geradores de entradas}: componentes responsáveis por produzir casos de teste, seja por mutação de entradas existentes ou por geração sintética a partir de gramáticas ou modelos;
+    \item \textbf{Oráculos}: mecanismos que determinam se uma saída representa comportamento aceitável ou uma falha, podendo ser baseados em \textit{crashes}, \textit{timeouts}, violações de asserções ou propriedades específicas do domínio;
+    \item \textbf{Instrumentação}: técnicas utilizadas para coletar métricas de cobertura, rastrear caminhos de execução e identificar regiões do código ainda não exploradas;
+    \item \textbf{\textit{Feedback loops}}: mecanismos que utilizam informações coletadas durante a execução para priorizar casos de teste promissores e guiar a exploração do espaço de entradas.
 \end{itemize}
 
-Técnicas como \textit{coverage-guided fuzzing} e \textit{model-based fuzzing} têm sido aplicadas com sucesso em sistemas críticos, mas sua migração para o domínio da IA é recente.
+Técnicas como \textit{coverage-guided fuzzing} (exemplificado por ferramentas como AFL e LibFuzzer) e \textit{model-based fuzzing} têm sido aplicadas com sucesso em sistemas críticos, mas sua migração para o domínio da IA é recente e demanda adaptações significativas.
 
-\subsection{Fuzzing para IA}
+\subsection{Técnicas de \textit{Fuzzing} para Avaliação Ética de LLMs}
+\label{sec:tecnicas-fuzzing}
 
-Trabalhos recentes demonstram que técnicas de \textit{fuzzing} podem ser adaptadas para o contexto de sistemas de IA. Monjezi et al.~\cite{Monjezi2024} propõem \textit{causal graph fuzzing} para avaliar a robustez de práticas de \textit{fairness}, evidenciando o potencial da técnica para detectar fragilidades em propriedades éticas. Esta dissertação estende essa direção, propondo a aplicação de \textit{fuzzing} para detectar:
+No contexto deste trabalho e do projeto de pesquisa coordenado no qual se insere, foram definidas seis técnicas de \textit{fuzzing} para avaliação ética de LLMs. Cada técnica possui características específicas que a tornam adequada para determinados tipos de riscos éticos. A Tabela~\ref{tab:tecnicas-fuzzing} sintetiza essas técnicas e seus requisitos.
+
+\begin{table}[htbp]
+\centering
+\caption{Técnicas de \textit{fuzzing} para avaliação ética de LLMs}
+\label{tab:tecnicas-fuzzing}
+\begin{tabular}{p{4.5cm}p{10.5cm}}
+\toprule
+\textbf{Técnica} & \textbf{Requisitos e Aplicação} \\
+\midrule
+\textit{Mutation-based fuzzing} \cite{Manes2019, xie2019, kusner2017} & Perturbação sistemática de \textit{prompts} existentes (nomes, atributos demográficos, contextos). Requer corpus base e dicionários de substituição. \\
+\addlinespace
+\textit{Generation-based fuzzing} \cite{godefroid2008, wang2017, perez2022} & Criação de cenários estruturados por meio de \textit{templates} parametrizados. Requer definição de gramáticas ou esquemas de geração. \\
+\addlinespace
+\textit{Differential fuzzing} \cite{mckeeman1998, chen2016, Galhotra2017} & Comparação de \textit{outputs} para entradas similares ou idênticas submetidas ao mesmo modelo ou a modelos diferentes. Requer métricas de similaridade. \\
+\addlinespace
+\textit{Metamorphic testing} \cite{Chen2018, chen2020, xie2011, murphy2008} & Verificação de relações de equivalência semântica entre transformações de entrada e suas respectivas saídas. Requer definição formal de relações metamórficas. \\
+\addlinespace
+\textit{Canary injection fuzzing} \cite{cowan1998, carlini2021} & Inserção de \textit{tokens} identificáveis (\textit{canary tokens}) para rastreamento de vazamento ou reprodução indevida de informações. Requer geração de identificadores únicos. \\
+\addlinespace
+\textit{Adversarial prompt injection} \cite{Schulhoff2023, greshake2023, liu2023} & Aplicação de padrões de \textit{jailbreak}, manipulação e pressão adversarial para testar robustez das salvaguardas do modelo. Requer corpus de padrões adversariais. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{\textit{Mutation-based Fuzzing}}
+
+O \textit{mutation-based fuzzing} opera por meio da perturbação sistemática de entradas existentes, gerando variantes que diferem do original em aspectos controlados \cite{Manes2019}. Esta técnica, popularizada por ferramentas como American Fuzzy Lop (AFL), demonstrou eficácia na descoberta de vulnerabilidades em sistemas de software tradicionais e tem sido adaptada para contextos de aprendizado de máquina \cite{xie2019}.
+
+No contexto de avaliação ética de LLMs, essa técnica é particularmente útil para testar discriminação algorítmica, uma vez que permite substituir atributos demográficos (como nomes, gênero, idade ou etnia) mantendo todos os demais elementos do \textit{prompt} inalterados. Esta abordagem alinha-se ao conceito de \textit{counterfactual fairness} \cite{kusner2017}, permitindo avaliar se a mudança de atributos protegidos altera indevidamente as respostas do modelo.
+
+O processo típico envolve: (i) seleção de um \textit{prompt} base representativo do uso real do sistema; (ii) identificação dos atributos sensíveis presentes; (iii) aplicação de mutações controladas utilizando dicionários de substituição (por exemplo, nomes masculinos por femininos, nomes associados a diferentes grupos étnicos); e (iv) comparação das respostas obtidas para cada variante.
+
+Para aplicar esta técnica, é necessário conhecer: a lista de atributos sensíveis relevantes para o domínio, os dicionários de substituição para cada atributo, e as métricas de comparação de \textit{outputs} (similaridade semântica, polaridade, scores numéricos).
+
+\subsubsection{\textit{Generation-based Fuzzing}}
+
+O \textit{generation-based fuzzing} cria casos de teste a partir de especificações estruturadas, em vez de modificar entradas existentes \cite{godefroid2008, wang2017}. Essa abordagem, também conhecida como \textit{grammar-based fuzzing}, utiliza \textit{templates} parametrizados ou gramáticas formais que permitem gerar sistematicamente cenários de teste cobrindo diferentes combinações de valores para variáveis de interesse.
+
+No contexto ético, essa técnica é especialmente útil para explorar cenários que podem não estar representados no corpus de dados existente. Por exemplo, \textit{templates} podem ser definidos para gerar solicitações de aconselhamento financeiro, médico ou profissional com diferentes perfis de usuário, permitindo avaliar se o modelo oferece qualidade de serviço equivalente para todos os grupos. Trabalhos como \cite{perez2022} demonstram a aplicabilidade desta abordagem na geração sistemática de cenários adversariais para avaliação de modelos de linguagem.
+
+Os requisitos para aplicação incluem: definição de \textit{templates} parametrizáveis por características de perfil, especificação das dimensões a serem variadas (socioeconômica, educacional, geográfica), e critérios objetivos para avaliar a qualidade das respostas.
+
+\subsubsection{\textit{Differential Fuzzing}}
+
+O \textit{differential fuzzing} baseia-se na comparação sistemática de \textit{outputs} produzidos para entradas relacionadas \cite{mckeeman1998}. A técnica foi originalmente proposta para testar compiladores, comparando \textit{outputs} de diferentes implementações para a mesma entrada, e desde então tem sido aplicada em diversos domínios de teste de software \cite{chen2016}.
+
+Existem duas variantes principais: (i) comparação de respostas do mesmo modelo para entradas que deveriam produzir resultados equivalentes (por exemplo, pares contrafactuais que diferem apenas em atributos protegidos); e (ii) comparação de respostas de modelos diferentes para a mesma entrada.
+
+Esta técnica é fundamental para detectar inconsistências e vieses, pois permite identificar casos em que o modelo trata de forma diferenciada situações que, do ponto de vista ético, deveriam receber tratamento equivalente. No contexto de \textit{Fairness} em ML, trabalhos como \cite{Galhotra2017} aplicaram \textit{differential testing} para detecção automatizada de discriminação algorítmica. A eficácia da técnica depende da definição adequada de métricas de similaridade, que podem incluir: distância semântica baseada em \textit{embeddings}, análise de sentimento, extração de entidades e comparação de estrutura.
+
+\subsubsection{\textit{Metamorphic Testing}}
+
+O \textit{metamorphic testing} é uma técnica de teste que contorna o problema do oráculo ao verificar relações entre entradas e saídas, em vez de valores absolutos esperados \cite{Chen2018}. Proposto originalmente por Chen et al. \cite{chen2020}, o \textit{metamorphic testing} tem sido amplamente aplicado em sistemas onde a definição de \textit{outputs} corretos é difícil ou impossível, incluindo sistemas de aprendizado de máquina \cite{xie2011, murphy2008}.
+
+Uma \textbf{relação metamórfica} especifica como transformações na entrada devem se refletir (ou não) na saída. No contexto de avaliação ética, relações metamórficas podem ser definidas para verificar propriedades como: (i) \textbf{invariância demográfica}: a mudança de atributos protegidos não deve alterar substantivamente a recomendação; (ii) \textbf{consistência explicativa}: explicações para decisões equivalentes devem compartilhar elementos estruturais; e (iii) \textbf{equivalência aspiracional}: orientações sobre objetivos de vida não devem variar sistematicamente com a origem social do sujeito.
+
+A aplicação requer: definição formal das relações metamórficas, geração de pares de entradas relacionadas pela transformação especificada, e critérios para avaliar se a relação foi preservada nas saídas.
+
+\subsubsection{\textit{Canary Injection Fuzzing}}
+
+O \textit{canary injection fuzzing} consiste na inserção de \textit{tokens} identificáveis únicos (\textit{canary tokens}) em contextos de entrada para verificar se o modelo reproduz, vaza ou transforma essas informações de forma indevida. A técnica deriva de práticas de segurança de software, onde \textit{stack canaries} são utilizados para detectar \textit{buffer overflows} \cite{cowan1998}.
+
+No contexto de modelos de linguagem, Carlini et al. \cite{carlini2021} demonstraram que LLMs podem memorizar e reproduzir dados de treinamento, incluindo informações sensíveis. O \textit{canary injection} adapta essa descoberta para testes ativos: (i) geração de identificadores sintéticos únicos (códigos, números, sequências alfanuméricas); (ii) inserção desses \textit{tokens} em \textit{prompts} com instruções explícitas de confidencialidade; (iii) execução de consultas subsequentes que tentam extrair ou reconstruir os \textit{tokens}; e (iv) verificação da presença dos \textit{tokens} nas respostas.
+
+No projeto coordenado, esta técnica é empregada principalmente para avaliação do princípio de \textit{Privacy}, sendo menos aplicável aos princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency} abordados nesta dissertação.
+
+\subsubsection{\textit{Adversarial Prompt Injection}}
+
+O \textit{adversarial prompt injection} testa a robustez das salvaguardas do modelo mediante a aplicação de padrões conhecidos de manipulação, \textit{jailbreak} e pressão adversarial \cite{Schulhoff2023, greshake2023}. Essa técnica simula tentativas deliberadas de induzir o modelo a violar suas próprias políticas ou a produzir \textit{outputs} potencialmente danosos.
+
+Trabalhos recentes demonstraram a vulnerabilidade de LLMs a diversos tipos de ataques de \textit{prompt injection} \cite{liu2023}, incluindo: (i) \textit{direct injection}, onde instruções maliciosas são inseridas diretamente no \textit{prompt}; (ii) \textit{indirect injection}, onde o conteúdo malicioso é inserido em dados externos que o modelo processa; e (iii) \textit{jailbreaking}, onde técnicas de engenharia social são aplicadas para contornar restrições do modelo.
+
+No contexto ético, a técnica é útil para avaliar: (i) se o modelo mantém qualificadores de incerteza sob pressão; (ii) se reconhece o direito de contestação mesmo quando pressionado; (iii) se resiste a tentativas de forçar afirmações categóricas em domínios de incerteza; e (iv) se mantém consistência em suas respostas independentemente do tom ou urgência da solicitação.
+
+Os requisitos incluem: corpus de padrões adversariais conhecidos, taxonomia de técnicas de manipulação relevantes para cada risco, e critérios para classificar resistência versus vulnerabilidade.
+
+\subsection{Características de LLMs Relevantes para \textit{Fuzzing} Ético}
+\label{sec:llms-fuzzing}
+A aplicação de técnicas de \textit{fuzzing} a Grandes Modelos de Linguagem (LLMs) apresenta desafios específicos que decorrem das características arquiteturais e operacionais desses sistemas \cite{Manes2019, carlini2021}. As características apresentadas a seguir, amplamente documentadas na literatura sobre modelos de linguagem de grande escala, são essenciais para o design adequado das \textit{fuzzing engines} propostas neste trabalho. Uma análise complementar dessas características e seus impactos em avaliações de sistemas de IA pode ser encontrada em trabalhos que exploram a avaliação robusta de LLMs \cite{Monjezi2024, liu2023}.
+
+\subsubsection{Não-determinismo das Respostas}
+
+Diferentemente de sistemas tradicionais, LLMs produzem respostas não-determinísticas devido a parâmetros de inferência como \textit{temperature} e \textit{top-p}. Isso implica que a mesma entrada pode gerar \textit{outputs} diferentes em execuções distintas, o que afeta: (i) a reprodutibilidade dos testes; (ii) a definição de limiares de similaridade; e (iii) a interpretação de diferenças entre respostas.
+
+Para mitigar esse desafio, as campanhas de \textit{fuzzing} devem considerar: execução de múltiplas repetições por caso de teste, uso de métricas estatísticas agregadas em vez de comparações pontuais, e configuração de parâmetros de inferência que reduzam a variabilidade quando possível (por exemplo, \textit{temperature} = 0).
+
+\subsubsection{Limitações de Contexto}
+
+LLMs operam com janelas de contexto (\textit{context windows}) limitadas, o que restringe a quantidade de informação que pode ser incluída em um único \textit{prompt}. Essa característica afeta o design de casos de teste que requerem contexto extenso, como cenários de múltiplos turnos ou históricos de conversação.
+
+\subsubsection{Formato de Interação via API}
+
+A interação com LLMs comerciais ocorre tipicamente via APIs que impõem estruturas específicas de \textit{prompt} (mensagens de sistema, usuário e assistente), limites de \textit{tokens}, e formatos de resposta. O componente de \textit{Prompt-Formatting Unit} da arquitetura do projeto coordenado é responsável por converter os casos de teste gerados pelas \textit{fuzzing engines} nos formatos adequados para cada API.
+
+\subsubsection{Custos e Limites de Taxa}
+
+A execução de campanhas de \textit{fuzzing} em escala requer consideração de custos financeiros (cobrança por \textit{token}) e limites de taxa (\textit{rate limits}) impostos pelos provedores. O planejamento das avaliações empíricas deve balancear a cobertura desejada com as restrições orçamentárias e temporais.
+
+\subsection{\textit{Fuzzing} para IA: Estado da Arte}
+
+Trabalhos recentes demonstram que técnicas de \textit{fuzzing} podem ser adaptadas para o contexto de sistemas de IA. Monjezi et al.~\cite{Monjezi2024} propõem \textit{causal graph fuzzing} para avaliar a robustez de práticas de \textit{Fairness}, evidenciando o potencial da técnica para detectar fragilidades em propriedades éticas. Esta dissertação estende essa direção, propondo a aplicação de \textit{fuzzing} para detectar:
 
 \begin{itemize}
     \item vieses estatísticos;
@@ -127,40 +233,40 @@ Entretanto, a literatura analisada no MSL revela que ainda não existem \textit{
 \section{Trabalhos Correlatos}
 \label{sec:correlatos}
 
-Esta seção apresenta uma análise aprofundada dos estudos mais relacionados ao escopo desta pesquisa, considerando: (i) métodos estruturados para operacionalização ética, (ii) ferramentas práticas para avaliação ou mitigação de riscos éticos e (iii) técnicas automatizadas próximas à lógica de \textit{fuzzing}. Os trabalhos discutidos representam o estado da arte mais diretamente conectado ao desenvolvimento das \textit{fuzzing engines} propostas nesta dissertação, cobrindo seus contextos, métodos, resultados, limitações e relações com esta pesquisa.
+Esta seção apresenta uma análise aprofundada dos estudos mais relacionados ao escopo desta pesquisa, considerando: (i) métodos estruturados para operacionalização ética; (ii) ferramentas práticas para avaliação ou mitigação de riscos éticos; e (iii) técnicas automatizadas próximas à lógica de \textit{fuzzing}. Os trabalhos discutidos representam o estado da arte mais diretamente conectado ao desenvolvimento das \textit{fuzzing engines} propostas nesta dissertação, cobrindo seus contextos, métodos, resultados, limitações e relações com esta pesquisa.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Métodos Estruturados Relacionados}
 
 \paragraph{\textbf{Método ECCOLA (S012, S013).}}
-O método ECCOLA, introduzido em \cite{S012} e posteriormente expandido em \cite{S013}, propõe um conjunto estruturado de cartões (\textit{cards}) contendo diretrizes éticas aplicáveis ao desenvolvimento de sistemas de IA. Os estudos utilizam sessões participativas com profissionais da indústria para validar a utilidade desses cartões na elicitação de requisitos éticos. Os resultados indicam que os cartões auxiliam as equipes a identificar riscos éticos nas fases de requisitos e design. No entanto, o método depende de processos manuais e não oferece mecanismos de verificação automática nem integração direta ao SDLC. Embora seja um dos métodos mais consolidados para operacionalização conceitual, carece de suporte ferramental automatizado -- lacuna diretamente abordada pelas \textit{fuzzing engines} propostas neste trabalho.
+O método ECCOLA, introduzido em \cite{S012} e posteriormente expandido em \cite{S013}, propõe um conjunto estruturado de cartões (\textit{cards}) contendo diretrizes éticas aplicáveis ao desenvolvimento de sistemas de IA. Os estudos utilizam sessões participativas com profissionais da indústria para validar a utilidade desses cartões na elicitação de requisitos éticos. Os resultados indicam que os cartões auxiliam as equipes a identificar riscos éticos nas fases de requisitos e design. No entanto, o método depende de processos manuais e não oferece mecanismos de verificação automática nem integração direta ao SDLC. Não obstante seja um dos métodos mais consolidados para operacionalização conceitual, carece de suporte ferramental automatizado, lacuna diretamente abordada pelas \textit{fuzzing engines} propostas neste trabalho.
 
-\paragraph{\textbf{Ethics-Based Auditing (S014).}}
+\paragraph{\textbf{\textit{Ethics-Based Auditing} (S014).}}
 O estudo \cite{S014} propõe uma estrutura analítica para auditorias éticas em sistemas automatizados de decisão, aplicando entrevistas, análise documental e mapeamento de \textit{intervention points}. O método permite identificar riscos éticos ao longo do ciclo de vida da solução e orientar intervenções organizacionais. Os resultados evidenciam desafios como a falta de rastreabilidade e limitações técnicas na coleta de evidências. Embora ofereça diretrizes organizacionais robustas, o estudo não apresenta mecanismos automatizados de auditoria técnica, reforçando a necessidade de técnicas como o \textit{fuzzing} ético para avaliações mais sistemáticas.
 
-\paragraph{\textbf{Value-Sensitive and User-Centred Design (S025, S041).}}
+\paragraph{\textbf{\textit{Value-Sensitive} and \textit{User-Centred Design} (S025, S041).}}
 Os estudos \cite{S025, S041} aplicam princípios de \textit{Value-Sensitive Design} (VSD) e design centrado no usuário à incorporação de valores éticos em sistemas de software. São utilizados métodos qualitativos, como entrevistas e oficinas participativas, para identificar valores de usuários marginalizados e traduzi-los em requisitos funcionais e não funcionais. Apesar de contribuírem com metodologias interpretativas valiosas, essas abordagens permanecem inteiramente qualitativas e não integram verificações técnicas automatizadas, o que reforça o papel complementar das \textit{fuzzing engines} no apoio à conformidade durante testes.
 
-\paragraph{\textbf{Ethically Aligned Design e FATES (S046, S044).}}
-Os estudos \cite{S046, S044} propõem a integração de princípios éticos (como os da IEEE EAD) em metodologias ágeis e no modelo CRISP-DM. Os autores revisam etapas do ciclo de desenvolvimento e sugerem adaptações metodológicas, como a inclusão de artefatos específicos, práticas de documentação e critérios de aceitação com foco ético. No entanto, os estudos relatam baixa padronização e dependência significativa de especialistas, o que compromete a escalabilidade e a aplicabilidade prática. Além disso, não são apresentados mecanismos de verificação automatizada — lacuna crítica diretamente abordada pelas \textit{fuzzing engines} desta dissertação.
+\paragraph{\textbf{\textit{Ethically Aligned Design} e FATES (S046, S044).}}
+Os estudos \cite{S046, S044} propõem a integração de princípios éticos (como os da IEEE EAD) em metodologias ágeis e no modelo CRISP-DM. Os autores revisam etapas do ciclo de desenvolvimento e sugerem adaptações metodológicas, como a inclusão de artefatos específicos, práticas de documentação e critérios de aceitação com foco ético. No entanto, os estudos relatam baixa padronização e dependência significativa de especialistas, o que compromete a escalabilidade e a aplicabilidade prática. Além disso, não são apresentados mecanismos de verificação automatizada, lacuna crítica diretamente abordada pelas \textit{fuzzing engines} desta dissertação.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ferramentas Práticas Relacionadas}
 
 \paragraph{\textbf{AIF360 (S003) e Fairlearn (S009, S015).}}
-Os estudos \cite{S003, S009, S015} avaliam bibliotecas amplamente utilizadas para mitigação de viés. AIF360 oferece métricas de \textit{fairness}, algoritmos de mitigação e exemplos aplicados; já Fairlearn foca em mitigação por restrições e análise de desempenho por grupo. Em todos os estudos, as ferramentas são testadas em \textit{datasets} de benchmark, e os autores destacam que a mitigação tende a reduzir a acurácia dos modelos. Apesar de úteis, essas bibliotecas não oferecem geração automatizada de casos de teste nem avaliação exploratória -- requisitos centrais para o \textit{fuzzing} ético.
+Os estudos \cite{S003, S009, S015} avaliam bibliotecas amplamente utilizadas para mitigação de viés. AIF360 oferece métricas de \textit{Fairness}, algoritmos de mitigação e exemplos aplicados; já Fairlearn foca em mitigação por restrições e análise de desempenho por grupo. Em todos os estudos, as ferramentas são testadas em \textit{datasets} de \textit{benchmark}, e os autores destacam que a mitigação tende a reduzir a acurácia dos modelos. Apesar de úteis, essas bibliotecas não oferecem geração automatizada de casos de teste nem avaliação exploratória, requisitos centrais para o \textit{fuzzing} ético.
 
-\paragraph{\textbf{Frameworks de Explicabilidade (S006, S008, S027).}}
+\paragraph{\textbf{\textit{Frameworks} de Explicabilidade (S006, S008, S027).}}
 Os estudos \cite{S006, S008, S027} exploram técnicas de explicabilidade como LIME, SHAP e Grad-CAM. Os métodos são avaliados quanto à clareza das explicações, estabilidade entre execuções e fidelidade dos modelos. Embora aprofundem interpretações locais e globais, os autores relatam limitações significativas, como instabilidade nas explicações \cite{S008}, ausência de padronização e dificuldade de uso por usuários não especialistas. Essas limitações reforçam a necessidade de testes automatizados capazes de avaliar transparência de forma sistemática, como proposto pelas \textit{fuzzing engines} desta pesquisa.
 
-\paragraph{\textbf{Model Cards e Transparência Documentada (S046).}}
+\paragraph{\textbf{\textit{Model Cards} e Transparência Documentada (S046).}}
 O estudo \cite{S046} revisita e expande o uso de \textit{Model Cards} para a documentação ética de sistemas de IA. Os autores aplicam estudos de caso e identificam que a documentação estruturada melhora a comunicação e a governança dos modelos, mas depende de autores experientes e é suscetível a omissões. Por não incluir mecanismos de verificação, o trabalho evidencia a importância de combinar documentação com testes automatizados, abordagem adotada neste trabalho.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Técnicas Automatizadas Próximas ao Fuzzing}
+\subsection{Técnicas Automatizadas Próximas ao \textit{Fuzzing}}
 
-\paragraph{\textbf{Fuzzing para Fairness em ML (Monjezi et al., 2024).}}
-O trabalho de Monjezi et al.~\cite{Monjezi2024} é o mais próximo ao escopo desta dissertação. Os autores propõem \textit{causal graph fuzzing} para testar práticas de fairness em modelos de ML, utilizando perturbações em grafos causais para expor fragilidades e inconsistências. O estudo demonstra a viabilidade da técnica para avaliação de propriedades éticas, mas limita-se à propriedade de fairness, sem modularização, integração ao SDLC ou aplicação a múltiplos princípios éticos. O presente trabalho avança significativamente ao desenvolver três engines completas, modulares e integráveis, com foco explícito em \textit{Fairness}, \textit{Transparency} e \textit{Accountability}.
+\paragraph{\textbf{\textit{Fuzzing} para \textit{Fairness} em ML (Monjezi et al., 2024).}}
+O trabalho de Monjezi et al.~\cite{Monjezi2024} é o mais próximo ao escopo desta dissertação. Os autores propõem \textit{causal graph fuzzing} para testar práticas de \textit{Fairness} em modelos de ML, utilizando perturbações em grafos causais para expor fragilidades e inconsistências. O estudo demonstra a viabilidade da técnica para avaliação de propriedades éticas, mas limita-se à propriedade de \textit{Fairness}, sem modularização, integração ao SDLC ou aplicação a múltiplos princípios éticos. O presente trabalho avança significativamente ao desenvolver três \textit{engines} completas, modulares e integráveis, com foco explícito em \textit{Fairness}, \textit{Transparency} e \textit{Accountability}.
 
 \paragraph{\textbf{Auditorias Automatizadas Experimentais (S005, S046).}}
 Os estudos \cite{S005, S046} apresentam iniciativas preliminares de auditoria parcial em sistemas de IA. Em \cite{S005}, são propostos métodos para avaliar sustentabilidade e impacto sistêmico, utilizando métricas computacionais e indicadores sociais. Em \cite{S046}, auditorias são acopladas a \textit{pipelines} experimentais. Em ambos os casos, os autores apontam limitações como baixa cobertura, ausência de testes exploratórios e falta de escalabilidade, lacunas diretamente abordadas pela proposta de \textit{fuzzing} ético desenvolvida nesta dissertação.
@@ -171,4 +277,8 @@ A análise dos estudos correlatos revela que, embora existam métodos, \textit{f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Síntese do Capítulo}
 
-O MSL revelou que os princípios éticos são amplamente discutidos, mas raramente operacionalizados de forma prática e automatizada. Entre todos os princípios identificados, \textit{Fairness}, \textit{Accountability} e \textit{Transparency} apresentam maior maturidade técnica, sendo suportados por métricas, padrões arquiteturais e ferramentas emergentes. No entanto, as abordagens atuais permanecem limitadas por: (i) dependência de processos manuais; (ii) foco restrito às fases iniciais do SDLC; (iii) baixa integração a \textit{pipelines} de desenvolvimento; e (iv) ausência de verificação automatizada, especialmente na fase de testes. A utilização de técnicas de \textit{fuzzing} surge como uma oportunidade promissora para preencher essas lacunas identificadas no MSL, permitindo a avaliação sistemática, escalável e repetível de riscos éticos associados à IA. Essa base conceitual fundamenta diretamente a proposta apresentada no Capítulo~\ref{cap:proposta}.
+O MSL revelou que os princípios éticos são amplamente discutidos, mas raramente operacionalizados de forma prática e automatizada. Entre todos os princípios identificados, \textit{Fairness}, \textit{Accountability} e \textit{Transparency} apresentam maior maturidade técnica, sendo suportados por métricas, padrões arquiteturais e ferramentas emergentes. No entanto, as abordagens atuais permanecem limitadas por: (i) dependência de processos manuais; (ii) foco restrito às fases iniciais do SDLC; (iii) baixa integração a \textit{pipelines} de desenvolvimento; e (iv) ausência de verificação automatizada, especialmente na fase de testes.
+
+Este capítulo também fundamentou as seis técnicas de \textit{fuzzing}, \textit{mutation-based}, \textit{generation-based}, \textit{differential}, \textit{metamorphic testing}, \textit{canary injection} e \textit{adversarial prompt injection}, que serão empregadas nas \textit{fuzzing engines} desenvolvidas neste trabalho. Cada técnica foi detalhada quanto a seus princípios de funcionamento, requisitos de aplicação e adequação para diferentes tipos de riscos éticos.
+
+A utilização de técnicas de \textit{fuzzing} surge como uma oportunidade promissora para preencher as lacunas identificadas no MSL, permitindo a avaliação sistemática, escalável e repetível de riscos éticos associados à IA. Essa base conceitual fundamenta diretamente a proposta apresentada no Capítulo~\ref{cap:proposta}.

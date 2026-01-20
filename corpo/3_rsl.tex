@@ -156,7 +156,7 @@ Por meio desses critérios, garantiu-se que apenas estudos com contribuição t�
 
 \section{Condução do Mapeamento}
 
-A condução do mapeamento sistemático seguiu as diretrizes metodológicas propostas por Petersen et al.~\cite{Petersen2015}, estruturadas em três atividades principais: (i) identificação dos estudos, (ii) triagem e seleção e (iii) extração e organização dos dados. Todo o processo foi documentado integralmente para garantir reprodutibilidade, alinhamento ao protocolo definido e rastreabilidade das decisões de inclusão e exclusão.
+A condução do mapeamento sistemático seguiu as diretrizes metodológicas propostas por Petersen et al.~\cite{Petersen2015}, estruturadas em três atividades principais: (i) identificação dos estudos, (ii) triagem e seleção e (iii) extração e organização dos dados. Todo o processo foi documentado integralmente para garantir reprodutibilidade, adequação ao protocolo definido e rastreabilidade das decisões de inclusão e exclusão.
 
 A execução prática da triagem foi realizada com o apoio da plataforma Parsifal\footnote{\url{https://parsif.al}}, que auxiliou na organização das buscas, remoção automática de duplicatas e registro dos metadados dos estudos. A Figura~\ref{fig:msl} apresenta o fluxograma PRISMA adaptado ao mapeamento sistemático, contemplando as etapas de identificação, triagem, leitura do texto completo e inclusão final.
 
@@ -248,17 +248,16 @@ A execução prática da triagem foi realizada com o apoio da plataforma Parsifa
     }
 };
 
-% SETAS
-\draw[->,thick] (id) -- (afterdup);
-\draw[->,thick] (afterdup) -- (fulltext);
-\draw[->,thick] (fulltext) -- (incl);
-
-\draw[->,thick] (id.east) -- (dup.west);
-\draw[->,thick] (afterdup.east) -- (excl1.west);
-\draw[->,thick] (fulltext.east) -- (excl2.west);
+% Setas
+\draw[->, thick] (id.east) -- (dup.west);
+\draw[->, thick] (id.south) -- (afterdup.north);
+\draw[->, thick] (afterdup.east) -- (excl1.west);
+\draw[->, thick] (afterdup.south) -- (fulltext.north);
+\draw[->, thick] (fulltext.east) -- (excl2.west);
+\draw[->, thick] (fulltext.south) -- (incl.north);
 
 \end{tikzpicture}
-\caption{Fluxograma PRISMA 2020 adaptado para o mapeamento sistemático.}
+\caption{Fluxograma PRISMA do processo de seleção de estudos}
 \label{fig:msl}
 \end{figure}
 
@@ -592,25 +591,49 @@ A combinação entre resultados, desafios e lacunas revela um campo em rápida e
 \section{Ameaças à Validade}
 \label{sec:threats}
 
-Seguindo as recomendações metodológicas de Petersen et al.~\cite{Petersen2015}, esta seção discute as principais ameaças à validade que podem afetar os resultados do mapeamentos sistemáticos. Embora SMS não realizem avaliação formal de qualidade dos estudos, é fundamental assegurar transparência e rastreabilidade nas decisões metodológicas. A seguir, apresentam-se as ameaças identificadas e as estratégias adotadas para mitigá-las.
+Seguindo as recomendações metodológicas de Petersen et al.~\cite{Petersen2015}, esta seção discute as principais ameaças à validade que podem afetar os resultados do mapeamento sistemático. Embora MSL não realize avaliação formal de qualidade dos estudos, é fundamental assegurar transparência e rastreabilidade nas decisões metodológicas. A seguir, apresentam-se as ameaças identificadas e as estratégias adotadas para mitigá-las.
 
-Uma possível ameaça refere-se à abrangência da estratégia de busca e à capacidade das strings utilizadas de recuperar estudos relevantes. Para mitigar esse risco, empregou-se uma adaptação flexível do método PICOC (Tabela~\ref{tab:picoc}), contemplando sinônimos, termos correlatos e expressões amplamente utilizadas na literatura de ética em IA e Engenharia de Software. Além disso, conduzimos buscas em quatro bases de alta relevância (ACM, IEEE Xplore, Scopus e Web of Science), cobrindo conferências e periódicos importantes da área.
+\subsection{Completude da Busca}
+
+Uma possível ameaça refere-se à abrangência da estratégia de busca e à capacidade das strings utilizadas de recuperar estudos relevantes. Para mitigar esse risco, empregou-se uma adaptação flexível do método PICOC (Tabela~\ref{tab:picoc}), contemplando sinônimos, termos correlatos e expressões amplamente utilizadas na literatura de ética em IA e Engenharia de Software. Além disso, conduziram-se buscas em quatro bases de alta relevância (ACM, IEEE Xplore, Scopus e Web of Science), cobrindo conferências e periódicos importantes da área.
 
 Buscas exploratórias iniciais foram realizadas para verificar a sensibilidade da \textit{string} e identificar estudos de controle (\textit{sentinel papers}) frequentemente citados. Todos os estudos de controle foram recuperados, aumentando a confiança na suficiência da estratégia de busca. Apesar dessas medidas, reconhece-se que alguns estudos podem ter sido omitidos devido a limitações inerentes aos mecanismos de indexação das bases.
 
-Outra ameaça diz respeito à correta aplicação dos critérios de inclusão e exclusão (IC/EC), o que poderia levar à exclusão indevida de estudos relevantes. Para mitigar esse risco, os critérios foram definidos \textit{a priori} (Seção~\ref{sec:criteria}) e aplicados de forma sistemática em duas etapas de triagem (título/resumo e leitura do texto completo). A plataforma Parsifal foi utilizada para registrar motivos de exclusão, assegurando rastreabilidade e consistência. Como forma adicional de mitigação, realizou-se revisão cruzada dos estudos considerados limítrofes, reavaliando-os à luz das RQs e verificando a aderência conceitual ao escopo do mapeamento. Ainda assim, admite-se que alguma subjetividade possa ter influenciado a decisão em casos fronteiriços, especialmente em estudos que abordavam ética de maneira tangencial.
+\subsection{Viés na Seleção}
 
-A classificação dos estudos segundo princípios éticos e fases do SDLC envolve julgamentos interpretativos, representando uma potencial ameaça. Para mitigar esse risco, adotou-se um formulário estruturado de extração (Seção~\ref{sec:data_extraction}), derivado diretamente das RQs. Sempre que necessário, categorias foram consolidadas apenas quando havia sobreposição conceitual clara, como no caso de \textit{transparency} e \textit{explainability}. Além disso, revisões iterativas foram conduzidas para garantir consistência intra-estudo (coerência interna de cada classificação) e inter-estudos (uniformidade da aplicação das categorias). Para estudos ambíguos, recorreu-se à releitura da seção metodológica e dos artefatos apresentados, minimizando interpretações arbitrárias.
+Outra ameaça diz respeito à correta aplicação dos critérios de inclusão e exclusão (IC/EC), o que poderia levar à exclusão indevida de estudos relevantes. Para mitigar esse risco, os critérios foram definidos \textit{a priori} (Seção~\ref{sec:criteria}) e aplicados de forma sistemática em duas etapas de triagem (título/resumo e leitura do texto completo). A plataforma Parsifal foi utilizada para registrar motivos de exclusão, assegurando rastreabilidade e consistência. 
 
-Como mapeamentos sistemáticos não realizam síntese qualitativa profunda, há risco de superinterpretação ou simplificação excessiva. Para mitigar essa ameaça, a síntese seguiu o princípio de descrição antes de interpretação, consolidando tendências observáveis apenas quando sustentadas por múltiplos estudos. Tabelas quantitativas (Tabelas~\ref{tab:principles} e~\ref{tab:sdlc}) foram utilizadas para suportar inferências e assegurar que interpretações reflitam evidências observáveis no corpus e não percepções individuais. Ainda assim, reconhece-se que diferentes categorias éticas podem ter nuances diversas entre os estudos, e que a consolidação pode suavizar distinções finas. 
+Como forma adicional de mitigação, realizou-se revisão cruzada dos estudos considerados limítrofes, reavaliando-os à luz das RQs e verificando a aderência conceitual ao escopo do mapeamento. Ainda assim, admite-se que alguma subjetividade possa ter influenciado a decisão em casos fronteiriços, especialmente em estudos que abordavam ética de maneira tangencial.
 
-A generalização dos achados é limitada por dois fatores principais. Primeiro, o escopo temporal (2020--2025) restringe a análise às publicações do período de consolidação regulatória da ética em IA, podendo excluir contribuições relevantes anteriores ou posteriores. Segundo, o foco em publicações revisadas por pares exclui literatura cinzenta, diretrizes industriais e relatórios técnicos que frequentemente informam práticas reais. Embora essas decisões reforcem a confiabilidade acadêmica do corpus, elas reduzem a abrangência para contextos industriais. A mitigação adotada consistiu em incluir estudos aplicados e empíricos sempre que disponíveis e em discutir as lacunas de adoção prática (Seção~\ref{sec:discussion}). 
+\subsection{Confiabilidade da Classificação}
+
+A classificação dos estudos segundo princípios éticos e fases do SDLC envolve julgamentos interpretativos, representando uma potencial ameaça. Para mitigar esse risco, adotou-se um formulário estruturado de extração (Seção~\ref{sec:data_extraction}), derivado diretamente das RQs. Sempre que necessário, categorias foram consolidadas apenas quando havia sobreposição conceitual clara, como no caso de \textit{transparency} e \textit{explainability}. 
+
+Além disso, revisões iterativas foram conduzidas para garantir consistência intra-estudo (coerência interna de cada classificação) e inter-estudos (uniformidade da aplicação das categorias). Para estudos ambíguos, recorreu-se à releitura da seção metodológica e dos artefatos apresentados, minimizando interpretações arbitrárias.
+
+\subsection{Validade da Síntese}
+
+Como mapeamentos sistemáticos não realizam síntese qualitativa profunda, há risco de superinterpretação ou simplificação excessiva. Para mitigar essa ameaça, a síntese seguiu o princípio de descrição antes de interpretação, consolidando tendências observáveis apenas quando sustentadas por múltiplos estudos. Tabelas quantitativas (Tabelas~\ref{tab:principles} e~\ref{tab:sdlc}) foram utilizadas para suportar inferências e assegurar que interpretações reflitam evidências observáveis no corpus e não percepções individuais. Ainda assim, reconhece-se que diferentes categorias éticas podem ter nuances diversas entre os estudos, e que a consolidação pode suavizar distinções finas.
+
+\subsection{Generalização dos Resultados}
+
+A generalização dos achados é limitada por dois fatores principais. Primeiro, o escopo temporal (2020--2025) restringe a análise às publicações do período de consolidação regulatória da ética em IA, podendo excluir contribuições relevantes anteriores ou posteriores. Segundo, o foco em publicações revisadas por pares exclui literatura cinzenta, diretrizes industriais e relatórios técnicos que frequentemente informam práticas reais. 
+
+Embora essas decisões reforcem a confiabilidade acadêmica do corpus, elas reduzem a abrangência para setores industriais. A mitigação adotada consistiu em incluir estudos aplicados e empíricos sempre que disponíveis e em discutir as lacunas de adoção prática (Seção~\ref{sec:discussion}).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Síntese do Capítulo}
 \label{sec:sintese-msl}
 
-Este capítulo apresentou os resultados do Mapeamento Sistemático da Literatura conduzido com o objetivo de identificar, organizar e sintetizar as contribuições existentes sobre princípios éticos aplicados a sistemas de IA no contexto da Engenharia de Software. A investigação, estruturada segundo as diretrizes de Petersen et al.~\cite{Petersen2015}, permitiu construir um panorama abrangente e atualizado da área, contemplando tanto os princípios éticos mais discutidos quanto as abordagens práticas propostas para sua operacionalização ao longo do SDLC. Em resposta à RQ1, verificou-se que a literatura concentra-se predominantemente nos princípios de \textit{fairness}, \textit{accountability} e \textit{transparency}, que juntos compõem o núcleo conceitual da maior parte dos estudos analisados. Outros princípios como privacidade, segurança, confiabilidade e sustentabilidade aparecem de forma complementar, revelando um campo plural, porém ainda assim com ênfases claras e assimetrias temáticas. A análise evidencia a predominância de perspectivas técnico-operacionais, bem como a menor integração de frameworks éticos normativos consolidados no debate internacional.
+Este capítulo apresentou os resultados do Mapeamento Sistemático da Literatura conduzido com o objetivo de identificar, organizar e sintetizar as contribuições existentes sobre princípios éticos aplicados a sistemas de IA no contexto da Engenharia de Software. A investigação, estruturada segundo as diretrizes de Petersen et al.~\cite{Petersen2015}, permitiu construir um panorama abrangente e atualizado da área, contemplando tanto os princípios éticos mais discutidos quanto as abordagens práticas propostas para sua operacionalização ao longo do SDLC. 
+
+Em resposta à RQ1, verificou-se que a literatura concentra-se predominantemente nos princípios de \textit{fairness}, \textit{accountability} e \textit{transparency}, que juntos compõem o núcleo conceitual da maior parte dos estudos analisados. Outros princípios como privacidade, segurança, confiabilidade e sustentabilidade aparecem de forma complementar, revelando um campo plural, porém ainda assim com ênfases claras e assimetrias temáticas. A análise evidencia a predominância de perspectivas técnico-operacionais, bem como a menor integração de frameworks éticos normativos consolidados no debate internacional.
 
 A RQ2 permitiu mapear as abordagens utilizadas para operacionalizar esses princípios nas diferentes fases do ciclo de vida. Os resultados indicam uma concentração significativa nas fases iniciais e intermediárias (\textit{requirements}, \textit{design}, \textit{implementation}), com menor atenção às fases posteriores (\textit{operation}, \textit{maintenance}, \textit{governance}). Observou-se que a literatura fornece avançado repertório de técnicas de mitigação de viés, explicabilidade e auditoria, mas ainda carece de soluções integradas a ecossistemas de desenvolvimento, pipelines de MLOps ou processos organizacionais.
 
-A análise cruzada das evidências também revelou lacunas importantes que limitam o avanço da área: (i) baixa integração e rastreabilidade de princípios éticos entre fases do SDLC; (ii) ausência de ferramentas integradas que ofereçam suporte contínuo ao longo do desenvolvimento; (iii) escassez de estudos aplicados em contextos industriais; (iv) insuficiente formalização de \textit{trade-offs} éticos; e (v) sub-representação de preocupações socioambientais. Essas lacunas sugerem a necessidade de abordagens mais holísticas e orientadas à prática, capazes de conectar princípios abstratos às atividades de Engenharia de Software de maneira sistemática, contínua e auditável. Em síntese, o mapeamento evidencia que, embora o campo tenha avançado significativamente, sobretudo em mecanismos
+A análise cruzada das evidências também revelou lacunas importantes que limitam o avanço da área: (i) baixa integração e rastreabilidade de princípios éticos entre fases do SDLC; (ii) ausência de ferramentas integradas que ofereçam suporte contínuo ao longo do desenvolvimento; (iii) escassez de estudos aplicados em panoramas industriais; (iv) insuficiente formalização de \textit{trade-offs} éticos; e (v) sub-representação de preocupações socioambientais. Essas lacunas sugerem a necessidade de abordagens mais holísticas e orientadas à prática, capazes de conectar princípios abstratos às atividades de Engenharia de Software de maneira sistemática, contínua e auditável.
+
+Dentre as lacunas identificadas, a baixa cobertura da fase de \textit{Testing} (apenas 37,9\% dos estudos) merece destaque especial, pois indica uma oportunidade concreta para contribuições focadas em verificação automatizada de propriedades éticas. Esta constatação, combinada com a predominância dos princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}, fundamenta diretamente a proposta apresentada no Capítulo~\ref{cap:proposta}, que desenvolve \textit{fuzzing engines} dedicadas à avaliação sistemática desses três princípios em modelos de IA já implementados.
+
+Em síntese, o mapeamento evidencia que, embora o campo tenha avançado significativamente, sobretudo em mecanismos de mitigação de viés e técnicas de explicabilidade, ainda há carência de soluções automatizadas para a fase de testes, lacuna que esta dissertação busca endereçar.
