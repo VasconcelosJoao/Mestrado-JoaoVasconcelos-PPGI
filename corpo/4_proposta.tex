@@ -50,7 +50,7 @@ Para riscos não implementáveis via \textit{fuzzing}, apresenta-se: descrição
 
 \subsection{Modelos-Alvo}
 
-A avaliação empírica das \textit{fuzzing engines} desenvolvidas nesta dissertação será conduzida nos seguintes LLMs comerciais, selecionados por sua relevância na indústria e alinhamento com o projeto coordenado:
+A avaliação empírica das \textit{fuzzing engines} desenvolvidas nesta dissertação foi conduzida nos seguintes LLMs comerciais, selecionados por sua relevância na indústria e alinhamento com o projeto coordenado:
 
 \begin{itemize}
     \item \textbf{ChatGPT} (OpenAI): Modelo GPT-4 ou versão mais recente disponível via API.
@@ -63,13 +63,16 @@ A seleção desses modelos justifica-se por três fatores: (i) ampla adoção na
 
 \subsection{Métricas de Avaliação Agregadas}
 
-As métricas específicas de cada risco, definidas nas seções subsequentes, alimentam as métricas agregadas do sistema:
+As métricas específicas de cada risco, definidas nas seções subsequentes, alimentam as métricas agregadas do sistema, permitindo uma visão holística da conformidade ética do modelo:
 
 \begin{itemize}
-    \item \textbf{Failure Rate por Risco}: Proporção de casos de teste que resultam em violação para cada risco específico.
-    \item \textbf{Failure Rate por Modelo}: Proporção agregada de violações para cada LLM avaliado.
-    \item \textbf{Failure Rate por Princípio}: Proporção agregada de violações para cada princípio ético (\textit{Fairness}, \textit{Accountability}, \textit{Transparency}).
-    \item \textbf{Distribuição de Falhas}: Análise da distribuição de violações por tipo, severidade e padrão.
+    \item \textbf{Failure Rate por Risco}: Proporção de casos de teste que resultam em violação para cada risco específico. Esta métrica segue a metodologia de \textit{Red Teaming} automatizado, onde a eficácia do ataque é medida pela porcentagem de respostas ofensivas ou inseguras obtidas a partir de um conjunto de \textit{prompts} gerados \cite{Perez2022}.
+    
+    \item \textbf{Failure Rate por Modelo}: Proporção agregada de violações para cada LLM avaliado. Essa métrica permite a comparação direta de robustez e segurança entre diferentes versões de modelos (ex: GPT-3.5 vs GPT-4) ou configurações de \textit{fine-tuning} (Base vs RLHF), conforme estabelecido em relatórios técnicos de avaliação de LLMs \cite{OpenAI2023, Bird2020}.
+    
+    \item \textbf{Failure Rate por Princípio}: Proporção agregada de violações para cada princípio ético (\textit{Fairness}, \textit{Accountability}, \textit{Transparency}). Em \textit{fairness}, por exemplo, isso se traduz em métricas de disparidade de grupo (como \textit{statistical parity difference} ou taxas de erro desbalanceadas), fundamentais para identificar vieses sistêmicos \cite{Bellamy2019, Corbett-Davies2023}.
+    
+    \item \textbf{Distribuição de Falhas}: Análise da distribuição de violações por tipo, severidade e padrão. Técnicas de agrupamento (\textit{clustering}) de casos de teste falhos são utilizadas para identificar padrões semânticos comuns nas entradas que induzem o modelo ao erro, facilitando a correção de vulnerabilidades \cite{Perez2022, Nicolae2019}.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,49 +108,52 @@ A identificação dos riscos éticos foi realizada a partir de duas fontes princ
 \end{tabular}
 \end{table}
 
-\subsection{Mapeamento Consolidado: Riscos e Técnicas de Fuzzing}
+% \subsection{Mapeamento Consolidado: Riscos e Técnicas de Fuzzing}
 
-A Tabela~\ref{tab:mapeamento_tecnicas} apresenta o mapeamento consolidado entre os riscos éticos identificados e as técnicas de \textit{fuzzing} selecionadas para sua avaliação, incluindo a classificação de implementabilidade via testes automatizados.
+% A partir da taxonomia de riscos apresentada, realizamos um mapeamento entre os riscos éticos identificados e as técnicas de \textit{fuzzing} que permitem sua avaliação automatizada em modelos de linguagem. Este mapeamento considera tanto a aplicabilidade teórica quanto a viabilidade prática de implementação através de testes automatizados.
 
-\begin{table}[htbp]
-\centering
-\caption{Mapeamento consolidado de riscos éticos e técnicas de fuzzing}
-\label{tab:mapeamento_tecnicas}
-\footnotesize
-\begin{tabular}{|c|p{3.8cm}|p{4.8cm}|c|}
-\hline
-\textbf{Risco} & \textbf{Técnica Principal} & \textbf{Técnica Secundária} & \textbf{Implementável} \\ \hline
-R-F1 & \textit{Mutation-based fuzzing} & \textit{Differential fuzzing} & Sim \\ \hline
-R-F2 & \textit{Generation-based fuzzing} & \textit{Differential fuzzing} & Sim \\ \hline
-R-F3 & — & — & Não \\ \hline
-R-F4 & \textit{Differential fuzzing} & \textit{Mutation-based fuzzing} & Sim \\ \hline
-R-F5 & — & — & Não \\ \hline
-R-A1 & — & — & Não \\ \hline
-R-A2 & \textit{Generation-based fuzzing} & \textit{Adversarial prompt injection} & Sim \\ \hline
-R-A3 & — & — & Não \\ \hline
-R-T1 & \textit{Metamorphic testing} & \textit{Generation-based fuzzing} & Sim \\ \hline
-R-T2 & \textit{Mutation-based fuzzing} & \textit{Differential fuzzing} & Sim \\ \hline
-R-T3 & — & — & Não \\ \hline
-\end{tabular}
-\end{table}
+% \begin{table}[htbp]
+% \centering
+% \caption{Mapeamento consolidado de riscos éticos e técnicas de fuzzing}
+% \label{tab:mapeamento_tecnicas}
+% \footnotesize
+% \begin{tabular}{|c|p{3.8cm}|p{4.8cm}|c|}
+% \hline
+% \textbf{Risco} & \textbf{Técnica Principal} & \textbf{Técnica Secundária} & \textbf{Implementável} \\ \hline
+% R-F1 & \textit{Mutation-based fuzzing} & \textit{Differential fuzzing} & Sim \\ \hline
+% R-F2 & \textit{Generation-based fuzzing} & \textit{Differential fuzzing} & Sim \\ \hline
+% R-F3 & — & — & Não \\ \hline
+% R-F4 & \textit{Differential fuzzing} & \textit{Mutation-based fuzzing} & Sim \\ \hline
+% R-F5 & — & — & Não \\ \hline
+% R-A1 & — & — & Não \\ \hline
+% R-A2 & \textit{Generation-based fuzzing} & \textit{Adversarial prompt injection} & Sim \\ \hline
+% R-A3 & — & — & Não \\ \hline
+% R-T1 & \textit{Metamorphic testing} & \textit{Generation-based fuzzing} & Sim \\ \hline
+% R-T2 & \textit{Mutation-based fuzzing} & \textit{Differential fuzzing} & Sim \\ \hline
+% R-T3 & — & — & Não \\ \hline
+% \end{tabular}
+% \end{table}
 
-Conforme apresentado na Tabela~\ref{tab:mapeamento_tecnicas}, dos 11 riscos identificados: 6 são implementáveis via \textit{fuzzing} automatizado e 5 não são implementáveis por esta abordagem devido à sua natureza organizacional, normativa ou dependência de julgamento humano especializado.
+% Conforme apresentado na Tabela~\ref{tab:mapeamento_tecnicas}, dos 11 riscos identificados: 6 são implementáveis via \textit{fuzzing} automatizado e 5 não são implementáveis por esta abordagem devido à sua natureza organizacional, normativa ou dependência de julgamento humano especializado. Os riscos não implementáveis (R-F3, R-F5, R-A1, R-A3 e R-T3) requerem intervenções de governança, políticas organizacionais ou avaliação qualitativa especializada, ficando fora do escopo desta pesquisa que se concentra em técnicas de teste automatizado.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Critérios de Seleção dos Riscos Testáveis}
 \label{sec:criterios_selecao}
 
-A partir da taxonomia de riscos éticos apresentado na Tabela~\ref{tab:riscos_mapeados}, a seleção dos riscos a serem operacionalizados via \textit{fuzzing} considerou critérios metodológicos baseados na viabilidade técnica:
+A partir da taxonomia de riscos éticos apresentada na Tabela~\ref{tab:riscos_mapeados}, a seleção dos riscos a serem operacionalizados via \textit{fuzzing} considerou critérios metodológicos baseados na viabilidade técnica de automação e na natureza do artefato testado. Estes critérios alinham os requisitos de teste de software (como a necessidade de oráculos) com as definições formais de propriedades éticas:
 
 \begin{enumerate}
-    \item \textbf{Observabilidade Comportamental}: O risco deve manifestar-se através de comportamentos observáveis nas saídas do modelo, permitindo a definição de oráculos objetivos que distinguem comportamento aceitável de violação ética.
-    \item \textbf{Reprodutibilidade Automatizada}: Deve ser possível gerar sistematicamente casos de teste que exponham o risco, seja por mutação de inputs existentes, geração de novos cenários estruturados ou comparação diferencial de outputs.
-    \item \textbf{Mensurabilidade Quantitativa}: O risco deve admitir métricas objetivas que permitam avaliar a severidade das violações detectadas e comparar o desempenho ético entre diferentes modelos ou versões.
-    \item \textbf{Independência de Contexto Organizacional}: O risco deve ser testável no nível algorítmico, sem dependência de processos organizacionais, políticas institucionais ou estruturas de governança externas ao sistema sob teste.
+    \item \textbf{Observabilidade Comportamental}: O risco deve manifestar-se através de comportamentos observáveis nas saídas do modelo (ex: texto gerado, classificação), permitindo a definição de oráculos objetivos que distinguem comportamento aceitável de violação ética. Conforme estabelecido por Manès et al. \cite{Manes2019} e demonstrado no framework \textit{DeepXplore} \cite{Pei2017}, a automação de testes depende da capacidade de monitorar discrepâncias ou falhas explícitas durante a execução (o ``problema do oráculo'').
+    
+    \item \textbf{Reprodutibilidade Automatizada}: Deve ser possível gerar sistematicamente casos de teste que exponham o risco, seja por mutação de \textit{inputs} existentes ou geração de novos cenários estruturados. Riscos que dependem de condições irrepetíveis ou intervenção humana manual violam o princípio do \textit{fuzzing} de exploração massiva do espaço de entrada, conforme descrito nas abordagens de \textit{Red Teaming} automatizado de Perez et al. \cite{Perez2022} e na geração sistemática de testes do SAGE \cite{Godefroid2008}.
+    
+    \item \textbf{Mensurabilidade Quantitativa}: O risco deve admitir métricas objetivas (funções de custo ou distância) que permitam avaliar a severidade das violações e guiar o algoritmo de busca. A literatura de \textit{fairness} e robustez enfatiza a necessidade de traduzir conceitos normativos em definições matemáticas computáveis, como taxas de erro ou distâncias vetoriais, para viabilizar a otimização \cite{Bellamy2019, Odena2019, Corbett-Davies2023}.
+    
+    \item \textbf{Independência de Contexto Organizacional}: O risco deve ser testável no nível do artefato algorítmico (o modelo e seus dados imediatos), sem dependência de processos organizacionais, políticas institucionais ou estruturas de governança externas. Esta delimitação segue a distinção de Bommasani et al. \cite{Bommasani2021} entre vieses intrínsecos do modelo e danos extrínsecos de aplicação, bem como a análise de Barocas e Selbst \cite{Barocas2016} sobre mecanismos de discriminação que ocorrem na definição do problema (\textit{problem definition}) antes mesmo da escrita do código.
 \end{enumerate}
 
-É importante reconhecer as limitações desta abordagem: riscos que requerem avaliação contextual profunda, análise causal ou julgamento humano foram excluídos por limitações intrínsecas do fuzzing automatizado.
+É importante reconhecer as limitações desta abordagem: riscos que requerem avaliação contextual profunda, análise causal social ou julgamento humano subjetivo (como a legitimidade do uso da IA em certos domínios) foram excluídos por limitações intrínsecas ao escopo do \textit{fuzzing} automatizado.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -163,7 +169,7 @@ O risco R-F1 refere-se à possibilidade de sistemas de IA produzirem outputs dis
 
 \subsubsection{Técnica de Fuzzing: \textit{Mutation-based Fuzzing} + \textit{Differential Fuzzing}}
 
-O \textit{mutation-based fuzzing} opera através da perturbação sistemática de atributos sensíveis nos prompts de entrada~\cite{Manes2019, xie2019}. Para cada prompt do corpus de teste, são geradas variantes que substituem marcadores demográficos (nomes típicos de diferentes grupos étnicos, pronomes de gênero, indicadores de idade) mantendo todos os demais elementos inalterados. Esta abordagem alinha-se ao conceito de \textit{counterfactual fairness}~\cite{kusner2017}, permitindo avaliar se a mudança de atributos protegidos altera indevidamente as respostas do modelo. O \textit{differential fuzzing} então compara as saídas produzidas para cada par de variantes~\cite{mckeeman1998}.
+O \textit{mutation-based fuzzing} opera através da perturbação sistemática de atributos sensíveis nos prompts de entrada~\cite{Manes2019, xie2019}. Para cada prompt do corpus de teste, são geradas variantes que substituem marcadores demográficos (nomes típicos de diferentes grupos étnicos, pronomes de gênero, indicadores de idade) mantendo todos os demais elementos inalterados. Esta abordagem alinha-se ao conceito de \textit{counterfactual fairness}~\cite{kusner2017}, permitindo avaliar se a mudança de atributos protegidos altera indevidamente as respostas do modelo. O \textit{differential fuzzing} então compara as saídas produzidas para cada par de variantes~\cite{McKeeman1998}.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
@@ -227,7 +233,7 @@ O risco R-F2 caracteriza situações onde sistemas de IA distribuem desigualment
 
 \subsubsection{Técnica de Fuzzing: \textit{Generation-based Fuzzing} + \textit{Differential Fuzzing}}
 
-O \textit{generation-based fuzzing} cria cenários estruturados através de templates parametrizados por características de perfil~\cite{godefroid2008, wang2017}. Para cada tipo de solicitação (conselho financeiro, orientação de carreira, informação médica), são geradas variantes que apresentam o mesmo pedido com diferentes perfis de solicitante. O \textit{differential fuzzing} compara as respostas obtidas~\cite{Galhotra2017}.
+O \textit{generation-based fuzzing} cria cenários estruturados através de templates parametrizados por características de perfil~\cite{godefroidGrammar2008, wang2017}. Para cada tipo de solicitação (conselho financeiro, orientação de carreira, informação médica), são geradas variantes que apresentam o mesmo pedido com diferentes perfis de solicitante. O \textit{differential fuzzing} compara as respostas obtidas~\cite{Galhotra2017}.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
@@ -310,7 +316,7 @@ O risco R-F4 refere-se à disparidade de desempenho do modelo entre diferentes s
 
 \subsubsection{Técnica de Fuzzing: \textit{Differential Fuzzing} + \textit{Mutation-based Fuzzing}}
 
-O \textit{differential fuzzing} compara sistematicamente o desempenho em tarefas equivalentes formuladas para diferentes subgrupos~\cite{mckeeman1998, Galhotra2017}. O \textit{mutation-based fuzzing} introduz variações culturalmente específicas (expressões idiomáticas, referências culturais, variantes linguísticas) para avaliar robustez diferencial~\cite{xie2019}.
+O \textit{differential fuzzing} compara sistematicamente o desempenho em tarefas equivalentes formuladas para diferentes subgrupos~\cite{McKeeman1998, Galhotra2017}. O \textit{mutation-based fuzzing} introduz variações culturalmente específicas (expressões idiomáticas, referências culturais, variantes linguísticas) para avaliar robustez diferencial~\cite{xie2019}.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
@@ -420,7 +426,7 @@ O risco R-A2 caracteriza situações onde sistemas de IA produzem decisões que 
 
 \subsubsection{Técnica de Fuzzing: \textit{Generation-based Fuzzing} + \textit{Adversarial Prompt Injection}}
 
-O \textit{generation-based fuzzing} cria cenários estruturados onde usuários solicitam contestação, revisão ou explicação de decisões~\cite{perez2022}. O \textit{adversarial prompt injection} testa vulnerabilidades a manipulação que poderia forçar mudança de decisão sem fundamento~\cite{greshake2023, liu2023}.
+O \textit{generation-based fuzzing} cria cenários estruturados onde usuários solicitam contestação, revisão ou explicação de decisões~\cite{Perez2022}. O \textit{adversarial prompt injection} testa vulnerabilidades a manipulação que poderia forçar mudança de decisão sem fundamento~\cite{greshake2023, liu2023}.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
@@ -558,7 +564,7 @@ O risco R-T2 refere-se à dificuldade de detectar erros sistemáticos e vieses o
 
 \subsubsection{Técnica de Fuzzing: \textit{Mutation-based Fuzzing} + \textit{Differential Fuzzing}}
 
-O \textit{mutation-based fuzzing} introduz perturbações sistemáticas em dimensões que não deveriam afetar a decisão (atributos irrelevantes) para verificar se o modelo mantém consistência~\cite{Manes2019}. O \textit{differential fuzzing} compara outputs para identificar sensibilidades ocultas a fatores que deveriam ser neutros~\cite{mckeeman1998}.
+O \textit{mutation-based fuzzing} introduz perturbações sistemáticas em dimensões que não deveriam afetar a decisão (atributos irrelevantes) para verificar se o modelo mantém consistência~\cite{Manes2019}. O \textit{differential fuzzing} compara outputs para identificar sensibilidades ocultas a fatores que deveriam ser neutros~\cite{McKeeman1998}.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
