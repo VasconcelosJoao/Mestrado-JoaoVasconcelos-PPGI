@@ -32,7 +32,7 @@ Apesar dos avanços, a literatura aponta desafios persistentes, como a ausência
 
 O princípio de \textit{Accountability} (responsabilização) envolve a capacidade de atribuir responsabilidade por decisões algorítmicas e garantir mecanismos de governança e auditoria \cite{Diakopoulos2016,Kroll2017}. A literatura em ética de IA enfatiza que sistemas de IA devem ser rastreáveis, auditáveis e sujeitos a prestação de contas \cite{Wieringa2020}.
 
-No corpus analisado, \textit{accountability} aparece associado a práticas de rastreabilidade de decisões \cite{S008, S016, S025}, documentação estruturada de modelos e dados \cite{S018, S037}, e mecanismos de auditoria algorítmica \cite{S005, S046}. Abordagens técnicas incluem:
+A literatura sobre \textit{accountability} em IA associa o princípio a práticas de rastreabilidade de decisões \cite{S008, S016, S025}, documentação estruturada de modelos e dados \cite{S018, S037}, e mecanismos de auditoria algorítmica \cite{S005, S046}. Abordagens técnicas incluem:
 
 \begin{itemize}
     \item \textit{model cards} e \textit{datasheets}, que documentam características, limitações e contextos de uso de modelos e conjuntos de dados \cite{S018, S037,Mitchell2019};
@@ -127,9 +127,9 @@ O \textit{fuzzing} tradicional opera através de quatro componentes fundamentais
 Técnicas avançadas incluem \textit{coverage-guided fuzzing} (e.g., AFL, LibFuzzer), que utiliza instrumentação leve para priorizar casos de teste que exploram novos caminhos de execução ou transições de estado raras \cite{Bohme2016, Manes2019}, e \textit{grammar-based fuzzing}, que gera entradas conformes a especificações sintáticas ou modelos de entrada inferidos \cite{Manes2019, Godefroid2008}.
 
 \subsection{Técnicas de \textit{Fuzzing} para Avaliação Ética de LLMs}
-\label{tab:fuzzing-techniques}
+\label{sec:tecnicas-fuzzing}
 
-A aplicação de \textit{fuzzing} para avaliação ética de Large Language Models (LLMs) requer adaptações metodológicas significativas. A Tabela~\ref{tab:fuzzing-techniques} resume seis técnicas identificadas na literatura como particularmente adequadas para este contexto.
+A aplicação de \textit{fuzzing} para avaliação ética de Large Language Models (LLMs) requer adaptações metodológicas significativas. A Tabela~\ref{tab:tecnicas-fuzzing} resume as técnicas identificadas na literatura como particularmente adequadas para este contexto, detalhando aquelas empregadas nesta pesquisa e a técnica de \textit{canary injection}, identificada no levantamento mas não utilizada nas \textit{engines} de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}.
 
 \begin{table}[htbp]
 \centering
@@ -153,6 +153,8 @@ A aplicação de \textit{fuzzing} para avaliação ética de Large Language Mode
 \bottomrule
 \end{tabular}
 \end{table}
+
+A aplicação sistemática dessas técnicas para detecção de violações éticas é denominada \textit{ethics-oriented fuzzing}. Diferentemente do \textit{fuzzing} tradicional, cujo oráculo é definido por critérios de corretude funcional ou segurança (e.g., ausência de \textit{crashes}), no \textit{fuzzing} ético o oráculo é definido por critérios éticos — como métricas de equidade, consistência de explicações ou invariância decisória. O espaço de entrada também é estruturado em torno de cenários especificamente projetados para exercitar o comportamento ético do sistema \cite{Manes2019, Galhotra2017, Chen2018}.
 
 \subsubsection{\textit{Mutation-based Fuzzing}}
 
@@ -178,7 +180,7 @@ O \textit{differential fuzzing} baseia-se na comparação sistemática de \texti
 
 Existem duas variantes principais: (i) comparação de respostas do mesmo modelo para entradas que deveriam produzir resultados equivalentes (por exemplo, pares contrafactuais que diferem apenas em atributos protegidos); e (ii) comparação de respostas de modelos diferentes para a mesma entrada.
 
-Esta técnica é fundamental para detectar inconsistências e vieses, pois permite identificar casos em que o modelo trata de forma diferenciada situações que, do ponto de vista ético, deveriam receber tratamento equivalente. No contexto de \textit{Fairness} em ML, trabalhos como \cite{Galhotra2017} aplicaram \textit{differential testing} para detecção automatizada de discriminação algorítmica. A eficácia da técnica depende da definição adequada de métricas de similaridade, que podem incluir: distância semântica baseada em \textit{embeddings}, análise de sentimento, extração de entidades e comparação de estrutura.
+Esta técnica é fundamental para detectar inconsistências e vieses, pois permite identificar casos em que o modelo trata de forma diferenciada situações que, do ponto de vista ético, deveriam receber tratamento equivalente. No contexto de \textit{Fairness} em ML, trabalhos como \cite{Galhotra2017} aplicaram \textit{differential testing} para detecção automatizada de discriminação algorítmica. A eficácia da técnica depende da definição adequada de métricas de similaridade: nesta pesquisa, emprega-se similaridade de cosseno baseada em SBERT (\textit{sentence-transformers}, modelo \texttt{all-MiniLM-L6-v2}) como método primário, com similaridade TF-cosseno como alternativa determinística para garantir reprodutibilidade em ambientes sem GPU; complementarmente, utilizam-se léxicos de sentimento embutidos no código — listas de palavras positivas e negativas calibradas para o contexto financeiro e profissional em português brasileiro — para o cálculo de delta de sentimento entre pares de respostas.
 
 \subsubsection{\textit{Metamorphic Testing}}
 
@@ -194,7 +196,7 @@ O \textit{canary injection fuzzing} consiste na inserção de \textit{tokens} id
 
 No contexto de modelos de linguagem, Carlini et al. \cite{carlini2021} demonstraram que LLMs podem memorizar e reproduzir dados de treinamento, incluindo informações sensíveis. O \textit{canary injection} adapta essa descoberta para testes ativos: (i) geração de identificadores sintéticos únicos (códigos, números, sequências alfanuméricas); (ii) inserção desses \textit{tokens} em \textit{prompts} com instruções explícitas de confidencialidade; (iii) execução de consultas subsequentes que tentam extrair ou reconstruir os \textit{tokens}; e (iv) verificação da presença dos \textit{tokens} nas respostas.
 
-No projeto coordenado, esta técnica é empregada principalmente para avaliação do princípio de \textit{Privacy}, sendo menos aplicável aos princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency} abordados nesta dissertação.
+Esta técnica é mais adequada para a avaliação do princípio de \textit{Privacy} — especificamente para detectar memorização e vazamento de dados de treinamento — sendo de aplicabilidade limitada aos princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency} abordados nesta dissertação, razão pela qual não foi empregada nas \textit{engines} desenvolvidas.
 
 \subsubsection{\textit{Adversarial Prompt Injection}}
 
@@ -220,9 +222,7 @@ A aplicação de \textit{fuzzing} para a avaliação de propriedades de justiça
 \textbf{Opacidade Arquitetural (Caixa-Preta):} Modelos proprietários modernos (e.g., GPT-4, Gemini) operam como caixas-pretas, não expondo gradientes ou estados internos necessários para técnicas de \textit{grey-box fuzzing} guiadas por cobertura \cite{Bommasani2021, Dai2024}. Isso favorece a adoção de abordagens de \textit{black-box fuzzing} baseadas em mutação de texto e análise comportamental das saídas, conforme observado em ferramentas recentes de auditoria de viés \cite{Salimian2025, Srinivasan2025}.
 
 \textbf{Conflito de Objetivos no Alinhamento:} O processo de alinhamento (RLHF) treina o modelo para ser simultaneamente prestativo e inofensivo, criando objetivos potencialmente conflitantes. Wei et al. \cite{Wei2023} demonstram que técnicas de \textit{jailbreak} exploram esse conflito (e.g., \textit{competing objectives}), induzindo o modelo a priorizar a instrução de "seguir o comando do usuário" em detrimento das diretrizes de segurança. Portanto, o \textit{fuzzing} deve testar especificamente os limites de decisão onde esses objetivos entram em conflito.
-Resumo
 
-\subsection{\textit{Fuzzing} para IA: Estado da Arte}
 \label{sec:fuzzing-ia}
 
 A aplicação de \textit{fuzzing} para avaliação de sistemas de IA é um campo emergente. Trabalhos recentes incluem:
@@ -258,6 +258,9 @@ Raji et al. \cite{Raji2020} propõem frameworks de auditoria algorítmica basead
 \paragraph{\textbf{AIF360 e Fairlearn.}}
 As bibliotecas AIF360 \cite{Bellamy2019} e Fairlearn \cite{Bird2020} oferecem métricas de \textit{fairness} e algoritmos de mitigação de viés. Embora valiosas, essas ferramentas operam em modo de análise pontual, sem geração automática de casos de teste ou exploração sistemática do espaço de entrada. O \textit{fuzzing} ético proposto nesta dissertação complementa essas ferramentas ao oferecer geração automática de casos de teste adversariais para avaliação robusta de \textit{fairness}.
 
+\paragraph{\textbf{LangBiTe e LangFair.}}
+LangBiTe \cite{Morales2025} e LangFair \cite{Bouchard2024} representam iniciativas mais recentes voltadas especificamente para LLMs. LangBiTe propõe uma DSL (\textit{Domain-Specific Language}) para especificação e execução de testes de viés em modelos de linguagem, utilizando geração de \textit{prompts} baseada em templates. LangFair oferece métricas automatizadas de equidade e toxicidade para texto generativo. Ambas as ferramentas avançam em relação às bibliotecas anteriores ao considerar saídas generativas, mas ainda dependem de avaliadores auxiliares não-determinísticos (outros LLMs como juízes) e não definem oráculos determinísticos com limiares explícitos, o que compromete a reprodutibilidade dos resultados. A presente proposta distingue-se ao adotar oráculos determinísticos baseados em métricas quantificáveis com limiares explicitamente definidos, eliminando a dependência de avaliação humana ou de modelos auxiliares.
+
 \paragraph{\textbf{LIME, SHAP e Grad-CAM.}}
 Ferramentas de explicabilidade como LIME \cite{Ribeiro2016}, SHAP \cite{Lundberg2017} e Grad-CAM \cite{Selvaraju2017} geram interpretações para decisões de modelos. No entanto, essas ferramentas não verificam sistematicamente a qualidade ou consistência das explicações geradas. A \textit{fuzzing engine} para \textit{Transparency} proposta nesta dissertação utiliza \textit{metamorphic testing} para validar propriedades de explicações, complementando abordagens existentes.
 
@@ -275,6 +278,6 @@ Este capítulo apresentou o referencial teórico que fundamenta o desenvolviment
 
 A revisão de abordagens e métodos para operacionalização ética revelou que, embora existam frameworks estruturados (como ECCOLA) e ferramentas técnicas (como AIF360, LIME, SHAP), essas soluções apresentam limitações importantes: (i) dependência de processos manuais para geração de cenários de teste \cite{S005}; (ii) operação isolada, sem integração entre si ou com pipelines de desenvolvimento \cite{S046}; (iii) foco restrito a fases específicas do SDLC ou propriedades únicas \cite{Monjezi2024}; e (iv) escassez de mecanismos de verificação automatizada e contínua para LLMs.
 
-A discussão sobre fundamentos de \textit{fuzzing} estabeleceu as bases técnicas para a proposta desta dissertação, detalhando seis técnicas, \textit{mutation-based}, \textit{generation-based}, \textit{differential}, \textit{metamorphic testing}, \textit{canary injection} e \textit{adversarial prompt injection}, que foram empregadas nas \textit{fuzzing engines} desenvolvidas. Foram também discutidas características específicas de LLMs (não-determinismo, limitações de contexto, opacidade arquitetural) que exigiram adaptações metodológicas para aplicação efetiva de \textit{fuzzing}.
+A discussão sobre fundamentos de \textit{fuzzing} estabeleceu as bases técnicas para a proposta desta dissertação, detalhando as técnicas empregadas nas \textit{fuzzing engines} desenvolvidas: \textit{mutation-based fuzzing}, \textit{generation-based fuzzing}, \textit{differential fuzzing}, \textit{metamorphic testing} e \textit{adversarial prompt injection}. O capítulo também apresentou \textit{canary injection fuzzing}, técnica identificada no levantamento da literatura mas não empregada nas \textit{engines} de \textit{Fairness}, \textit{Accountability} e \textit{Transparency} por ser mais adequada ao domínio de \textit{Privacy}. Foram também discutidas características específicas de LLMs (não-determinismo, limitações de contexto, opacidade arquitetural) que exigiram adaptações metodológicas para aplicação efetiva de \textit{fuzzing}.
 
 A análise de trabalhos correlatos evidenciou que, apesar dos avanços recentes em automação pontual, a literatura carecia de frameworks completos para avaliação ética de LLMs. A proposta desta dissertação, detalhada no Capítulo~\ref{cap:proposta}, preencheu essa lacuna ao desenvolver \textit{fuzzing engines} modulares, integráveis e dedicadas à verificação sistemática de \textit{Fairness}, \textit{Transparency} e \textit{Accountability} em modelos de IA já implementados.
