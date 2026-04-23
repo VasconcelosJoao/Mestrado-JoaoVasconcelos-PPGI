@@ -126,7 +126,7 @@ Os Critérios de Inclusão (IC) definem o tipo de evidência relevante para resp
 \begin{enumerate}
     \item[(IC1)] Estudos primários que proponham, descrevam ou utilizem princípios, métodos, processos, ferramentas ou artefatos relacionados à operacionalização de ética em IA no contexto da Engenharia de Software. 
     
-    \item[(IC2)] Estudos que apresentem vínculo explícito com práticas, atividades ou artefatos do ciclo de vida de desenvolvimento de software SDLC, incluindo requisitos, projeto, implementação, testes, operação, manutenção, DevOps/MLOps ou governança.
+    \item[(IC2)] Estudos que apresentem vínculo explícito com práticas, atividades ou artefatos do ciclo de vida de desenvolvimento de software (SDLC), incluindo requisitos, projeto, implementação, testes, operação, manutenção, DevOps/MLOps ou governança.
     
     \item[(IC3)] Disponibilidade do texto completo -- necessário para extrair categorias de análise, como princípios éticos, abordagens e fases do SDLC.
 
@@ -139,7 +139,7 @@ Os Critérios de Inclusão (IC) definem o tipo de evidência relevante para resp
 
 \subsection{Critérios de Exclusão}
 
-Os Critérios de Exclusão (EC) removem estudos desalinhados com o escopo ou que não ofereçam evidência relevante às (RQs):
+Os Critérios de Exclusão (EC) removem estudos desalinhados com o escopo ou que não ofereçam evidência relevante às questões de pesquisa (RQs):
 
 \begin{enumerate}
     \item[(EC1)] Revisões secundárias, editoriais, \textit{position papers} sem aplicação ou proposta técnica, tutoriais sem avaliação e relatórios não científicos.
@@ -235,7 +235,7 @@ A execução prática da triagem foi realizada com o apoio da plataforma Parsifa
 \node[boxExcl, right=1.0cm of fulltext] (excl2) {
     \parbox{5.0cm}{
         \textbf{Estudos excluídos após leitura completa}\\
-        $N = 105$\\
+        $N = 104$\\
         \footnotesize  EC2, EC3, EC5
     }
 };
@@ -244,7 +244,7 @@ A execução prática da triagem foi realizada com o apoio da plataforma Parsifa
 \node[boxMain, below=1.2cm of fulltext] (incl) {
     \parbox{7.0cm}{
         \textbf{Estudos incluídos no mapeamento}\\
-        $N = 58$
+        $N = 59$
     }
 };
 
@@ -261,9 +261,9 @@ A execução prática da triagem foi realizada com o apoio da plataforma Parsifa
 \label{fig:msl}
 \end{figure}
 
-As buscas foram realizadas em outubro de 2025 nas bases ACM Digital Library, IEEE Xplore, Scopus e Web of Science, resultando em \textbf{2.491 registros iniciais}. A remoção de \textbf{708 duplicatas} reduziu o conjunto a \textbf{1.783 estudos únicos}. A triagem por título e resumo, baseada nos critérios IC/EC definidos na Seção~\ref{sec:criteria}, levou à exclusão de \textbf{1620 estudos} por falta de aderência temática.
+As buscas foram realizadas em outubro de 2025 nas bases ACM Digital Library, IEEE Xplore, Scopus e Web of Science, resultando em \textbf{2.491 registros iniciais}. A remoção de \textbf{708 duplicatas} reduziu o conjunto a \textbf{1.783 estudos únicos}. A triagem por título e resumo, baseada nos critérios IC/EC definidos na Seção~\ref{sec:criteria}, levou à exclusão de \textbf{1.620 estudos} por falta de aderência temática.
 
-Os \textbf{163 estudos restantes} foram analisados integralmente em texto completo, com exclusão adicional de trabalhos que: (i) não apresentavam vínculo explícito com Engenharia de Software (EC2), (ii) não disponibilizavam texto completo (EC3), ou (iii) abordavam ética apenas de maneira tangencial, sem relação com princípios éticos operacionais (EC5). Ao final desse processo, \textbf{58 estudos} atenderam a todos os critérios e foram incluídos no corpus final do mapeamento.
+Os \textbf{163 estudos restantes} foram analisados integralmente em texto completo, com exclusão adicional de trabalhos que: (i) não apresentavam vínculo explícito com Engenharia de Software (EC2), (ii) não disponibilizavam texto completo (EC3), ou (iii) abordavam ética apenas de maneira tangencial, sem relação com princípios éticos operacionais (EC5). Ao final desse processo, \textbf{59 estudos} atenderam a todos os critérios e foram incluídos no corpus final do mapeamento.
 
 A Tabela~\ref{estudos} apresenta o conjunto completo dos estudos selecionados, classificados por ID, título, ano e tipo de publicação (periódico ou conferência). Essa tabela compõe o repositório primário utilizado nas análises subsequentes, a partir do qual foram extraídos dados referentes aos princípios éticos, fases do SDLC abordadas e abordagens de operacionalização.
 
@@ -276,7 +276,7 @@ No contexto de um mapeamento sistemático, a extração de dados tem como objeti
 
 \begin{itemize}
     \item \textbf{princípios éticos} abordados em cada estudo (RQ1);
-    \item \textbf{propostas para operacionalizar} esses principios éticos ao longo do ciclo de vida do software (RQ2).
+    \item \textbf{propostas para operacionalizar} esses princípios éticos ao longo do ciclo de vida do software (RQ2).
 \end{itemize}
 
 Além dessas categorias analíticas principais, também foram extraídos \textbf{metadados bibliográficos} (ano, tipo de publicação e base de indexação), que permitem caracterizar a evolução temporal da área e compreender a distribuição das publicações nas diferentes fontes consultadas. Esses metadados apoiam a contextualização do corpus e fundamentam as análises apresentadas nas Tabelas~\ref{tab:selected} e~\ref{tab:source_distribution}.
@@ -292,11 +292,11 @@ A partir do conjunto final de estudos incluídos, foi elaborado um formulário d
     \item domínio ou contexto de aplicação (quando informado).
 \end{enumerate}
 
-Os dados brutos extraídos, as planilhas de processamento e as tabelas analíticas estão disponibilizados no repositório Zenodo (\url{https://zenodo.org/records/18423476}), garantindo transparência e replicabilidade da análise.
+Os dados brutos extraídos, as planilhas de processamento e as tabelas analíticas estão disponibilizados no repositório Zenodo (\url{https://zenodo.org/records/19053879}), garantindo transparência e replicabilidade da análise.
 
 Essas categorias derivam diretamente das RQs e foram selecionadas para permitir o desenvolvimento de distribuições, análises comparativas e identificação de lacunas. Como mapeamentos sistemáticos não realizam síntese qualitativa aprofundada, mas sim organização e quantificação das evidências, as categorias de classificação foram aplicadas de maneira consistente a todos os estudos.
 
-A Tabela~\ref{estudos} apresenta o conjunto completo dos estudos primários incluídos no mapeamento sistemático, após a aplicação das etapas de identificação, triagem e leitura do texto completo. Cada estudo selecionado recebeu um identificador único (S001–S058) para facilitar a referência nas análises subsequentes. A tabela reúne informações sobre os estudos, tais como o ID, título, ano de publicação, local e veículo de publicação (P=Periódico e C=Conferência). Esse corpus constitui a base de evidências sobre a qual foram conduzidas as classificações relativas aos princípios éticos discutidos na literatura (RQ1) e às formas de operacionalização desses princípios nas diferentes fases do ciclo de vida do desenvolvimento de software (RQ2).
+A Tabela~\ref{estudos} apresenta o conjunto completo dos estudos primários incluídos no mapeamento sistemático, após a aplicação das etapas de identificação, triagem e leitura do texto completo. Cada estudo selecionado recebeu um identificador único (S001–S059) para facilitar a referência nas análises subsequentes. A tabela reúne informações sobre os estudos, tais como o ID, título, ano de publicação, local e veículo de publicação (P=Periódico e C=Conferência). Esse corpus constitui a base de evidências sobre a qual foram conduzidas as classificações relativas aos princípios éticos discutidos na literatura (RQ1) e às formas de operacionalização desses princípios nas diferentes fases do ciclo de vida do desenvolvimento de software (RQ2).
 
 \begin{longtable}
 {|c|p{8cm}|c|p{3.5cm}|c|}
@@ -368,26 +368,27 @@ S055 & Whose voices are heard? Gender disparities in platform-facilitated discri
 S056 & How Facial Recognition Technologies Affect the Transgender Community? A Systematic Mapping Study \cite{S056} & 2024 & SAC & C \\ \hline
 S057 & Unveiling Bias: Analyzing Race and Gender Disparities in AI-Generated Imagery \cite{S057} & 2025 & COMPSAC & C \\ \hline
 S058 & Ethical Requirements in the Age of Artificial Intelligence: A Systematic Literature Review \cite{S058} & 2025 & SBSI & C\\ \hline
+S059 & Mind the Ethics! The Overlooked Ethical Dimensions of GenAI in Software Modeling Education \cite{S059} & 2025 & MODELS-C & C \\ \hline
 \end{longtable}
 
 A Tabela~\ref{tab:selected} apresenta a distribuição temporal dos estudos incluídos no mapeamento. Observa-se um aumento significativo do volume de publicações a partir de 2023, refletindo o crescimento do interesse pela operacionalização de princípios éticos de IA no desenvolvimento de software.
 
 \begin{table}[htbp]
 \centering
-\caption{Distribuição temporal dos 58 estudos incluídos}
+\caption{Distribuição temporal dos 59 estudos incluídos}
 \label{tab:selected}
 \footnotesize
 \begin{tabular}{lcc}
 \hline
 \textbf{Ano} & \textbf{Estudos} & \textbf{\% do Corpus} \\
 \hline
-2021 & 6  & 10,3\% \\
-2022 & 5  & 8,6\%  \\
-2023 & 10 & 17,2\% \\
-2024 & 12 & 20,7\% \\
-2025 & 25 & 43,1\% \\
+2021 & 6  & 10,2\% \\
+2022 & 5  & 8,4\%  \\
+2023 & 10 & 16,9\% \\
+2024 & 12 & 20,4\% \\
+2025 & 26 & 44,1\% \\
 \hline
-\textbf{Total} & \textbf{58} & \textbf{100\%} \\
+\textbf{Total} & \textbf{59} & \textbf{100\%} \\
 \hline
 \end{tabular}
 \end{table}
@@ -396,19 +397,19 @@ A Tabela~\ref{tab:source_distribution} complementa essa caracterização ao most
 
 \begin{table}[htbp]
 \centering
-\caption{Distribuição por fonte bibliográfica (58 estudos)}
+\caption{Distribuição por fonte bibliográfica (59 estudos)}
 \label{tab:source_distribution}
 \footnotesize
 \begin{tabular}{lcc}
 \hline
 \textbf{Fonte} & \textbf{Estudos} & \textbf{\% do Corpus} \\
 \hline
-IEEE Xplore           & 24 & 41,4\% \\
-Scopus                & 13 & 22,4\% \\
-ACM Digital Library   & 12 & 20,7\% \\
-Web of Science        & 9  & 15,5\% \\
+IEEE Xplore           & 25 & 42,4\% \\
+Scopus                & 13 & 22,0\% \\
+ACM Digital Library   & 12 & 20,3\% \\
+Web of Science        & 9  & 15,3\% \\
 \hline
-\textbf{Total} & \textbf{58} & \textbf{100\%} \\
+\textbf{Total} & \textbf{59} & \textbf{100\%} \\
 \hline
 \end{tabular}
 \end{table}
@@ -417,70 +418,70 @@ A Tabela~\ref{tab:principles} apresenta a categorização dos princípios ético
 
 \begin{table}[htbp]
 \centering
-\caption{Frequência de princípios éticos nos 58 estudos (múltiplas menções por estudo)}
+\caption{Frequência de princípios éticos nos 59 estudos (múltiplas menções por estudo)}
 \label{tab:principles}
 \scriptsize
 \begin{tabular}{lccp{6.5cm}}
 \hline
 \textbf{Princípio Ético} & \textbf{Menções} & \textbf{\% Estudos} & \textbf{Estudos} \\
 \hline
-Transparency                   & 29 & 50,0\% & \cite{S001}, \cite{S002}, \cite{S003}, \cite{S004}, \cite{S006}, \cite{S007}, \cite{S008}, \cite{S011}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S015}, \cite{S016}, \cite{S023}, \cite{S024}, \cite{S028}, \cite{S029}, \cite{S033}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S042}, \cite{S043}, \cite{S044}, \cite{S046}, \cite{S047}, \cite{S050}, \cite{S053}, \cite{S058} \\ \hline
-Fairness                       & 48 & 82,8\% & \cite{S001}, \cite{S002}, \cite{S003}, \cite{S004}, \cite{S006}, \cite{S007}, \cite{S008}, \cite{S010}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S015}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S021}, \cite{S022}, \cite{S023}, \cite{S024}, \cite{S025}, \cite{S028}, \cite{S029}, \cite{S030}, \cite{S031}, \cite{S032}, \cite{S033}, \cite{S034}, \cite{S035}, \cite{S036}, \cite{S038}, \cite{S039}, \cite{S040}, \cite{S041}, \cite{S042}, \cite{S044}, \cite{S045}, \cite{S046}, \cite{S047}, \cite{S048}, \cite{S050}, \cite{S052}, \cite{S053}, \cite{S054}, \cite{S055}, \cite{S056}, \cite{S057}, \cite{S058} \\ \hline
-Accountability                 & 32 & 55,2\% & \cite{S001}, \cite{S003}, \cite{S004}, \cite{S005}, \cite{S006}, \cite{S009}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S016}, \cite{S018}, \cite{S019}, \cite{S023}, \cite{S028}, \cite{S029}, \cite{S033}, \cite{S035}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S042}, \cite{S043}, \cite{S044}, \cite{S046}, \cite{S048}, \cite{S049}, \cite{S050}, \cite{S051}, \cite{S053}, \cite{S055}, \cite{S056}, \cite{S058} \\ \hline
-Trustworthiness                & 21 & 36,2\% & \cite{S001}, \cite{S002}, \cite{S006}, \cite{S009}, \cite{S011}, \cite{S012}, \cite{S014}, \cite{S016}, \cite{S023}, \cite{S024}, \cite{S025}, \cite{S027}, \cite{S028}, \cite{S031}, \cite{S033}, \cite{S037}, \cite{S038}, \cite{S039}, \cite{S047}, \cite{S048}, \cite{S053} \\ \hline
-Safety                         & 23 & 39,7\% & \cite{S001}, \cite{S005}, \cite{S008}, \cite{S009}, \cite{S014}, \cite{S015}, \cite{S016}, \cite{S023}, \cite{S025}, \cite{S028}, \cite{S029}, \cite{S033}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S043}, \cite{S044}, \cite{S045}, \cite{S046}, \cite{S047}, \cite{S051}, \cite{S054}, \cite{S058} \\ \hline
-Privacy                        & 18 & 31,0\% & \cite{S003}, \cite{S006}, \cite{S009}, \cite{S012}, \cite{S014}, \cite{S025}, \cite{S028}, \cite{S029}, \cite{S031}, \cite{S033}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S045}, \cite{S046}, \cite{S048}, \cite{S056}, \cite{S058} \\ \hline
-Awareness                      & 17 & 29,3\% & \cite{S001}, \cite{S004}, \cite{S012}, \cite{S018}, \cite{S019}, \cite{S021}, \cite{S022}, \cite{S025}, \cite{S027}, \cite{S029}, \cite{S035}, \cite{S037}, \cite{S041}, \cite{S042}, \cite{S046}, \cite{S049}, \cite{S058} \\ \hline
-Sustainability                 & 11 & 19,0\% & \cite{S005}, \cite{S023}, \cite{S025}, \cite{S026}, \cite{S028}, \cite{S030}, \cite{S033}, \cite{S038}, \cite{S040}, \cite{S046}, \cite{S051} \\ \hline
-Effectiveness                  & 13 & 22,4\% & \cite{S005}, \cite{S008}, \cite{S015}, \cite{S018}, \cite{S022}, \cite{S024}, \cite{S026}, \cite{S034}, \cite{S035}, \cite{S036}, \cite{S045}, \cite{S046}, \cite{S055} \\ \hline
-Beneficence                    & 12 & 20,7\% & \cite{S007}, \cite{S012}, \cite{S019}, \cite{S023}, \cite{S028}, \cite{S029}, \cite{S039}, \cite{S041}, \cite{S042}, \cite{S046}, \cite{S047}, \cite{S058} \\
+Transparency                   & 30 & 50,8\% & \cite{S001}, \cite{S002}, \cite{S003}, \cite{S004}, \cite{S006}, \cite{S007}, \cite{S008}, \cite{S011}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S015}, \cite{S016}, \cite{S023}, \cite{S024}, \cite{S028}, \cite{S029}, \cite{S033}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S042}, \cite{S043}, \cite{S044}, \cite{S046}, \cite{S047}, \cite{S050}, \cite{S053}, \cite{S058}, \cite{S059} \\ \hline
+Fairness                       & 49 & 83,1\% & \cite{S001}, \cite{S002}, \cite{S003}, \cite{S004}, \cite{S006}, \cite{S007}, \cite{S008}, \cite{S010}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S015}, \cite{S017}, \cite{S018}, \cite{S019}, \cite{S020}, \cite{S021}, \cite{S022}, \cite{S023}, \cite{S024}, \cite{S025}, \cite{S028}, \cite{S029}, \cite{S030}, \cite{S031}, \cite{S032}, \cite{S033}, \cite{S034}, \cite{S035}, \cite{S036}, \cite{S038}, \cite{S039}, \cite{S040}, \cite{S041}, \cite{S042}, \cite{S044}, \cite{S045}, \cite{S046}, \cite{S047}, \cite{S048}, \cite{S050}, \cite{S052}, \cite{S053}, \cite{S054}, \cite{S055}, \cite{S056}, \cite{S057}, \cite{S058}, \cite{S059} \\ \hline
+Accountability                 & 33 & 55,9\% & \cite{S001}, \cite{S003}, \cite{S004}, \cite{S005}, \cite{S006}, \cite{S009}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S016}, \cite{S018}, \cite{S019}, \cite{S023}, \cite{S028}, \cite{S029}, \cite{S033}, \cite{S035}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S042}, \cite{S043}, \cite{S044}, \cite{S046}, \cite{S048}, \cite{S049}, \cite{S050}, \cite{S051}, \cite{S053}, \cite{S055}, \cite{S056}, \cite{S058}, \cite{S059} \\ \hline
+Trustworthiness                & 21 & 35,6\% & \cite{S001}, \cite{S002}, \cite{S006}, \cite{S009}, \cite{S011}, \cite{S012}, \cite{S014}, \cite{S016}, \cite{S023}, \cite{S024}, \cite{S025}, \cite{S027}, \cite{S028}, \cite{S031}, \cite{S033}, \cite{S037}, \cite{S038}, \cite{S039}, \cite{S047}, \cite{S048}, \cite{S053} \\ \hline
+Safety                         & 23 & 39,0\% & \cite{S001}, \cite{S005}, \cite{S008}, \cite{S009}, \cite{S014}, \cite{S015}, \cite{S016}, \cite{S023}, \cite{S025}, \cite{S028}, \cite{S029}, \cite{S033}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S043}, \cite{S044}, \cite{S045}, \cite{S046}, \cite{S047}, \cite{S051}, \cite{S054}, \cite{S058} \\ \hline
+Privacy                        & 19 & 32,2\% & \cite{S003}, \cite{S006}, \cite{S009}, \cite{S012}, \cite{S014}, \cite{S025}, \cite{S028}, \cite{S029}, \cite{S031}, \cite{S033}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S045}, \cite{S046}, \cite{S048}, \cite{S056}, \cite{S058}, \cite{S059} \\ \hline
+Awareness                      & 17 & 28,8\% & \cite{S001}, \cite{S004}, \cite{S012}, \cite{S018}, \cite{S019}, \cite{S021}, \cite{S022}, \cite{S025}, \cite{S027}, \cite{S029}, \cite{S035}, \cite{S037}, \cite{S041}, \cite{S042}, \cite{S046}, \cite{S049}, \cite{S058} \\ \hline
+Sustainability                 & 11 & 18,6\% & \cite{S005}, \cite{S023}, \cite{S025}, \cite{S026}, \cite{S028}, \cite{S030}, \cite{S033}, \cite{S038}, \cite{S040}, \cite{S046}, \cite{S051} \\ \hline
+Effectiveness                  & 13 & 22,0\% & \cite{S005}, \cite{S008}, \cite{S015}, \cite{S018}, \cite{S022}, \cite{S024}, \cite{S026}, \cite{S034}, \cite{S035}, \cite{S036}, \cite{S045}, \cite{S046}, \cite{S055} \\ \hline
+Beneficence                    & 12 & 20,3\% & \cite{S007}, \cite{S012}, \cite{S019}, \cite{S023}, \cite{S028}, \cite{S029}, \cite{S039}, \cite{S041}, \cite{S042}, \cite{S046}, \cite{S047}, \cite{S058} \\
 \hline
-\textbf{Total Menções} & \textbf{224} & -- & -- \\
+\textbf{Total Menções} & \textbf{228} & -- & -- \\
 \textbf{Média/Estudo} & \textbf{3,86} & -- & -- \\
 \hline
 \end{tabular}
 \end{table}
 
-A Tabela~\ref{tab:sdlc} apresenta a classificação dos estudos segundo as fases do ciclo de vida de desenvolvimento de software SDLC, em resposta à RQ2. Essa categorização permite identificar em quais etapas do SDLC os princípios éticos de IA têm sido mais frequentemente operacionalizados. Como cada estudo pode abordar múltiplas fases, o número total de menções excede o número de estudos incluídos. Essa análise evidencia tanto a distribuição das contribuições existentes quanto a concentração de esforços em etapas específicas do SDLC, oferecendo um panorama estruturado das áreas onde a literatura tem avançado mais e onde ainda há lacunas importantes.
+A Tabela~\ref{tab:sdlc} apresenta a classificação dos estudos segundo as fases do ciclo de vida de desenvolvimento de software (SDLC), em resposta à RQ2. Essa categorização permite identificar em quais etapas do SDLC os princípios éticos de IA têm sido mais frequentemente operacionalizados. Como cada estudo pode abordar múltiplas fases, o número total de menções excede o número de estudos incluídos. Essa análise evidencia tanto a distribuição das contribuições existentes quanto a concentração de esforços em etapas específicas do SDLC, oferecendo um panorama estruturado das áreas onde a literatura tem avançado mais e onde ainda há lacunas importantes.
 
 \begin{table}[htbp]
 \centering
-\caption{Frequência de fases do SDLC nos 58 estudos (múltiplas fases por estudo)}
+\caption{Frequência de fases do SDLC nos 59 estudos (múltiplas fases por estudo)}
 \label{tab:sdlc}
 \scriptsize
 \begin{tabular}{lccp{6.5cm}}
 \hline
 \textbf{Fase SDLC} & \textbf{Menções} & \textbf{\% Estudos} & \textbf{Exemplos de Estudos} \\
 \hline
-Requirements                   & 30 & 51,7\% & \cite{S001}, \cite{S002}, \cite{S004}, \cite{S005}, \cite{S006}, \cite{S007}, \cite{S011}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S023}, \cite{S024}, \cite{S025}, \cite{S028}, \cite{S029}, \cite{S031}, \cite{S035}, \cite{S037}, \cite{S038}, \cite{S039}, \cite{S042}, \cite{S043}, \cite{S044}, \cite{S045}, \cite{S046}, \cite{S047}, \cite{S050}, \cite{S055}, \cite{S056}, \cite{S058} \\
+Requirements                   & 30 & 50,8\% & \cite{S001}, \cite{S002}, \cite{S004}, \cite{S005}, \cite{S006}, \cite{S007}, \cite{S011}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S023}, \cite{S024}, \cite{S025}, \cite{S028}, \cite{S029}, \cite{S031}, \cite{S035}, \cite{S037}, \cite{S038}, \cite{S039}, \cite{S042}, \cite{S043}, \cite{S044}, \cite{S045}, \cite{S046}, \cite{S047}, \cite{S050}, \cite{S055}, \cite{S056}, \cite{S058} \\
 \hline
-Design                         & 29 & 50,0\% & \cite{S001}, \cite{S004}, \cite{S005}, \cite{S006}, \cite{S007}, \cite{S008}, \cite{S009}, \cite{S011}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S017}, \cite{S025}, \cite{S027}, \cite{S029}, \cite{S031}, \cite{S033}, \cite{S037}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S043}, \cite{S046}, \cite{S049}, \cite{S050}, \cite{S051}, \cite{S053}, \cite{S055}, \cite{S058} \\
+Design                         & 30 & 50,8\% & \cite{S001}, \cite{S004}, \cite{S005}, \cite{S006}, \cite{S007}, \cite{S008}, \cite{S009}, \cite{S011}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S017}, \cite{S025}, \cite{S027}, \cite{S029}, \cite{S031}, \cite{S033}, \cite{S037}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S043}, \cite{S046}, \cite{S049}, \cite{S050}, \cite{S051}, \cite{S053}, \cite{S055}, \cite{S058}, \cite{S059} \\
 \hline
-Implementation                 & 33 & 56,9\% & \cite{S001}, \cite{S005}, \cite{S008}, \cite{S009}, \cite{S010}, \cite{S011}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S015}, \cite{S018}, \cite{S020}, \cite{S021}, \cite{S022}, \cite{S025}, \cite{S026}, \cite{S028}, \cite{S029}, \cite{S033}, \cite{S034}, \cite{S035}, \cite{S036}, \cite{S037}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S042}, \cite{S046}, \cite{S048}, \cite{S050}, \cite{S053}, \cite{S055}, \cite{S058} \\
+Implementation                 & 33 & 55,9\% & \cite{S001}, \cite{S005}, \cite{S008}, \cite{S009}, \cite{S010}, \cite{S011}, \cite{S012}, \cite{S013}, \cite{S014}, \cite{S015}, \cite{S018}, \cite{S020}, \cite{S021}, \cite{S022}, \cite{S025}, \cite{S026}, \cite{S028}, \cite{S029}, \cite{S033}, \cite{S034}, \cite{S035}, \cite{S036}, \cite{S037}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S042}, \cite{S046}, \cite{S048}, \cite{S050}, \cite{S053}, \cite{S055}, \cite{S058} \\
 \hline
-Testing                        & 22 & 37,9\% & \cite{S001}, \cite{S003}, \cite{S004}, \cite{S005}, \cite{S008}, \cite{S010}, \cite{S013}, \cite{S014}, \cite{S015}, \cite{S021}, \cite{S022}, \cite{S026}, \cite{S027}, \cite{S032}, \cite{S034}, \cite{S036}, \cite{S039}, \cite{S045}, \cite{S046}, \cite{S050}, \cite{S052}, \cite{S055} \\
+Testing                        & 22 & 37,3\% & \cite{S001}, \cite{S003}, \cite{S004}, \cite{S005}, \cite{S008}, \cite{S010}, \cite{S013}, \cite{S014}, \cite{S015}, \cite{S021}, \cite{S022}, \cite{S026}, \cite{S027}, \cite{S032}, \cite{S034}, \cite{S036}, \cite{S039}, \cite{S045}, \cite{S046}, \cite{S050}, \cite{S052}, \cite{S055} \\
 \hline
-Deployment                     & 10 & 17,2\% & \cite{S001}, \cite{S003}, \cite{S009}, \cite{S013}, \cite{S014}, \cite{S017}, \cite{S026}, \cite{S038}, \cite{S041}, \cite{S046} \\
+Deployment                     & 10 & 16,9\% & \cite{S001}, \cite{S003}, \cite{S009}, \cite{S013}, \cite{S014}, \cite{S017}, \cite{S026}, \cite{S038}, \cite{S041}, \cite{S046} \\
 \hline
-Operation                      &  9 & 15,5\% & \cite{S001}, \cite{S003}, \cite{S005}, \cite{S013}, \cite{S014}, \cite{S027}, \cite{S038}, \cite{S041}, \cite{S045} \\
+Operation                      &  9 & 15,3\% & \cite{S001}, \cite{S003}, \cite{S005}, \cite{S013}, \cite{S014}, \cite{S027}, \cite{S038}, \cite{S041}, \cite{S045} \\
 \hline
-Maintenance                    &  9 & 15,5\% & \cite{S001}, \cite{S009}, \cite{S013}, \cite{S014}, \cite{S030}, \cite{S038}, \cite{S041}, \cite{S046}, \cite{S051} \\
+Maintenance                    &  9 & 15,3\% & \cite{S001}, \cite{S009}, \cite{S013}, \cite{S014}, \cite{S030}, \cite{S038}, \cite{S041}, \cite{S046}, \cite{S051} \\
 \hline
-DevOps/MLOps                   &  7 & 12,1\% & \cite{S008}, \cite{S021}, \cite{S038}, \cite{S040}, \cite{S044}, \cite{S045}, \cite{S057} \\
+DevOps/MLOps                   &  7 & 11,9\% & \cite{S008}, \cite{S021}, \cite{S038}, \cite{S040}, \cite{S044}, \cite{S045}, \cite{S057} \\
 \hline
-Project Management             &  8 & 13,8\% & \cite{S011}, \cite{S022}, \cite{S025}, \cite{S028}, \cite{S035}, \cite{S038}, \cite{S042}, \cite{S046} \\
+Project Management             &  8 & 13,6\% & \cite{S011}, \cite{S022}, \cite{S025}, \cite{S028}, \cite{S035}, \cite{S038}, \cite{S042}, \cite{S046} \\
 \hline
-Governance                     & 14 & 24,1\% & \cite{S014}, \cite{S016}, \cite{S019}, \cite{S028}, \cite{S029}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S046}, \cite{S049}, \cite{S053}, \cite{S054}, \cite{S055}, \cite{S058} \\
+Governance                     & 14 & 23,7\% & \cite{S014}, \cite{S016}, \cite{S019}, \cite{S028}, \cite{S029}, \cite{S038}, \cite{S039}, \cite{S041}, \cite{S046}, \cite{S049}, \cite{S053}, \cite{S054}, \cite{S055}, \cite{S058} \\
 \hline
-\textbf{Total Menções} & \textbf{171} & -- & -- \\
-\textbf{Média/Estudo} & \textbf{2,95} & -- & -- \\
+\textbf{Total Menções} & \textbf{172} & -- & -- \\
+\textbf{Média/Estudo} & \textbf{2,92} & -- & -- \\
 \hline
 \end{tabular}
 \end{table}
 
 \subsection{RQ1. Quais princípios éticos são abordados pela literatura sobre ética aplicada a sistemas de IA no contexto da Engenharia de Software?}
 
-A análise dos 58 estudos incluídos no mapeamento identificou dez princípios éticos predominantes, totalizando 224 menções (Tabela~\ref{tab:principles}). Em média, cada estudo aborda 3,86 princípios, indicando que a maioria das contribuições discute ética de forma multifacetada. Os princípios mais recorrentes são \textit{Fairness} (82,8\%), \textit{Accountability} (55,2\%) e \textit{Transparency}/\textit{Explainability} (50\%), que juntos constituem o núcleo conceitual da literatura atual.
+A análise dos 59 estudos incluídos no mapeamento identificou dez princípios éticos predominantes, totalizando 228 menções (Tabela~\ref{tab:principles}). Em média, cada estudo aborda 3,86 princípios, indicando que a maioria das contribuições discute ética de forma multifacetada. Os princípios mais recorrentes são \textit{Fairness} (83,1\%), \textit{Accountability} (55,9\%) e \textit{Transparency}/\textit{Explainability} (50,8\%), que juntos constituem o núcleo conceitual da literatura atual.
 
 O princípio \textit{Fairness} aparece como o mais consolidado, refletindo a preocupação recorrente com vieses estatísticos, discriminação algorítmica e equidade entre grupos sociais. Diversos estudos propõem métricas, técnicas de mitigação, estratégias de avaliação e frameworks de auditoria, reforçando que a equidade continua sendo o eixo central da ética aplicada à IA.
 
@@ -488,9 +489,9 @@ O princípio \textit{Accountability} destaca a necessidade de definir responsabi
 
 \textit{Transparency}/\textit{Explainability} figura entre os princípios mais mencionados, frequentemente tratado como um requisito transversal do ciclo de vida do software. A literatura aponta o desafio de tornar sistemas de IA compreensíveis para diferentes perfis de usuários, convergindo para soluções como explicações locais, documentação técnica ampliada e artefatos como \textit{model cards} e \textit{datasheets}.
 
-Princípios como \textit{Safety} (39,7\%) e \textit{Trustworthiness} (36,2\%) aparecem sobretudo em domínios críticos (e.g., saúde, segurança pública), enfatizando riscos operacionais, robustez e confiabilidade. Já \textit{Privacy} (31,0\%) recebe atenção significativa em estudos alinhados a requisitos regulatórios e técnicas de proteção de dados, como privacidade diferencial e anonimização.
+Princípios como \textit{Safety} (39,0\%) e \textit{Trustworthiness} (35,6\%) aparecem sobretudo em domínios críticos (e.g., saúde, segurança pública), enfatizando riscos operacionais, robustez e confiabilidade. Já \textit{Privacy} (32,2\%) recebe atenção significativa em estudos alinhados a requisitos regulatórios e técnicas de proteção de dados, como privacidade diferencial e anonimização.
 
-Os princípios menos frequentes, \textit{Awareness}, \textit{Effectiveness}, \textit{Sustainability} e \textit{Beneficence} refletem áreas emergentes da discussão ética, especialmente no que diz respeito ao impacto social e ambiental da IA. A baixa ocorrência do princípio de \textit{Sustainability} (19,0\%) destaca uma lacuna relevante, considerando o crescimento do debate sobre o impacto energético e ambiental de modelos de grande escala.
+Os princípios menos frequentes, \textit{Awareness}, \textit{Effectiveness}, \textit{Sustainability} e \textit{Beneficence} refletem áreas emergentes da discussão ética, especialmente no que diz respeito ao impacto social e ambiental da IA. A baixa ocorrência do princípio de \textit{Sustainability} (18,6\%) destaca uma lacuna relevante, considerando o crescimento do debate sobre o impacto energético e ambiental de modelos de grande escala.
 
 Por fim, apenas uma parcela minoritária dos estudos menciona explicitamente referências internacionais de padronização ética, como UNESCO \cite{UNESCO2021}, OECD   \cite{OECD2019} ou IEEE EAD \cite{IEEE2019}. Essa ausência sugere uma desconexão entre diretrizes globais e práticas da comunidade de Engenharia de Software.
 
@@ -500,23 +501,23 @@ A literatura concentra-se majoritariamente em três princípios, \textit{Fairnes
 
 \subsection{RQ2. Quais abordagens são propostas para operacionalizar princípios éticos ao longo do ciclo de vida do software?}
 
-Para responder à RQ2, analisaram-se as abordagens propostas pelos 58 estudos para operacionalizar princípios éticos de IA nas diferentes fases do SDLC. As contribuições podem ser agrupadas, de forma geral, em três categorias complementares: (i) métodos e processos estruturados (e.g., métodos de elicitação, atividades adicionais em processos existentes, passos para auditoria ética); (ii) \textit{frameworks} conceituais e modelos de referência (e.g., guias, taxonomias, modelos de maturidade, catálogos de princípios); e (iii) ferramentas e artefatos de apoio (e.g., dashboards, bibliotecas de \textit{fairness}, checklists, \textit{model cards}, templates de requisitos). Em muitos casos, os estudos combinam mais de um tipo de contribuição, por exemplo, propondo simultaneamente um processo e artefatos de suporte.
+Para responder à RQ2, analisaram-se as abordagens propostas pelos 59 estudos para operacionalizar princípios éticos de IA nas diferentes fases do SDLC. As contribuições podem ser agrupadas, de forma geral, em três categorias complementares: (i) métodos e processos estruturados (e.g., métodos de elicitação, atividades adicionais em processos existentes, passos para auditoria ética); (ii) \textit{frameworks} conceituais e modelos de referência (e.g., guias, taxonomias, modelos de maturidade, catálogos de princípios); e (iii) ferramentas e artefatos de apoio (e.g., dashboards, bibliotecas de \textit{fairness}, checklists, \textit{model cards}, templates de requisitos). Em muitos casos, os estudos combinam mais de um tipo de contribuição, por exemplo, propondo simultaneamente um processo e artefatos de suporte.
 
-A Tabela~\ref{tab:sdlc} resume a distribuição das abordagens ao longo das fases do ciclo de vida. Observa-se uma concentração em \textit{Implementation} (56,9\%), \textit{Requirements} (51,7\%) e \textit{Design} (50,0\%), indicando que a literatura tem priorizado fases em que decisões técnicas e de modelagem são mais diretamente visíveis para desenvolvedores e engenheiros de software. Em média, cada estudo aborda 2,95 fases do  SDLC, sugerindo que uma parte relevante das contribuições busca cobrir mais de uma etapa, ainda que nem sempre com mecanismos explícitos de rastreabilidade entre elas.
+A Tabela~\ref{tab:sdlc} resume a distribuição das abordagens ao longo das fases do ciclo de vida. Observa-se uma concentração em \textit{Implementation} (55,9\%), \textit{Requirements} (50,8\%) e \textit{Design} (50,8\%), indicando que a literatura tem priorizado fases em que decisões técnicas e de modelagem são mais diretamente visíveis para desenvolvedores e engenheiros de software. Em média, cada estudo aborda 2,92 fases do SDLC, sugerindo que uma parte relevante das contribuições busca cobrir mais de uma etapa, ainda que nem sempre com mecanismos explícitos de rastreabilidade entre elas.
 
-Na fase de \textit{Requirements Engineering}, presente em 30 estudos (51,7\%), predominam abordagens voltadas à elicitação, especificação e priorização de requisitos éticos. São comuns métodos que estendem técnicas tradicionais de Engenharia de Requisitos (entrevistas, \textit{workshops}, histórias de usuário, \textit{goal models}) para incorporar princípios como \textit{fairness}, \textit{accountability} e \textit{transparency} em artefatos formais. Alguns trabalhos propõem guias específicos para requisitos éticos de IA, templates de histórias de usuário sensíveis a valores, catálogos de perguntas para apoiar a identificação de riscos éticos e procedimentos para alinhar requisitos a padrões ou normas internacionais. Em geral, essas abordagens enfatizam a necessidade de explicitar valores e impactos desde as fases iniciais do projeto, embora poucos estudos ofereçam mecanismos formais de verificação posterior desses requisitos ao longo das etapas subsequentes.
+Na fase de \textit{Requirements Engineering}, presente em 30 estudos (50,8\%), predominam abordagens voltadas à elicitação, especificação e priorização de requisitos éticos. São comuns métodos que estendem técnicas tradicionais de Engenharia de Requisitos (entrevistas, \textit{workshops}, histórias de usuário, \textit{goal models}) para incorporar princípios como \textit{fairness}, \textit{accountability} e \textit{transparency} em artefatos formais. Alguns trabalhos propõem guias específicos para requisitos éticos de IA, templates de histórias de usuário sensíveis a valores, catálogos de perguntas para apoiar a identificação de riscos éticos e procedimentos para alinhar requisitos a padrões ou normas internacionais. Em geral, essas abordagens enfatizam a necessidade de explicitar valores e impactos desde as fases iniciais do projeto, embora poucos estudos ofereçam mecanismos formais de verificação posterior desses requisitos ao longo das etapas subsequentes.
 
-A fase de \textit{Design}, abordada em 29 estudos (50,0\%), concentra-se em decisões arquiteturais e de modelagem que permitem incorporar princípios éticos na estrutura do sistema. As contribuições incluem modelos de referência e \textit{frameworks} que orientam a decomposição de responsabilidades éticas em componentes, camadas ou serviços; padrões arquiteturais para auditoria, \textit{logging}, anonimização e monitoramento; e abordagens inspiradas em \textit{value-sensitive design} que vinculam valores a atributos arquiteturais. Alguns trabalhos exploram a definição de pontos de intervenção para auditoria ou supervisão humana, bem como a integração de mecanismos de explicabilidade e controle em interfaces e fluxos de interação. Apesar disso, poucos estudos fornecem orientações detalhadas sobre como rastrear, de forma sistemática, a implementação das decisões de design em código ou testes.
+A fase de \textit{Design}, abordada em 30 estudos (50,8\%), concentra-se em decisões arquiteturais e de modelagem que permitem incorporar princípios éticos na estrutura do sistema. As contribuições incluem modelos de referência e \textit{frameworks} que orientam a decomposição de responsabilidades éticas em componentes, camadas ou serviços; padrões arquiteturais para auditoria, \textit{logging}, anonimização e monitoramento; e abordagens inspiradas em \textit{value-sensitive design} que vinculam valores a atributos arquiteturais. Alguns trabalhos exploram a definição de pontos de intervenção para auditoria ou supervisão humana, bem como a integração de mecanismos de explicabilidade e controle em interfaces e fluxos de interação. Apesar disso, poucos estudos fornecem orientações detalhadas sobre como rastrear, de forma sistemática, a implementação das decisões de design em código ou testes.
 
-Em \textit{Implementation} (33 estudos, 56,9\%), predominam ferramentas e bibliotecas técnicas que materializam princípios éticos em artefatos de código ou configurações. São exemplos bibliotecas de \textit{fairness} para treinamento e avaliação de modelos, estratégias de pré/pós-processamento de dados para mitigação de viés, mecanismos de \textit{differential privacy}, componentes de \textit{logging} para rastreabilidade de decisões, explicadores locais e globais (e.g., \textit{feature importance}, métodos baseados em perturbação), bem como \textit{dashboards} para visualização de riscos e métricas éticas. Vários estudos descrevem protótipos ou \textit{toolkits} que podem ser integrados a fluxos de desenvolvimento, embora, na prática, a integração com ambientes industriais (IDEs, repositórios de código, pipelines de CI/CD, plataformas de MLOps) seja frequentemente limitada a demonstrações ou estudos de caso de pequena escala.
+Em \textit{Implementation} (33 estudos, 55,9\%), predominam ferramentas e bibliotecas técnicas que materializam princípios éticos em artefatos de código ou configurações. São exemplos bibliotecas de \textit{fairness} para treinamento e avaliação de modelos, estratégias de pré/pós-processamento de dados para mitigação de viés, mecanismos de \textit{differential privacy}, componentes de \textit{logging} para rastreabilidade de decisões, explicadores locais e globais (e.g., \textit{feature importance}, métodos baseados em perturbação), bem como \textit{dashboards} para visualização de riscos e métricas éticas. Vários estudos descrevem protótipos ou \textit{toolkits} que podem ser integrados a fluxos de desenvolvimento, embora, na prática, a integração com ambientes industriais (IDEs, repositórios de código, pipelines de CI/CD, plataformas de MLOps) seja frequentemente limitada a demonstrações ou estudos de caso de pequena escala.
 
-Na fase de \textit{Testing}, presente em 22 estudos (37,9\%), destacam-se abordagens que tratam princípios éticos como propriedades verificáveis. Dentre esses estudos, 19 abordam \textit{fairness}, 10 focam em \textit{accountability} e 10 em \textit{transparency}. São propostos conjuntos de testes de \textit{fairness}, critérios de cobertura sensível a grupos protegidos, testes adversariais para robustez e segurança, e procedimentos de validação de explicabilidade e desempenho diferencial entre grupos. Alguns trabalhos formalizam métricas específicas e definem limites aceitáveis para indicadores éticos (e.g., diferença de oportunidades entre grupos, disparidade de resultados, estabilidade de explicações). No entanto, essas práticas ainda são, em grande parte, aplicadas em contextos experimentais, com relativamente pouca evidência de adoção sistemática em ambientes de desenvolvimento contínuo.
+Na fase de \textit{Testing}, presente em 22 estudos (37,3\%), destacam-se abordagens que tratam princípios éticos como propriedades verificáveis. Dentre esses estudos, 19 abordam \textit{fairness}, 10 focam em \textit{accountability} e 10 em \textit{transparency}. São propostos conjuntos de testes de \textit{fairness}, critérios de cobertura sensível a grupos protegidos, testes adversariais para robustez e segurança, e procedimentos de validação de explicabilidade e desempenho diferencial entre grupos. Alguns trabalhos formalizam métricas específicas e definem limites aceitáveis para indicadores éticos (e.g., diferença de oportunidades entre grupos, disparidade de resultados, estabilidade de explicações). No entanto, essas práticas ainda são, em grande parte, aplicadas em contextos experimentais, com relativamente pouca evidência de adoção sistemática em ambientes de desenvolvimento contínuo.
 
-As fases posteriores do ciclo de vida apresentam menor cobertura, mas abordam questões críticas. Em \textit{Deployment} (10 estudos, 17,2\%) e \textit{Operation} (9 estudos, 15,5\%), as contribuições tratam de monitoramento em tempo de execução, detecção de \textit{drift} (incluindo \textit{ethical drift}), reavaliação periódica de métricas de \textit{fairness} e explicabilidade, e mecanismos para acionar auditorias ou revisão humana em cenários de risco elevado. Em \textit{Maintenance} (9 estudos, 15,5\%), discutem-se atualizações de modelos, revalidação de requisitos éticos após mudanças contextuais e preservação de propriedades éticas ao longo de ciclos de retraining. Contudo, faltam processos consolidados que integrem essas atividades a práticas maduras de manutenção e evolução de sistemas de software.
+As fases posteriores do ciclo de vida apresentam menor cobertura, mas abordam questões críticas. Em \textit{Deployment} (10 estudos, 16,9\%) e \textit{Operation} (9 estudos, 15,3\%), as contribuições tratam de monitoramento em tempo de execução, detecção de \textit{drift} (incluindo \textit{ethical drift}), reavaliação periódica de métricas de \textit{fairness} e explicabilidade, e mecanismos para acionar auditorias ou revisão humana em cenários de risco elevado. Em \textit{Maintenance} (9 estudos, 15,3\%), discutem-se atualizações de modelos, revalidação de requisitos éticos após mudanças contextuais e preservação de propriedades éticas ao longo de ciclos de retraining. Contudo, faltam processos consolidados que integrem essas atividades a práticas maduras de manutenção e evolução de sistemas de software.
 
-A categoria \textit{Governance}, presente em 14 estudos (24,1\%), introduz \textit{frameworks} organizacionais que conectam princípios éticos a papéis institucionais, políticas internas, fluxos de aprovação e mecanismos de responsabilidade compartilhada. Esses trabalhos abordam, por exemplo, comitês de ética em IA, processos de auditoria interna, definição de responsabilidades entre desenvolvedores, gestores e áreas jurídicas, e alinhamento com legislações como o GDPR e o \textit{AI Act}. Ainda assim, a interface entre esses modelos de governança e artefatos concretos de Engenharia de Software (requisitos, código, testes, documentação técnica) permanece pouco detalhada, indicando um espaço importante para avanços futuros.
+A categoria \textit{Governance}, presente em 14 estudos (23,7\%), introduz \textit{frameworks} organizacionais que conectam princípios éticos a papéis institucionais, políticas internas, fluxos de aprovação e mecanismos de responsabilidade compartilhada. Esses trabalhos abordam, por exemplo, comitês de ética em IA, processos de auditoria interna, definição de responsabilidades entre desenvolvedores, gestores e áreas jurídicas, e alinhamento com legislações como o GDPR e o \textit{AI Act}. Ainda assim, a interface entre esses modelos de governança e artefatos concretos de Engenharia de Software (requisitos, código, testes, documentação técnica) permanece pouco detalhada, indicando um espaço importante para avanços futuros.
 
-Por fim, \textit{Project Management} (8 estudos, 13,8\%) e \textit{DevOps/MLOps} (7 estudos, 12,1\%) aparecem como áreas emergentes de operacionalização ética. Alguns estudos incorporam \textit{checkpoints} éticos em ciclos iterativos, \textit{backlogs} de requisitos éticos, critérios de aceite relacionados a riscos, e tarefas específicas em pipelines de CI/CD. Outros propõem a inclusão de métricas éticas em \textit{dashboards} de monitoramento operacional ou em práticas de \textit{continuous delivery}, mas a integração sistemática dessas abordagens ainda é incipiente.
+Por fim, \textit{Project Management} (8 estudos, 13,6\%) e \textit{DevOps/MLOps} (7 estudos, 11,9\%) aparecem como áreas emergentes de operacionalização ética. Alguns estudos incorporam \textit{checkpoints} éticos em ciclos iterativos, \textit{backlogs} de requisitos éticos, critérios de aceite relacionados a riscos, e tarefas específicas em pipelines de CI/CD. Outros propõem a inclusão de métricas éticas em \textit{dashboards} de monitoramento operacional ou em práticas de \textit{continuous delivery}, mas a integração sistemática dessas abordagens ainda é incipiente.
 
 De forma geral, os resultados da RQ2 indicam que a literatura já oferece um conjunto expressivo de métodos, \textit{frameworks} e ferramentas voltados à operacionalização de princípios éticos em diferentes fases do SDLC. No entanto, essa operacionalização tende a ser fragmentada: muitas abordagens são focalizadas em etapas específicas (especialmente requisitos, design e implementação) e carecem de mecanismos robustos de integração e rastreabilidade ao longo de todo o ciclo de vida, bem como de evidências consolidadas de adoção e sustentabilidade em contextos industriais.
 
@@ -562,7 +563,7 @@ A identificação das lacunas baseou-se em uma síntese temática das limitaçõ
 
 \textbf{L2 -- Suporte Ferramental Integrado à Indústria.} Existe um descompasso entre as ferramentas acadêmicas e a prática industrial. Santos et al. \cite{S022} e Puhlfürß et al. \cite{S023} destacam que a ausência de ferramentas de teste e documentação (como \textit{Model Cards} automatizados) que se integrem aos fluxos de trabalho reais (MLOps/CI/CD) dificulta a adoção. A maioria das soluções propostas opera de forma isolada, exigindo esforço manual excessivo para configuração e uso \cite{S022, S030}.
 
-\textbf{L3 -- Manutenção e Governança Pós-Implantação.} As fases posteriores do ciclo de vida (operação, manutenção e descontinuação) são negligenciadas em comparação à fase de treinamento. Alamäki et al. \cite{S038} e Lu et al. \cite{S022} alertam para a falta de mecanismos de monitoramento contínuo capazes de detectar \textit{ethical drift} (degradação de propriedades éticas) em tempo de execução, deixando os sistemas vulneráveis após o *deployment*.
+\textbf{L3 -- Manutenção e Governança Pós-Implantação.} As fases posteriores do ciclo de vida (operação, manutenção e descontinuação) são negligenciadas em comparação à fase de treinamento. Alamäki et al. \cite{S038} e Lu et al. \cite{S022} alertam para a falta de mecanismos de monitoramento contínuo capazes de detectar \textit{ethical drift} (degradação de propriedades éticas) em tempo de execução, deixando os sistemas vulneráveis após o \textit{deployment}.
 
 \textbf{L4 -- Gap Academia-Indústria.} A literatura evidencia uma desconexão significativa entre os conceitos teóricos de justiça (\textit{fairness}) e sua aplicabilidade prática. Enquanto a academia foca em métricas probabilísticas complexas, a indústria carece de diretrizes acionáveis e sofre com a escassez de estudos empíricos que validem o custo-benefício dessas abordagens em projetos reais \cite{S022, S028, S053}.
 
@@ -633,6 +634,6 @@ A RQ2 permitiu mapear as abordagens utilizadas para operacionalizar esses princ�
 
 A análise cruzada das evidências também revelou lacunas importantes que limitam o avanço da área: (i) baixa integração e rastreabilidade de princípios éticos entre fases do SDLC; (ii) ausência de ferramentas integradas que ofereçam suporte contínuo ao longo do desenvolvimento; (iii) escassez de estudos aplicados em panoramas industriais; (iv) insuficiente formalização de \textit{trade-offs} éticos; e (v) sub-representação de preocupações socioambientais. Essas lacunas sugerem a necessidade de abordagens mais holísticas e orientadas à prática, capazes de conectar princípios abstratos às atividades de Engenharia de Software de maneira sistemática, contínua e auditável.
 
-Dentre as lacunas identificadas, a baixa cobertura da fase de \textit{Testing} (apenas 37,9\% dos estudos) merece destaque especial, pois indica uma oportunidade concreta para contribuições focadas em verificação automatizada de propriedades éticas. Esta constatação, combinada com a predominância dos princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}, fundamenta diretamente a proposta apresentada no Capítulo~\ref{cap:proposta}, que desenvolve \textit{fuzzing engines} dedicadas à avaliação sistemática desses três princípios em modelos de IA já implementados.
+Dentre as lacunas identificadas, a baixa cobertura da fase de \textit{Testing} (apenas 37,3\% dos estudos) merece destaque especial, pois indica uma oportunidade concreta para contribuições focadas em verificação automatizada de propriedades éticas. Esta constatação, combinada com a predominância dos princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}, fundamenta diretamente a proposta apresentada no Capítulo~\ref{cap:proposta}, que desenvolve \textit{fuzzing engines} dedicadas à avaliação sistemática desses três princípios em modelos de IA já implementados.
 
 Em síntese, o mapeamento evidencia que, embora o campo tenha avançado significativamente, sobretudo em mecanismos de mitigação de viés e técnicas de explicabilidade, ainda há carência de soluções automatizadas para a fase de testes, lacuna que esta dissertação endereçou.
