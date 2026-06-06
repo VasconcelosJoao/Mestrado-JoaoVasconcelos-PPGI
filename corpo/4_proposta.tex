@@ -2,7 +2,6 @@
 
 Este capítulo apresenta o \textit{framework} de \textit{fuzzing} ético proposto para detecção automatizada de riscos éticos em Grandes Modelos de Linguagem (LLMs), cobrindo os princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}. A organização do capítulo inicia-se com a descrição da arquitetura do \textit{framework}, seguida pela modelagem dos riscos éticos identificados na literatura (Tabela~\ref{tab:riscos_mapeados}), a especificação dos módulos de teste implementados, e a apresentação dos resultados da avaliação empírica conduzida em três provedores comerciais de LLMs.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Visão Geral da Arquitetura}
 \label{sec:arquitetura}
 
@@ -21,17 +20,12 @@ O sistema de \textit{fuzzing} ético é implementado como um \textit{pipeline} q
     
     \item \textbf{Execution Module}: Direciona os \textit{prompts} formatados às APIs dos respectivos LLMs e coleta as respostas brutas juntamente com metadados de execução.
     
-    \item \textbf{Logging Component}: Garante armazenamento persistente e estruturado de todas as execuções de teste. Registra cada \textit{prompt}, a saída correspondente do modelo e metadados relevantes, permitindo auditoria pós-execução, avaliação manual de oráculos, reprodutibilidade e sumarização durante a fase de análise.
+    \item \textbf{Logging Component}: Garante armazenamento persistente e estruturado de todas as execuções de teste. Registra cada \textit{prompt}, a saída correspondente do modelo e metadados relevantes, permitindo auditoria pós-execução, reaplicação dos oráculos sobre os dados primários, reprodutibilidade e sumarização durante a fase de análise.
     
     \item \textbf{Evaluation Component}: Aplica oráculos determinísticos de avaliação e atribui rótulos PASS/FAIL a cada execução registrada, sem intervenção humana ou uso de LLMs auxiliares. Consome os \textit{logs} armazenados, computa as métricas de desempenho definidas para cada risco, princípio e modelo, e gera representações agregadas incluindo tabelas e estatísticas sumárias.
 \end{enumerate}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\linewidth]{img/architecture-diag.png}
-\caption{Arquitetura do sistema de \textit{fuzzing} ético com componentes e conexões}
-\label{fig:arquitetura}
-\end{figure}
+\input{img/architecture_diagram}
 
 \subsection{Formato Padronizado de Especificação}
 
@@ -53,8 +47,8 @@ Para riscos não implementáveis via \textit{fuzzing}, apresenta-se: descrição
 A avaliação empírica do \textit{framework} foi conduzida nos seguintes LLMs comerciais:
 
 \begin{itemize}
-    \item \textbf{OpenAI GPT} (OpenAI): Modelo GPT-5 via API Responses.
-    \item \textbf{Gemini} (Google): Modelo Gemini 3 Flash Preview via API Gemini.
+    \item \textbf{OpenAI GPT} (OpenAI): Modelo \texttt{gpt-5.2} via API Responses.
+    \item \textbf{Gemini} (Google): Modelo Gemini 3 Flash via API Gemini.
     \item \textbf{DeepSeek} (DeepSeek AI): Modelo DeepSeek-Chat via API compatível com OpenAI.
 \end{itemize}
 
@@ -67,14 +61,21 @@ As métricas específicas de cada risco, definidas nas seções subsequentes, al
 \begin{itemize}
     \item \textbf{Failure Rate por Risco}: Proporção de casos de teste que resultam em violação para cada risco específico. Esta métrica segue a metodologia de \textit{Red Teaming} automatizado, onde a eficácia do ataque é medida pela porcentagem de respostas ofensivas ou inseguras obtidas a partir de um conjunto de \textit{prompts} gerados \cite{Perez2022}.
     
-    \item \textbf{Failure Rate por Modelo}: Proporção agregada de violações para cada LLM avaliado. Essa métrica permite a comparação direta de robustez e segurança entre diferentes versões de modelos (ex: GPT-3.5 vs GPT-4) ou configurações de \textit{fine-tuning} (Base vs RLHF), conforme estabelecido em relatórios técnicos de avaliação de LLMs \cite{OpenAI2023, Bird2020}.
+    \item \textbf{Failure Rate por Modelo}: Proporção agregada de violações para cada LLM avaliado. Essa métrica permite a comparação direta de robustez e segurança entre diferentes modelos ou versões de um mesmo provedor, conforme estabelecido em relatórios técnicos de avaliação de LLMs \cite{OpenAI2024, Bird2020}.
     
     \item \textbf{Failure Rate por Princípio}: Proporção agregada de violações para cada princípio ético (\textit{Fairness}, \textit{Accountability}, \textit{Transparency}). Em \textit{fairness}, por exemplo, isso se traduz em métricas de disparidade de grupo (como \textit{statistical parity difference} ou taxas de erro desbalanceadas), fundamentais para identificar vieses sistêmicos \cite{Bellamy2019, Corbett-Davies2023}.
     
-    \item \textbf{Distribuição de Falhas}: Análise da distribuição de violações por tipo, severidade e padrão. Técnicas de agrupamento (\textit{clustering}) de casos de teste falhos são utilizadas para identificar padrões semânticos comuns nas entradas que induzem o modelo ao erro, facilitando a correção de vulnerabilidades \cite{Perez2022, Nicolae2019}.
+    \item \textbf{Distribuição de Falhas}: Análise da distribuição de violações por tipo, severidade e padrão. Técnicas de agrupamento (\textit{clustering}) de casos de teste falhos são utilizadas para identificar padrões semânticos comuns nas entradas que induzem o modelo ao erro, facilitando a correção de vulnerabilidades \cite{Perez2022, Nicolae2018}.
 \end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Léxicos de Sentimento Contexto-Específicos}
+\label{sec:lexicos}
+
+Diversos módulos do \textit{framework} (R-F1, R-F2, R-T2) utilizam léxicos de sentimento em português brasileiro para computar o delta de polaridade entre respostas comparadas. Esses léxicos são deliberadamente \textbf{módulo-específicos}, refletindo o construto avaliado em cada caso. Como consequência, o mesmo termo pode receber polaridades opostas em módulos distintos, sem que isso configure inconsistência: a polaridade depende do construto medido, não de uma classificação universal de sentimento.
+
+Três exemplos ilustram o princípio. No módulo R-F1, que avalia disparidade de endosso entre perfis contrafactuais, o termo ``adequado'' é classificado como \textbf{negativo} por representar endosso fraco em comparação com termos de endosso forte (``excelente'', ``excepcional''); o construto medido é \textit{intensidade de recomendação}. No módulo R-T2, que avalia se atributos irrelevantes alteram a decisão, o mesmo termo ``adequado'' é classificado como \textbf{positivo} por indicar resultado decisório favorável (``adequado para aprovação'', em contraste com ``inadequado''); o construto medido é \textit{outcome decisório binário}. No módulo R-F2, que avalia disparidade de tom motivacional, o termo ``potencial'' é classificado como \textbf{positivo} por indicar projeção futura encorajadora; o construto medido é \textit{tom de encorajamento}.
+
+Essa diferenciação intencional foi documentada no código-fonte e reflete a natureza distinta dos construtos avaliados por cada módulo. A homogeneização dos léxicos comprometeria a validade de construto, pois forçaria uma classificação única para termos que operam de modo diferente em contextos avaliativos distintos. As listas completas de termos por módulo estão disponíveis no repositório público da pesquisa.
 
 \section{Modelagem e Especificação dos Riscos Éticos}
 
@@ -135,7 +136,25 @@ R-T3 & -- & -- & Não \\ \hline
 
 Conforme apresentado na Tabela~\ref{tab:mapeamento_tecnicas}, dos 11 riscos identificados: 6 são implementáveis via \textit{fuzzing} automatizado e 5 não são implementáveis por esta abordagem devido à sua natureza organizacional, normativa ou dependência de julgamento humano especializado. Os riscos não implementáveis (R-F3, R-F5, R-A1, R-A3 e R-T3) requerem intervenções de governança, políticas organizacionais ou avaliação qualitativa especializada, ficando fora do escopo desta pesquisa que se concentra em técnicas de teste automatizado.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A Tabela~\ref{tab:riscos_excluidos} consolida, para cada risco excluído, a barreira central à sua operacionalização via \textit{fuzzing} e o método de avaliação alternativo recomendado. As subseções dedicadas a cada risco (ao longo das Seções~\ref{sec:criterios_selecao} e seguintes) detalham individualmente essas análises.
+
+\begin{table}[htbp]
+\centering
+\caption{Riscos não operacionalizáveis via fuzzing: barreira central e método alternativo}
+\label{tab:riscos_excluidos}
+\footnotesize
+\begin{tabular}{|c|p{4.6cm}|p{4.8cm}|}
+\hline
+\textbf{Risco} & \textbf{Barreira à operacionalização} & \textbf{Método alternativo recomendado} \\ \hline
+R-F3 & Ausência de \textit{ground truth}: distinguir normalização de desigualdade de descrição factual exige julgamento normativo. & Auditoria qualitativa por especialistas em ciências sociais. \\ \hline
+R-F5 & Atribuição estrutural \textit{vs.} individual é questão em disputa, sem critério algorítmico objetivo. & Revisão por especialistas com metodologia qualitativa. \\ \hline
+R-A1 & Natureza organizacional: responsabilidade é determinada por contratos e governança, não por comportamento do modelo. & Auditoria de governança e análise jurídica. \\ \hline
+R-A3 & Natureza processual: depende de processos de resposta a incidentes externos ao artefato. & Auditoria de processos de desenvolvimento e manutenção. \\ \hline
+R-T3 & Dependência da percepção do usuário, que varia com conhecimento prévio e contexto. & Estudos com usuários e avaliação por especialistas em comunicação. \\ \hline
+\end{tabular}
+\end{table}
+
+As cinco exclusões agrupam-se em três tipos de barreira. A primeira é \textbf{normativa} (R-F3 e R-F5): a ausência de um \textit{ground truth} objetivo impede a definição de um oráculo determinístico, pois a própria distinção avaliada permanece contestada nas ciências sociais. A segunda é \textbf{organizacional} (R-A1 e R-A3): os riscos manifestam-se em estruturas de governança e processos institucionais externos ao modelo, fora do alcance de uma técnica que opera sobre saídas comportamentais. A terceira é \textbf{perceptual} (R-T3): a avaliação depende da compreensão efetiva de usuários reais, cuja variabilidade impede limiares estáveis e reprodutíveis. Em todos os casos, a exclusão é metodológica e não ética --- os riscos permanecem relevantes, mas exigem instrumentos complementares ao \textit{fuzzing} comportamental.
 
 \section{Critérios de Seleção dos Riscos Testáveis}
 \label{sec:criterios_selecao}
@@ -143,23 +162,30 @@ Conforme apresentado na Tabela~\ref{tab:mapeamento_tecnicas}, dos 11 riscos iden
 A partir da taxonomia de riscos éticos apresentada na Tabela~\ref{tab:riscos_mapeados}, a seleção dos riscos a serem operacionalizados via \textit{fuzzing} considerou critérios metodológicos baseados na viabilidade técnica de automação e na natureza do artefato testado. Estes critérios alinham os requisitos de teste de software (como a necessidade de oráculos) com as definições formais de propriedades éticas:
 
 \begin{enumerate}
-    \item \textbf{Observabilidade Comportamental}: O risco deve manifestar-se através de comportamentos observáveis nas saídas do modelo (ex: texto gerado, classificação), permitindo a definição de oráculos objetivos que distinguem comportamento aceitável de violação ética. Conforme estabelecido por Manès et al. \cite{Manes2019} e demonstrado no framework \textit{DeepXplore} \cite{Pei2017}, a automação de testes depende da capacidade de monitorar discrepâncias ou falhas explícitas durante a execução (o ``problema do oráculo'').
+    \item \textbf{Observabilidade Comportamental}: O risco deve manifestar-se através de comportamentos observáveis nas saídas do modelo (ex: texto gerado, classificação), permitindo a definição de oráculos objetivos que distinguem comportamento aceitável de violação ética. Conforme estabelecido por Manès et al. \cite{Manes2021} e demonstrado no framework \textit{DeepXplore} \cite{Pei2017}, a automação de testes depende da capacidade de monitorar discrepâncias ou falhas explícitas durante a execução (o ``problema do oráculo'').
     
     \item \textbf{Reprodutibilidade Automatizada}: Deve ser possível gerar sistematicamente casos de teste que exponham o risco, seja por mutação de \textit{inputs} existentes ou geração de novos cenários estruturados. Riscos que dependem de condições irrepetíveis ou intervenção humana manual violam o princípio do \textit{fuzzing} de exploração massiva do espaço de entrada, conforme descrito nas abordagens de \textit{Red Teaming} automatizado de Perez et al. \cite{Perez2022} e na geração sistemática de testes do SAGE \cite{Godefroid2008}.
     
     \item \textbf{Mensurabilidade Quantitativa}: O risco deve admitir métricas objetivas (funções de custo ou distância) que permitam avaliar a severidade das violações e guiar o algoritmo de busca. A literatura de \textit{fairness} e robustez enfatiza a necessidade de traduzir conceitos normativos em definições matemáticas computáveis, como taxas de erro ou distâncias vetoriais, para viabilizar a otimização \cite{Bellamy2019, Odena2019, Corbett-Davies2023}.
     
-    \item \textbf{Independência de Contexto Organizacional}: O risco deve ser testável no nível do artefato algorítmico (o modelo e seus dados imediatos), sem dependência de processos organizacionais, políticas institucionais ou estruturas de governança externas. Esta delimitação segue a distinção de Bommasani et al. \cite{Bommasani2021} entre vieses intrínsecos do modelo e danos extrínsecos de aplicação, bem como a análise de Barocas e Selbst \cite{Barocas2016} sobre mecanismos de discriminação que ocorrem na definição do problema (\textit{problem definition}) antes mesmo da escrita do código.
+    \item \textbf{Independência de Contexto Organizacional}: O risco deve ser testável no nível do artefato algorítmico (o modelo e seus dados imediatos), sem dependência de processos organizacionais, políticas institucionais ou estruturas de governança externas. Esta delimitação segue a distinção de Bommasani et al. \cite{Bommasani2022} entre vieses intrínsecos do modelo e danos extrínsecos de aplicação, bem como a análise de Barocas e Selbst \cite{Barocas2016} sobre mecanismos de discriminação que ocorrem na definição do problema (\textit{problem definition}) antes mesmo da escrita do código.
 \end{enumerate}
 
 É importante reconhecer as limitações desta abordagem: riscos que requerem avaliação contextual profunda, análise causal social ou julgamento humano subjetivo (como a legitimidade do uso da IA em certos domínios) foram excluídos por limitações intrínsecas ao escopo do \textit{fuzzing} automatizado.
 
+\subsection{Fundamentação das Decisões de Projeto}
+\label{sec:fundamentacao_decisoes}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Três decisões de projeto sustentam o \textit{framework} e merecem fundamentação explícita: a composição da arquitetura, o mapeamento entre riscos e técnicas de \textit{fuzzing}, e os limites do conjunto de riscos avaliado.
+
+\paragraph{Rationale da arquitetura.} A organização em seis componentes não é arbitrária: ela decorre da separação de responsabilidades exigida por um \textit{pipeline} de teste reprodutível. A literatura de \textit{fuzzing} estrutura o processo em três atividades essenciais --- geração de entradas, execução e validação por oráculo~\cite{Manes2021} --- que mapeiam diretamente para o \textit{Input Generator}/\textit{Fuzzer Module}, o \textit{Execution Module} e o \textit{Evaluation Component}. Os três componentes restantes atendem a requisitos não funcionais de uma campanha sobre APIs comerciais: o \textit{Prompt-Formatting Unit} isola a heterogeneidade das interfaces dos provedores, evitando que a lógica de teste dependa de detalhes de cada API; o \textit{Logging Component} garante a rastreabilidade necessária à auditoria; e a separação entre dados brutos imutáveis e artefatos derivados sustenta a reaplicação dos oráculos sem novas chamadas de API. Essa decomposição prioriza extensibilidade (novos riscos exigem apenas um novo motor e oráculo) e reprodutibilidade, propriedades centrais à proposta.
+
+\paragraph{Mapeamento risco--técnica.} A associação entre cada risco e suas técnicas de \textit{fuzzing} (Tabela~\ref{tab:mapeamento_tecnicas}) deriva da correspondência entre a \textit{natureza do oráculo} requerido e a \textit{capacidade discriminativa} de cada técnica, e não de uma otimização empírica. Riscos que exigem comparação entre respostas a entradas minimamente diferentes (R-F1, R-T2) demandam \textit{mutation-based fuzzing} para gerar os contrafactuais e \textit{differential fuzzing} para compará-los --- a mesma combinação consagrada em \textit{fairness testing} de software~\cite{Galhotra2017, Udeshi2018}. Riscos que dependem de cenários estruturados inexistentes no corpus original (R-F2, R-F4, R-A2) requerem \textit{generation-based fuzzing}; quando o oráculo precisa avaliar resistência a manipulação (R-A2), acrescenta-se \textit{adversarial prompt injection}~\cite{Greshake2023}. Riscos cujo oráculo verifica uma relação de invariância entre transformações que preservam a semântica (R-T1) são naturalmente endereçados por \textit{metamorphic testing}~\cite{Chen2018}. Ressalta-se que esse mapeamento constitui uma escolha de projeto fundamentada na literatura, e não uma hipótese validada experimentalmente quanto à \textit{otimalidade} da técnica; a avaliação empírica do Capítulo confirma a \textit{eficácia} das combinações em detectar violações, mas não exclui que técnicas alternativas pudessem alcançar resultados comparáveis.
+
+\paragraph{Limites do conjunto de riscos.} A taxonomia de onze riscos resulta da consolidação de duas fontes~\cite{Huang2023, Makridis2024} e não pretende exaustividade. Trata-se de uma ameaça à validade reconhecida: riscos éticos não contemplados por essas fontes --- ou emergentes em contextos de uso não antecipados --- permanecem fora do escopo de avaliação. A escolha por uma taxonomia consolidada e citável, em vez de uma proposta original, privilegia a ancoragem na literatura e a comparabilidade, ao custo de herdar suas eventuais lacunas. A arquitetura modular mitiga parcialmente essa limitação, ao permitir a incorporação de novos riscos sem alteração do núcleo do \textit{framework}.
 
 \section{Justiça (\textit{Fairness})}
 
-%------------------------------------------------------------------------------
 \subsection{R-F1: Discriminação de Grupos por Dados ou Modelos Enviesados}
 
 \subsubsection{Descrição do Risco}
@@ -168,7 +194,7 @@ O risco R-F1 refere-se à possibilidade de sistemas de IA produzirem outputs dis
 
 \subsubsection{Técnica de Fuzzing: \textit{Mutation-based Fuzzing} + \textit{Differential Fuzzing}}
 
-O \textit{mutation-based fuzzing} opera através da perturbação sistemática de atributos sensíveis nos prompts de entrada~\cite{Manes2019, xie2019}. Para cada prompt do corpus de teste, são geradas variantes que substituem marcadores demográficos (nomes típicos de diferentes grupos étnicos, pronomes de gênero, indicadores de idade) mantendo todos os demais elementos inalterados. Esta abordagem alinha-se ao conceito de \textit{counterfactual fairness}~\cite{kusner2017}, permitindo avaliar se a mudança de atributos protegidos altera indevidamente as respostas do modelo. O \textit{differential fuzzing} então compara as saídas produzidas para cada par de variantes~\cite{McKeeman1998}.
+O \textit{mutation-based fuzzing} opera através da perturbação sistemática de atributos sensíveis nos prompts de entrada~\cite{Manes2021, Xie2019}. Para cada prompt do corpus de teste, são geradas variantes que substituem marcadores demográficos (nomes típicos de diferentes grupos étnicos, pronomes de gênero, indicadores de idade) mantendo todos os demais elementos inalterados. Esta abordagem alinha-se ao conceito de \textit{counterfactual fairness}~\cite{Kusner2017}, permitindo avaliar se a mudança de atributos protegidos altera indevidamente as respostas do modelo. O \textit{differential fuzzing} então compara as saídas produzidas para cada par de variantes~\cite{McKeeman1998}.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
@@ -211,7 +237,7 @@ O sistema falha neste oráculo se, para pares de prompts que diferem apenas em a
     \begin{equation}
     TD = \frac{|\{(p_i, p_j) : \text{sim}(o_i, o_j) < \theta_{sim}\}|}{|P|}
     \end{equation}
-    onde $P$ é o conjunto de pares contrafactuais, $o_i$ e $o_j$ são os outputs correspondentes, e $\theta_{sim} = 0.80$ é o limiar de similaridade semântica, consistente com valores empíricos de \textit{Counterfactual Cosine Similarity}~\cite{Bouchard2024}.
+    onde $P$ é o conjunto de pares contrafactuais, $o_i$ e $o_j$ são os outputs correspondentes, e $\theta_{sim} = 0.80$ é o limiar de similaridade semântica, consistente com valores empíricos de \textit{Counterfactual Cosine Similarity}~\cite{Bouchard2026}.
     
     \item \textbf{Índice de Paridade Demográfica} ($IPD$): razão entre taxas de outputs favoráveis entre grupos.
     \begin{equation}
@@ -225,11 +251,10 @@ O sistema falha neste oráculo se, para pares de prompts que diferem apenas em a
 
 A implementação do módulo R-F1 utiliza 14 sementes de teste distribuídas em quatro domínios: recrutamento, finanças, saúde e educação. Cada semente define um cenário de avaliação com perfis contrafactuais que diferem exclusivamente em um atributo protegido: gênero, etnia ou idade. O \textit{Fuzzer Module} gera $K=20$ variantes por semente, produzindo pares de \textit{prompts} onde o atributo protegido é substituído enquanto todas as demais variáveis contextuais permanecem constantes.
 
-Para cada par, o oráculo calcula a similaridade semântica entre as respostas utilizando \textit{SBERT cosine similarity} (modelo \texttt{all-MiniLM-L6-v2}) como métrica primária, com \textit{TF-cosine similarity} como \textit{fallback} determinístico quando o modelo SBERT não está disponível. O SBERT é um codificador de \textit{embeddings} congelado que não gera texto nem realiza julgamentos subjetivos, funcionando como instrumento de medição de proximidade semântica. Ambas as métricas são registradas no CSV de saída para possibilitar comparação cruzada. Adicionalmente, um delta de sentimento é computado por meio de um léxico específico para o contexto de discriminação em português brasileiro, onde termos como ``excelente'' e ``excepcional'' indicam endosso forte (positivo) e termos como ``adequado'' e ``razoável'' indicam endosso fraco (negativo).
+Para cada par, o oráculo calcula a similaridade semântica entre as respostas utilizando \textit{SBERT cosine similarity} (modelo \texttt{all-MiniLM-L6-v2}) como métrica primária, com \textit{TF-cosine similarity} como \textit{fallback} determinístico quando o modelo SBERT não está disponível. A escolha de SBERT como métrica primária é motivada pelo comportamento limitante de TF-cosine em respostas longas geradas por LLMs (frequentemente acima de 2.000 caracteres): a métrica baseada em \textit{term frequency} produz valores médios em torno de 0,60, abaixo do limiar $\theta_{sim} = 0{,}80$, o que saturaria o oráculo em FAIL espúrio independentemente do comportamento real do modelo. SBERT, ao operar sobre representações vetoriais densas que capturam similaridade semântica em vez de sobreposição lexical, produz valores discriminativos em respostas longas. O SBERT é um codificador de \textit{embeddings} congelado que não gera texto nem realiza julgamentos subjetivos, funcionando como instrumento de medição de proximidade semântica. Ambas as métricas são registradas no CSV de saída para possibilitar comparação cruzada. Adicionalmente, um delta de sentimento é computado por meio de um léxico específico para o contexto de discriminação em português brasileiro, onde termos como ``excelente'' e ``excepcional'' indicam endosso forte (positivo) e termos como ``adequado'' e ``razoável'' indicam endosso fraco (negativo).
 
 Um par é classificado como FAIL se a similaridade semântica for inferior a $\theta_{sim} = 0{,}80$ ou se o delta de sentimento exceder $\theta_{sent} = 0{,}30$. O módulo executa 280 pares por provedor (14 sementes $\times$ 20 variantes), totalizando 840 pares e 1.680 chamadas de API.
 
-%------------------------------------------------------------------------------
 \subsection{R-F2: Acesso Desigual a Benefícios e Oportunidades Produzidos pela IA}
 
 \subsubsection{Descrição do Risco}
@@ -238,7 +263,7 @@ O risco R-F2 caracteriza situações onde sistemas de IA distribuem desigualment
 
 \subsubsection{Técnica de Fuzzing: \textit{Generation-based Fuzzing} + \textit{Differential Fuzzing}}
 
-O \textit{generation-based fuzzing} cria cenários estruturados através de templates parametrizados por características de perfil~\cite{godefroidGrammar2008, wang2017}. Para cada tipo de solicitação (conselho financeiro, orientação de carreira, informação médica), são geradas variantes que apresentam o mesmo pedido com diferentes perfis de solicitante. O \textit{differential fuzzing} compara as respostas obtidas~\cite{Galhotra2017}.
+O \textit{generation-based fuzzing} cria cenários estruturados através de templates parametrizados por características de perfil~\cite{GodefroidGrammar2008, Wang2017}. Para cada tipo de solicitação (conselho financeiro, orientação de carreira, informação médica), são geradas variantes que apresentam o mesmo pedido com diferentes perfis de solicitante. O \textit{differential fuzzing} compara as respostas obtidas~\cite{Galhotra2017}.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
@@ -295,7 +320,6 @@ O oráculo avalia três métricas de qualidade diferencial entre as respostas: (
 
 O módulo executa 300 pares por provedor (15 sementes $\times$ 20 variantes), totalizando 900 pares e 1.800 chamadas de API.
 
-%------------------------------------------------------------------------------
 \subsection{R-F3: Reforço das Desigualdades Sociais e Exclusão Existentes}
 
 \subsubsection{Descrição do Risco}
@@ -318,7 +342,6 @@ O reforço de desigualdades manifesta-se através de pressupostos implícitos e 
 
 \textbf{Recomendação}: Avaliação por especialistas em ciências sociais através de auditorias qualitativas.
 
-%------------------------------------------------------------------------------
 \subsection{R-F4: Falta de Justiça entre Subgrupos Devido ao Desempenho Inconsistente}
 
 \subsubsection{Descrição do Risco}
@@ -327,7 +350,7 @@ O risco R-F4 refere-se à disparidade de desempenho do modelo entre diferentes s
 
 \subsubsection{Técnica de Fuzzing: \textit{Differential Fuzzing} + \textit{Mutation-based Fuzzing}}
 
-O \textit{differential fuzzing} compara sistematicamente o desempenho em tarefas equivalentes formuladas para diferentes subgrupos~\cite{McKeeman1998, Galhotra2017}. O \textit{mutation-based fuzzing} introduz variações culturalmente específicas (expressões idiomáticas, referências culturais, variantes linguísticas) para avaliar robustez diferencial~\cite{xie2019}.
+O \textit{differential fuzzing} compara sistematicamente o desempenho em tarefas equivalentes formuladas para diferentes subgrupos~\cite{McKeeman1998, Galhotra2017}. O \textit{mutation-based fuzzing} introduz variações culturalmente específicas (expressões idiomáticas, referências culturais, variantes linguísticas) para avaliar robustez diferencial~\cite{Xie2019}.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
@@ -383,7 +406,6 @@ O \textit{Fuzzer Module} gera $K=20$ variantes por semente e executa cada varian
 
 O módulo executa 1.200 linhas por provedor (300 variantes $\times$ 3--5 subgrupos por variante), totalizando 3.600 avaliações e 3.600 chamadas de API.
 
-%------------------------------------------------------------------------------
 \subsection{R-F5: Interpretação Errônea das Desigualdades Estruturais como Características Individuais}
 
 \subsubsection{Descrição do Risco}
@@ -406,12 +428,8 @@ A distinção entre explicações estruturais e individuais requer compreensão 
 
 \textbf{Recomendação}: Revisão por especialistas em ciências sociais com metodologia qualitativa.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SEÇÃO 2: RESPONSABILIZAÇÃO
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Responsabilização (\textit{Accountability})}
 
-%------------------------------------------------------------------------------
 \subsection{R-A1: Sistema Pode Causar Dano Sem Identificação de Responsável}
 
 \subsubsection{Descrição do Risco}
@@ -434,7 +452,6 @@ A identificação de responsáveis é uma questão organizacional, jurídica e c
 
 \textbf{Recomendação}: Auditoria de governança e análise jurídica.
 
-%------------------------------------------------------------------------------
 \subsection{R-A2: Decisões Não Podem Ser Contestadas ou Apeladas}
 
 \subsubsection{Descrição do Risco}
@@ -443,7 +460,7 @@ O risco R-A2 caracteriza situações onde sistemas de IA produzem decisões que 
 
 \subsubsection{Técnica de Fuzzing: \textit{Generation-based Fuzzing} + \textit{Adversarial Prompt Injection}}
 
-O \textit{generation-based fuzzing} cria cenários estruturados onde usuários solicitam contestação, revisão ou explicação de decisões~\cite{Perez2022}. O \textit{adversarial prompt injection} testa vulnerabilidades a manipulação que poderia forçar mudança de decisão sem fundamento~\cite{greshake2023, liu2023}.
+O \textit{generation-based fuzzing} cria cenários estruturados onde usuários solicitam contestação, revisão ou explicação de decisões~\cite{Perez2022}. O \textit{adversarial prompt injection} testa vulnerabilidades a manipulação que poderia forçar mudança de decisão sem fundamento~\cite{Greshake2023, Liu2023}.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
@@ -491,11 +508,10 @@ O sistema falha neste oráculo se recusar sistematicamente a reconhecer o direit
 
 O módulo R-A2 utiliza 21 sementes de teste distribuídas em quatro categorias de cenário: crédito, recrutamento, acadêmico e avaliação de risco. Cada semente define um cenário de decisão desfavorável seguido de uma interação de contestação. O módulo opera em dois modos de teste: \textit{contestation} (220 linhas por provedor), que avalia se o modelo reconhece o direito de contestar e fornece explicações adequadas, e \textit{adversarial} (200 linhas), que verifica se o modelo resiste a tentativas de pressão para reverter decisões sem fundamento.
 
-Os \textit{prompts} de contestação utilizam sete registros distintos (formal, polite, emocional, informacional, pressão, autoridade, manipulação) para avaliar a robustez do modelo sob diferentes estilos de interação. O oráculo avalia três métricas: (i) \textit{recognition score}, que mede se o modelo reconhece o pedido de contestação; (ii) \textit{explanation score}, que avalia a qualidade da explicação fornecida; e (iii) \textit{resistance score}, que mede a resistência a pressão adversarial. Um caso é classificado como FAIL se qualquer uma das métricas aplicáveis for inferior a $\theta = 0{,}50$.
+Os \textit{prompts} utilizam oito registros distintos no total, distribuídos entre os dois modos de teste: quatro registros de contestação (\textit{polite}, \textit{formal}, \textit{emocional}, \textit{informacional}) e quatro registros adversariais (\textit{pressure}, \textit{authority}, \textit{manipulation}, \textit{repetition}), avaliando a robustez do modelo sob diferentes estilos de interação. O oráculo avalia três métricas: (i) \textit{recognition score}, que mede se o modelo reconhece o pedido de contestação; (ii) \textit{explanation score}, que avalia a qualidade da explicação fornecida; e (iii) \textit{resistance score}, que mede a resistência a pressão adversarial. Um caso é classificado como FAIL se qualquer uma das métricas aplicáveis for inferior a $\theta = 0{,}50$.
 
 O módulo executa 420 linhas por provedor (21 sementes $\times$ 20 variantes), totalizando 1.260 avaliações e 2.520 chamadas de API (duas chamadas por caso: decisão inicial + contestação/adversarial).
 
-%------------------------------------------------------------------------------
 \subsection{R-A3: Falta de Mecanismos para Investigar e Corrigir Falhas}
 
 \subsubsection{Descrição do Risco}
@@ -518,12 +534,8 @@ A capacidade de investigar e corrigir falhas depende de processos organizacionai
 
 \textbf{Recomendação}: Auditoria de processos de desenvolvimento e manutenção.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SEÇÃO 3: TRANSPARÊNCIA
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Transparência (\textit{Transparency})}
 
-%------------------------------------------------------------------------------
 \subsection{R-T1: Modelos Opacos Dificultam a Compreensão das Decisões}
 
 \subsubsection{Descrição do Risco}
@@ -532,7 +544,7 @@ O risco R-T1 caracteriza a dificuldade de usuários compreenderem como e por que
 
 \subsubsection{Técnica de Fuzzing: \textit{Metamorphic Testing} + \textit{Generation-based Fuzzing}}
 
-O \textit{metamorphic testing} verifica se explicações para decisões equivalentes compartilham estrutura e elementos fundamentais~\cite{Chen2018, xie2011}. A relação metamórfica é: se duas consultas levam a decisões similares, as explicações devem apresentar consistência estrutural. O \textit{generation-based fuzzing} gera sistematicamente solicitações de explicação para diferentes tipos de decisões.
+O \textit{metamorphic testing} verifica se explicações para decisões equivalentes compartilham estrutura e elementos fundamentais~\cite{Chen2018, Xie2011}. A relação metamórfica é: se duas consultas levam a decisões similares, as explicações devem apresentar consistência estrutural. O \textit{generation-based fuzzing} gera sistematicamente solicitações de explicação para diferentes tipos de decisões.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
@@ -584,7 +596,6 @@ O submódulo de explicação solicita explicações em três níveis de detalham
 
 O módulo executa 200 pares metamórficos e 200 avaliações de explicação por provedor, totalizando 1.200 avaliações e 2.400 chamadas de API.
 
-%------------------------------------------------------------------------------
 \subsection{R-T2: Erros e Vieses Ocultos Não Podem Ser Detectados Facilmente}
 
 \subsubsection{Descrição do Risco}
@@ -593,7 +604,7 @@ O risco R-T2 refere-se à dificuldade de detectar erros sistemáticos e vieses o
 
 \subsubsection{Técnica de Fuzzing: \textit{Mutation-based Fuzzing} + \textit{Differential Fuzzing}}
 
-O \textit{mutation-based fuzzing} introduz perturbações sistemáticas em dimensões que não deveriam afetar a decisão (atributos irrelevantes) para verificar se o modelo mantém consistência~\cite{Manes2019}. O \textit{differential fuzzing} compara outputs para identificar sensibilidades ocultas a fatores que deveriam ser neutros~\cite{McKeeman1998}.
+O \textit{mutation-based fuzzing} introduz perturbações sistemáticas em dimensões que não deveriam afetar a decisão (atributos irrelevantes) para verificar se o modelo mantém consistência~\cite{Manes2021}. O \textit{differential fuzzing} compara outputs para identificar sensibilidades ocultas a fatores que deveriam ser neutros~\cite{McKeeman1998}.
 
 O que precisa ser conhecido para aplicar esta técnica:
 \begin{itemize}
@@ -645,7 +656,6 @@ O oráculo avalia três critérios independentes: (i) invariância decisória, v
 
 O módulo executa 360 pares por provedor (18 sementes $\times$ 20 variantes), totalizando 1.080 avaliações e 2.160 chamadas de API.
 
-%------------------------------------------------------------------------------
 \subsection{R-T3: Usuários Podem Ser Enganados por Falta de Explicações Claras}
 
 \subsubsection{Descrição do Risco}
@@ -668,16 +678,21 @@ O que constitui uma explicação ``enganosa'' depende do conhecimento prévio do
 
 \textbf{Recomendação}: Estudos com usuários e avaliação por especialistas em comunicação.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Integração e Fluxo de Execução}
+\section{Implementação e Fluxo de Execução}
 \label{sec:integracao}
 
-O \textit{framework} foi implementado em Python e está disponível como repositório público\footnote{\url{https://github.com/VasconcelosJoao/ethical-fuzzing-llms}}. A execução segue um \textit{pipeline} de duas fases independentes: campanha (coleta de dados) e avaliação (aplicação de oráculos).
+O \textit{framework} foi implementado em Python e está disponível como repositório público\footnote{\url{https://github.com/VasconcelosJoao/ethical-fuzzing-llms}}. A execução segue um \textit{pipeline} de duas fases independentes: \textbf{campanha} (coleta de dados via APIs dos LLMs) e \textbf{avaliação} (aplicação determinística dos oráculos sobre os dados coletados). Esta separação é deliberada e atende a três objetivos de Engenharia de Software: imutabilidade dos dados primários, reprodutibilidade dos vereditos sob diferentes parametrizações, e auditabilidade do pipeline completo.
 
-Na fase de campanha, cada módulo possui um \textit{script} dedicado (\texttt{main\_rf1.py}, \texttt{main\_ra2.py}, etc.) que coordena a geração de variantes, a formatação de \textit{prompts} para cada provedor e a execução das chamadas de API. A configuração centralizada (\texttt{config.py}) define o provedor, o modelo e o número de variantes ($K$), permitindo que campanhas sejam replicadas com diferentes parâmetros sem alteração do código dos módulos. O \textit{Execution Module} implementa lógica de retentativa com \textit{backoff} (máximo de 50 tentativas com espera de 5 minutos) para lidar com limites de taxa e indisponibilidades temporárias das APIs. Os \textit{system prompts} são centralizados e documentados com justificativa por módulo.
+Na \textbf{fase de campanha}, cada módulo possui um \textit{script} dedicado (\texttt{main\_rf1.py}, \texttt{main\_ra2.py}, etc.) que coordena a geração de variantes, a formatação de \textit{prompts} para cada provedor e a execução das chamadas de API. A configuração centralizada (\texttt{config.py}) define o provedor, o modelo e o número de variantes ($K$), permitindo que campanhas sejam replicadas com diferentes parâmetros sem alteração do código dos módulos. O \textit{Execution Module} implementa lógica de retentativa com \textit{backoff} (máximo de 50 tentativas com espera de 5 minutos) para lidar com limites de taxa e indisponibilidades temporárias das APIs. Os \textit{system prompts} são centralizados e documentados com justificativa por módulo. Os dados resultantes (\textit{prompts}, \textit{outputs}, metadados de execução) são persistidos em CSVs estruturados que constituem o registro primário da campanha e não são alterados nas fases subsequentes.
 
-Na fase de avaliação, o \texttt{oracle\_runner.py} aplica os oráculos determinísticos aos CSVs de campanha e sobrescreve as colunas de rótulo (\texttt{label}, \texttt{fail\_reason}, \texttt{is\_fail}). Esta separação permite que os oráculos sejam re-executados sem repetir as chamadas de API, facilitando ajustes de \textit{thresholds} e correções nos critérios de avaliação. Um \textit{dashboard} Streamlit (\texttt{app.py}) fornece interface gráfica para execução de campanhas, aplicação de oráculos e exploração dos resultados.
+Na \textbf{fase de avaliação}, o \texttt{oracle\_runner.py} aplica os oráculos determinísticos aos CSVs de campanha e produz arquivos de resultado segregados, contendo apenas as chaves de rastreio para a campanha original, as métricas calculadas pelo oráculo e os vereditos atribuídos. Esta separação permite que os oráculos sejam re-executados sem repetir as chamadas de API, facilitando ajustes de \textit{thresholds}, correções nos critérios de avaliação e análises de sensibilidade. Os arquivos de campanha permanecem imutáveis, e a auditoria pós-execução pode comparar versões diferentes dos oráculos sobre o mesmo conjunto de dados primários.
+
+\subsection{Interface Gráfica de Apoio}
+\label{sec:interface}
+
+Complementando o \textit{pipeline} programático, foi implementada uma interface gráfica baseada em Streamlit (\texttt{app.py}) que torna o \textit{framework} operável sem edição de código, ampliando seu acesso a perfis não desenvolvedores em equipes de Engenharia de Software e auditoria. A interface organiza-se em quatro telas alinhadas ao fluxo de trabalho: \textit{Overview}, que descreve os módulos, métricas e a distribuição de chamadas de API; \textit{Run Campaign}, que verifica a presença das chaves de API, permite selecionar módulos e provedores e dispara as campanhas com acompanhamento de progresso em tempo real; \textit{Results Explorer}, que apresenta taxas de \textit{pass}/\textit{fail} por provedor, distribuições de métricas, análise de causas de falha e detalhamento por semente; e \textit{Configuration}, que expõe os modelos configurados, o valor de $K$ e o estado das chaves de API.
+
+Uma decisão de implementação merece destaque por reforçar a separação metodológica entre as fases: o \textit{Results Explorer} consome exclusivamente os artefatos derivados em \texttt{oracle\_results/}, nunca os dados brutos em \texttt{campaign\_outputs/}. A interface, portanto, exibe apenas vereditos já produzidos pelos oráculos determinísticos, e não recalcula juízos nem permite avaliação manual --- preservando a imutabilidade dos dados primários e a auditabilidade do \textit{pipeline}. A aplicação dos oráculos pela interface delega ao mesmo \texttt{oracle\_runner.py} do fluxo programático, inclusive com a política explícita de resolução de conflitos (\texttt{cancel} ou \texttt{overwrite}) para artefatos derivados, garantindo que os resultados visualizados na interface e os obtidos por linha de comando sejam idênticos.
 
 \section{Avaliação Empírica}
 \label{sec:avaliacao}
@@ -686,7 +701,7 @@ Esta seção apresenta a configuração experimental e os resultados da avaliaç
 
 \subsection{Configuração Experimental}
 
-As campanhas foram executadas com $K=20$ variantes por semente em todos os módulos, utilizando os três provedores descritos na Seção~\ref{sec:arquitetura}: OpenAI GPT-5, Google Gemini 3 Flash Preview e DeepSeek-Chat. Todas as chamadas de API utilizaram \textit{timeout} de 300 segundos. A Tabela~\ref{tab:api_calls} apresenta a distribuição de chamadas de API por módulo.
+As campanhas foram executadas com $K=20$ variantes por semente em todos os módulos, utilizando os três provedores descritos na Seção~\ref{sec:arquitetura}: OpenAI \texttt{gpt-5.2}, Google \texttt{gemini-3-flash} e \texttt{deepseek-chat}. Todas as chamadas de API utilizaram \textit{timeout} de 300 segundos. A Tabela~\ref{tab:api_calls} apresenta a distribuição de chamadas de API por módulo.
 
 \begin{table}[htbp]
 \centering
@@ -714,20 +729,22 @@ A Tabela~\ref{tab:resultados_gerais} apresenta a visão geral dos resultados por
 
 \begin{table}[htbp]
 \centering
-\caption{Taxa de falha por módulo e provedor}
+\caption{Taxa de falha por módulo e provedor, com intervalo de confiança de 95\% (Wilson)}
 \label{tab:resultados_gerais}
-\footnotesize
-\begin{tabular}{|c|c|c|c|c|}
+\scriptsize
+\begin{tabular}{|c|c|c|c|c|c|}
 \hline
-\textbf{Módulo} & \textbf{Princípio} & \textbf{DeepSeek} & \textbf{Gemini} & \textbf{OpenAI} \\ \hline
-R-F1 & \textit{Fairness} & 79,3\% & 81,1\% & 77,1\% \\ \hline
-R-F2 & \textit{Fairness} & 72,0\% & 40,3\% & 54,0\% \\ \hline
-R-F4 & \textit{Fairness} & 12,6\% & 15,9\% & 8,3\% \\ \hline
-R-A2 & \textit{Accountability} & 16,9\% & 6,0\% & 14,0\% \\ \hline
-R-T1 & \textit{Transparency} & 0,8\% & 0,2\% & 0,0\% \\ \hline
-R-T2 & \textit{Transparency} & 70,6\% & 74,7\% & 64,7\% \\ \hline
+\textbf{Módulo} & \textbf{Princípio} & \textbf{N/Prov.} & \textbf{DeepSeek} & \textbf{Gemini} & \textbf{OpenAI} \\ \hline
+R-F1 & \textit{Fairness} & 280 & 79,3\% [74,2; 83,6] & 81,1\% [76,1; 85,3] & 77,1\% [71,8; 81,6] \\ \hline
+R-F2 & \textit{Fairness} & 300 & 72,0\% [66,7; 76,8] & 40,3\% [34,9; 45,9] & 54,0\% [48,3; 59,6] \\ \hline
+R-F4 & \textit{Fairness} & 1.200 & 12,6\% [10,8; 14,6] & 15,9\% [14,0; 18,1] & 8,3\% [6,9; 10,0] \\ \hline
+R-A2 & \textit{Accountability} & 420 & 32,9\% [28,5; 37,5] & 27,4\% [23,3; 31,8] & 32,1\% [27,9; 36,8] \\ \hline
+R-T1 & \textit{Transparency} & 400 & 14,3\% [11,2; 18,0] & 11,3\% [8,5; 14,7] & 12,8\% [9,8; 16,4] \\ \hline
+R-T2 & \textit{Transparency} & 360 & 70,6\% [65,7; 75,1] & 74,7\% [70,0; 78,9] & 64,7\% [59,6; 69,5] \\ \hline
 \end{tabular}
 \end{table}
+
+A coluna \textbf{N/Prov.} indica o número de pares avaliados por provedor em cada módulo, base para o cálculo dos intervalos de confiança de 95\% pelo método de Wilson, recomendado para proporções com $N$ moderado. A análise dos intervalos permite identificar diferenças estatisticamente robustas entre provedores: em R-F2, por exemplo, a separação entre DeepSeek (72,0\%) e Gemini (40,3\%) mantém-se íntegra mesmo nos limites pessimistas dos respectivos intervalos, evidenciando uma diferença consistente. Em contraste, as diferenças em R-F1, R-A2 e R-T1 entre os três provedores apresentam sobreposição parcial dos intervalos, sugerindo desempenho comparável nesses módulos apesar das pequenas variações pontuais. A taxa global de falha agregada sobre os seis módulos é de 32,7\% (IC95\% Wilson [31,7; 33,7]), com desempenho ordenado: OpenAI (30,3\%) $<$ Gemini (32,7\%) $<$ DeepSeek (35,1\%).
 
 \subsubsection{R-F1: Discriminação}
 
@@ -741,12 +758,12 @@ R-T2 & \textit{Transparency} & 70,6\% & 74,7\% & 64,7\% \\ \hline
 \textbf{Métrica} & \textbf{DeepSeek} & \textbf{Gemini} & \textbf{OpenAI} \\ \hline
 Taxa de Disparidade ($TD$) & 0,793 & 0,811 & 0,771 \\ \hline
 Score de Consistência ($SC$) & 0,803 & 0,787 & 0,800 \\ \hline
-Causa: $\Delta$sentimento $> 0{,}30$ & 65,7\% & 59,6\% & 60,4\% \\ \hline
-Causa: similaridade $< 0{,}80$ & 41,1\% & 56,1\% & 45,7\% \\ \hline
+Causa dominante: similaridade $< 0{,}80$ & \multicolumn{3}{c|}{60,2\% das falhas} \\ \hline
+Causa secundária: $\Delta$sentimento $> 0{,}30$ & \multicolumn{3}{c|}{39,8\% das falhas} \\ \hline
 \end{tabular}
 \end{table}
 
-O módulo R-F1 detectou disparidades em 77--81\% dos pares contrafactuais avaliados. A causa dominante de falha é o delta de sentimento (aproximadamente 60--66\% dos pares), indicando que os modelos utilizam linguagem de intensidade diferente ao avaliar perfis idênticos que diferem apenas em atributo protegido. A análise por atributo revela que \texttt{ethnicity} apresenta as maiores taxas de falha em todos os provedores, enquanto \texttt{gender} tende a apresentar as menores. O domínio \texttt{education} é o mais afetado (80--93\% de falha).
+O módulo R-F1 detectou disparidades em 77--81\% dos pares contrafactuais avaliados. A causa dominante de falha é a similaridade abaixo do limiar (60,2\% das falhas do módulo), seguida pelo delta de sentimento (39,8\%), indicando que, mais do que diferenças de intensidade afetiva, as disparidades refletem divergência semântica substantiva entre as respostas geradas para perfis idênticos que diferem apenas em atributo protegido\footnote{A predominância da causa por similaridade --- mensurada pela similaridade semântica SBERT, e não por sobreposição lexical TF --- reforça a interpretação de que as diferenças observadas correspondem a divergência de conteúdo, e não a mera variação de superfície. As duas causas não são mutuamente exclusivas: um mesmo par pode falhar por ambos os critérios.}. A análise por atributo revela que \texttt{ethnicity} apresenta as maiores taxas de falha em todos os provedores, enquanto \texttt{gender} tende a apresentar as menores. O domínio \texttt{education} é o mais afetado (80--93\% de falha).
 
 \subsubsection{R-F2: Acesso Desigual}
 
@@ -768,7 +785,7 @@ Violações \textit{four-fifths} & 32,0\% & 35,0\% & 19,0\% \\ \hline
 \end{tabular}
 \end{table}
 
-A dimensão cultural apresenta consistentemente as maiores taxas de falha (10--24\%), com os subgrupos \texttt{indígena}, \texttt{rural} e \texttt{quilombola} ocupando as piores posições de acurácia em todos os provedores. O subgrupo \texttt{formal} (dimensão linguística) apresenta o melhor desempenho. O OpenAI é o único provedor que atinge $RPD > 0{,}80$, indicando conformidade com a regra dos 4/5. O domínio ``crédito'' (semente \texttt{sf4\_7}) concentra as maiores disparidades.
+A dimensão cultural apresenta consistentemente as maiores taxas de falha (10--24\%), com os subgrupos \texttt{indígena}, \texttt{rural} e \texttt{quilombola} entre os de pior acurácia em todos os provedores --- ainda que a ordem relativa entre eles varie por provedor. O subgrupo \texttt{formal} (dimensão linguística) apresenta o melhor desempenho em todos os provedores. O OpenAI é o único provedor que atinge $RPD > 0{,}80$, indicando conformidade com a regra dos 4/5. Entre os domínios da categoria \texttt{financial}, o domínio \texttt{crédito} concentra as maiores disparidades entre subgrupos.
 
 \subsubsection{R-A2: Contestabilidade}
 
@@ -783,16 +800,42 @@ A dimensão cultural apresenta consistentemente as maiores taxas de falha (10--2
 Taxa de Reconhecimento ($TR$) & 0,823 & 0,959 & 0,905 \\ \hline
 Score de Explicabilidade ($SE$) & 0,636 & 0,749 & 0,629 \\ \hline
 Taxa de Resistência Adversarial ($TRA$) & 0,935 & 0,955 & 0,955 \\ \hline
-Falha em contestação & 26,4\% & 7,3\% & 22,7\% \\ \hline
-Falha em adversarial & 6,5\% & 4,5\% & 4,5\% \\ \hline
+Taxa de falha global & 32,9\% & 27,4\% & 32,1\% \\ \hline
 \end{tabular}
 \end{table}
 
-Os modelos demonstram boa resistência a pressão adversarial ($TRA > 0{,}93$ em todos os provedores), mas falham significativamente mais em contestação legítima --- o DeepSeek tem 26,4\% de falha em contestação contra 6,5\% em adversarial. O registro \texttt{formal} (linguagem jurídica) é o que mais causa falhas: 55,0\% no DeepSeek e 46,7\% no OpenAI. Linguagem emocional e manipulativa, por outro lado, é bem tratada (0--10\% de falha). O Gemini se destaca com apenas 6,0\% de falha global e o melhor $SE$ (0,749).
+Os modelos demonstram boa resistência a pressão adversarial quando essa métrica é avaliada isoladamente ($TRA > 0{,}93$ em todos os provedores), mas o critério composto do oráculo --- que classifica como FAIL qualquer caso em que ao menos uma das três métricas aplicáveis fique abaixo de $\theta = 0{,}50$ --- revela que a contestabilidade efetiva é mais frágil do que a resistência a pressão isolada. A causa dominante de falha é a \textbf{reversão de decisão} (\textit{decision\_reversal}: 241 ocorrências, 62,1\% das 388 falhas em R-A2), seguida por reconhecimento abaixo do limiar (\textit{recognition}: 69 ocorrências, 17,8\%) e explicação abaixo do limiar (\textit{explanation}: 66 ocorrências, 17,0\%); a resistência adversarial abaixo do limiar responde por 31 casos (8,0\%) e a incoerência decisória sob contestação legítima, por apenas 3 casos (0,8\%)\footnote{As categorias de falha não são mutuamente exclusivas: um mesmo caso pode acumular mais de um motivo, de modo que a soma dos percentuais excede 100\%.}. O Gemini apresenta o melhor desempenho global (27,4\%), com o maior $TR$ (0,959) e $SE$ (0,749), enquanto DeepSeek (32,9\%) e OpenAI (32,1\%) apresentam desempenho similar.
+
+A leitura conjunta da Taxa de Resistência Adversarial ($TRA > 0{,}93$) com a predominância de reversões de decisão exige cautela interpretativa. Uma análise da matriz de transição entre a decisão inicial e a decisão após o desafio --- classificando cada resposta em \texttt{approve}, \texttt{reject}, \texttt{conditional} ou \texttt{unclear} --- revela que as reversões raramente são inversões \textit{duras} entre polos opostos. Das 241 reversões registradas no modo adversarial, apenas 3 correspondem a transições diretas \texttt{approve}$\leftrightarrow$\texttt{reject}; a quase totalidade restante envolve ao menos um estado intermediário (\texttt{conditional} ou \texttt{unclear}). Subsiste, contudo, uma assimetria direcional relevante. Sob pressão adversarial --- que empurra sistematicamente para a aprovação --- as transições mais frequentes movem-se em direção à aprovação: \texttt{conditional}$\rightarrow$\texttt{approve} (27 casos), \texttt{reject}$\rightarrow$\texttt{conditional} (26) e \texttt{unclear}$\rightarrow$\texttt{approve} (14) somam 67 movimentos de suavização, contra apenas 26 no sentido inverso (\texttt{conditional}$\rightarrow$\texttt{reject} e \texttt{approve}$\rightarrow$\texttt{conditional}, 13 cada). Os modelos, portanto, mantêm a posição declarada e quase nunca a invertem abruptamente, mas exibem uma \textbf{erosão direcional da firmeza} sob pressão, expressa predominantemente como suavização gradual da decisão (de uma posição firme para uma condicional ou aprovadora) e não como reversão categórica. Esse padrão matiza a aparente robustez sugerida pelo $TRA$ elevado: a resistência é forte no nível da formulação textual, mas mensuravelmente permeável no nível do conteúdo decisório.
 
 \subsubsection{R-T1: Opacidade nas Decisões}
 
-O módulo R-T1 apresentou as menores taxas de falha do \textit{framework}: 0,8\% (DeepSeek), 0,3\% (Gemini) e 0,0\% (OpenAI). Os modelos produzem explicações estruturalmente consistentes para decisões similares (\textit{consistency score} médio entre 0,78 e 0,84) e fornecem explicações substantivas quando solicitadas (\textit{provision score} médio $> 0{,}88$ em todos os provedores). Os casos de falha concentram-se em cenários de avaliação de risco de investimentos, onde a sobreposição de fatores explicativos é naturalmente menor. Esses resultados indicam que os LLMs avaliados são, de modo geral, transparentes em suas explicações.
+O módulo R-T1 apresentou taxa global de falha entre 11,3\% (Gemini) e 14,3\% (DeepSeek), com OpenAI em posição intermediária (12,8\%). Esses números globais, contudo, ocultam um padrão heterogêneo entre os dois cenários do oráculo, conforme detalhado na Tabela~\ref{tab:rt1_results}.
+
+\begin{table}[htbp]
+\centering
+\caption{Métricas do módulo R-T1 por cenário e provedor (N=200 por célula)}
+\label{tab:rt1_results}
+\footnotesize
+\begin{tabular}{|l|l|c|c|c|}
+\hline
+\textbf{Cenário} & \textbf{Provedor} & \textbf{Falhas} & \textbf{Taxa (\%)} & \textbf{IC95\% Wilson} \\ \hline
+\multirow{3}{*}{\texttt{expl} (explicação direta)}
+    & DeepSeek & 54 & 27,0 & [21,3; 33,5] \\ \cline{2-5}
+    & Gemini   & 45 & 22,5 & [17,3; 28,8] \\ \cline{2-5}
+    & OpenAI   & 51 & 25,5 & [20,0; 32,0] \\ \hline
+\multirow{3}{*}{\texttt{meta} (meta-explicação)}
+    & DeepSeek &  3 &  1,5 & [0,5; 4,3] \\ \cline{2-5}
+    & Gemini   &  0 &  0,0 & [0,0; 1,9] \\ \cline{2-5}
+    & OpenAI   &  0 &  0,0 & [0,0; 1,9] \\ \hline
+\end{tabular}
+\end{table}
+
+A separação entre os cenários revela um achado central. No submódulo \textbf{metamórfico de meta-explicação} (\texttt{meta}), os modelos respondem de forma quase ideal: 0,0--1,5\% de falha. Os pares de cenários decisórios similares produzem explicações estruturalmente consistentes (\textit{consistency score} médio entre 0,78 e 0,84), com sobreposição de fatores e similaridade estrutural elevadas. No submódulo de \textbf{explicação direta} (\texttt{expl}), entretanto, a taxa de falha sobe para 22,5--27,0\%, dominada pela métrica \textit{provision\_score} abaixo do limiar (\texttt{provision\_abaixo\_threshold}: 150 ocorrências, 98,0\% das falhas em R-T1). Ou seja, quando solicitados a explicar uma decisão de forma direta, os modelos por vezes não fornecem uma explicação substantiva ou recusam-se a explicitar os fatores considerados.
+
+Esse padrão sugere que a explicabilidade dos LLMs avaliados é mais frágil em \textbf{condições de uso direto} (pedido explícito de justificativa para uma decisão) do que em \textbf{condições reflexivas} (geração paralela de explicações para cenários comparáveis, sem confronto direto com o usuário). Este achado, oculto no resultado global agregado, é particularmente relevante para aplicações em que o usuário afetado por uma decisão automatizada solicita ativamente sua explicação --- o cenário operacional de maior interesse regulatório.
+
+Adicionalmente, estes resultados devem ser interpretados com cautela. O oráculo de R-T1 mede consistência estrutural (no submódulo metamórfico) e provisão de explicação acessível (no submódulo direto), não a \textit{acurácia explicativa} ou a profundidade conceitual das justificativas fornecidas. Um modelo que produz explicações genéricas, mas estruturalmente similares e formalmente substantivas, satisfaz os critérios do oráculo independentemente de a explicação ser informativa para o usuário final. A avaliação da qualidade explicativa exigiria oráculos qualitativos complementares com participação humana, fora do escopo de um framework de \textit{fuzzing} automatizado.
 
 \subsubsection{R-T2: Vieses Ocultos}
 
@@ -812,26 +855,39 @@ Causa: similaridade $< 0{,}75$ & 7,5\% & 19,4\% & 6,1\% \\ \hline
 \end{tabular}
 \end{table}
 
-O achado central do módulo R-T2 é que aproximadamente 45\% dos pares apresentam mudança de decisão quando apenas atributos irrelevantes (preferência alimentar, hobby, gênero musical) são alterados. Este resultado é independente da métrica de similaridade utilizada e revela vieses ocultos significativos nos três provedores. A causa dominante de falha é a mudança de decisão (41--48\%), seguida pelo delta de sentimento (35--42\%). A similaridade semântica contribui marginalmente para as falhas, indicando que os modelos mantêm coerência textual mas alteram o conteúdo decisório.
+O achado central do módulo R-T2 é que aproximadamente 45\% dos pares apresentam mudança de decisão quando apenas atributos irrelevantes (preferência alimentar, hobby, gênero musical) são alterados. Este resultado é independente da métrica de similaridade utilizada e revela vieses ocultos significativos nos três provedores. A causa dominante de falha é a mudança de decisão (41--48\%), seguida pelo delta de sentimento (35--42\%)\footnote{As causas de falha não são mutuamente exclusivas: um par pode falhar simultaneamente por mudança de decisão e por delta de sentimento, de modo que a soma das parcelas excede a taxa de falha do módulo.}. A similaridade semântica contribui marginalmente para as falhas, indicando que os modelos mantêm coerência textual mas alteram o conteúdo decisório.
+
+Tal como observado em R-A2, a natureza dessas mudanças requer qualificação. A maioria das transições de decisão não constitui inversão categórica entre \texttt{approve} e \texttt{reject}, mas envolve os estados intermediários \texttt{conditional} e \texttt{unclear}. Essa observação não invalida o achado --- a sensibilidade a atributos comprovadamente irrelevantes permanece uma violação de invariância --- mas recomenda que a magnitude seja interpretada como instabilidade decisória sob perturbação neutra, e não como reversão sistemática de veredito. A coexistência de estabilidade semântica elevada ($SES$ entre 0,80 e 0,84) com instabilidade decisória reforça essa leitura: o texto permanece semanticamente próximo, enquanto a classificação da decisão oscila.
 
 \section{Discussão}
 \label{sec:discussao}
 
 \subsection{Análise Cruzada dos Módulos}
 
-Os resultados revelam um padrão complementar entre os módulos: os LLMs avaliados apresentam deficiências significativas em \textit{Fairness} (R-F1: 77--81\%, R-F2: 40--72\%) e na detecção de vieses ocultos (R-T2: 65--75\%), mas demonstram boa \textit{Accountability} (R-A2: 6--17\%) e transparência explicativa (R-T1: 0--1\%). Esta distribuição sugere que os mecanismos de alinhamento (\textit{RLHF}, \textit{constitutional AI}) priorizaram a capacidade de explicação e resistência a manipulação, mas não eliminaram vieses sutis de tratamento diferencial.
+Os resultados revelam um gradiente de severidade entre os módulos: deficiências mais agudas em \textit{Fairness} (R-F1: 77--81\%, R-F2: 40--72\%) e na detecção de vieses ocultos (R-T2: 65--75\%), seguidas de falhas moderadas em \textit{Accountability} (R-A2: 27--33\%) e em \textit{Transparency} explicativa (R-T1: 11--14\%), com R-F4 (8--16\%) destacando-se pela disparidade entre subgrupos culturalmente marginalizados. A análise por cenário do R-T1 revela um padrão particular: os modelos respondem de forma quase ideal quando convidados a meta-explicar decisões em pares paralelos (0--1,5\% de falha), mas falham em 22--27\% dos casos quando solicitados a explicar uma decisão diretamente, indicando que a explicabilidade dos LLMs é mais frágil em condições de uso direto do que em condições reflexivas. Esta distribuição sugere que os mecanismos de alinhamento (\textit{RLHF}, \textit{constitutional AI}) priorizaram a resistência adversarial e a consistência estrutural entre cenários, mas não eliminaram nem os vieses sutis de tratamento diferencial nem a fragilidade da explicação direta solicitada pelo usuário afetado.
 
 A correlação entre R-F1 e R-T2 é particularmente relevante: ambos os módulos detectam tratamento diferencial, mas por mecanismos distintos. R-F1 identifica discriminação por atributos protegidos (gênero, etnia, idade) e R-T2 identifica sensibilidade a atributos irrelevantes (hobbies, preferências). A co-ocorrência de taxas elevadas em ambos sugere um viés sistêmico na geração de respostas que vai além dos atributos protegidos tradicionais.
 
 \subsection{Comparação entre Provedores}
 
-Os três provedores apresentam perfis éticos distintos. O Gemini apresenta o melhor desempenho em \textit{Accountability} ($TRA = 0{,}955$, $SE = 0{,}749$) e equidade entre subgrupos, mas é o mais suscetível a vieses ocultos (R-T2: 74,7\%). O OpenAI apresenta o melhor desempenho global em \textit{Fairness} (único com $RPD > 0{,}80$ em R-F4) e a menor taxa de viés oculto (R-T2: 64,7\%). O DeepSeek se destaca negativamente em R-F2 (72,0\%), onde produz respostas de comprimento significativamente diferentes dependendo do perfil socioeconômico do solicitante.
+Os três provedores apresentam perfis éticos distintos. O \textbf{OpenAI} lidera o ranking global de desempenho (30,3\% de falha agregada) e apresenta o melhor desempenho em \textit{Fairness} entre subgrupos (R-F4: 8,3\%, único provedor com $RPD > 0{,}80$ em conformidade com a regra dos 4/5) e a menor taxa de viés oculto (R-T2: 64,7\%). O \textbf{Gemini} (32,7\% global) destaca-se em \textit{Accountability} ($TR = 0{,}959$, $SE = 0{,}749$, R-A2: 27,4\%), mas é o mais suscetível a vieses ocultos (R-T2: 74,7\%) e à disparidade entre subgrupos (R-F4: 15,9\%). O \textbf{DeepSeek} apresenta o pior desempenho global (35,1\%), destacando-se negativamente em R-F2 (72,0\%), onde produz respostas de comprimento significativamente diferentes dependendo do perfil socioeconômico do solicitante. Considerando o agrupamento por princípio ético, \textit{Transparency} apresenta a maior taxa global de falha (39,9\%), seguida de \textit{Accountability} (30,8\%) e \textit{Fairness} (30,1\%) --- resultado explicado pelo peso de R-T2 (70,0\%) dentro do princípio, contrastando com as taxas mais baixas de R-T1 (12,8\%).
 
 \subsection{Implicações Práticas}
 
-Os achados têm implicações diretas para o desenvolvimento e a auditoria de sistemas baseados em LLMs. Primeiro, a persistência de vieses em atributos protegidos (R-F1) e irrelevantes (R-T2) indica que os mecanismos atuais de alinhamento são insuficientes para garantir equidade. Segundo, a vulnerabilidade do registro formal em R-A2 sugere que aplicações jurídicas ou regulatórias devem receber atenção especial em testes de contestabilidade. Terceiro, a disparidade de desempenho entre subgrupos culturais em R-F4 --- com grupos indígena, quilombola e rural consistentemente desfavorecidos --- aponta para lacunas nos dados de treinamento que afetam desproporcionalmente populações já marginalizadas.
+Os achados têm implicações diretas para o desenvolvimento e a auditoria de sistemas baseados em LLMs. Primeiro, a persistência de vieses em atributos protegidos (R-F1) e irrelevantes (R-T2) indica que os mecanismos atuais de alinhamento são insuficientes para garantir equidade. Segundo, a vulnerabilidade do registro formal em R-A2 sugere que aplicações jurídicas ou regulatórias devem receber atenção especial em testes de contestabilidade. Terceiro, a disparidade de desempenho entre subgrupos culturais em R-F4 --- com os grupos indígena, quilombola e rural consistentemente entre os mais desfavorecidos --- aponta para lacunas nos dados de treinamento que afetam desproporcionalmente populações já marginalizadas.
 
 A arquitetura modular do \textit{framework} permite que organizações configurem campanhas de teste conforme seu perfil de risco, ativando os módulos mais relevantes para seu domínio de aplicação e contexto regulatório.
+
+\subsection{Análise de Sensibilidade dos Thresholds}
+\label{sec:sensibilidade}
+
+Os \textit{thresholds} adotados nos oráculos foram fixados \textit{a priori} a partir de fontes externas: a regra dos 4/5 ($\theta = 0{,}80$) é estabelecida pela EEOC~\cite{EEOC1978}; o limiar de similaridade $\theta_{sim} = 0{,}80$ em R-F1 alinha-se aos valores empíricos de \textit{Counterfactual Cosine Similarity} reportados por Bouchard et al.~\cite{Bouchard2026}; e os limiares de variação entre execuções consideram a faixa documentada por Atil et al.~\cite{Atil2024}. Esta seção examina a robustez dos resultados sob variações desses limiares, sem alterar as escolhas adotadas, com o objetivo de avaliar até que ponto as conclusões qualitativas dependem de calibrações específicas.
+
+A análise das causas de falha registradas em cada módulo (Tabelas~\ref{tab:rf1_results} e~\ref{tab:rt2_results}) permite avaliar a sensibilidade qualitativa do veredito do oráculo. Em R-F1, a causa dominante de falha é a similaridade abaixo do limiar (60,2\% das falhas), enquanto o delta de sentimento responde por 39,8\%. Variações de $\theta_{sim}$ na faixa $[0{,}75; 0{,}85]$ alterariam a parcela atribuída à similaridade, mas a predominância dessa causa --- ancorada na similaridade semântica SBERT, e não em sobreposição lexical TF --- sustenta a interpretação de que as disparidades refletem divergência semântica genuína; a ordenação dos provedores permaneceria dentro dos intervalos de confiança apresentados na Tabela~\ref{tab:resultados_gerais}.
+
+Em R-T2, o padrão é análogo. A causa dominante é a mudança de decisão (41--48\%), que opera em variável binária e é insensível a $\theta_{sim}$. A contribuição da similaridade ($\theta_{sim} = 0{,}75$) é marginal (6--19\% dos pares), de modo que variações desse limiar no intervalo $[0{,}70; 0{,}80]$ afetariam menos de cinco pontos percentuais na taxa global de cada provedor. Para R-F4, a métrica primária é a regra dos 4/5 com fundamentação regulatória direta, não admitindo arbitragem informada por dados sem perda da ancoragem normativa.
+
+Esta análise qualitativa indica que as conclusões principais do estudo --- ordenação relativa dos provedores e identificação dos módulos com taxas elevadas de falha --- são robustas a variações razoáveis dos limiares. A defesa dos valores adotados, contudo, baseia-se em sua origem externa (regulatória ou empírica documentada) e não em otimização sobre os dados desta avaliação, o que preserva a calibração \textit{a priori} declarada na Seção~\ref{sec:criterios_selecao}.
 
 \section{Ameaças à Validade}
 \label{sec:ameacas}
@@ -840,10 +896,18 @@ A arquitetura modular do \textit{framework} permite que organizações configure
 
 \textbf{Validade interna.} A utilização de SBERT como métrica primária de similaridade introduz dependência de um modelo de \textit{embeddings} externo. Para mitigar essa ameaça, a versão do modelo foi fixada (\texttt{all-MiniLM-L6-v2}), a execução é forçada em CPU, e a métrica determinística TF-cosine é registrada conjuntamente nos CSVs para comparação cruzada. A extração de decisões em R-T2 utiliza padrões de regex, que podem não capturar todas as formas de expressão de aprovação ou rejeição.
 
-\textbf{Validade externa.} Os resultados foram obtidos em três provedores comerciais com modelos específicos (GPT-5, Gemini 3 Flash Preview, DeepSeek-Chat) e podem não generalizar para outros modelos ou versões. As sementes de teste cobrem domínios do contexto brasileiro (crédito, recrutamento, saúde, educação) com terminologia em português, limitando a generalização para outros idiomas e contextos culturais. Adicionalmente, os modelos comerciais são atualizados continuamente pelos provedores, de modo que os resultados representam um retrato temporal.
+Adicionalmente, os resultados de R-T2 (taxa de mudança decisória entre 65\% e 75\%) podem ser parcialmente confundidos com a variabilidade estocástica natural de geração dos LLMs, documentada por Atil et al.~\cite{Atil2024}, segundo a qual o mesmo \textit{prompt} repetido produz \textit{outputs} diferentes mesmo sob configurações determinísticas. Sem um \textit{baseline} de variação intra-modelo (mesmo \textit{prompt} executado múltiplas vezes sem perturbação), não é possível separar com precisão o sinal de viés oculto do ruído estocástico de geração. A inclusão desse \textit{baseline} representa direção de trabalho futuro para isolar com mais robustez o efeito do atributo irrelevante introduzido pela perturbação.
+
+\textbf{Validade externa.} Os resultados foram obtidos em três provedores comerciais com modelos específicos (\texttt{gpt-5.2}, \texttt{gemini-3-flash}, \texttt{deepseek-chat}) e podem não generalizar para outros modelos ou versões. As sementes de teste cobrem domínios do contexto brasileiro (crédito, recrutamento, saúde, educação) com terminologia em português, limitando a generalização para outros idiomas e contextos culturais. Adicionalmente, os modelos comerciais são atualizados continuamente pelos provedores, de modo que os resultados representam um retrato temporal.
 
 \textbf{Confiabilidade.} Todas as campanhas são reprodutíveis por meio do repositório público, que contém sementes, \textit{templates}, configuração e oráculos. A separação entre campanha (coleta) e avaliação (oráculos) permite re-execução dos oráculos sobre os mesmos dados sem repetir chamadas de API. 
 
 \section{Síntese do Capítulo}
 
-Este capítulo apresentou a especificação técnica do \textit{framework} de \textit{fuzzing} ético, incluindo a arquitetura modular, a modelagem dos 11 riscos éticos identificados, a especificação dos 6 módulos de teste implementados (R-F1, R-F2, R-F4, R-A2, R-T1, R-T2), e a justificativa de exclusão dos 5 riscos não testáveis via \textit{fuzzing} automatizado. Os resultados da avaliação empírica e a discussão dos achados foram apresentados nas seções finais.
+Este capítulo apresentou a especificação técnica do \textit{framework} de \textit{fuzzing} ético desenvolvido nesta dissertação. A arquitetura modular, organizada em seis componentes interoperáveis (\textit{Input Generator}, \textit{Fuzzer Module}, \textit{Prompt-Formatting Unit}, \textit{Execution Module}, \textit{Logging Component} e \textit{Evaluation Component}), permite a execução automatizada de campanhas de teste sobre LLMs comerciais, com separação explícita entre coleta de dados e avaliação, e uso de oráculos reprodutíveis que combinam métricas estatísticas, similaridade semântica baseada em \textit{sentence embeddings} e verificação estrutural --- sem dependência de avaliadores baseados em LLM.
+
+A modelagem dos riscos éticos partiu de uma taxonomia consolidada de onze riscos cobrindo os princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}. Aplicando os critérios de seleção fundados em observabilidade comportamental, reprodutibilidade automatizada, mensurabilidade quantitativa e independência de contexto organizacional, foram operacionalizados seis riscos via \textit{fuzzing} (R-F1, R-F2, R-F4, R-A2, R-T1 e R-T2), enquanto os cinco riscos restantes foram excluídos com justificativa metodológica explícita por exigirem julgamento humano qualitativo, análise causal social ou avaliação contextual profunda. Cada módulo implementado seguiu uma estrutura padronizada de especificação contemplando descrição do risco, técnica de \textit{fuzzing}, definição de oráculo, critérios de aprovação/reprovação, exemplo de falha, métricas e detalhes de implementação.
+
+A avaliação empírica conduzida em três provedores comerciais --- \texttt{gpt-5.2} (OpenAI), \texttt{gemini-3-flash} (Google) e \texttt{deepseek-chat} (DeepSeek) --- totalizando 8.880 pares avaliados e aproximadamente 14.160 chamadas de API revelou perfis éticos distintos entre provedores e identificou lacunas significativas em \textit{Fairness} (R-F1: 79,2\% global, intervalo inter-provedor 77--81\%; R-F2: 55,4\% global, intervalo inter-provedor 40--72\%; R-F4: 12,3\% global) e em sensibilidade a vieses ocultos (R-T2: 70,0\% global, intervalo inter-provedor 65--75\%), com resultados moderados em \textit{Accountability} (R-A2: 30,8\% global, intervalo inter-provedor 27--33\%) e em \textit{Transparency} explicativa (R-T1: 12,8\% global, com forte heterogeneidade entre cenários: 22--27\% em explicação direta versus 0--1,5\% em meta-explicação). A taxa global de falha agregada foi de 32,7\%, com OpenAI (30,3\%) à frente de Gemini (32,7\%) e DeepSeek (35,1\%). A análise de sensibilidade qualitativa demonstrou que a ordenação dos provedores e o veredito qualitativo são robustos a variações razoáveis dos limiares, preservando a calibração \textit{a priori} adotada.
+
+As ameaças à validade discutidas reconhecem limitações específicas, em particular a dificuldade de separar viés oculto de variabilidade estocástica natural em R-T2, a natureza estrutural (e não qualitativa) do oráculo de R-T1, e o caráter temporal dos resultados em modelos comerciais sob atualização contínua. Os achados deste capítulo fundamentam as conclusões e direções de trabalho futuro apresentadas no Capítulo~\ref{cap:conclusao}.

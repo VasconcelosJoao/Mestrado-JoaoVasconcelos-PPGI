@@ -1,0 +1,76 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance=0.45cm,
+    >=Stealth,
+    phaseAnalysis/.style={
+        rectangle, rounded corners=4pt,
+        draw=black, thick,
+        fill=blue!12, align=center,
+        minimum width=8cm, minimum height=1.0cm,
+        inner sep=4pt
+    },
+    phaseSpec/.style={
+        rectangle, rounded corners=4pt,
+        draw=black, thick,
+        fill=violet!15, align=center,
+        minimum width=8cm, minimum height=1.0cm,
+        inner sep=4pt
+    },
+    phaseBuild/.style={
+        rectangle, rounded corners=4pt,
+        draw=black, thick,
+        fill=green!18, align=center,
+        minimum width=8cm, minimum height=1.0cm,
+        inner sep=4pt
+    },
+    phaseEval/.style={
+        rectangle, rounded corners=4pt,
+        draw=black, thick,
+        fill=orange!22, align=center,
+        minimum width=8cm, minimum height=1.0cm,
+        inner sep=4pt
+    },
+    phaseSynth/.style={
+        rectangle, rounded corners=4pt,
+        draw=black, thick,
+        fill=gray!18, align=center,
+        minimum width=8cm, minimum height=1.0cm,
+        inner sep=4pt
+    },
+    output/.style={
+        font=\footnotesize\itshape,
+        text=black!65,
+        align=left,
+        anchor=west
+    },
+    arrow/.style={->, thick, draw=black!75}
+]
+
+% --- Fases ---
+\node[phaseAnalysis] (f1) {\textbf{Fase 1:} Mapeamento Sistemático da Literatura (MSL)};
+\node[phaseAnalysis, below=of f1] (f2) {\textbf{Fase 2:} Identificação de riscos éticos testáveis};
+\node[phaseSpec, below=of f2] (f3) {\textbf{Fase 3:} Especificação das técnicas de \textit{fuzzing}};
+\node[phaseBuild, below=of f3] (f4) {\textbf{Fase 4:} Desenvolvimento das \textit{fuzzing engines}};
+\node[phaseEval, below=of f4] (f5) {\textbf{Fase 5:} Avaliação empírica em modelos reais};
+\node[phaseSynth, below=of f5] (f6) {\textbf{Fase 6:} Documentação, análise e síntese dos resultados};
+
+% --- Saídas como anotações laterais à direita ---
+\node[output, right=0.3cm of f1.east] {Saída: 3 princípios prioritários\\(\textit{Fairness}, \textit{Accountability}, \textit{Transparency})};
+\node[output, right=0.3cm of f2.east] {Saída: taxonomia de 11 riscos\\(6 implementáveis + 5 não-implementáveis)};
+\node[output, right=0.3cm of f3.east] {Saída: mapeamento risco $\rightarrow$ técnica de \textit{fuzzing}};
+\node[output, right=0.3cm of f4.east] {Saída: 6 \textit{fuzzing engines} (RF1, RF2, RF4,\\RA2, RT1, RT2) cobrindo os 3 princípios};
+\node[output, right=0.3cm of f5.east] {Saída: métricas, falhas detectadas\\e comparação entre provedores};
+\node[output, right=0.3cm of f6.east] {Saída: conclusões, recomendações\\e evidências consolidadas};
+
+% --- Setas ---
+\draw[arrow] (f1) -- (f2);
+\draw[arrow] (f2) -- (f3);
+\draw[arrow] (f3) -- (f4);
+\draw[arrow] (f4) -- (f5);
+\draw[arrow] (f5) -- (f6);
+
+\end{tikzpicture}
+\caption{Etapas metodológicas da pesquisa, agrupadas por natureza: análise (azul), especificação (roxo), construção (verde), avaliação (laranja) e síntese (cinza).}
+\label{fig:metodologia}
+\end{figure}

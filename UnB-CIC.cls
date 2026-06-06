@@ -153,6 +153,9 @@
 %%
 
 \usepackage{tocbasic} % added % removed from later and placed here
+\RequirePackage{silence}% Suprimir avisos
+\WarningFilter{babel}{Name 'brazil' is deprecated}% Suprimir aviso de deprecation do Babel
+\WarningFilter{tracklang}{No `datatool' support}% Suprimir aviso de tracklang
 \RequirePackage[brazil,american]{babel}% Idiomas
 \RequirePackage[fixlanguage]{babelbib}%  Idioma das referências
 \RequirePackage[utf8]{inputenc}%         Arquivos na codificação UTF-8

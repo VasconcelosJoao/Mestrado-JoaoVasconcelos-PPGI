@@ -1,0 +1,93 @@
+\begin{figure}[ht!]
+\small
+\centering
+\begin{tikzpicture}[
+    node distance=.5cm,
+    >=Stealth,
+    boxMain/.style={
+        rectangle,
+        rounded corners=10pt,
+        draw=black,
+        thick,
+        fill=blue!10,
+        align=center,
+        minimum width=7cm,
+        minimum height=1.9cm,
+        inner sep=6pt
+    },
+    boxExcl/.style={
+        rectangle,
+        rounded corners=10pt,
+        draw=black!60,
+        thick,
+        dashed,
+        fill=red!8,
+        align=center,
+        minimum width=7cm,
+        minimum height=1.9cm,
+        inner sep=6pt
+    },
+    arrowMain/.style={->, thick, draw=black},
+    arrowExcl/.style={->, thick, draw=black!55, dashed}
+]
+
+% NÓ SUPERIOR – REGISTROS IDENTIFICADOS
+\node[boxMain] (id) {%
+    \textbf{Registros identificados nas bases de dados} \\
+    $N = 2.491$ \\
+    {\footnotesize ACM = 267; IEEE = 843; Scopus = 934; WoS = 447}%
+};
+
+% DUPLICATAS REMOVIDAS
+\node[boxExcl, right=1.0cm of id] (dup) {%
+    \textbf{Duplicatas removidas (EC4)} \\
+    $N = 708$ \\
+    {\footnotesize (28,4\%)}%
+};
+
+% REGISTROS APÓS REMOÇÃO DE DUPLICATAS
+\node[boxMain, below=1.2cm of id] (afterdup) {%
+    \textbf{Registros após remoção de duplicatas} \\
+    $N = 1.783$%
+};
+
+% REGISTROS EXCLUÍDOS NA TRIAGEM INICIAL
+\node[boxExcl, right=1.0cm of afterdup] (excl1) {%
+    \textbf{Registros excluídos na triagem inicial} \\
+    $N = 1.620$ \\
+    {\footnotesize (título, resumo, palavras-chave)}%
+};
+
+% ESTUDOS AVALIADOS EM TEXTO COMPLETO
+\node[boxMain, below=1.2cm of afterdup] (fulltext) {%
+    \textbf{Estudos avaliados em texto completo} \\
+    $N = 163$%
+};
+
+% ESTUDOS EXCLUÍDOS APÓS LEITURA COMPLETA
+\node[boxExcl, right=1.0cm of fulltext] (excl2) {%
+    \textbf{Estudos excluídos após leitura completa} \\
+    $N = 104$ \\
+    {\footnotesize EC2, EC3, EC5}%
+};
+
+% ESTUDOS INCLUÍDOS
+\node[boxMain, below=1.2cm of fulltext] (incl) {%
+    \textbf{Estudos incluídos no mapeamento} \\
+    $N = 59$%
+};
+
+% Setas de continuidade (sólidas, pretas)
+\draw[arrowMain] (id.south) -- (afterdup.north);
+\draw[arrowMain] (afterdup.south) -- (fulltext.north);
+\draw[arrowMain] (fulltext.south) -- (incl.north);
+
+% Setas de exclusão (tracejadas, cinza)
+\draw[arrowExcl] (id.east) -- (dup.west);
+\draw[arrowExcl] (afterdup.east) -- (excl1.west);
+\draw[arrowExcl] (fulltext.east) -- (excl2.west);
+
+\end{tikzpicture}
+\caption{Fluxograma PRISMA do processo de seleção de estudos. Setas sólidas indicam o fluxo de continuidade; setas tracejadas indicam exclusões.}
+\label{fig:msl}
+\end{figure}
