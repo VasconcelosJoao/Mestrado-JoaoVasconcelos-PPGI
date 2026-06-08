@@ -3,79 +3,87 @@
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
     >=Stealth,
-    node distance=0.45cm and 0.55cm,
+    node distance=0.5cm and 0.55cm,
     every node/.style={font=\footnotesize},
     component/.style={
-        rectangle,
-        rounded corners=4pt,
-        draw=black,
-        thick,
-        minimum width=2.4cm,
-        minimum height=1.3cm,
-        align=center,
-        inner sep=4pt
+        rectangle, rounded corners=4pt, draw=black, thick,
+        minimum width=2.2cm, minimum height=1.2cm,
+        align=center, inner sep=4pt
     },
-    seed/.style={component, fill=green!15},
-    fuzzer/.style={component, fill=blue!12},
-    format/.style={component, fill=red!10},
-    execution/.style={component, fill=orange!18},
-    logging/.style={component, fill=red!18},
-    eval/.style={component, fill=yellow!22},
-    output/.style={component, fill=teal!15},
-    phase/.style={
-        rectangle,
-        draw=black!50,
-        dashed,
-        thick,
-        rounded corners=6pt,
-        inner sep=10pt
-    },
-    phaselabel/.style={
-        font=\small\bfseries\itshape,
-        text=black!70
-    },
-    arrow/.style={->, thick, draw=black!75}
+    seed/.style={component, fill=green!15, draw=black!55},
+    gen/.style={component, fill=blue!14},
+    fuzzer/.style={component, fill=cyan!18},
+    format/.style={component, fill=violet!16},
+    execution/.style={component, fill=orange!24},
+    logging/.style={component, fill=red!12},
+    artifact/.style={component, fill=gray!8, draw=black!55},
+    eval/.style={component, fill=yellow!28},
+    output/.style={component, fill=green!15, draw=black!55},
+    phase/.style={rectangle, draw=black!55, dashed, thick,
+                  rounded corners=6pt, inner sep=12pt},
+    phaselabel/.style={font=\small\bfseries\itshape, text=black!75,
+                       align=center},
+    arrow/.style={->, thick, draw=black!75},
+    sidearrow/.style={->, thick, draw=black!55, dashed}
 ]
 
-% --- Componentes da Fase de Campanha ---
-\node[seed] (seeds) {Seeds /\\Templates};
-\node[component, fill=green!22, right=of seeds] (input) {Input\\Generator};
-\node[fuzzer, right=of input] (fuzzer) {Fuzzer\\Module\\{\scriptsize\itshape\color{black!60}(× 6 engines)}};
-\node[format, right=of fuzzer] (format) {Prompt-Formatting\\Unit};
-\node[execution, right=of format] (exec) {Execution\\Module\\{\scriptsize\itshape\color{black!60}(× 3 provedores)}};
-\node[logging, right=of exec] (log) {Logging\\Component};
+% --- Linha superior: fluxo principal da Campanha ---
+\node[gen]                         (input)  {Input\\Generator};
+\node[fuzzer,    right=of input]   (fuzzer) {Fuzzer\\Module\\{\scriptsize\itshape(× 6 engines)}};
+\node[format,    right=of fuzzer]  (format) {Prompt-\\Formatting\\Unit};
+\node[execution, right=of format]  (exec)   {Execution\\Module\\{\scriptsize\itshape(× 3 provedores)}};
+\node[artifact,  right=of exec]    (campout){\texttt{campaign\_}\\\texttt{outputs/}\\{\scriptsize(CSV)}};
 
-% --- Componentes da Fase de Avaliação ---
-\node[eval, below=1.8cm of format] (evalc) {Evaluation\\Component};
-\node[output, right=of evalc] (results) {Resultados\\(CSVs)};
+% --- Linha inferior: insumos abaixo dos componentes que os consomem ---
+\node[seed, below=of input]  (seeds)     {Seeds (CSV)};
+\node[seed, below=of fuzzer] (templates) {Templates /\\Profiles (YAML)};
 
-% --- Setas da Fase de Campanha ---
-\draw[arrow] (seeds) -- (input);
-\draw[arrow] (input) -- (fuzzer);
+% --- Ramo observacional ---
+\node[logging,  below=of exec]    (log)    {Logging\\Component};
+\node[artifact, below=of campout] (logout) {\texttt{execution\_}\\\texttt{logs/}\\{\scriptsize(JSONL)}};
+
+% --- Fase de Avaliação: à direita ---
+\node[eval,   right=1.4cm of campout] (evalc)   {Evaluation\\Component};
+\node[output, below=of evalc]         (results) {\texttt{oracle\_results/}\\{\scriptsize vereditos PASS/FAIL}\\{\scriptsize + métricas + limiares}};
+
+% --- Setas: insumos sobem para os componentes ---
+\draw[arrow] (seeds)     -- (input);
+\draw[arrow] (templates) -- (fuzzer);
+
+% --- Fluxo principal horizontal ---
+\draw[arrow] (input)  -- (fuzzer);
 \draw[arrow] (fuzzer) -- (format);
 \draw[arrow] (format) -- (exec);
-\draw[arrow] (exec) -- (log);
+\draw[arrow] (exec)   -- (campout);
+
+% --- Ramo observacional ---
+\draw[sidearrow] (exec) -- (log)
+       node[midway, right, font=\scriptsize\itshape] {eventos};
+\draw[arrow] (log) -- (logout);
 
 % --- Transição entre fases ---
-\draw[arrow] (log.south) -- ++(0,-0.5) -| (evalc.north);
+\draw[arrow] (campout) -- (evalc);
 
-% --- Setas da Fase de Avaliação ---
+% --- Saída da Avaliação ---
 \draw[arrow] (evalc) -- (results);
 
-% --- Caixa pontilhada Fase de Campanha ---
+% --- Caixas pontilhadas das fases ---
 \begin{scope}[on background layer]
-    \node[phase, fit=(seeds)(input)(fuzzer)(format)(exec)(log), inner sep=12pt] (campaign_box) {};
+    \node[phase,
+          fit=(input)(fuzzer)(format)(exec)(campout)(seeds)(templates)(log)(logout),
+          inner sep=12pt] (campaign_box) {};
+    \node[phase,
+          fit=(evalc)(results),
+          inner sep=12pt] (eval_box) {};
 \end{scope}
-\node[phaselabel, above=2pt of campaign_box.north west, anchor=south west] {Fase de Campanha (coleta de dados)};
 
-% --- Caixa pontilhada Fase de Avaliação ---
-\begin{scope}[on background layer]
-    \node[phase, fit=(evalc)(results), inner sep=12pt] (eval_box) {};
-\end{scope}
-\node[phaselabel, below=2pt of eval_box.south west, anchor=north west] {Fase de Avaliação (aplicação dos oráculos)};
+\node[phaselabel, above=4pt of campaign_box.north, anchor=south]
+    {Fase de Campanha (coleta de dados)};
+\node[phaselabel, above=2pt of eval_box.north, anchor=south, align=center]
+    {Fase de Avaliação\\(aplicação dos oráculos)};
 
 \end{tikzpicture}%
 }
-\caption{Arquitetura modular do \textit{framework} de \textit{fuzzing} ético, organizada em duas fases independentes: \textbf{Campanha} (coleta de dados via APIs dos LLMs) e \textbf{Avaliação} (aplicação determinística dos oráculos sobre os dados coletados). A separação física dos artefatos entre as fases preserva a imutabilidade dos dados primários e permite a re-execução dos oráculos sem repetição das chamadas de API.}
+\caption{Arquitetura modular do \textit{framework} de \textit{fuzzing} ético, organizada em duas fases independentes: \textbf{Campanha} (coleta de dados via APIs dos LLMs, com persistência das saídas brutas em \texttt{campaign\_outputs/} e dos eventos de execução em \texttt{execution\_logs/}) e \textbf{Avaliação} (aplicação determinística dos oráculos sobre os dados coletados, gerando \texttt{oracle\_results/}). A separação física dos artefatos entre as fases preserva a imutabilidade dos dados primários e permite a re-execução dos oráculos sem repetição das chamadas de API.}
 \label{fig:arquitetura}
 \end{figure}

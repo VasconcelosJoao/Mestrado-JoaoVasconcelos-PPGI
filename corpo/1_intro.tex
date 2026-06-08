@@ -24,7 +24,7 @@ Nesse contexto, esta dissertação desenvolveu, implementou e avaliou empiricame
 
 A avaliação empírica foi conduzida em três LLMs comerciais de grande escala: OpenAI GPT, Gemini (Google) e DeepSeek. A escolha desses modelos justificou-se por sua ampla adoção na indústria e pela disponibilidade de APIs programáticas, o que assegurou consistência metodológica e comparabilidade dos resultados entre as diferentes \textit{engines} desenvolvidas.
 
-A seguir, apresentam-se o problema de pesquisa, as justificativas, os objetivos, os resultados obtidos, o método adotado e a estrutura geral da dissertação.
+A seguir, apresentam-se o problema de pesquisa, as justificativas, os objetivos, o escopo e as delimitações, os resultados obtidos, o método adotado e a estrutura geral da dissertação.
 
 \section{Problema de Pesquisa}
 
@@ -49,7 +49,7 @@ Dessa problemática emerge a questão central que orienta esta pesquisa:
 
 A necessidade de mecanismos operacionais para avaliação ética decorre da convergência de fatores técnicos, sociais e regulatórios que pressionam o desenvolvimento de sistemas de IA em direção a padrões mais robustos de responsabilidade. Estudos como o de Birhane et al.~\cite{Birhane2022} mostram que apenas 1\% das pesquisas em aprendizagem de máquina investiga potenciais impactos negativos, evidenciando o descompasso entre o avanço tecnológico e a reflexão crítica sobre suas consequências sociais e epistemológicas. De forma complementar, Holstein et al.~\cite{Holstein2019} identificaram a insuficiência do suporte oferecido aos profissionais de engenharia, especialmente no que se refere à avaliação de equidade, à seleção de métricas adequadas e à interpretação consistente dos resultados produzidos pelos modelos.
 
-O mapeamento sistemático conduzido nesta pesquisa confirmou a existência de limitações estruturais relevantes --- entre elas a ausência de suporte ferramental integrado a IDEs e \textit{pipelines} \textit{DevOps/MLOps} \cite{S010, S021, S030}, a escassez de validação em cenários industriais reais \cite{Holstein2019} e a baixa cobertura da fase de \textit{Testing} (apenas 27,1\% dos estudos) ---, sistematizadas e detalhadas como as lacunas L1--L6 no Capítulo~\ref{cap:rsl}.
+O mapeamento sistemático conduzido nesta pesquisa confirmou a existência de limitações estruturais relevantes, destacando-se a ausência de suporte ferramental integrado a IDEs e \textit{pipelines} \textit{DevOps/MLOps} \cite{S010, S021, S030}, a escassez de validação em cenários industriais reais \cite{Holstein2019} e a baixa cobertura da fase de \textit{Testing}, contemplada por apenas 27,1\% dos estudos. Tais limitações foram sistematizadas e detalhadas como lacunas em L1--L6 apresentadas no Capítulo~\ref{cap:rsl}.
 
 Nesse contexto, o desenvolvimento de \textit{fuzzing engines} éticas atendeu, simultaneamente, a diferentes demandas:
 
@@ -120,7 +120,7 @@ Este trabalho produziu contribuições organizadas em três eixos analíticos:
 \begin{itemize}
     \item realização de uma avaliação comparativa entre os modelos OpenAI GPT, Gemini e DeepSeek, com taxa global de falha ética de 32,7\% (IC95\% Wilson [31,7; 33,7]) e ordenação OpenAI GPT (30,3\%) $<$ Gemini (32,7\%) $<$ DeepSeek (35,1\%);
     \item identificação de padrões recorrentes de falhas éticas, concentrados em equidade contrafactual (R-F1: 79,2\%) e sensibilidade a atributos irrelevantes (R-T2: 70,0\%);
-    \item obtenção de evidências de que \textit{Transparency} apresenta a maior taxa agregada de falhas (39,9\%), superando \textit{Accountability} (30,8\%) e \textit{Fairness} (30,1\%), incluindo a assimetria observada entre explicação direta e metaexplicação no risco R-T1.
+    \item obtenção de evidências de que \textit{Transparency} apresenta a maior taxa agregada de falhas (39,9\%), superando \textit{Accountability} (30,8\%) e \textit{Fairness} (30,1\%), incluindo a assimetria observada entre explicação direta e meta-explicação no risco R-T1.
 \end{itemize}
 
 \textbf{(iii) Práticas:}
@@ -143,7 +143,7 @@ A Figura~\ref{fig:metodologia} sintetiza as etapas metodológicas da pesquisa, e
 
 \input{img/metodologia}
 
-A \textbf{Fase 1} correspondeu ao Mapeamento Sistemático da Literatura (Capítulo~\ref{cap:rsl}), conduzido de acordo com as diretrizes de Petersen et al.~\cite{Petersen2015}. Nessa etapa, foram analisados 59 estudos primários que evidenciaram os princípios éticos mais recorrentes na literatura sobre ética em inteligência artificial aplicada à engenharia de software, bem como as estratégias existentes para sua operacionalização ao longo do ciclo de vida do software. O principal resultado dessa fase foi a seleção dos três princípios prioritários --- \textit{Fairness}, \textit{Accountability} e \textit{Transparency} --- que orientaram o desenvolvimento das etapas subsequentes.
+A \textbf{Fase 1} correspondeu ao Mapeamento Sistemático da Literatura (Capítulo~\ref{cap:rsl}), conduzido de acordo com as diretrizes de Petersen et al.~\cite{Petersen2015}. Nessa etapa, foram analisados 59 estudos primários, os quais permitiram identificar os princípios éticos mais recorrentes na literatura sobre ética em inteligência artificial aplicada à engenharia de software, bem como as estratégias empregadas para sua operacionalização ao longo do ciclo de vida do software. O principal resultado dessa fase foi a seleção de três princípios prioritários, \textit{Fairness}, \textit{Accountability} e \textit{Transparency}, que serviram de base para o desenvolvimento das etapas subsequentes.
 
 Na \textbf{Fase 2}, foram identificados e refinados os riscos éticos específicos associados a esses princípios que poderiam ser tratados por meio de técnicas de \textit{fuzzing}. Essa etapa articulou o conhecimento sintetizado no MSL com o referencial teórico sobre ética em IA, resultando em uma taxonomia de riscos éticos testáveis alinhada às lacunas identificadas na literatura, especialmente a ausência de suporte ferramental integrado e a baixa cobertura da fase de \textit{Testing} (Capítulo~\ref{cap:rsl}).
 
