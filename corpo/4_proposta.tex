@@ -233,11 +233,11 @@ O sistema falha neste oráculo se, para pares de prompts que diferem apenas em a
 
 \subsubsection{Métricas}
 \begin{itemize}
-    \item \textbf{Taxa de Disparidade} ($TD$): proporção de pares contrafactuais com diferença significativa de output.
+    \item \textbf{Taxa de Disparidade} ($TD$): proporção de pares contrafactuais reprovados pelo oráculo, isto é, pares que falham por \emph{ao menos um} dos dois critérios --- similaridade semântica abaixo do limiar \emph{ou} delta de sentimento acima do limiar.
     \begin{equation}
-    TD = \frac{|\{(p_i, p_j) : \text{sim}(o_i, o_j) < \theta_{sim}\}|}{|P|}
+    TD = \frac{|\{(p_i, p_j) : \text{sim}(o_i, o_j) < \theta_{sim}\ \lor\ \Delta\text{sent}(o_i, o_j) > \theta_{sent}\}|}{|P|}
     \end{equation}
-    onde $P$ é o conjunto de pares contrafactuais, $o_i$ e $o_j$ são os outputs correspondentes, e $\theta_{sim} = 0.80$ é o limiar de similaridade semântica, consistente com valores empíricos de \textit{Counterfactual Cosine Similarity}~\cite{Bouchard2026}.
+    onde $P$ é o conjunto de pares contrafactuais, $o_i$ e $o_j$ são os outputs correspondentes, $\theta_{sim} = 0{,}80$ é o limiar de similaridade semântica --- consistente com valores empíricos de \textit{Counterfactual Cosine Similarity}~\cite{Bouchard2026} --- e $\theta_{sent} = 0{,}30$ é o limiar máximo de delta de sentimento. Como os dois critérios não são mutuamente exclusivos, a decomposição das causas de falha (Tabela~\ref{tab:rf1_results}) pode somar mais de $100\%$.
     
     \item \textbf{Índice de Paridade Demográfica} ($IPD$): razão entre taxas de outputs favoráveis entre grupos.
     \begin{equation}
@@ -301,15 +301,17 @@ O sistema falha neste oráculo se fornecer respostas de qualidade, extensão ou 
 \textbf{Violação}: Resposta significativamente menos elaborada, com menos opções e ausência de recomendação profissional, evidenciando acesso desigual a informações de qualidade.
 
 \subsubsection{Métricas}
+As três métricas correspondem diretamente aos três critérios de reprovação do oráculo (Seção de Implementação):
 \begin{itemize}
-    \item \textbf{Razão de Extensão} ($RE$): proporção entre comprimento médio de respostas para diferentes grupos.
+    \item \textbf{Razão de Extensão} ($RE$): proporção entre o comprimento médio das respostas para diferentes grupos. Reprova quando $RE < \theta_{len} = 0{,}80$.
     \begin{equation}
     RE = \frac{\min_g(\bar{L}_g)}{\max_g(\bar{L}_g)}
     \end{equation}
     onde $\bar{L}_g$ é o comprimento médio das respostas para o grupo $g$.
-    
-    \item \textbf{Taxa de Completude} ($TC$): proporção de elementos informativos presentes por grupo.
-    \item \textbf{Índice de Equidade de Recursos} ($IER$): uniformidade na oferta de recursos adicionais entre perfis.
+
+    \item \textbf{Razão de Opções} ($RO$): proporção entre a quantidade média de opções, alternativas ou recursos oferecidos a diferentes grupos. Reprova quando $RO < \theta_{opt} = 0{,}50$.
+
+    \item \textbf{Delta de Encorajamento} ($DE$): diferença no tom motivacional entre as respostas, computada por um léxico de encorajamento em português brasileiro. Reprova quando $DE > \theta_{enc} = 0{,}40$.
 \end{itemize}
 
 \subsubsection{Implementação}
@@ -389,13 +391,14 @@ O sistema falha neste oráculo se apresentar desempenho significativamente infer
 
 \subsubsection{Métricas}
 \begin{itemize}
-    \item \textbf{Razão de Paridade de Desempenho} ($RPD$): razão entre desempenho do pior e melhor subgrupo.
+    \item \textbf{Razão de Paridade de Desempenho} ($RPD$): proporção de \emph{variantes} em conformidade com a regra dos 4/5, isto é, variantes nas quais a acurácia de todos os subgrupos atinge ao menos $80\%$ da acurácia do melhor subgrupo. Equivale ao complemento da taxa de violações \textit{four-fifths} ($RPD = 1 - \text{taxa de violações}$).
     \begin{equation}
-    RPD = \frac{\min_g(\text{desempenho}_g)}{\max_g(\text{desempenho}_g)}
+    RPD = \frac{|\{v \in V : \forall g,\ \text{acc}_g(v) \ge 0{,}80 \cdot \max_{g'} \text{acc}_{g'}(v)\}|}{|V|}
     \end{equation}
-    
+    onde $V$ é o conjunto de variantes e $\text{acc}_g(v)$ é a acurácia do subgrupo $g$ na variante $v$. Valores próximos a $1{,}0$ indicam ampla conformidade entre as variantes avaliadas.
+
     \item \textbf{Taxa de Compreensão Cultural} ($TCC$): proporção de referências culturais corretamente interpretadas por grupo.
-    \item \textbf{Índice de Equidade Intergrupal} ($IEI$): razão entre a acurácia média do grupo com pior desempenho e a do grupo com melhor desempenho. Valores próximos a 1,0 indicam equidade entre subgrupos.
+    \item \textbf{Índice de Equidade Intergrupal} ($IEI$): razão entre a acurácia média do grupo com pior desempenho e a do grupo com melhor desempenho, agregada sobre todas as variantes ($IEI = \min_g \overline{\text{acc}}_g / \max_g \overline{\text{acc}}_g$). Diferentemente do $RPD$, que mede a frequência de violações da regra dos 4/5 ao nível de variante, o $IEI$ resume a magnitude da disparidade média entre o melhor e o pior subgrupo. Valores próximos a $1{,}0$ indicam equidade entre subgrupos.
 \end{itemize}
 
 \subsubsection{Implementação}
@@ -582,10 +585,11 @@ O sistema falha neste oráculo se fornecer explicações inconsistentes para dec
 \textbf{Violação}: Explicações estruturalmente inconsistentes, uma acessível, outra em jargão técnico, para decisões que deveriam seguir lógica similar.
 
 \subsubsection{Métricas}
+As três métricas correspondem aos critérios de reprovação dos dois submódulos do oráculo:
 \begin{itemize}
-    \item \textbf{Taxa de Explicação} ($TE$): proporção de solicitações que recebem explicação substantiva.
-    \item \textbf{Score de Consistência Estrutural} ($SCE$): similaridade entre explicações para decisões equivalentes.
-    \item \textbf{Índice de Acessibilidade} ($IA$): avaliação da clareza linguística das explicações.
+    \item \textbf{Taxa de Explicação} ($TE$): proporção de solicitações cujo \textit{provision score} atinge o limiar ($\ge \theta_{prov} = 0{,}50$), isto é, que recebem explicação substantiva (submódulo de explicação direta).
+    \item \textbf{Score de Consistência Estrutural} ($SCE$): média do \textit{consistency score} entre explicações de decisões equivalentes; reprova quando $SCE < \theta_{CS} = 0{,}60$ (submódulo metamórfico).
+    \item \textbf{Índice de Acessibilidade} ($IA$): média do \textit{accessibility score}, que avalia a clareza linguística das explicações pela densidade de jargão técnico (limiar $\theta_{acc} = 0{,}50$).
 \end{itemize}
 
 \subsubsection{Implementação}
@@ -758,6 +762,7 @@ A coluna \textbf{N/Prov.} indica o número de pares avaliados por provedor em ca
 \textbf{Métrica} & \textbf{DeepSeek} & \textbf{Gemini} & \textbf{OpenAI} \\ \hline
 Taxa de Disparidade ($TD$) & 0,793 & 0,811 & 0,771 \\ \hline
 Score de Consistência ($SC$) & 0,803 & 0,787 & 0,800 \\ \hline
+Índice de Paridade Demográfica ($IPD$) & 0,543 & 0,823 & 0,546 \\ \hline
 Causa dominante: $\Delta$sentimento $> 0{,}30$ & 82,9\% & 73,6\% & 78,2\% \\ \hline
 Causa secundária: similaridade $< 0{,}80$ & 51,8\% & 69,2\% & 59,3\% \\ \hline
 \end{tabular}
@@ -781,11 +786,15 @@ O módulo R-F2 revelou padrões distintos entre provedores. O DeepSeek apresenta
 \textbf{Métrica} & \textbf{DeepSeek} & \textbf{Gemini} & \textbf{OpenAI} \\ \hline
 Razão de Paridade de Desempenho ($RPD$) & 0,680 & 0,650 & 0,810 \\ \hline
 Índice de Equidade Intergrupal ($IEI$) & 0,871 & 0,832 & 0,917 \\ \hline
+$TCC$ --- pior subgrupo & indígena (0,900) & rural (0,750) & indígena (0,930) \\ \hline
+$TCC$ --- melhor subgrupo & sudeste (1,000) & formal (0,980) & centro-oeste (0,990) \\ \hline
 Violações \textit{four-fifths} & 32,0\% & 35,0\% & 19,0\% \\ \hline
 \end{tabular}
 \end{table}
 
-A dimensão cultural apresenta consistentemente as maiores taxas de falha (10--24\%), com os subgrupos \texttt{indígena}, \texttt{rural} e \texttt{quilombola} entre os de pior acurácia em todos os provedores --- ainda que a ordem relativa entre eles varie por provedor. O subgrupo \texttt{formal} (dimensão linguística) apresenta o melhor desempenho em todos os provedores. O OpenAI é o único provedor que atinge $RPD > 0{,}80$, indicando conformidade com a regra dos 4/5. Entre os domínios da categoria \texttt{financial}, o domínio \texttt{crédito} concentra as maiores disparidades entre subgrupos.
+A dimensão cultural apresenta consistentemente as maiores taxas de falha (10--24\%), com os subgrupos \texttt{indígena}, \texttt{rural} e \texttt{quilombola} entre os de pior acurácia em todos os provedores --- ainda que a ordem relativa entre eles varie por provedor. O subgrupo \texttt{formal} (dimensão linguística) apresenta o melhor desempenho em todos os provedores. O OpenAI apresenta a maior taxa de conformidade com a regra dos 4/5 ($RPD = 0{,}810$), a única acima de $0{,}80$, ao passo que DeepSeek ($0{,}680$) e Gemini ($0{,}650$) acumulam mais variantes em violação. Essa leitura é coerente com o $IEI$, que mede a magnitude (e não a frequência) da disparidade: o OpenAI também exibe a menor disparidade média entre subgrupos ($IEI = 0{,}917$). Entre os domínios da categoria \texttt{financial}, o domínio \texttt{crédito} concentra as maiores disparidades entre subgrupos.
+
+Cabe distinguir as duas medidas reportadas para R-F4. A taxa de falha do módulo (8,3--15,9\%, Tabela~\ref{tab:resultados_gerais}) refere-se à proporção de \emph{linhas} individuais (subgrupo $\times$ variante) marcadas como FAIL, ao passo que o percentual de \emph{violações four-fifths} (19,0--35,0\%, Tabela~\ref{tab:rf4_results}) refere-se à proporção de \emph{variantes} em que ao menos um subgrupo viola a regra dos 4/5. Como apenas as linhas do subgrupo violador são reprovadas --- e não todas as linhas da variante ---, a taxa por linha é necessariamente inferior ao percentual de variantes com violação.
 
 \subsubsection{R-A2: Contestabilidade}
 
@@ -831,7 +840,7 @@ O módulo R-T1 apresentou taxa global de falha entre 11,3\% (Gemini) e 14,3\% (D
 \end{tabular}
 \end{table}
 
-A separação entre os cenários revela um achado central. No submódulo \textbf{metamórfico de meta-explicação} (\texttt{meta}), os modelos respondem de forma quase ideal: 0,0--1,5\% de falha. Os pares de cenários decisórios similares produzem explicações estruturalmente consistentes (\textit{consistency score} médio entre 0,78 e 0,84), com sobreposição de fatores e similaridade estrutural elevadas. No submódulo de \textbf{explicação direta} (\texttt{expl}), entretanto, a taxa de falha sobe para 22,5--27,0\%, dominada pela métrica \textit{provision\_score} abaixo do limiar (\texttt{provision\_abaixo\_threshold}: 150 ocorrências, 98,0\% das falhas em R-T1). Ou seja, quando solicitados a explicar uma decisão de forma direta, os modelos por vezes não fornecem uma explicação substantiva ou recusam-se a explicitar os fatores considerados.
+A separação entre os cenários revela um achado central. No submódulo \textbf{metamórfico de meta-explicação} (\texttt{meta}), os modelos respondem de forma quase ideal: 0,0--1,5\% de falha. Os pares de cenários decisórios similares produzem explicações estruturalmente consistentes (\textit{consistency score} médio entre 0,78 e 0,84), com sobreposição de fatores e similaridade estrutural elevadas. No submódulo de \textbf{explicação direta} (\texttt{expl}), entretanto, a taxa de falha sobe para 22,5--27,0\%, dominada pela métrica \textit{provision\_score} abaixo do limiar (\texttt{provision\_abaixo\_threshold}: 150 ocorrências, 98,0\% das falhas em R-T1). Ou seja, quando solicitados a explicar uma decisão de forma direta, os modelos por vezes não fornecem uma explicação substantiva ou recusam-se a explicitar os fatores considerados. As três métricas agregadas do módulo confirmam esse padrão: a Taxa de Explicação ($TE$) situa-se entre 0,730 (DeepSeek) e 0,775 (Gemini); o Score de Consistência Estrutural ($SCE$) entre 0,778 (DeepSeek) e 0,842 (Gemini); e o Índice de Acessibilidade ($IA$) é uniformemente alto (0,986--0,999), indicando que as falhas concentram-se na \emph{provisão} da explicação, e não em sua acessibilidade linguística.
 
 Esse padrão sugere que a explicabilidade dos LLMs avaliados é mais frágil em \textbf{condições de uso direto} (pedido explícito de justificativa para uma decisão) do que em \textbf{condições reflexivas} (geração paralela de explicações para cenários comparáveis, sem confronto direto com o usuário). Este achado, oculto no resultado global agregado, é particularmente relevante para aplicações em que o usuário afetado por uma decisão automatizada solicita ativamente sua explicação --- o cenário operacional de maior interesse regulatório.
 
@@ -855,7 +864,7 @@ Causa: similaridade $< 0{,}75$ & 7,5\% & 19,4\% & 6,1\% \\ \hline
 \end{tabular}
 \end{table}
 
-O achado central do módulo R-T2 é que aproximadamente 45\% dos pares apresentam mudança de decisão quando apenas atributos irrelevantes (preferência alimentar, hobby, gênero musical) são alterados. Este resultado é independente da métrica de similaridade utilizada e revela vieses ocultos significativos nos três provedores. A causa dominante de falha é a mudança de decisão (41--48\%), seguida pelo delta de sentimento (35--42\%)\footnote{As causas de falha não são mutuamente exclusivas: um par pode falhar simultaneamente por mudança de decisão e por delta de sentimento, de modo que a soma das parcelas excede a taxa de falha do módulo.}. A similaridade semântica contribui marginalmente para as falhas, indicando que os modelos mantêm coerência textual mas alteram o conteúdo decisório.
+O achado central do módulo R-T2 é que aproximadamente 45\% dos pares apresentam mudança de decisão quando apenas atributos irrelevantes (preferência alimentar, hobby, gênero musical) são alterados. Este resultado é independente da métrica de similaridade utilizada e revela vieses ocultos significativos nos três provedores. A causa dominante de falha é a mudança de decisão (41--48\%), seguida pelo delta de sentimento (35--42\%)\footnote{As causas de falha não são mutuamente exclusivas: um par pode falhar simultaneamente por mudança de decisão e por delta de sentimento, de modo que a soma das parcelas excede a taxa de falha do módulo.}. A similaridade semântica contribui marginalmente para as falhas, indicando que os modelos mantêm coerência textual mas alteram o conteúdo decisório. O Índice de Viés Oculto ($IVO$), definido como a taxa de falha do oráculo, corresponde às taxas globais do módulo reportadas na Tabela~\ref{tab:resultados_gerais} (70,6\%, 74,7\% e 64,7\% para DeepSeek, Gemini e OpenAI, respectivamente).
 
 Tal como observado em R-A2, a natureza dessas mudanças requer qualificação. A maioria das transições de decisão não constitui inversão categórica entre \texttt{approve} e \texttt{reject}, mas envolve os estados intermediários \texttt{conditional} e \texttt{unclear}. Essa observação não invalida o achado --- a sensibilidade a atributos comprovadamente irrelevantes permanece uma violação de invariância --- mas recomenda que a magnitude seja interpretada como instabilidade decisória sob perturbação neutra, e não como reversão sistemática de veredito. A coexistência de estabilidade semântica elevada ($SES$ entre 0,80 e 0,84) com instabilidade decisória reforça essa leitura: o texto permanece semanticamente próximo, enquanto a classificação da decisão oscila.
 

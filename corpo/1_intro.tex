@@ -22,7 +22,7 @@ Considerando esse panorama, esta pesquisa propôs um \textit{framework} de \text
 
 Nesse contexto, esta dissertação desenvolveu, implementou e avaliou empiricamente seis \textit{fuzzing engines} especializadas, cada uma dedicada a um risco ético operacionalizável dos princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}. Cada \textit{engine} permite a avaliação sistemática de um risco ético específico em modelos de IA já implementados por meio da aplicação de oráculos determinísticos e métricas de conformidade quantificáveis.
 
-A avaliação empírica foi conduzida em três LLMs comerciais de grande escala: ChatGPT (OpenAI), Gemini (Google) e DeepSeek. A escolha desses modelos justificou-se por sua ampla adoção na indústria e pela disponibilidade de APIs programáticas, o que assegurou consistência metodológica e comparabilidade dos resultados entre as diferentes \textit{engines} desenvolvidas.
+A avaliação empírica foi conduzida em três LLMs comerciais de grande escala: OpenAI GPT, Gemini (Google) e DeepSeek. A escolha desses modelos justificou-se por sua ampla adoção na indústria e pela disponibilidade de APIs programáticas, o que assegurou consistência metodológica e comparabilidade dos resultados entre as diferentes \textit{engines} desenvolvidas.
 
 A seguir, apresentam-se o problema de pesquisa, as justificativas, os objetivos, os resultados obtidos, o método adotado e a estrutura geral da dissertação.
 
@@ -34,7 +34,7 @@ Apesar do crescente interesse internacional pela ética aplicada à IA e da prol
     \item os princípios éticos são, em sua maioria, abstratos e pouco integrados aos artefatos técnicos \cite{Mittelstadt2019, Hagendorff2020, S012, S042, S058};
     \item a fase de \textit{Testing} permanece substancialmente subatendida, com poucas abordagens voltadas à avaliação ética automatizada \cite{S003, S004, S022};
     \item as práticas atuais dependem de verificações manuais, custosas e de baixa escalabilidade \cite{S014, Holstein2019};
-    \item iniciativas recentes voltadas a LLMs \cite{Morales2025, Bouchard2026} representam avanços em relação às bibliotecas anteriores, mas ainda dependem de avaliadores auxiliares não determinísticos, o que limita a reprodutibilidade dos resultados.
+    \item iniciativas recentes voltadas a LLMs, como o LangBiTe \cite{Morales2025} e o LangFair \cite{Bouchard2025}, representam avanços em relação às bibliotecas anteriores, mas ainda apresentam limitações de reprodutibilidade: o LangBiTe admite avaliadores auxiliares não determinísticos (\textit{LLM-as-judge}), enquanto o LangFair não estabelece oráculos com limiares explícitos de decisão.
 \end{itemize}
 
 Mesmo com o fortalecimento de instrumentos regulatórios, como o \textit{EU AI Act} \cite{EUAIAct2024} e os \textit{Australia's AI Ethics Principles} \cite{AustraliaAI2019}, ainda não existe um arcabouço metodológico capaz de oferecer mecanismos automatizáveis para examinar a conformidade ética de sistemas já implementados, sobretudo no que se refere aos princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}.
@@ -49,13 +49,7 @@ Dessa problemática emerge a questão central que orienta esta pesquisa:
 
 A necessidade de mecanismos operacionais para avaliação ética decorre da convergência de fatores técnicos, sociais e regulatórios que pressionam o desenvolvimento de sistemas de IA em direção a padrões mais robustos de responsabilidade. Estudos como o de Birhane et al.~\cite{Birhane2022} mostram que apenas 1\% das pesquisas em aprendizagem de máquina investiga potenciais impactos negativos, evidenciando o descompasso entre o avanço tecnológico e a reflexão crítica sobre suas consequências sociais e epistemológicas. De forma complementar, Holstein et al.~\cite{Holstein2019} identificaram a insuficiência do suporte oferecido aos profissionais de engenharia, especialmente no que se refere à avaliação de equidade, à seleção de métricas adequadas e à interpretação consistente dos resultados produzidos pelos modelos.
 
-O mapeamento sistemático conduzido nesta pesquisa confirmou a existência de limitações estruturais relevantes, entre as quais se destacam:
-
-\begin{itemize}
-    \item \textbf{Ausência de suporte ferramental integrado}: as ferramentas propostas não se integram a IDEs nem a \textit{pipelines} \textit{DevOps/MLOps} \cite{S010, S021, S030};
-    \item \textbf{Escassez de evidências industriais}: poucas abordagens são validadas em cenários reais de aplicação \cite{Holstein2019};
-    \item \textbf{Baixa cobertura da fase de \textit{Testing}}: apenas 27,1\% dos estudos abordam testes éticos (Capítulo~\ref{cap:rsl}).
-\end{itemize}
+O mapeamento sistemático conduzido nesta pesquisa confirmou a existência de limitações estruturais relevantes --- entre elas a ausência de suporte ferramental integrado a IDEs e \textit{pipelines} \textit{DevOps/MLOps} \cite{S010, S021, S030}, a escassez de validação em cenários industriais reais \cite{Holstein2019} e a baixa cobertura da fase de \textit{Testing} (apenas 27,1\% dos estudos) ---, sistematizadas e detalhadas como as lacunas L1--L6 no Capítulo~\ref{cap:rsl}.
 
 Nesse contexto, o desenvolvimento de \textit{fuzzing engines} éticas atendeu, simultaneamente, a diferentes demandas:
 
@@ -81,7 +75,7 @@ Desenvolver e avaliar \textit{fuzzing engines} automatizadas para detectar falha
     \item Selecionar os riscos passíveis de teste e justificar essa seleção com base em critérios de relevância e viabilidade técnica;
     \item Especificar técnicas de \textit{fuzzing} adequadas para cada risco selecionado, detalhadas no Capítulo~\ref{cap:fundamentacao}: \textit{mutation-based fuzzing}, \textit{generation-based fuzzing}, \textit{differential fuzzing}, \textit{metamorphic testing} e \textit{adversarial prompt injection};
     \item Desenvolver seis \textit{fuzzing engines}, uma para cada risco implementável (R-F1, R-F2, R-F4, R-A2, R-T1 e R-T2), incluindo geradores de casos de teste, oráculos e métricas de conformidade;
-    \item Avaliar empiricamente os módulos desenvolvidos nos modelos ChatGPT, Gemini e DeepSeek;
+    \item Avaliar empiricamente os módulos desenvolvidos nos modelos OpenAI GPT, Gemini e DeepSeek;
     \item Analisar os resultados quantitativos e qualitativos, com o objetivo de identificar padrões de falhas éticas e realizar comparações entre os modelos.
 \end{enumerate}
 
@@ -106,7 +100,7 @@ Esta dissertação delimitou seu escopo em três dimensões principais.
     \item \textit{Adversarial prompt injection}: aplicação de padrões de \textit{jailbreak} e manipulação de instruções para testar a robustez das salvaguardas do modelo \cite{Schulhoff2023, Greshake2023, Liu2023}.
 \end{itemize}
 
-\textbf{Modelos-alvo}: a avaliação empírica foi conduzida em três LLMs comerciais: ChatGPT (\texttt{gpt-5.2}), Gemini (\texttt{gemini-3-flash}) e DeepSeek (\texttt{deepseek-chat}). Esses modelos foram selecionados em razão de sua relevância na indústria e da disponibilidade de APIs programáticas. A configuração experimental completa, incluindo parâmetros de execução e protocolo de acesso, é apresentada no Capítulo~\ref{cap:proposta}.
+\textbf{Modelos-alvo}: a avaliação empírica foi conduzida em três LLMs comerciais: OpenAI GPT (\texttt{gpt-5.2}), Gemini (\texttt{gemini-3-flash}) e DeepSeek (\texttt{deepseek-chat}). Esses modelos foram selecionados em razão de sua relevância na indústria e da disponibilidade de APIs programáticas. A configuração experimental completa, incluindo parâmetros de execução e protocolo de acesso, é apresentada no Capítulo~\ref{cap:proposta}.
 
 \textbf{Riscos excluídos}: riscos de natureza organizacional, como a atribuição de responsabilidade institucional, ou que demandam julgamento qualitativo aprofundado, como a distinção entre explicações estruturais e individuais, foram classificados como não testáveis por meio de \textit{fuzzing} automatizado. Em termos fundamentais, o problema do oráculo impõe uma barreira à determinação de saídas corretas para propriedades qualitativas e sociotécnicas, uma vez que estas carecem de especificações formais passíveis de verificação por oráculos implícitos típicos do \textit{fuzzing} \cite{Barr2015, Panwar2024}. Além disso, a literatura sobre governança responsável de IA demonstra que mecanismos de \textit{accountability} extrapolam o escopo de testes técnicos isolados, exigindo a combinação de controles organizacionais e tecnológicos \cite{PwC2025, WEF2024}. Em particular, a verificação da responsabilidade institucional e a integração holística dos princípios FATE ainda carecem de soluções unificadas na literatura \cite{Singhal2024}, demandando avaliações qualitativas capazes de capturar as nuances da interação humano--IA \cite{Nouis2025}. Por essa razão, tais aspectos foram excluídos do escopo de implementação técnica, conforme detalhado no Capítulo~\ref{cap:proposta}.
 
@@ -124,7 +118,7 @@ Este trabalho produziu contribuições organizadas em três eixos analíticos:
 
 \textbf{(ii) Empíricas:}
 \begin{itemize}
-    \item realização de uma avaliação comparativa entre os modelos ChatGPT, Gemini e DeepSeek, com taxa global de falha ética de 32,7\% (IC95\% Wilson [31,7; 33,7]) e ordenação ChatGPT (30,3\%) $<$ Gemini (32,7\%) $<$ DeepSeek (35,1\%);
+    \item realização de uma avaliação comparativa entre os modelos OpenAI GPT, Gemini e DeepSeek, com taxa global de falha ética de 32,7\% (IC95\% Wilson [31,7; 33,7]) e ordenação OpenAI GPT (30,3\%) $<$ Gemini (32,7\%) $<$ DeepSeek (35,1\%);
     \item identificação de padrões recorrentes de falhas éticas, concentrados em equidade contrafactual (R-F1: 79,2\%) e sensibilidade a atributos irrelevantes (R-T2: 70,0\%);
     \item obtenção de evidências de que \textit{Transparency} apresenta a maior taxa agregada de falhas (39,9\%), superando \textit{Accountability} (30,8\%) e \textit{Fairness} (30,1\%), incluindo a assimetria observada entre explicação direta e metaexplicação no risco R-T1.
 \end{itemize}
@@ -159,7 +153,7 @@ Na \textbf{Fase 4}, foram desenvolvidas as seis \textit{fuzzing engines}, cada u
 
 A \textbf{Fase 5} compreendeu a integração dos módulos ao sistema completo de \textit{fuzzing} ético. Nessa etapa, foram ajustadas interfaces e harmonizados os formatos de entrada e saída entre os componentes da arquitetura: \textit{Input Generator}, \textit{Fuzzer Module}, \textit{Prompt Formatting Unit}, \textit{Execution Module}, \textit{Logging Component} e \textit{Evaluation Component}.
 
-Na \textbf{Fase 6}, foi realizada a avaliação empírica das \textit{engines} nos modelos ChatGPT, Gemini e DeepSeek. Foram executadas campanhas de \textit{fuzzing}, consistentes em ciclos sistemáticos de testes com variações controladas de entrada, permitindo a coleta de métricas relacionadas às taxas de falha ética (\textit{failure rate} por risco, modelo e princípio), à distribuição dos riscos identificados e às diferenças de comportamento observadas entre os modelos. Os resultados obtidos nessa fase são apresentados e analisados detalhadamente no Capítulo~\ref{cap:proposta}.
+Na \textbf{Fase 6}, foi realizada a avaliação empírica das \textit{engines} nos modelos OpenAI GPT, Gemini e DeepSeek. Foram executadas campanhas de \textit{fuzzing}, consistentes em ciclos sistemáticos de testes com variações controladas de entrada, permitindo a coleta de métricas relacionadas às taxas de falha ética (\textit{failure rate} por risco, modelo e princípio), à distribuição dos riscos identificados e às diferenças de comportamento observadas entre os modelos. Os resultados obtidos nessa fase são apresentados e analisados detalhadamente no Capítulo~\ref{cap:proposta}.
 
 Por fim, a \textbf{Fase 7} foi dedicada à síntese e à documentação dos resultados obtidos. Nessa etapa, os achados empíricos foram analisados sob perspectivas quantitativa e qualitativa, relacionando-os às lacunas identificadas na literatura e às contribuições produzidas pela pesquisa (Seção~\ref{sec:contribuicoes}). Essa síntese fundamentou as conclusões apresentadas no Capítulo~\ref{cap:conclusao}, bem como as recomendações para trabalhos futuros e as implicações práticas para o desenvolvimento e a avaliação de sistemas de IA.
 
