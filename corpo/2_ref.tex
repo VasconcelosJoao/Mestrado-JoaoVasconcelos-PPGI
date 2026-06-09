@@ -299,6 +299,30 @@ Enquanto Monjezi et al. concentram-se na dimensão técnica dos testes, outras i
 
 A análise dos estudos correlatos evidencia que, embora existam métodos, \textit{frameworks} e ferramentas relevantes para a operacionalização de princípios éticos, o estado da arte ainda carece de uma abordagem capaz de oferecer \textbf{testes automatizados, exploratórios, sistemáticos e unificados} para a avaliação ética de modelos de IA, especialmente LLMs. Métodos como o ECCOLA fornecem estruturas conceituais; ferramentas como o AIF360 concentram-se em mitigação pontual de vieses; e iniciativas recentes de \textit{fuzzing} permanecem restritas a propriedades específicas, como \textit{fairness} em modelos treinados com dados tabulares \cite{Monjezi2024}. Em comum, essas abordagens carecem de mecanismos de automação contínua integrados ao ciclo de vida do software que permitam avaliar simultaneamente múltiplos princípios éticos. Nesse sentido, a literatura reforça a relevância da proposta desta dissertação, que avança o estado da arte ao desenvolver \textit{fuzzing engines} dedicadas à verificação integrada de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}.
 
+A Tabela~\ref{tab:comparacao_ferramentas} apresenta uma comparação entre abordagens representativas da literatura segundo critérios relevantes para a avaliação ética automatizada de LLMs. Além das ferramentas discutidas anteriormente, foram incluídos o Themis~\cite{Galhotra2017}, referência em testes diferenciais de \textit{fairness}; o DeepXplore~\cite{Pei2017}, referência em \textit{fuzzing} guiado por cobertura para redes neurais; e o \textit{causal-graph fuzzing} (CGF)~\cite{Monjezi2024}, baseado em relações causais para orientar a geração de casos de teste.
+
+\begin{table}[ht!]
+\centering
+\caption{Comparação com abordagens correlatas representativas. \checkmark\ indica atendimento ao critério; a coluna \textit{Proposta} refere-se ao \textit{framework} desta dissertação.}
+\label{tab:comparacao_ferramentas}
+\scriptsize
+\begin{tabular}{@{}lccccccc@{}}
+\toprule
+\textbf{Critério} & \textbf{AIF360} & \textbf{LangBiTe} & \textbf{LangFair} & \textbf{Themis} & \textbf{DeepXplore} & \textbf{CGF} & \textbf{Proposta} \\
+\midrule
+\multicolumn{8}{@{}l}{\textit{Cobertura de princípios}} \\
+\quad \textit{Fairness}       & \checkmark & \checkmark & \checkmark & \checkmark & --         & \checkmark & \checkmark \\
+\quad \textit{Accountability} & --         & --         & --         & --         & --         & --         & \checkmark \\
+\quad \textit{Transparency}   & --         & --         & --         & --         & --         & --         & \checkmark \\
+\addlinespace
+\multicolumn{8}{@{}l}{\textit{Capacidades técnicas}} \\
+\quad Oráculo determinístico       & \checkmark & --         & --         & \checkmark & \checkmark & \checkmark & \checkmark \\
+\quad LLMs generativos             & --         & \checkmark & \checkmark & --         & --         & --         & \checkmark \\
+\quad Critério de decisão quantitativo & \checkmark & --         & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Síntese do Capítulo}
 
 Este capítulo apresentou o referencial teórico que fundamenta o desenvolvimento das \textit{fuzzing engines} voltadas à avaliação ética de sistemas de IA. Em particular, foram discutidos os princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}, amplamente reconhecidos pela literatura \cite{Jobin2019, Hagendorff2020} como aqueles que apresentam maior maturidade técnica e maior potencial de operacionalização no âmbito da Engenharia de Software.

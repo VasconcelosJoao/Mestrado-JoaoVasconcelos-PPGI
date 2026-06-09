@@ -342,7 +342,7 @@ As três métricas correspondem diretamente aos três critérios de reprovação
 
 O módulo R-F2 utiliza 15 sementes de teste distribuídas em quatro domínios: carreira, finanças, saúde e jurídico. Cada semente define um cenário de solicitação de benefício ou oportunidade parametrizado por perfis socioeconômicos que variam em três dimensões: nível socioeconômico (alto, médio e baixo), escolaridade e localização geográfica (capital, interior e área rural). O \textit{Fuzzer Module} gera $K=20$ variantes para cada semente, produzindo pares de \textit{prompts} com perfis contrastantes.
 
-O oráculo avalia três métricas associadas à qualidade diferencial das respostas: (i) razão de extensão (\textit{length ratio}), que compara o comprimento das respostas; (ii) razão de opções (\textit{options ratio}), que compara a quantidade de alternativas ou recursos oferecidos; e (iii) delta de encorajamento (\textit{encouragement delta}), que compara o tom motivacional das respostas com base em um léxico de encorajamento em português brasileiro. Um par é classificado como FAIL quando a razão de extensão é inferior a $\theta_{len} = 0{,}80$, a razão de opções é inferior a $\theta_{opt} = 0{,}50$ ou o delta de encorajamento excede $\theta_{enc} = 0{,}40$.
+O oráculo avalia três métricas associadas à qualidade diferencial das respostas: (i) razão de extensão (\textit{length ratio}), que compara o comprimento das respostas; (ii) razão de opções (\textit{options ratio}), que compara a quantidade de alternativas ou recursos oferecidos; e (iii) delta de encorajamento (\textit{encouragement delta}), que compara o tom motivacional das respostas com base em um léxico de encorajamento em português brasileiro. Um par é classificado como FAIL quando a razão de extensão é inferior a $\theta_{len} = 0{,}80$, a razão de opções é inferior a $\theta_{opt} = 0{,}50$ ou o delta de encorajamento excede $\theta_{enc} = 0{,}40$. A robustez dessas escolhas de limiar é examinada na análise de sensibilidade (Seção~\ref{sec:sensibilidade}).
 
 O módulo executa 300 pares por provedor (15 sementes $\times$ 20 variantes), totalizando 900 pares avaliados e 1.800 chamadas de API.
 
@@ -793,7 +793,7 @@ Esta seção apresenta a configuração experimental e os resultados da avaliaç
 
 \subsection{Configuração Experimental}
 
-As campanhas foram executadas com $K=20$ variantes por semente em todos os módulos, utilizando os três provedores descritos na Seção~\ref{sec:arquitetura}: OpenAI \texttt{gpt-5.2}, Google \texttt{gemini-3-flash} e \texttt{deepseek-chat}. Todas as chamadas de API utilizaram \textit{timeout} de 300 segundos. A Tabela~\ref{tab:api_calls} apresenta a distribuição das chamadas de API por módulo.
+As campanhas foram executadas com $K=20$ variantes por semente em todos os módulos, utilizando os três provedores descritos na Seção~\ref{sec:arquitetura}: OpenAI \texttt{gpt-5.2}, Google \texttt{gemini-3-flash} e \texttt{deepseek-chat}. O valor $K=20$ foi adotado uniformemente como compromisso entre a cobertura do espaço de perturbações por semente e o custo das campanhas sobre APIs comerciais, sujeitas a limites de taxa e à tarifação por chamada; esse valor produz amostras de 280 a 1.200 pares por provedor (Tabela~\ref{tab:api_calls}), suficientes para estimar as taxas de falha com intervalos de confiança de Wilson estreitos (Tabela~\ref{tab:resultados_gerais}). Todas as chamadas de API utilizaram \textit{timeout} de 300 segundos. A Tabela~\ref{tab:api_calls} apresenta a distribuição das chamadas de API por módulo.
 
 \begin{table}[htbp]
 \centering
@@ -811,6 +811,8 @@ R-T1 & 20 & 20 & 2 (meta/expl) & 3 & 2.400 \\ \hline
 R-T2 & 18 & 20 & 2 (par) & 3 & 2.160 \\ \hline
 \multicolumn{4}{|r|}{\textbf{Total}} & & \textbf{14.160} \\ \hline
 \end{tabular}
+\par\vspace{2pt}
+{\footnotesize \textit{Nota:} o número de chamadas por variante varia entre módulos. R-F1, R-F2 e R-T2 usam 2 chamadas (par contrafactual); R-A2, 2 (interação multi-turno: decisão inicial e contestação/ataque); R-T1, 2 (explicação direta e meta-explicação); e R-F4, de 3 a 5, pois cada variante é executada para todos os subgrupos de sua dimensão (3 a 5 subgrupos), o que explica seu subtotal de 3.600.}
 \end{table}
 
 A similaridade semântica nos módulos R-F1 e R-T2 é calculada por meio de \textit{SBERT cosine similarity} (modelo \texttt{all-MiniLM-L6-v2})~\cite{Reimers2019} como métrica principal, utilizando \textit{TF-cosine similarity}~\cite{Salton1988} como mecanismo de contingência determinístico. O modelo SBERT consiste em um codificador de \textit{embeddings} congelado, executado em CPU com versão fixa, garantindo a reprodutibilidade das medições. Ambas as métricas são registradas nos arquivos CSV de saída para possibilitar comparações cruzadas.
@@ -833,6 +835,8 @@ R-F4 & \textit{Fairness} & 1.200 & 12,6\% [10,8; 14,6] & 15,9\% [14,0; 18,1] & 8
 R-A2 & \textit{Accountability} & 420 & 32,9\% [28,5; 37,5] & 27,4\% [23,3; 31,8] & 32,1\% [27,9; 36,8] \\ \hline
 R-T1 & \textit{Transparency} & 400 & 14,3\% [11,2; 18,0] & 11,3\% [8,5; 14,7] & 12,8\% [9,8; 16,4] \\ \hline
 R-T2 & \textit{Transparency} & 360 & 70,6\% [65,7; 75,1] & 74,7\% [70,0; 78,9] & 64,7\% [59,6; 69,5] \\ \hline
+\hline
+\textbf{Global} & --- & \textbf{2.960} & \textbf{35,1\%} & \textbf{32,7\%} & \textbf{30,3\%} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -841,6 +845,22 @@ A coluna \textbf{N/Prov.} indica o número de pares avaliados por provedor em ca
 Por outro lado, as diferenças registradas em R-F1, R-A2 e R-T1 apresentam sobreposição parcial dos intervalos de confiança entre os três provedores, sugerindo desempenhos semelhantes nesses módulos, apesar das variações pontuais observadas nas estimativas centrais.
 
 Considerando os seis módulos em conjunto, a taxa global de falha foi de 32,7\% (IC95\% Wilson [31,7; 33,7]). As taxas agregadas observadas para os provedores foram de 30,3\% para a OpenAI, 32,7\% para o Gemini e 35,1\% para o DeepSeek.
+
+Quando agregadas por princípio ético, as taxas de falha distribuem-se conforme a Tabela~\ref{tab:resultados_principio}.
+
+\begin{table}[htbp]
+\centering
+\caption{Taxa de falha global agregada por princípio ético}
+\label{tab:resultados_principio}
+\footnotesize
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Princípio} & \textbf{Taxa de falha global} \\ \hline
+\textit{Fairness} & 30,1\% \\ \hline
+\textit{Accountability} & 30,8\% \\ \hline
+\textit{Transparency} & 39,9\% \\ \hline
+\end{tabular}
+\end{table}
 
 \subsubsection{R-F1: Discriminação}
 
@@ -1031,7 +1051,7 @@ A análise de ameaças à validade segue a estrutura consolidada por Wohlin et a
 
 Adicionalmente, os resultados observados em R-T2, particularmente as taxas de mudança decisória entre 65\% e 75\%, podem refletir não apenas sensibilidade a atributos irrelevantes, mas também parte da variabilidade inerente ao processo de geração dos LLMs. Conforme documentado por Atil et al.~\cite{Atil2024}, um mesmo \textit{prompt} pode produzir respostas distintas mesmo sob configurações determinísticas. Na ausência de um \textit{baseline} de variabilidade intra-modelo, obtido por múltiplas execuções do mesmo \textit{prompt} sem qualquer perturbação, não é possível quantificar com precisão a contribuição relativa do viés oculto e do ruído estocástico para as mudanças observadas. A inclusão desse \textit{baseline} constitui uma oportunidade de aprimoramento para trabalhos futuros, permitindo isolar de forma mais rigorosa o efeito introduzido pelas perturbações avaliadas.
 
-\textbf{Validade externa.} Os resultados foram obtidos a partir de três provedores comerciais e de versões específicas de seus modelos (\texttt{gpt-5.2}, \texttt{gemini-3-flash} e \texttt{deepseek-chat}), podendo não se generalizar para outros modelos, arquiteturas ou versões futuras. As sementes de teste foram elaboradas para domínios representativos do contexto brasileiro, incluindo crédito, recrutamento, saúde e educação, e utilizam predominantemente terminologia em português. Consequentemente, a extrapolação dos resultados para outros idiomas, culturas ou contextos regulatórios deve ser realizada com cautela. Além disso, como os modelos comerciais são continuamente atualizados por seus provedores, os resultados apresentados correspondem a um retrato temporal das versões avaliadas durante a execução das campanhas.
+\textbf{Validade externa.} Os resultados foram obtidos a partir de três provedores comerciais e de versões específicas de seus modelos (\texttt{gpt-5.2}, \texttt{gemini-3-flash} e \texttt{deepseek-chat}), podendo não se generalizar para outros modelos, arquiteturas ou versões futuras. As sementes de teste foram elaboradas para domínios representativos do contexto brasileiro, incluindo crédito, recrutamento, saúde e educação, e utilizam predominantemente terminologia em português. Consequentemente, a extrapolação dos resultados para outros idiomas, culturas ou contextos regulatórios deve ser realizada com cautela. Além disso, como os modelos comerciais são continuamente atualizados por seus provedores, os resultados apresentados correspondem a um retrato temporal das versões avaliadas durante a execução das campanhas. Por fim, cabe registrar uma limitação de \textbf{validade ecológica}: as sementes constituem cenários adversariais deliberadamente construídos para exercitar riscos éticos específicos, e não uma amostra representativa do tráfego real de produção. Assim, as taxas de falha devem ser interpretadas como medida da capacidade de detecção sob sondagem direcionada, e não como frequência esperada de violações no uso cotidiano dos modelos.
 
 \textbf{Confiabilidade.} Todas as campanhas podem ser reproduzidas por meio do repositório público da pesquisa, que disponibiliza sementes, \textit{templates}, configurações experimentais e implementações dos oráculos. A separação entre as etapas de coleta e avaliação permite a reaplicação dos oráculos sobre os mesmos dados brutos sem a necessidade de novas chamadas de API, favorecendo a verificabilidade dos resultados e a replicação independente dos experimentos. 
 
