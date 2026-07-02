@@ -121,7 +121,7 @@ Entre as técnicas mais avançadas destacam-se o \textit{coverage-guided fuzzing
 \subsection{Técnicas de \textit{Fuzzing} para Avaliação Ética de LLMs}
 \label{sec:tecnicas-fuzzing}
 
-A aplicação de técnicas de \textit{fuzzing} à avaliação ética de Large Language Models (LLMs) exige adaptações metodológicas significativas. A Tabela~\ref{tab:tecnicas-fuzzing} sintetiza as técnicas identificadas na literatura como particularmente adequadas para esse contexto, destacando aquelas empregadas nesta pesquisa, bem como a técnica de \textit{canary injection}, identificada no levantamento, mas não utilizada nas \textit{engines} voltadas aos princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}.
+A aplicação de técnicas de \textit{fuzzing} à avaliação ética de Grandes Modelos de Linguagem (LLMs) exige adaptações metodológicas significativas. A Tabela~\ref{tab:tecnicas-fuzzing} sintetiza as técnicas identificadas na literatura como particularmente adequadas para esse contexto, destacando aquelas empregadas nesta pesquisa, bem como a técnica de \textit{canary injection}, identificada no levantamento, mas não utilizada nas \textit{engines} voltadas aos princípios de \textit{Fairness}, \textit{Accountability} e \textit{Transparency}.
 
 \begin{table}[htbp]
 \centering
@@ -207,7 +207,7 @@ A operacionalização dessa técnica requer um corpus de padrões adversariais c
 \subsection{Desafios Técnicos na Aplicação de \textit{Fuzzing} em LLMs}
 \label{sec:llm-challenges}
 
-A aplicação de técnicas de \textit{fuzzing} à avaliação de propriedades de justiça e segurança em Large Language Models (LLMs) envolve desafios técnicos específicos decorrentes tanto da arquitetura quanto do modelo operacional desses sistemas. A literatura recente destaca as seguintes barreiras à automação de testes:
+A aplicação de técnicas de \textit{fuzzing} à avaliação de propriedades de justiça e segurança em LLMs envolve desafios técnicos específicos decorrentes tanto da arquitetura quanto do modelo operacional desses sistemas. A literatura recente destaca as seguintes barreiras à automação de testes:
 
 \textbf{Problema do Oráculo e Não Determinismo:} A natureza probabilística da geração de texto, baseada em estratégias de amostragem estocástica, como \textit{top-k} e \textit{nucleus sampling}, faz com que uma mesma entrada possa produzir saídas distintas \cite{Holtzman2020}. Salimian et al. \cite{Salimian2025} demonstram que essa característica intensifica o chamado ``problema do oráculo'' em testes automatizados, uma vez que dificulta a distinção entre variações naturais da linguagem e efetivas violações de propriedades, como a presença de viés. Para mitigar esse problema, avaliações de justiça frequentemente recorrem a estratégias de execução repetida e agregação de resultados, como votação majoritária, a fim de aumentar a consistência dos vereditos produzidos \cite{Salimian2025, Reddy2025}.
 
